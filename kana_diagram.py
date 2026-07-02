@@ -1,69 +1,232 @@
-<!DOCTYPE html>
-<html lang="en">
+import json
+import os
+import platform
+import subprocess
+import sys
+import webbrowser
+from math import cos, pi, sin
+from pathlib import Path
+
+import matplotlib
+
+if os.environ.get("DISPLAY", "") == "":
+    matplotlib.use("Agg")
+
+import matplotlib.pyplot as plt
+import networkx as nx
+from matplotlib import font_manager as fm
+
+
+def get_japanese_font():
+    candidates = [
+        "Noto Sans CJK JP",
+        "Yu Gothic",
+        "Meiryo",
+        "MS Gothic",
+        "Arial Unicode MS",
+        "Hiragino Sans",
+        "TakaoPGothic",
+        "DejaVu Sans",
+    ]
+    available_fonts = {font.name for font in fm.fontManager.ttflist}
+    for candidate in candidates:
+        if candidate in available_fonts:
+            return candidate
+    return "DejaVu Sans"
+
+
+JP_FONT = get_japanese_font()
+plt.rcParams["font.family"] = [JP_FONT, "sans-serif"]
+plt.rcParams["axes.unicode_minus"] = False
+
+# ----------------------------
+# DATASET
+# ----------------------------
+relationships = [
+    ("ア", "アニメ", "Anime"),
+    ("ア", "アイス", "Ice cream"),
+    ("ア", "アメリカ", "America"),
+    ("ア", "アパート", "Apartment"),
+    ("ア", "アプリ", "App"),
+    ("ア", "アクション", "Action"),
+    ("ア", "アカウント", "Account"),
+    ("ア", "アクセス", "Access"),
+    ("ア", "アナログ", "Analog"),
+    ("ア", "アンテナ", "Antenna"),
+
+    ("イ", "イカ", "Squid"),
+    ("イ", "イヌ", "Dog"),
+    ("イ", "イス", "Chair"),
+    ("イ", "イタリア", "Italy"),
+    ("イ", "イメージ", "Image"),
+    ("イ", "インストール", "Install"),
+    ("イ", "イノベーション", "Innovation"),
+    ("イ", "イベント", "Event"),
+    ("イ", "インデックス", "Index"),
+    ("イ", "インター", "Inter"),
+
+    ("ウ", "ウマ", "Horse"),
+    ("ウ", "ウミ", "Sea"),
+    ("ウ", "ウェブ", "Web"),
+    ("ウ", "ウイルス", "Virus"),
+    ("ウ", "ウォーター", "Water"),
+    ("ウ", "ウェア", "Wear"),
+    ("ウ", "ウィンドウ", "Window"),
+    ("ウ", "ウェーブ", "Wave"),
+    ("ウ", "ウォーク", "Walk"),
+    ("ウ", "ウクライナ", "Ukraine"),
+
+    ("エ", "エネルギー", "Energy"),
+    ("エ", "エアコン", "Air conditioner"),
+    ("エ", "エンジン", "Engine"),
+    ("エ", "エリア", "Area"),
+    ("エ", "エレベーター", "Elevator"),
+    ("エ", "エラー", "Error"),
+    ("エ", "エッジ", "Edge"),
+    ("エ", "エスカレーター", "Escalator"),
+    ("エ", "エコ", "Eco"),
+    ("エ", "エディション", "Edition"),
+
+    ("オ", "オフィス", "Office"),
+    ("オ", "オーケストラ", "Orchestra"),
+    ("オ", "オーストラリア", "Australia"),
+    ("オ", "オプション", "Option"),
+    ("オ", "オンライン", "Online"),
+    ("オ", "オブジェクト", "Object"),
+    ("オ", "オペレーション", "Operation"),
+    ("オ", "オレンジ", "Orange"),
+    ("オ", "オート", "Auto"),
+    ("オ", "オリジナル", "Original"),
+]
+
+# ----------------------------
+# BUILD GRAPH
+# ----------------------------
+G = nx.DiGraph()
+
+for start, end, meaning in relationships:
+    G.add_edge(start, end, label=meaning)
+
+# ----------------------------
+# NODE COLORS
+# ----------------------------
+color_map = {
+    "ア": "#ff6b6b",
+    "イ": "#4dabf7",
+    "ウ": "#51cf66",
+    "エ": "#ffd43b",
+    "オ": "#b197fc",
+}
+
+vowel_map = {
+    "a": "ア",
+    "e": "エ",
+    "i": "イ",
+    "o": "オ",
+    "u": "ウ",
+}
+
+relationship_payload = [
+    {"source": start, "target": end, "label": meaning}
+    for start, end, meaning in relationships
+]
+
+# ----------------------------
+# EXPORT INTERACTIVE HTML
+# ----------------------------
+output_path = Path(__file__).with_suffix(".html")
+
+
+def open_html_in_browser(path: Path) -> None:
+    preferred_browser = os.environ.get("KANA_BROWSER", "").strip().lower()
+    resolved_path = path.resolve()
+
+    if preferred_browser in {"safari", "apple safari"}:
+        if sys.platform == "darwin":
+            subprocess.Popen(["open", "-a", "Safari", str(resolved_path)])
+            return
+
+        safari_candidates = [
+            r"C:\Program Files\Safari\Safari.exe",
+            r"C:\Program Files (x86)\Safari\Safari.exe",
+        ]
+        for candidate in safari_candidates:
+            if os.path.exists(candidate):
+                subprocess.Popen([candidate, str(resolved_path)])
+                return
+
+    try:
+        webbrowser.open(resolved_path.as_uri())
+    except Exception:
+        pass
+
+
+html = f"""<!DOCTYPE html>
+<html lang=\"en\">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="format-detection" content="telephone=no" />
+  <meta charset=\"utf-8\" />
+  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover\" />
+  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />
+  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\" />
+  <meta name=\"format-detection\" content=\"telephone=no\" />
   <title>Katakana Vocabulary Network</title>
   <style>
-    html, body {
+    html, body {{
       height: 100%;
       width: 100%;
       margin: 0;
       overflow: hidden;
-    }
-    body {
+    }}
+    body {{
       display: flex;
       flex-direction: column;
-      font-family: 'Yu Gothic', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', sans-serif;
+      font-family: '{JP_FONT}', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', sans-serif;
       background: #f8fafc;
       color: #111827;
       -webkit-text-size-adjust: 100%;
       -webkit-touch-callout: none;
       touch-action: manipulation;
-    }
-    .controls {
+    }}
+    .controls {{
       display: flex;
       align-items: center;
       gap: 0.75rem;
       padding: 1rem 1.5rem 0.5rem;
       flex-shrink: 0;
       flex-wrap: wrap;
-    }
-    label {
+    }}
+    label {{
       font-weight: 600;
       color: #374151;
-    }
-    select {
+    }}
+    select {{
       padding: 0.4rem 0.7rem;
       border: 1px solid #cbd5e1;
       border-radius: 0.4rem;
       font-size: 0.95rem;
       -webkit-appearance: menulist;
       appearance: auto;
-    }
-    button {
+    }}
+    button {{
       padding: 0.4rem 0.8rem;
       border: 1px solid #cbd5e1;
       border-radius: 0.4rem;
       background: #ffffff;
       cursor: pointer;
       font-size: 0.95rem;
-    }
-    h1 {
+    }}
+    h1 {{
       margin: 0;
       padding: 0 1.5rem 0.25rem;
       font-size: 1.4rem;
-    }
-    p {
+    }}
+    p {{
       margin: 0;
       padding: 0 1.5rem 0.75rem;
       color: #4b5563;
-    }
-    #graphWrap {
+    }}
+    #graphWrap {{
       flex: 1 1 auto;
       position: relative;
       min-height: 320px;
@@ -72,15 +235,15 @@
       background: white;
       overflow: hidden;
       border-radius: 0.5rem;
-    }
-    #graph {
+    }}
+    #graph {{
       width: 100%;
       height: 100%;
       display: block;
       touch-action: none;
       background: white;
-    }
-    #edgeLabel {
+    }}
+    #edgeLabel {{
       position: absolute;
       display: none;
       pointer-events: none;
@@ -93,43 +256,43 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
       z-index: 10;
       max-width: 220px;
-    }
-    .node {
+    }}
+    .node {{
       cursor: pointer;
-    }
-    .edge {
+    }}
+    .edge {{
       stroke: #94a3b8;
       stroke-width: 2;
       fill: none;
       cursor: pointer;
-    }
-    .node-label {
+    }}
+    .node-label {{
       font-size: 16px;
       fill: #111827;
       text-anchor: middle;
       dominant-baseline: middle;
       pointer-events: none;
       user-select: none;
-    }
-    .center-label {
+    }}
+    .center-label {{
       font-size: 22px;
       fill: #111827;
       text-anchor: middle;
       dominant-baseline: middle;
       pointer-events: none;
       user-select: none;
-    }
+    }}
   </style>
 </head>
 <body>
-  <div class="controls">
-    <label for="vowelSelect">Choose vowel</label>
-    <select id="vowelSelect">
-      <option value="a">A (ア)</option>
-      <option value="e">E (エ)</option>
-      <option value="i">I (イ)</option>
-      <option value="o">O (オ)</option>
-      <option value="u">U (ウ)</option>
+  <div class=\"controls\">
+    <label for=\"vowelSelect\">Choose vowel</label>
+    <select id=\"vowelSelect\">
+      <option value=\"a\">A (ア)</option>
+      <option value=\"e\">E (エ)</option>
+      <option value=\"i\">I (イ)</option>
+      <option value=\"o\">O (オ)</option>
+      <option value=\"u\">U (ウ)</option>
     </select>
     <button id="pronounceButton" type="button">Play pronunciation</button>
   </div>
@@ -140,59 +303,59 @@
     <div id="edgeLabel"></div>
   </div>
   <script>
-    const relationships = [{"source": "\u30a2", "target": "\u30a2\u30cb\u30e1", "label": "Anime"}, {"source": "\u30a2", "target": "\u30a2\u30a4\u30b9", "label": "Ice cream"}, {"source": "\u30a2", "target": "\u30a2\u30e1\u30ea\u30ab", "label": "America"}, {"source": "\u30a2", "target": "\u30a2\u30d1\u30fc\u30c8", "label": "Apartment"}, {"source": "\u30a2", "target": "\u30a2\u30d7\u30ea", "label": "App"}, {"source": "\u30a2", "target": "\u30a2\u30af\u30b7\u30e7\u30f3", "label": "Action"}, {"source": "\u30a2", "target": "\u30a2\u30ab\u30a6\u30f3\u30c8", "label": "Account"}, {"source": "\u30a2", "target": "\u30a2\u30af\u30bb\u30b9", "label": "Access"}, {"source": "\u30a2", "target": "\u30a2\u30ca\u30ed\u30b0", "label": "Analog"}, {"source": "\u30a2", "target": "\u30a2\u30f3\u30c6\u30ca", "label": "Antenna"}, {"source": "\u30a4", "target": "\u30a4\u30ab", "label": "Squid"}, {"source": "\u30a4", "target": "\u30a4\u30cc", "label": "Dog"}, {"source": "\u30a4", "target": "\u30a4\u30b9", "label": "Chair"}, {"source": "\u30a4", "target": "\u30a4\u30bf\u30ea\u30a2", "label": "Italy"}, {"source": "\u30a4", "target": "\u30a4\u30e1\u30fc\u30b8", "label": "Image"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb", "label": "Install"}, {"source": "\u30a4", "target": "\u30a4\u30ce\u30d9\u30fc\u30b7\u30e7\u30f3", "label": "Innovation"}, {"source": "\u30a4", "target": "\u30a4\u30d9\u30f3\u30c8", "label": "Event"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9", "label": "Index"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30bf\u30fc", "label": "Inter"}, {"source": "\u30a6", "target": "\u30a6\u30de", "label": "Horse"}, {"source": "\u30a6", "target": "\u30a6\u30df", "label": "Sea"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30d6", "label": "Web"}, {"source": "\u30a6", "target": "\u30a6\u30a4\u30eb\u30b9", "label": "Virus"}, {"source": "\u30a6", "target": "\u30a6\u30a9\u30fc\u30bf\u30fc", "label": "Water"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30a2", "label": "Wear"}, {"source": "\u30a6", "target": "\u30a6\u30a3\u30f3\u30c9\u30a6", "label": "Window"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30fc\u30d6", "label": "Wave"}, {"source": "\u30a6", "target": "\u30a6\u30a9\u30fc\u30af", "label": "Walk"}, {"source": "\u30a6", "target": "\u30a6\u30af\u30e9\u30a4\u30ca", "label": "Ukraine"}, {"source": "\u30a8", "target": "\u30a8\u30cd\u30eb\u30ae\u30fc", "label": "Energy"}, {"source": "\u30a8", "target": "\u30a8\u30a2\u30b3\u30f3", "label": "Air conditioner"}, {"source": "\u30a8", "target": "\u30a8\u30f3\u30b8\u30f3", "label": "Engine"}, {"source": "\u30a8", "target": "\u30a8\u30ea\u30a2", "label": "Area"}, {"source": "\u30a8", "target": "\u30a8\u30ec\u30d9\u30fc\u30bf\u30fc", "label": "Elevator"}, {"source": "\u30a8", "target": "\u30a8\u30e9\u30fc", "label": "Error"}, {"source": "\u30a8", "target": "\u30a8\u30c3\u30b8", "label": "Edge"}, {"source": "\u30a8", "target": "\u30a8\u30b9\u30ab\u30ec\u30fc\u30bf\u30fc", "label": "Escalator"}, {"source": "\u30a8", "target": "\u30a8\u30b3", "label": "Eco"}, {"source": "\u30a8", "target": "\u30a8\u30c7\u30a3\u30b7\u30e7\u30f3", "label": "Edition"}, {"source": "\u30aa", "target": "\u30aa\u30d5\u30a3\u30b9", "label": "Office"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30b1\u30b9\u30c8\u30e9", "label": "Orchestra"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30b9\u30c8\u30e9\u30ea\u30a2", "label": "Australia"}, {"source": "\u30aa", "target": "\u30aa\u30d7\u30b7\u30e7\u30f3", "label": "Option"}, {"source": "\u30aa", "target": "\u30aa\u30f3\u30e9\u30a4\u30f3", "label": "Online"}, {"source": "\u30aa", "target": "\u30aa\u30d6\u30b8\u30a7\u30af\u30c8", "label": "Object"}, {"source": "\u30aa", "target": "\u30aa\u30da\u30ec\u30fc\u30b7\u30e7\u30f3", "label": "Operation"}, {"source": "\u30aa", "target": "\u30aa\u30ec\u30f3\u30b8", "label": "Orange"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30c8", "label": "Auto"}, {"source": "\u30aa", "target": "\u30aa\u30ea\u30b8\u30ca\u30eb", "label": "Original"}];
-    const vowelMap = {"a": "\u30a2", "e": "\u30a8", "i": "\u30a4", "o": "\u30aa", "u": "\u30a6"};
-    const colorMap = {"\u30a2": "#ff6b6b", "\u30a4": "#4dabf7", "\u30a6": "#51cf66", "\u30a8": "#ffd43b", "\u30aa": "#b197fc"};
+    const relationships = {json.dumps(relationship_payload)};
+    const vowelMap = {json.dumps(vowel_map)};
+    const colorMap = {json.dumps(color_map)};
     const svg = document.getElementById('graph');
     const edgeLabel = document.getElementById('edgeLabel');
     const select = document.getElementById('vowelSelect');
     const pronounceButton = document.getElementById('pronounceButton');
     const ns = 'http://www.w3.org/2000/svg';
 
-    function speakText(text, lang = 'ja-JP') {
-      if (!('speechSynthesis' in window)) {
+    function speakText(text, lang = 'ja-JP') {{
+      if (!('speechSynthesis' in window)) {{
         alert('Speech synthesis is not supported in this browser.');
         return;
-      }
+      }}
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = lang;
       utterance.rate = 0.9;
       utterance.pitch = 1.05;
       const voices = window.speechSynthesis.getVoices();
       const japaneseVoice = voices.find((voice) => voice.lang.startsWith('ja')) || voices[0];
-      if (japaneseVoice) {
+      if (japaneseVoice) {{
         utterance.voice = japaneseVoice;
-      }
+      }}
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(utterance);
-    }
+    }}
 
-    function speakPronunciation(selectedKey) {
+    function speakPronunciation(selectedKey) {{
       const centerVowel = vowelMap[selectedKey];
       speakText(centerVowel);
-    }
+    }}
 
-    function shuffle(items) {
+    function shuffle(items) {{
       const arr = items.slice();
-      for (let i = arr.length - 1; i > 0; i--) {
+      for (let i = arr.length - 1; i > 0; i--) {{
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
+      }}
       return arr;
-    }
+    }}
 
-    function showEdgeLabel(text, x, y) {
+    function showEdgeLabel(text, x, y) {{
       edgeLabel.textContent = text;
       edgeLabel.style.display = 'block';
       edgeLabel.style.left = Math.min(Math.max(x + 12, 8), window.innerWidth - 240) + 'px';
       edgeLabel.style.top = Math.min(Math.max(y + 8, 8), window.innerHeight - 60) + 'px';
-    }
+    }}
 
-    function hideEdgeLabel() {
+    function hideEdgeLabel() {{
       edgeLabel.style.display = 'none';
-    }
+    }}
 
-    function buildGraph(selectedKey) {
+    function buildGraph(selectedKey) {{
       const centerVowel = vowelMap[selectedKey];
       const relations = relationships.filter((rel) => rel.source === centerVowel);
       const centerX = 500;
@@ -204,7 +367,7 @@
 
       svg.innerHTML = '';
 
-      relations.forEach((rel, index) => {
+      relations.forEach((rel, index) => {{
         const positionIndex = shuffledIndices[index];
         const angle = ((positionIndex / childCount) * 2 * Math.PI) - (Math.PI / 2);
         const nodeX = centerX + Math.cos(angle) * radius;
@@ -245,7 +408,7 @@
         label.textContent = rel.target;
         group.appendChild(label);
         svg.appendChild(group);
-      });
+      }});
 
       const centerGroup = document.createElementNS(ns, 'g');
       const centerNode = document.createElementNS(ns, 'circle');
@@ -264,19 +427,24 @@
       centerText.textContent = centerLabel;
       centerGroup.appendChild(centerText);
       svg.appendChild(centerGroup);
-    }
+    }}
 
-    function initializeGraph() {
+    function initializeGraph() {{
       select.addEventListener('change', (event) => buildGraph(event.target.value));
       pronounceButton.addEventListener('click', () => speakPronunciation(select.value));
       buildGraph(select.value);
-    }
+    }}
 
-    if (document.readyState === 'loading') {
+    if (document.readyState === 'loading') {{
       document.addEventListener('DOMContentLoaded', initializeGraph);
-    } else {
+    }} else {{
       initializeGraph();
-    }
+    }}
   </script>
 </body>
 </html>
+"""
+
+output_path.write_text(html, encoding="utf-8")
+print(f"Interactive HTML created at: {output_path}")
+open_html_in_browser(output_path)
