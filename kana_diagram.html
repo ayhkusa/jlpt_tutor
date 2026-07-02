@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Katakana Vocabulary Network</title>
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Yu Gothic', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', sans-serif;
+      background: #f8fafc;
+      color: #111827;
+      -webkit-text-size-adjust: 100%;
+      -webkit-touch-callout: none;
+      touch-action: manipulation;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem 0.5rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    label {
+      font-weight: 600;
+      color: #374151;
+    }
+    select {
+      padding: 0.4rem 0.7rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.4rem;
+      font-size: 0.95rem;
+      -webkit-appearance: menulist;
+      appearance: auto;
+    }
+    button {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.4rem;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    h1 {
+      margin: 0;
+      padding: 0 1.5rem 0.25rem;
+      font-size: 1.4rem;
+    }
+    p {
+      margin: 0;
+      padding: 0 1.5rem 0.75rem;
+      color: #4b5563;
+    }
+    #graphWrap {
+      flex: 1 1 auto;
+      position: relative;
+      min-height: 320px;
+      margin: 0 0.75rem 0.75rem;
+      border: 1px solid #e5e7eb;
+      background: white;
+      overflow: hidden;
+      border-radius: 0.5rem;
+    }
+    #graph {
+      width: 100%;
+      height: 100%;
+      display: block;
+      touch-action: none;
+      background: white;
+    }
+    #edgeLabel {
+      position: absolute;
+      display: none;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.95);
+      color: #111827;
+      padding: 0.3rem 0.45rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.25rem;
+      font-size: 0.8rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      z-index: 10;
+      max-width: 220px;
+    }
+    .node {
+      cursor: pointer;
+    }
+    .edge {
+      stroke: #94a3b8;
+      stroke-width: 2;
+      fill: none;
+      cursor: pointer;
+    }
+    .node-label {
+      font-size: 16px;
+      fill: #111827;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events: none;
+      user-select: none;
+    }
+    .center-label {
+      font-size: 22px;
+      fill: #111827;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <label for="vowelSelect">Choose vowel</label>
+    <select id="vowelSelect">
+      <option value="a">A (ア)</option>
+      <option value="e">E (エ)</option>
+      <option value="i">I (イ)</option>
+      <option value="o">O (オ)</option>
+      <option value="u">U (ウ)</option>
+    </select>
+    <button id="pronounceButton" type="button">Play pronunciation</button>
+  </div>
+  <h1>Katakana Vocabulary Network</h1>
+  <p>Select a vowel to view its words arranged evenly around a circle.</p>
+  <div id="graphWrap">
+    <svg id="graph" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div id="edgeLabel"></div>
+  </div>
+  <script>
+    const relationships = [{"source": "\u30a2", "target": "\u30a2\u30cb\u30e1", "label": "Anime"}, {"source": "\u30a2", "target": "\u30a2\u30a4\u30b9", "label": "Ice cream"}, {"source": "\u30a2", "target": "\u30a2\u30e1\u30ea\u30ab", "label": "America"}, {"source": "\u30a2", "target": "\u30a2\u30d1\u30fc\u30c8", "label": "Apartment"}, {"source": "\u30a2", "target": "\u30a2\u30d7\u30ea", "label": "App"}, {"source": "\u30a2", "target": "\u30a2\u30af\u30b7\u30e7\u30f3", "label": "Action"}, {"source": "\u30a2", "target": "\u30a2\u30ab\u30a6\u30f3\u30c8", "label": "Account"}, {"source": "\u30a2", "target": "\u30a2\u30af\u30bb\u30b9", "label": "Access"}, {"source": "\u30a2", "target": "\u30a2\u30ca\u30ed\u30b0", "label": "Analog"}, {"source": "\u30a2", "target": "\u30a2\u30f3\u30c6\u30ca", "label": "Antenna"}, {"source": "\u30a4", "target": "\u30a4\u30ab", "label": "Squid"}, {"source": "\u30a4", "target": "\u30a4\u30cc", "label": "Dog"}, {"source": "\u30a4", "target": "\u30a4\u30b9", "label": "Chair"}, {"source": "\u30a4", "target": "\u30a4\u30bf\u30ea\u30a2", "label": "Italy"}, {"source": "\u30a4", "target": "\u30a4\u30e1\u30fc\u30b8", "label": "Image"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb", "label": "Install"}, {"source": "\u30a4", "target": "\u30a4\u30ce\u30d9\u30fc\u30b7\u30e7\u30f3", "label": "Innovation"}, {"source": "\u30a4", "target": "\u30a4\u30d9\u30f3\u30c8", "label": "Event"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9", "label": "Index"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30bf\u30fc", "label": "Inter"}, {"source": "\u30a6", "target": "\u30a6\u30de", "label": "Horse"}, {"source": "\u30a6", "target": "\u30a6\u30df", "label": "Sea"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30d6", "label": "Web"}, {"source": "\u30a6", "target": "\u30a6\u30a4\u30eb\u30b9", "label": "Virus"}, {"source": "\u30a6", "target": "\u30a6\u30a9\u30fc\u30bf\u30fc", "label": "Water"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30a2", "label": "Wear"}, {"source": "\u30a6", "target": "\u30a6\u30a3\u30f3\u30c9\u30a6", "label": "Window"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30fc\u30d6", "label": "Wave"}, {"source": "\u30a6", "target": "\u30a6\u30a9\u30fc\u30af", "label": "Walk"}, {"source": "\u30a6", "target": "\u30a6\u30af\u30e9\u30a4\u30ca", "label": "Ukraine"}, {"source": "\u30a8", "target": "\u30a8\u30cd\u30eb\u30ae\u30fc", "label": "Energy"}, {"source": "\u30a8", "target": "\u30a8\u30a2\u30b3\u30f3", "label": "Air conditioner"}, {"source": "\u30a8", "target": "\u30a8\u30f3\u30b8\u30f3", "label": "Engine"}, {"source": "\u30a8", "target": "\u30a8\u30ea\u30a2", "label": "Area"}, {"source": "\u30a8", "target": "\u30a8\u30ec\u30d9\u30fc\u30bf\u30fc", "label": "Elevator"}, {"source": "\u30a8", "target": "\u30a8\u30e9\u30fc", "label": "Error"}, {"source": "\u30a8", "target": "\u30a8\u30c3\u30b8", "label": "Edge"}, {"source": "\u30a8", "target": "\u30a8\u30b9\u30ab\u30ec\u30fc\u30bf\u30fc", "label": "Escalator"}, {"source": "\u30a8", "target": "\u30a8\u30b3", "label": "Eco"}, {"source": "\u30a8", "target": "\u30a8\u30c7\u30a3\u30b7\u30e7\u30f3", "label": "Edition"}, {"source": "\u30aa", "target": "\u30aa\u30d5\u30a3\u30b9", "label": "Office"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30b1\u30b9\u30c8\u30e9", "label": "Orchestra"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30b9\u30c8\u30e9\u30ea\u30a2", "label": "Australia"}, {"source": "\u30aa", "target": "\u30aa\u30d7\u30b7\u30e7\u30f3", "label": "Option"}, {"source": "\u30aa", "target": "\u30aa\u30f3\u30e9\u30a4\u30f3", "label": "Online"}, {"source": "\u30aa", "target": "\u30aa\u30d6\u30b8\u30a7\u30af\u30c8", "label": "Object"}, {"source": "\u30aa", "target": "\u30aa\u30da\u30ec\u30fc\u30b7\u30e7\u30f3", "label": "Operation"}, {"source": "\u30aa", "target": "\u30aa\u30ec\u30f3\u30b8", "label": "Orange"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30c8", "label": "Auto"}, {"source": "\u30aa", "target": "\u30aa\u30ea\u30b8\u30ca\u30eb", "label": "Original"}];
+    const vowelMap = {"a": "\u30a2", "e": "\u30a8", "i": "\u30a4", "o": "\u30aa", "u": "\u30a6"};
+    const colorMap = {"\u30a2": "#ff6b6b", "\u30a4": "#4dabf7", "\u30a6": "#51cf66", "\u30a8": "#ffd43b", "\u30aa": "#b197fc"};
+    const svg = document.getElementById('graph');
+    const edgeLabel = document.getElementById('edgeLabel');
+    const select = document.getElementById('vowelSelect');
+    const pronounceButton = document.getElementById('pronounceButton');
+    const ns = 'http://www.w3.org/2000/svg';
+
+    function speakText(text, lang = 'ja-JP') {
+      if (!('speechSynthesis' in window)) {
+        alert('Speech synthesis is not supported in this browser.');
+        return;
+      }
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      utterance.rate = 0.9;
+      utterance.pitch = 1.05;
+      const voices = window.speechSynthesis.getVoices();
+      const japaneseVoice = voices.find((voice) => voice.lang.startsWith('ja')) || voices[0];
+      if (japaneseVoice) {
+        utterance.voice = japaneseVoice;
+      }
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function speakPronunciation(selectedKey) {
+      const centerVowel = vowelMap[selectedKey];
+      speakText(centerVowel);
+    }
+
+    function shuffle(items) {
+      const arr = items.slice();
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function showEdgeLabel(text, x, y) {
+      edgeLabel.textContent = text;
+      edgeLabel.style.display = 'block';
+      edgeLabel.style.left = Math.min(Math.max(x + 12, 8), window.innerWidth - 240) + 'px';
+      edgeLabel.style.top = Math.min(Math.max(y + 8, 8), window.innerHeight - 60) + 'px';
+    }
+
+    function hideEdgeLabel() {
+      edgeLabel.style.display = 'none';
+    }
+
+    function buildGraph(selectedKey) {
+      const centerVowel = vowelMap[selectedKey];
+      const relations = relationships.filter((rel) => rel.source === centerVowel);
+      const centerX = 500;
+      const centerY = 340;
+      const radius = 240;
+      const childCount = Math.max(relations.length, 1);
+      const shuffledIndices = shuffle([...Array(childCount).keys()]);
+      const centerLabel = centerVowel + ' / ' + selectedKey.toUpperCase();
+
+      svg.innerHTML = '';
+
+      relations.forEach((rel, index) => {
+        const positionIndex = shuffledIndices[index];
+        const angle = ((positionIndex / childCount) * 2 * Math.PI) - (Math.PI / 2);
+        const nodeX = centerX + Math.cos(angle) * radius;
+        const nodeY = centerY + Math.sin(angle) * radius;
+
+        const line = document.createElementNS(ns, 'line');
+        line.setAttribute('x1', centerX);
+        line.setAttribute('y1', centerY);
+        line.setAttribute('x2', nodeX);
+        line.setAttribute('y2', nodeY);
+        line.setAttribute('class', 'edge');
+        line.addEventListener('mouseenter', (event) => showEdgeLabel(rel.label, event.clientX, event.clientY));
+        line.addEventListener('mousemove', (event) => showEdgeLabel(rel.label, event.clientX, event.clientY));
+        line.addEventListener('mouseleave', hideEdgeLabel);
+        line.addEventListener('click', () => speakText(rel.target));
+        svg.appendChild(line);
+
+        const group = document.createElementNS(ns, 'g');
+        group.setAttribute('class', 'node');
+        group.setAttribute('data-word', rel.target);
+        group.addEventListener('click', () => speakText(rel.target));
+
+        const box = document.createElementNS(ns, 'rect');
+        box.setAttribute('x', nodeX - 92);
+        box.setAttribute('y', nodeY - 24);
+        box.setAttribute('width', 184);
+        box.setAttribute('height', 48);
+        box.setAttribute('rx', 14);
+        box.setAttribute('fill', '#f8fafc');
+        box.setAttribute('stroke', '#94a3b8');
+        box.setAttribute('stroke-width', 2);
+        group.appendChild(box);
+
+        const label = document.createElementNS(ns, 'text');
+        label.setAttribute('class', 'node-label');
+        label.setAttribute('x', nodeX);
+        label.setAttribute('y', nodeY + 2);
+        label.textContent = rel.target;
+        group.appendChild(label);
+        svg.appendChild(group);
+      });
+
+      const centerGroup = document.createElementNS(ns, 'g');
+      const centerNode = document.createElementNS(ns, 'circle');
+      centerNode.setAttribute('cx', centerX);
+      centerNode.setAttribute('cy', centerY);
+      centerNode.setAttribute('r', 58);
+      centerNode.setAttribute('fill', colorMap[centerVowel] || '#dbeafe');
+      centerNode.setAttribute('stroke', '#111827');
+      centerNode.setAttribute('stroke-width', 2);
+      centerGroup.appendChild(centerNode);
+
+      const centerText = document.createElementNS(ns, 'text');
+      centerText.setAttribute('class', 'center-label');
+      centerText.setAttribute('x', centerX);
+      centerText.setAttribute('y', centerY + 2);
+      centerText.textContent = centerLabel;
+      centerGroup.appendChild(centerText);
+      svg.appendChild(centerGroup);
+    }
+
+    function initializeGraph() {
+      select.addEventListener('change', (event) => buildGraph(event.target.value));
+      pronounceButton.addEventListener('click', () => speakPronunciation(select.value));
+      buildGraph(select.value);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeGraph);
+    } else {
+      initializeGraph();
+    }
+  </script>
+</body>
+</html>
