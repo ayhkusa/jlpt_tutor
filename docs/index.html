@@ -559,12 +559,43 @@
 
       const word = clockwiseTargets[autoPronounceIndex % clockwiseTargets.length];
       autoPronounceIndex = (autoPronounceIndex + 1) % clockwiseTargets.length;
-      speakText(word, 'ja-JP', () => {
+
+      const rel = relationships.find((r) => r.target === word);
+      const englishLabel = rel ? rel.label : null;
+
+      const speakRepeat = (repeatCount) => {
         if (!autoPronounceRunning || token !== autoPronounceToken) {
           return;
         }
-        autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), 1000);
-      });
+        if (repeatCount <= 0) {
+          autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), 1000);
+          return;
+        }
+        speakText(word, 'ja-JP', () => {
+          if (!autoPronounceRunning || token !== autoPronounceToken) {
+            return;
+          }
+          autoPronounceTimerId = setTimeout(() => speakRepeat(repeatCount - 1), 1000);
+        });
+      };
+
+      const speakFirst = () => {
+        if (!autoPronounceRunning || token !== autoPronounceToken) {
+          return;
+        }
+        speakText(word, 'ja-JP', () => {
+          if (!autoPronounceRunning || token !== autoPronounceToken) {
+            return;
+          }
+          autoPronounceTimerId = setTimeout(() => speakRepeat(2), 1000);
+        });
+      };
+
+      if (englishLabel) {
+        speakText(englishLabel, 'en-US', speakFirst);
+      } else {
+        speakFirst();
+      }
     }
 
     function startAutoPronounce() {
