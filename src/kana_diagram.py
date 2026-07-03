@@ -1,40 +1,14 @@
 import json
-import os
 import webbrowser
 from pathlib import Path
-
-import matplotlib
-
-if os.environ.get("DISPLAY", "") == "":
-    matplotlib.use("Agg")
-
-from matplotlib import font_manager as fm
 
 from dataset import relationships
 from pronounciationguide import pronunciation_guide
 
-
-def get_japanese_font():
-    candidates = [
-        "Noto Sans CJK JP",
-        "Yu Gothic",
-        "Meiryo",
-        "MS Gothic",
-        "Arial Unicode MS",
-        "Hiragino Sans",
-        "TakaoPGothic",
-        "DejaVu Sans",
-    ]
-    available_fonts = {font.name for font in fm.fontManager.ttflist}
-    for candidate in candidates:
-        if candidate in available_fonts:
-            return candidate
-    return "DejaVu Sans"
-
-
-JP_FONT = get_japanese_font()
-matplotlib.rcParams["font.family"] = [JP_FONT, "sans-serif"]
-matplotlib.rcParams["axes.unicode_minus"] = False
+# CSS font-family stack resolved by the browser; no server-side font detection needed.
+JP_FONT = "Noto Sans CJK JP, Yu Gothic, Meiryo, MS Gothic, Hiragino Sans, sans-serif"
+# Single font name used for vis-network's font.face option (falls back to system CJK font).
+VIS_FONT = "Noto Sans CJK JP"
 
 # ----------------------------
 # NODE COLORS
@@ -92,7 +66,7 @@ html = f"""<!DOCTYPE html>
       margin: 0;
       display: flex;
       flex-direction: column;
-      font-family: '{JP_FONT}', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', sans-serif;
+      font-family: {JP_FONT};
       background: #f8fafc;
       color: #111827;
     }}
@@ -632,7 +606,7 @@ html = f"""<!DOCTYPE html>
           border: '#111827',
           highlight: {{ background: '#fde68a', border: '#92400e' }}
         }},
-        font: {{ size: 20, face: '{JP_FONT}', color: '#111827', align: 'center', vadjust: 0, multi: false }},
+        font: {{ size: 20, face: '{VIS_FONT}', color: '#111827', align: 'center', vadjust: 0, multi: false }},
         labelHighlightBold: false
       }});
 
@@ -658,7 +632,7 @@ html = f"""<!DOCTYPE html>
             border: '#94a3b8',
             highlight: {{ background: '#fde68a', border: '#92400e' }}
           }},
-          font: {{ size: 16, face: '{JP_FONT}', color: '#111827' }}
+          font: {{ size: 16, face: '{VIS_FONT}', color: '#111827' }}
         }});
       }});
 
@@ -669,7 +643,7 @@ html = f"""<!DOCTYPE html>
           label: '',
           title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
           arrows: 'to',
-          font: {{ size: 12, face: '{JP_FONT}', color: '#374151', align: 'middle' }},
+          font: {{ size: 12, face: '{VIS_FONT}', color: '#374151', align: 'middle' }},
           color: {{ color: '#64748b', highlight: '#ef4444' }},
           smooth: {{ type: 'dynamic' }}
         }});
