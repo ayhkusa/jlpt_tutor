@@ -1,10 +1,6 @@
 import json
 import os
-import platform
-import subprocess
-import sys
 import webbrowser
-from math import cos, pi, sin
 from pathlib import Path
 
 import matplotlib
@@ -12,9 +8,10 @@ import matplotlib
 if os.environ.get("DISPLAY", "") == "":
     matplotlib.use("Agg")
 
-import matplotlib.pyplot as plt
-import networkx as nx
 from matplotlib import font_manager as fm
+
+from dataset import relationships
+from pronounciationguide import pronunciation_guide
 
 
 def get_japanese_font():
@@ -36,76 +33,8 @@ def get_japanese_font():
 
 
 JP_FONT = get_japanese_font()
-plt.rcParams["font.family"] = [JP_FONT, "sans-serif"]
-plt.rcParams["axes.unicode_minus"] = False
-
-# ----------------------------
-# DATASET
-# ----------------------------
-relationships = [
-    ("ア", "アニメ", "Anime"),
-    ("ア", "アイス", "Ice cream"),
-    ("ア", "アメリカ", "America"),
-    ("ア", "アパート", "Apartment"),
-    ("ア", "アプリ", "App"),
-    ("ア", "アクション", "Action"),
-    ("ア", "アカウント", "Account"),
-    ("ア", "アクセス", "Access"),
-    ("ア", "アナログ", "Analog"),
-    ("ア", "アンテナ", "Antenna"),
-
-    ("イ", "イカ", "Squid"),
-    ("イ", "イヌ", "Dog"),
-    ("イ", "イス", "Chair"),
-    ("イ", "イタリア", "Italy"),
-    ("イ", "イメージ", "Image"),
-    ("イ", "インストール", "Install"),
-    ("イ", "イノベーション", "Innovation"),
-    ("イ", "イベント", "Event"),
-    ("イ", "インデックス", "Index"),
-    ("イ", "インター", "Inter"),
-
-    ("ウ", "ウマ", "Horse"),
-    ("ウ", "ウミ", "Sea"),
-    ("ウ", "ウェブ", "Web"),
-    ("ウ", "ウイルス", "Virus"),
-    ("ウ", "ウォーター", "Water"),
-    ("ウ", "ウェア", "Wear"),
-    ("ウ", "ウィンドウ", "Window"),
-    ("ウ", "ウェーブ", "Wave"),
-    ("ウ", "ウォーク", "Walk"),
-    ("ウ", "ウクライナ", "Ukraine"),
-
-    ("エ", "エネルギー", "Energy"),
-    ("エ", "エアコン", "Air conditioner"),
-    ("エ", "エンジン", "Engine"),
-    ("エ", "エリア", "Area"),
-    ("エ", "エレベーター", "Elevator"),
-    ("エ", "エラー", "Error"),
-    ("エ", "エッジ", "Edge"),
-    ("エ", "エスカレーター", "Escalator"),
-    ("エ", "エコ", "Eco"),
-    ("エ", "エディション", "Edition"),
-
-    ("オ", "オフィス", "Office"),
-    ("オ", "オーケストラ", "Orchestra"),
-    ("オ", "オーストラリア", "Australia"),
-    ("オ", "オプション", "Option"),
-    ("オ", "オンライン", "Online"),
-    ("オ", "オブジェクト", "Object"),
-    ("オ", "オペレーション", "Operation"),
-    ("オ", "オレンジ", "Orange"),
-    ("オ", "オート", "Auto"),
-    ("オ", "オリジナル", "Original"),
-]
-
-# ----------------------------
-# BUILD GRAPH
-# ----------------------------
-G = nx.DiGraph()
-
-for start, end, meaning in relationships:
-    G.add_edge(start, end, label=meaning)
+matplotlib.rcParams["font.family"] = [JP_FONT, "sans-serif"]
+matplotlib.rcParams["axes.unicode_minus"] = False
 
 # ----------------------------
 # NODE COLORS
@@ -118,7 +47,7 @@ color_map = {
     "オ": "#b197fc",
 }
 
-vowel_map = {
+letter_map = {
     "a": "ア",
     "e": "エ",
     "i": "イ",
@@ -134,26 +63,11 @@ relationship_payload = [
 # ----------------------------
 # EXPORT INTERACTIVE HTML
 # ----------------------------
-output_path = Path(__file__).with_suffix(".html")
+output_path = Path(__file__).resolve().parent / "docs" / "index.html"
 
 
 def open_html_in_browser(path: Path) -> None:
-    preferred_browser = os.environ.get("KANA_BROWSER", "").strip().lower()
     resolved_path = path.resolve()
-
-    if preferred_browser in {"safari", "apple safari"}:
-        if sys.platform == "darwin":
-            subprocess.Popen(["open", "-a", "Safari", str(resolved_path)])
-            return
-
-        safari_candidates = [
-            r"C:\Program Files\Safari\Safari.exe",
-            r"C:\Program Files (x86)\Safari\Safari.exe",
-        ]
-        for candidate in safari_candidates:
-            if os.path.exists(candidate):
-                subprocess.Popen([candidate, str(resolved_path)])
-                return
 
     try:
         webbrowser.open(resolved_path.as_uri())
@@ -165,48 +79,118 @@ html = f"""<!DOCTYPE html>
 <html lang=\"en\">
 <head>
   <meta charset=\"utf-8\" />
-  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover\" />
-  <meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />
-  <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\" />
-  <meta name=\"format-detection\" content=\"telephone=no\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
   <title>Katakana Vocabulary Network</title>
+  <script type=\"text/javascript\" src=\"https://unpkg.com/vis-network/standalone/umd/vis-network.min.js\"></script>
   <style>
     html, body {{
       height: 100%;
       width: 100%;
-      margin: 0;
       overflow: hidden;
     }}
     body {{
+      margin: 0;
       display: flex;
       flex-direction: column;
       font-family: '{JP_FONT}', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', sans-serif;
       background: #f8fafc;
       color: #111827;
-      -webkit-text-size-adjust: 100%;
-      -webkit-touch-callout: none;
-      touch-action: manipulation;
     }}
+      .page-header {{
+        text-align: center;
+      }}
     .controls {{
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: center;
       padding: 1rem 1.5rem 0.5rem;
       flex-shrink: 0;
+      width: 100%;
+    }}
+    .control-panel {{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+      text-align: center;
+    }}
+    .control-inputs {{
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0.75rem;
       flex-wrap: wrap;
     }}
-    label {{
-      font-weight: 600;
-      color: #374151;
+    .gojuon-wrap {{
+      border: 1px solid #d1d5db;
+      border-radius: 0.6rem;
+      background: #ffffff;
+      padding: 0.3rem;
+      overflow-x: auto;
+      max-width: min(620px, 94vw);
     }}
-    select {{
-      padding: 0.4rem 0.7rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 0.4rem;
-      font-size: 0.95rem;
-      -webkit-appearance: menulist;
-      appearance: auto;
+    .gojuon-table {{
+      border-collapse: collapse;
+      table-layout: fixed;
+      width: 100%;
+      min-width: 540px;
+    }}
+    .gojuon-table td {{
+      border: 1px solid #e5e7eb;
+      padding: 0;
+      width: 20%;
+      background: #ffffff;
+    }}
+    .gojuon-cell {{
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 0.32rem 0.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.06rem;
+      cursor: pointer;
+      color: #111827;
+      min-height: 2.35rem;
+    }}
+    .gojuon-cell:hover {{
+      background: #f8fafc;
+    }}
+    .gojuon-cell.active {{
+      background: #dbeafe;
+      outline: 2px solid #2563eb;
+      outline-offset: -2px;
+    }}
+    .gojuon-kana {{
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1;
+    }}
+    .gojuon-roma {{
+      font-size: 0.68rem;
+      color: #4b5563;
+      text-transform: lowercase;
+      letter-spacing: 0.02em;
+    }}
+    .gojuon-empty {{
+      height: 100%;
+      min-height: 2.35rem;
+      background: #f8fafc;
+    }}
+    .auto-pronounce-button {{
+      min-width: 150px;
+      align-self: center;
+      margin-top: 0.25rem;
+    }}
+    .auto-pronounce-button.stop-state {{
+      background: #dc2626;
+      border-color: #b91c1c;
+      color: #ffffff;
+    }}
+    .auto-pronounce-button.stop-state:hover {{
+      background: #b91c1c;
     }}
     button {{
       padding: 0.4rem 0.8rem;
@@ -216,223 +200,516 @@ html = f"""<!DOCTYPE html>
       cursor: pointer;
       font-size: 0.95rem;
     }}
+    .letter-help {{
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      background: #ffffff;
+      color: #374151;
+      font-size: 0.84rem;
+      line-height: 1.35;
+      max-width: 440px;
+      width: min(440px, 100%);
+      text-align: center;
+    }}
+    .letter-help strong {{
+      color: #111827;
+    }}
+    .letter-help ul {{
+      margin: 0.35rem 0 0;
+      padding-left: 1.1rem;
+    }}
+    .letter-help li {{
+      margin: 0.08rem 0;
+    }}
+    .help-line {{
+      margin-top: 0.35rem;
+      color: #1f2937;
+    }}
+    .help-example {{
+      margin-top: 0.2rem;
+      color: #4b5563;
+    }}
     h1 {{
       margin: 0;
       padding: 0 1.5rem 0.25rem;
       font-size: 1.4rem;
+      text-align: center;
     }}
     p {{
       margin: 0;
       padding: 0 1.5rem 0.75rem;
       color: #4b5563;
+      text-align: center;
     }}
-    #graphWrap {{
+    #mynetwork {{
+      width: 100%;
       flex: 1 1 auto;
-      position: relative;
       min-height: 320px;
-      margin: 0 0.75rem 0.75rem;
+      height: min(62vh, 560px);
+      max-height: 70vh;
       border: 1px solid #e5e7eb;
       background: white;
+      position: relative;
       overflow: hidden;
-      border-radius: 0.5rem;
     }}
-    #graph {{
-      width: 100%;
-      height: 100%;
-      display: block;
+    .vis-network canvas {{
       touch-action: none;
-      background: white;
-    }}
-    #edgeLabel {{
-      position: absolute;
-      display: none;
-      pointer-events: none;
-      background: rgba(255, 255, 255, 0.95);
-      color: #111827;
-      padding: 0.3rem 0.45rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.25rem;
-      font-size: 0.8rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-      z-index: 10;
-      max-width: 220px;
-    }}
-    .node {{
-      cursor: pointer;
-    }}
-    .edge {{
-      stroke: #94a3b8;
-      stroke-width: 2;
-      fill: none;
-      cursor: pointer;
-    }}
-    .node-label {{
-      font-size: 16px;
-      fill: #111827;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      pointer-events: none;
-      user-select: none;
-    }}
-    .center-label {{
-      font-size: 22px;
-      fill: #111827;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      pointer-events: none;
-      user-select: none;
     }}
   </style>
 </head>
 <body>
+  <div class="page-header">
+    <h1>Katakana Vocabulary Tutor</h1>
+    <p>Select a character to learn 10 words using it.</p>
+  </div>
   <div class=\"controls\">
-    <label for=\"vowelSelect\">Choose vowel</label>
-    <select id=\"vowelSelect\">
-      <option value=\"a\">A (ア)</option>
-      <option value=\"e\">E (エ)</option>
-      <option value=\"i\">I (イ)</option>
-      <option value=\"o\">O (オ)</option>
-      <option value=\"u\">U (ウ)</option>
-    </select>
-    <button id="pronounceButton" type="button">Play pronunciation</button>
+    <div class=\"control-panel\">
+      <div class=\"control-inputs\">
+        <div class="gojuon-wrap">
+          <table id="gojuonTable" class="gojuon-table" aria-label="Katakana gojuon table"></table>
+        </div>
+      </div>
+      <div class=\"letter-help\">
+        <strong>Pronunciation Quick Guide</strong>
+        <div id="helpLine" class="help-line"></div>
+        <div id="helpExample" class="help-example"></div>
+      </div>
+      <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Start</button>
+    </div>
   </div>
-  <h1>Katakana Vocabulary Network</h1>
-  <p>Select a vowel to view its words arranged evenly around a circle.</p>
-  <div id="graphWrap">
-    <svg id="graph" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div id="edgeLabel"></div>
-  </div>
+
+  <div id="mynetwork"></div>
   <script>
     const relationships = {json.dumps(relationship_payload)};
-    const vowelMap = {json.dumps(vowel_map)};
+    const letterMap = {json.dumps(letter_map)};
     const colorMap = {json.dumps(color_map)};
-    const svg = document.getElementById('graph');
-    const edgeLabel = document.getElementById('edgeLabel');
-    const select = document.getElementById('vowelSelect');
-    const pronounceButton = document.getElementById('pronounceButton');
-    const ns = 'http://www.w3.org/2000/svg';
+    const container = document.getElementById('mynetwork');
+    const gojuonTable = document.getElementById('gojuonTable');
+    const autoPronounceButton = document.getElementById('autoPronounceButton');
+    const helpLine = document.getElementById('helpLine');
+    const helpExample = document.getElementById('helpExample');
+    const nodes = new vis.DataSet();
+    const edges = new vis.DataSet();
+    const pronunciationGuide = {json.dumps(pronunciation_guide)};
+    const synth = window.speechSynthesis;
+    let preferredJapaneseVoice = null;
+    let speechPrewarmed = false;
+    let activeKana = 'ア';
+    let autoPronounceRunning = false;
+    let autoPronounceTimerId = null;
+    let autoPronounceToken = 0;
+    let autoPronounceIndex = 0;
+    let highlightedNodeId = null;
+    let highlightedNodeColor = null;
+    let speechToken = 0;
+    const centerX = 500;
+    const centerY = 300;
+    const gojuonRows = [
+      [{{ kana: 'ア', roman: 'a' }}, {{ kana: 'イ', roman: 'i' }}, {{ kana: 'ウ', roman: 'u' }}, {{ kana: 'エ', roman: 'e' }}, {{ kana: 'オ', roman: 'o' }}],
+      [{{ kana: 'カ', roman: 'ka' }}, {{ kana: 'キ', roman: 'ki' }}, {{ kana: 'ク', roman: 'ku' }}, {{ kana: 'ケ', roman: 'ke' }}, {{ kana: 'コ', roman: 'ko' }}],
+      [{{ kana: 'サ', roman: 'sa' }}, {{ kana: 'シ', roman: 'shi' }}, {{ kana: 'ス', roman: 'su' }}, {{ kana: 'セ', roman: 'se' }}, {{ kana: 'ソ', roman: 'so' }}],
+      [{{ kana: 'タ', roman: 'ta' }}, {{ kana: 'チ', roman: 'chi' }}, {{ kana: 'ツ', roman: 'tsu' }}, {{ kana: 'テ', roman: 'te' }}, {{ kana: 'ト', roman: 'to' }}],
+      [{{ kana: 'ナ', roman: 'na' }}, {{ kana: 'ニ', roman: 'ni' }}, {{ kana: 'ヌ', roman: 'nu' }}, {{ kana: 'ネ', roman: 'ne' }}, {{ kana: 'ノ', roman: 'no' }}],
+      [{{ kana: 'ハ', roman: 'ha' }}, {{ kana: 'ヒ', roman: 'hi' }}, {{ kana: 'フ', roman: 'fu' }}, {{ kana: 'ヘ', roman: 'he' }}, {{ kana: 'ホ', roman: 'ho' }}],
+      [{{ kana: 'マ', roman: 'ma' }}, {{ kana: 'ミ', roman: 'mi' }}, {{ kana: 'ム', roman: 'mu' }}, {{ kana: 'メ', roman: 'me' }}, {{ kana: 'モ', roman: 'mo' }}],
+      [{{ kana: 'ヤ', roman: 'ya' }}, null, {{ kana: 'ユ', roman: 'yu' }}, null, {{ kana: 'ヨ', roman: 'yo' }}],
+      [{{ kana: 'ラ', roman: 'ra' }}, {{ kana: 'リ', roman: 'ri' }}, {{ kana: 'ル', roman: 'ru' }}, {{ kana: 'レ', roman: 're' }}, {{ kana: 'ロ', roman: 'ro' }}],
+      [{{ kana: 'ワ', roman: 'wa' }}, null, null, null, {{ kana: 'ヲ', roman: 'wo' }}],
+      [{{ kana: 'ン', roman: 'n' }}, null, null, null, null],
+    ];
 
-    function speakText(text, lang = 'ja-JP') {{
-      if (!('speechSynthesis' in window)) {{
-        alert('Speech synthesis is not supported in this browser.');
+    function getletterFromRoman(roman) {{
+      if (!roman) {{
+        return 'a';
+      }}
+      const lowered = roman.toLowerCase();
+      const letter = lowered[lowered.length - 1];
+      return ['a', 'i', 'u', 'e', 'o'].includes(letter) ? letter : 'a';
+    }}
+
+    function setSelection(kana, roman, buttonElement, shouldSpeak = false) {{
+      activeKana = kana;
+      autoPronounceIndex = 0;
+      updatePronunciationHelp(roman);
+      buildGraph(kana, roman);
+      document.querySelectorAll('.gojuon-cell.active').forEach((btn) => btn.classList.remove('active'));
+      if (buttonElement) {{
+        buttonElement.classList.add('active');
+      }}
+      if (shouldSpeak) {{
+        speakText(kana);
+      }}
+      if (autoPronounceRunning) {{
+        autoPronounceToken += 1;
+        if (autoPronounceTimerId) {{
+          clearTimeout(autoPronounceTimerId);
+          autoPronounceTimerId = null;
+        }}
+        runAutoPronounceStep(autoPronounceToken);
+      }}
+    }}
+
+    function renderGojuonTable() {{
+      if (!gojuonTable) {{
         return;
       }}
+      const fragment = document.createDocumentFragment();
+      gojuonRows.forEach((row) => {{
+        const tr = document.createElement('tr');
+        row.forEach((cell) => {{
+          const td = document.createElement('td');
+          if (!cell) {{
+            const empty = document.createElement('div');
+            empty.className = 'gojuon-empty';
+            td.appendChild(empty);
+            tr.appendChild(td);
+            return;
+          }}
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'gojuon-cell';
+          btn.dataset.kana = cell.kana;
+          btn.dataset.roman = cell.roman;
+          btn.innerHTML = `<span class="gojuon-kana">${{cell.kana}}</span><span class="gojuon-roma">${{cell.roman}}</span>`;
+          btn.addEventListener('click', () => setSelection(cell.kana, cell.roman, btn, true));
+          td.appendChild(btn);
+          tr.appendChild(td);
+        }});
+        fragment.appendChild(tr);
+      }});
+      gojuonTable.innerHTML = '';
+      gojuonTable.appendChild(fragment);
+
+      const defaultButton = gojuonTable.querySelector('.gojuon-cell[data-kana="ア"]');
+      if (defaultButton) {{
+        setSelection('ア', 'a', defaultButton);
+      }}
+    }}
+
+    function refreshVoices() {{
+      if (!synth) {{
+        return;
+      }}
+      const voices = synth.getVoices();
+      preferredJapaneseVoice = voices.find((voice) => voice.lang && voice.lang.startsWith('ja')) || voices[0] || null;
+    }}
+
+    function prewarmSpeech() {{
+      if (!synth || speechPrewarmed) {{
+        return;
+      }}
+      refreshVoices();
+      try {{
+        const warmupUtterance = new SpeechSynthesisUtterance('あ');
+        warmupUtterance.lang = 'ja-JP';
+        warmupUtterance.volume = 0;
+        if (preferredJapaneseVoice) {{
+          warmupUtterance.voice = preferredJapaneseVoice;
+        }}
+        synth.speak(warmupUtterance);
+        synth.cancel();
+      }} catch (error) {{
+        // Ignore warmup failures and continue with normal playback.
+      }}
+      speechPrewarmed = true;
+    }}
+
+    if (synth) {{
+      refreshVoices();
+      if ('onvoiceschanged' in synth) {{
+        synth.onvoiceschanged = refreshVoices;
+      }}
+      window.addEventListener('pointerdown', prewarmSpeech, {{ once: true }});
+      window.addEventListener('keydown', prewarmSpeech, {{ once: true }});
+    }}
+
+    function updatePronunciationHelp(selectedRoman) {{
+      const info = pronunciationGuide[selectedRoman];
+      if (!info) {{
+        helpLine.textContent = '';
+        helpExample.textContent = '';
+        return;
+      }}
+      helpLine.textContent = `${{info.label}}: ${{info.sound}}`;
+      helpExample.textContent = `Example: ${{info.example}}`;
+    }}
+
+    function updateAutoPronounceButton() {{
+      if (!autoPronounceButton) {{
+        return;
+      }}
+      autoPronounceButton.textContent = autoPronounceRunning ? 'Stop' : 'Auto Speak';
+      autoPronounceButton.classList.toggle('stop-state', autoPronounceRunning);
+    }}
+
+    function cloneColor(colorValue) {{
+      if (!colorValue) {{
+        return null;
+      }}
+      return JSON.parse(JSON.stringify(colorValue));
+    }}
+
+    function clearPronunciationHighlight() {{
+      if (!highlightedNodeId) {{
+        return;
+      }}
+      const existingNode = nodes.get(highlightedNodeId);
+      if (existingNode) {{
+        nodes.update({{ id: highlightedNodeId, color: highlightedNodeColor }});
+      }}
+      highlightedNodeId = null;
+      highlightedNodeColor = null;
+    }}
+
+    function highlightNodeForPronunciation(nodeId) {{
+      clearPronunciationHighlight();
+      const node = nodes.get(nodeId);
+      if (!node) {{
+        return;
+      }}
+      highlightedNodeId = nodeId;
+      highlightedNodeColor = cloneColor(node.color);
+      nodes.update({{
+        id: nodeId,
+        color: {{
+          background: '#bbf7d0',
+          border: '#16a34a',
+          highlight: {{ background: '#86efac', border: '#15803d' }}
+        }}
+      }});
+    }}
+
+    function getClockwiseTargets() {{
+      const allNodes = nodes.get();
+      const outerNodes = allNodes.filter((node) => node.id !== activeKana && Number.isFinite(node.x) && Number.isFinite(node.y));
+      const withAngles = outerNodes.map((node) => {{
+        const theta = Math.atan2(node.y - centerY, node.x - centerX);
+        const clockwiseFromTop = (Math.PI / 2 - theta + 2 * Math.PI) % (2 * Math.PI);
+        return {{ id: node.id, angle: clockwiseFromTop }};
+      }});
+      withAngles.sort((a, b) => a.angle - b.angle);
+      return withAngles.map((item) => item.id);
+    }}
+
+    function stopAutoPronounce() {{
+      autoPronounceRunning = false;
+      autoPronounceToken += 1;
+      speechToken += 1;
+      autoPronounceIndex = 0;
+      if (autoPronounceTimerId) {{
+        clearTimeout(autoPronounceTimerId);
+        autoPronounceTimerId = null;
+      }}
+      clearPronunciationHighlight();
+      if (synth) {{
+        synth.cancel();
+      }}
+      updateAutoPronounceButton();
+    }}
+
+    function runAutoPronounceStep(token) {{
+      if (!autoPronounceRunning || token !== autoPronounceToken) {{
+        return;
+      }}
+
+      const clockwiseTargets = getClockwiseTargets();
+      if (!clockwiseTargets.length) {{
+        stopAutoPronounce();
+        return;
+      }}
+
+      const word = clockwiseTargets[autoPronounceIndex % clockwiseTargets.length];
+      autoPronounceIndex = (autoPronounceIndex + 1) % clockwiseTargets.length;
+      speakText(word, 'ja-JP', () => {{
+        if (!autoPronounceRunning || token !== autoPronounceToken) {{
+          return;
+        }}
+        autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), 1000);
+      }});
+    }}
+
+    function startAutoPronounce() {{
+      if (autoPronounceRunning) {{
+        return;
+      }}
+      autoPronounceRunning = true;
+      autoPronounceIndex = 0;
+      autoPronounceToken += 1;
+      updateAutoPronounceButton();
+      runAutoPronounceStep(autoPronounceToken);
+    }}
+
+    function toggleAutoPronounce() {{
+      if (autoPronounceRunning) {{
+        stopAutoPronounce();
+        return;
+      }}
+      startAutoPronounce();
+    }}
+
+    function speakText(text, lang = 'ja-JP', onComplete = null) {{
+      if (!('speechSynthesis' in window)) {{
+        alert('Speech synthesis is not supported in this browser.');
+        if (typeof onComplete === 'function') {{
+          onComplete();
+        }}
+        return;
+      }}
+      prewarmSpeech();
       const utterance = new SpeechSynthesisUtterance(text);
+      const currentSpeechToken = ++speechToken;
+      let settled = false;
+      const settleSpeech = () => {{
+        if (settled || currentSpeechToken !== speechToken) {{
+          return;
+        }}
+        settled = true;
+        clearPronunciationHighlight();
+        if (typeof onComplete === 'function') {{
+          onComplete();
+        }}
+      }};
       utterance.lang = lang;
       utterance.rate = 0.9;
       utterance.pitch = 1.05;
-      const voices = window.speechSynthesis.getVoices();
-      const japaneseVoice = voices.find((voice) => voice.lang.startsWith('ja')) || voices[0];
-      if (japaneseVoice) {{
-        utterance.voice = japaneseVoice;
+      utterance.onend = settleSpeech;
+      utterance.onerror = settleSpeech;
+      if (preferredJapaneseVoice) {{
+        utterance.voice = preferredJapaneseVoice;
       }}
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utterance);
+      highlightNodeForPronunciation(text);
+      synth.cancel();
+      synth.speak(utterance);
     }}
 
-    function speakPronunciation(selectedKey) {{
-      const centerVowel = vowelMap[selectedKey];
-      speakText(centerVowel);
-    }}
+    function buildGraph(selectedKana, selectedRoman) {{
+      const childRelations = relationships.filter((rel) => rel.source === selectedKana);
+      const childTargets = childRelations.map((rel) => rel.target);
+      const nodeList = [];
+      const edgeList = [];
+      const selectedletter = getletterFromRoman(selectedRoman);
+      const centerColor = colorMap[letterMap[selectedletter]] || '#dbeafe';
 
-    function shuffle(items) {{
-      const arr = items.slice();
-      for (let i = arr.length - 1; i > 0; i--) {{
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }}
-      return arr;
-    }}
+      const centerLabel = `${{selectedKana}}\n(${{selectedRoman.toLowerCase()}})`;
 
-    function showEdgeLabel(text, x, y) {{
-      edgeLabel.textContent = text;
-      edgeLabel.style.display = 'block';
-      edgeLabel.style.left = Math.min(Math.max(x + 12, 8), window.innerWidth - 240) + 'px';
-      edgeLabel.style.top = Math.min(Math.max(y + 8, 8), window.innerHeight - 60) + 'px';
-    }}
-
-    function hideEdgeLabel() {{
-      edgeLabel.style.display = 'none';
-    }}
-
-    function buildGraph(selectedKey) {{
-      const centerVowel = vowelMap[selectedKey];
-      const relations = relationships.filter((rel) => rel.source === centerVowel);
-      const centerX = 500;
-      const centerY = 340;
-      const radius = 240;
-      const childCount = Math.max(relations.length, 1);
-      const shuffledIndices = shuffle([...Array(childCount).keys()]);
-      const centerLabel = centerVowel + ' / ' + selectedKey.toUpperCase();
-
-      svg.innerHTML = '';
-
-      relations.forEach((rel, index) => {{
-        const positionIndex = shuffledIndices[index];
-        const angle = ((positionIndex / childCount) * 2 * Math.PI) - (Math.PI / 2);
-        const nodeX = centerX + Math.cos(angle) * radius;
-        const nodeY = centerY + Math.sin(angle) * radius;
-
-        const line = document.createElementNS(ns, 'line');
-        line.setAttribute('x1', centerX);
-        line.setAttribute('y1', centerY);
-        line.setAttribute('x2', nodeX);
-        line.setAttribute('y2', nodeY);
-        line.setAttribute('class', 'edge');
-        line.addEventListener('mouseenter', (event) => showEdgeLabel(rel.label, event.clientX, event.clientY));
-        line.addEventListener('mousemove', (event) => showEdgeLabel(rel.label, event.clientX, event.clientY));
-        line.addEventListener('mouseleave', hideEdgeLabel);
-        line.addEventListener('click', () => speakText(rel.target));
-        svg.appendChild(line);
-
-        const group = document.createElementNS(ns, 'g');
-        group.setAttribute('class', 'node');
-        group.setAttribute('data-word', rel.target);
-        group.addEventListener('click', () => speakText(rel.target));
-
-        const box = document.createElementNS(ns, 'rect');
-        box.setAttribute('x', nodeX - 92);
-        box.setAttribute('y', nodeY - 24);
-        box.setAttribute('width', 184);
-        box.setAttribute('height', 48);
-        box.setAttribute('rx', 14);
-        box.setAttribute('fill', '#f8fafc');
-        box.setAttribute('stroke', '#94a3b8');
-        box.setAttribute('stroke-width', 2);
-        group.appendChild(box);
-
-        const label = document.createElementNS(ns, 'text');
-        label.setAttribute('class', 'node-label');
-        label.setAttribute('x', nodeX);
-        label.setAttribute('y', nodeY + 2);
-        label.textContent = rel.target;
-        group.appendChild(label);
-        svg.appendChild(group);
+      nodeList.push({{
+        id: selectedKana,
+        label: centerLabel,
+        title: centerLabel,
+        x: centerX,
+        y: centerY,
+        shape: 'box',
+        margin: {{ top: 10, right: 14, bottom: 10, left: 14 }},
+        widthConstraint: {{ minimum: 120 }},
+        fixed: {{ x: true, y: true }},
+        color: {{
+          background: centerColor,
+          border: '#111827',
+          highlight: {{ background: '#fde68a', border: '#92400e' }}
+        }},
+        font: {{ size: 20, face: '{JP_FONT}', color: '#111827', align: 'center', vadjust: 0, multi: false }},
+        labelHighlightBold: false
       }});
 
-      const centerGroup = document.createElementNS(ns, 'g');
-      const centerNode = document.createElementNS(ns, 'circle');
-      centerNode.setAttribute('cx', centerX);
-      centerNode.setAttribute('cy', centerY);
-      centerNode.setAttribute('r', 58);
-      centerNode.setAttribute('fill', colorMap[centerVowel] || '#dbeafe');
-      centerNode.setAttribute('stroke', '#111827');
-      centerNode.setAttribute('stroke-width', 2);
-      centerGroup.appendChild(centerNode);
+      const childCount = childTargets.length || 1;
+      const radius = 220;
+      const order = [...Array(childTargets.length).keys()].sort(() => Math.random() - 0.5);
+      childTargets.forEach((target, index) => {{
+        const shuffledIndex = order[index];
+        const angle = ((shuffledIndex / childCount) * 2 * Math.PI) - (Math.PI / 2);
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+        nodeList.push({{
+          id: target,
+          label: target,
+          title: target,
+          x,
+          y,
+          shape: 'box',
+          size: 18,
+          fixed: {{ x: true, y: true }},
+          color: {{
+            background: '#f8fafc',
+            border: '#94a3b8',
+            highlight: {{ background: '#fde68a', border: '#92400e' }}
+          }},
+          font: {{ size: 16, face: '{JP_FONT}', color: '#111827' }}
+        }});
+      }});
 
-      const centerText = document.createElementNS(ns, 'text');
-      centerText.setAttribute('class', 'center-label');
-      centerText.setAttribute('x', centerX);
-      centerText.setAttribute('y', centerY + 2);
-      centerText.textContent = centerLabel;
-      centerGroup.appendChild(centerText);
-      svg.appendChild(centerGroup);
+      childRelations.forEach((rel) => {{
+        edgeList.push({{
+          from: selectedKana,
+          to: rel.target,
+          label: '',
+          title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
+          arrows: 'to',
+          font: {{ size: 12, face: '{JP_FONT}', color: '#374151', align: 'middle' }},
+          color: {{ color: '#64748b', highlight: '#ef4444' }},
+          smooth: {{ type: 'dynamic' }}
+        }});
+      }});
+
+      clearPronunciationHighlight();
+      nodes.clear();
+      edges.clear();
+      nodes.add(nodeList);
+      edges.add(edgeList);
     }}
 
+    const options = {{
+      interaction: {{ hover: true, navigationButtons: true, keyboard: true }},
+      physics: {{ enabled: false }},
+      nodes: {{
+        shapeProperties: {{ interpolation: false }},
+        font: {{ multi: true }}
+      }},
+      edges: {{
+        arrows: {{ to: {{ enabled: true, scaleFactor: 0.8 }} }},
+        smooth: {{ type: 'dynamic' }},
+        font: {{ align: 'middle' }}
+      }}
+    }};
+
     function initializeGraph() {{
-      select.addEventListener('change', (event) => buildGraph(event.target.value));
-      pronounceButton.addEventListener('click', () => speakPronunciation(select.value));
-      buildGraph(select.value);
+      const network = new vis.Network(container, {{ nodes, edges }}, options);
+      const recenterOnCenterNode = () => {{
+        const currentScale = network.getScale();
+        network.moveTo({{
+          position: {{ x: centerX, y: centerY }},
+          scale: currentScale,
+          animation: false
+        }});
+      }};
+      const refreshLayout = () => {{
+        if (container) {{
+          container.style.height = window.innerHeight < 700 ? '60vh' : '62vh';
+        }}
+        network.redraw();
+        network.fit({{ animation: false }});
+        recenterOnCenterNode();
+      }};
+
+      network.on('click', (params) => {{
+        if (params.nodes.length > 0) {{
+          const clickedNodeId = params.nodes[0];
+          if (clickedNodeId && clickedNodeId !== activeKana) {{
+            speakText(clickedNodeId);
+          }}
+        }}
+      }});
+      if (autoPronounceButton) {{
+        autoPronounceButton.addEventListener('click', toggleAutoPronounce);
+      }}
+      window.addEventListener('resize', refreshLayout);
+      window.addEventListener('orientationchange', refreshLayout);
+      renderGojuonTable();
+      updateAutoPronounceButton();
+      recenterOnCenterNode();
+      setTimeout(refreshLayout, 50);
+      setTimeout(refreshLayout, 250);
     }}
 
     if (document.readyState === 'loading') {{
@@ -445,6 +722,7 @@ html = f"""<!DOCTYPE html>
 </html>
 """
 
+output_path.parent.mkdir(parents=True, exist_ok=True)
 output_path.write_text(html, encoding="utf-8")
 print(f"Interactive HTML created at: {output_path}")
 open_html_in_browser(output_path)
