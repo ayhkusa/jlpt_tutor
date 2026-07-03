@@ -234,6 +234,78 @@ html = f"""<!DOCTYPE html>
     .vis-network canvas {{
       touch-action: none;
     }}
+    .dark-mode-button {{
+      min-width: 120px;
+      align-self: center;
+    }}
+    body.dark-mode {{
+      background: #111827;
+      color: #f9fafb;
+    }}
+    body.dark-mode h1 {{
+      color: #f9fafb;
+    }}
+    body.dark-mode p {{
+      color: #9ca3af;
+    }}
+    body.dark-mode .gojuon-wrap {{
+      border-color: #374151;
+      background: #1f2937;
+    }}
+    body.dark-mode .gojuon-table td {{
+      border-color: #374151;
+      background: #1f2937;
+    }}
+    body.dark-mode .gojuon-cell {{
+      color: #f9fafb;
+    }}
+    body.dark-mode .gojuon-cell:hover {{
+      background: #374151;
+    }}
+    body.dark-mode .gojuon-cell.active {{
+      background: #1e3a5f;
+      outline-color: #3b82f6;
+    }}
+    body.dark-mode .gojuon-roma {{
+      color: #9ca3af;
+    }}
+    body.dark-mode .gojuon-empty {{
+      background: #1f2937;
+    }}
+    body.dark-mode button {{
+      background: #374151;
+      border-color: #4b5563;
+      color: #f9fafb;
+    }}
+    body.dark-mode button:hover {{
+      background: #4b5563;
+    }}
+    body.dark-mode .auto-pronounce-button.stop-state {{
+      background: #dc2626;
+      border-color: #b91c1c;
+      color: #ffffff;
+    }}
+    body.dark-mode .auto-pronounce-button.stop-state:hover {{
+      background: #b91c1c;
+    }}
+    body.dark-mode .letter-help {{
+      border-color: #374151;
+      background: #1f2937;
+      color: #d1d5db;
+    }}
+    body.dark-mode .letter-help strong {{
+      color: #f9fafb;
+    }}
+    body.dark-mode .help-line {{
+      color: #e5e7eb;
+    }}
+    body.dark-mode .help-example {{
+      color: #9ca3af;
+    }}
+    body.dark-mode #mynetwork {{
+      border-color: #374151;
+      background: #1f2937;
+    }}
   </style>
 </head>
 <body>
@@ -255,6 +327,7 @@ html = f"""<!DOCTYPE html>
       </div>
       <button id="tableToggleButton" class="table-toggle-button" type="button">Hide Table</button>
       <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Start</button>
+      <button id="darkModeButton" class="dark-mode-button" type="button">Dark Mode</button>
     </div>
   </div>
 
@@ -268,6 +341,7 @@ html = f"""<!DOCTYPE html>
     const gojuonTable = document.getElementById('gojuonTable');
     const tableToggleButton = document.getElementById('tableToggleButton');
     const autoPronounceButton = document.getElementById('autoPronounceButton');
+    const darkModeButton = document.getElementById('darkModeButton');
     const helpLine = document.getElementById('helpLine');
     const helpExample = document.getElementById('helpExample');
     const nodes = new vis.DataSet();
@@ -277,6 +351,7 @@ html = f"""<!DOCTYPE html>
     let preferredJapaneseVoice = null;
     let speechPrewarmed = false;
     let activeKana = 'ア';
+    let activeRoman = 'a';
     let autoPronounceRunning = false;
     let autoPronounceTimerId = null;
     let autoPronounceToken = 0;
@@ -285,6 +360,7 @@ html = f"""<!DOCTYPE html>
     let highlightedNodeColor = null;
     let speechToken = 0;
     let tableHidden = false;
+    let darkMode = false;
     const centerX = 500;
     const centerY = 300;
     const gojuonRows = [
@@ -312,6 +388,7 @@ html = f"""<!DOCTYPE html>
 
     function setSelection(kana, roman, buttonElement, shouldSpeak = false) {{
       activeKana = kana;
+      activeRoman = roman;
       autoPronounceIndex = 0;
       updatePronunciationHelp(roman);
       buildGraph(kana, roman);
@@ -439,6 +516,20 @@ html = f"""<!DOCTYPE html>
         gojuonWrap.style.display = tableHidden ? 'none' : 'block';
       }}
       updateTableToggleButton();
+    }}
+
+    function updateDarkModeButton() {{
+      if (!darkModeButton) {{
+        return;
+      }}
+      darkModeButton.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
+    }}
+
+    function toggleDarkMode() {{
+      darkMode = !darkMode;
+      document.body.classList.toggle('dark-mode', darkMode);
+      updateDarkModeButton();
+      buildGraph(activeKana, activeRoman);
     }}
 
     function cloneColor(colorValue) {{
@@ -587,7 +678,13 @@ html = f"""<!DOCTYPE html>
       const nodeList = [];
       const edgeList = [];
       const selectedletter = getletterFromRoman(selectedRoman);
-      const centerColor = colorMap[letterMap[selectedletter]] || '#dbeafe';
+      const centerColor = darkMode ? '#1e3a5f' : (colorMap[letterMap[selectedletter]] || '#dbeafe');
+      const fontColor = darkMode ? '#f9fafb' : '#111827';
+      const borderColor = darkMode ? '#60a5fa' : '#111827';
+      const childBg = darkMode ? '#1f2937' : '#f8fafc';
+      const childBorder = darkMode ? '#4b5563' : '#94a3b8';
+      const edgeFontColor = darkMode ? '#9ca3af' : '#374151';
+      const edgeColor = darkMode ? '#4b5563' : '#64748b';
 
       const centerLabel = `${{selectedKana}}\n(${{selectedRoman.toLowerCase()}})`;
 
@@ -603,10 +700,10 @@ html = f"""<!DOCTYPE html>
         fixed: {{ x: true, y: true }},
         color: {{
           background: centerColor,
-          border: '#111827',
+          border: borderColor,
           highlight: {{ background: '#fde68a', border: '#92400e' }}
         }},
-        font: {{ size: 20, face: '{VIS_FONT}', color: '#111827', align: 'center', vadjust: 0, multi: false }},
+        font: {{ size: 20, face: '{VIS_FONT}', color: fontColor, align: 'center', vadjust: 0, multi: false }},
         labelHighlightBold: false
       }});
 
@@ -628,11 +725,11 @@ html = f"""<!DOCTYPE html>
           size: 18,
           fixed: {{ x: true, y: true }},
           color: {{
-            background: '#f8fafc',
-            border: '#94a3b8',
+            background: childBg,
+            border: childBorder,
             highlight: {{ background: '#fde68a', border: '#92400e' }}
           }},
-          font: {{ size: 16, face: '{VIS_FONT}', color: '#111827' }}
+          font: {{ size: 16, face: '{VIS_FONT}', color: fontColor }}
         }});
       }});
 
@@ -643,8 +740,8 @@ html = f"""<!DOCTYPE html>
           label: '',
           title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
           arrows: 'to',
-          font: {{ size: 12, face: '{VIS_FONT}', color: '#374151', align: 'middle' }},
-          color: {{ color: '#64748b', highlight: '#ef4444' }},
+          font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
+          color: {{ color: edgeColor, highlight: '#ef4444' }},
           smooth: {{ type: 'dynamic' }}
         }});
       }});
@@ -703,11 +800,15 @@ html = f"""<!DOCTYPE html>
       if (tableToggleButton) {{
         tableToggleButton.addEventListener('click', toggleTableVisibility);
       }}
+      if (darkModeButton) {{
+        darkModeButton.addEventListener('click', toggleDarkMode);
+      }}
       window.addEventListener('resize', refreshLayout);
       window.addEventListener('orientationchange', refreshLayout);
       renderGojuonTable();
       updateTableToggleButton();
       updateAutoPronounceButton();
+      updateDarkModeButton();
       recenterOnCenterNode();
       setTimeout(refreshLayout, 50);
       setTimeout(refreshLayout, 250);
