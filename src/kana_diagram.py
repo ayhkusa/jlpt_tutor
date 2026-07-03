@@ -192,6 +192,10 @@ html = f"""<!DOCTYPE html>
     .auto-pronounce-button.stop-state:hover {{
       background: #b91c1c;
     }}
+    .table-toggle-button {{
+      min-width: 150px;
+      align-self: center;
+    }}
     button {{
       padding: 0.4rem 0.8rem;
       border: 1px solid #cbd5e1;
@@ -266,7 +270,7 @@ html = f"""<!DOCTYPE html>
   <div class=\"controls\">
     <div class=\"control-panel\">
       <div class=\"control-inputs\">
-        <div class="gojuon-wrap">
+        <div id="gojuonWrap" class="gojuon-wrap">
           <table id="gojuonTable" class="gojuon-table" aria-label="Katakana gojuon table"></table>
         </div>
       </div>
@@ -275,6 +279,7 @@ html = f"""<!DOCTYPE html>
         <div id="helpLine" class="help-line"></div>
         <div id="helpExample" class="help-example"></div>
       </div>
+      <button id="tableToggleButton" class="table-toggle-button" type="button">Hide Table</button>
       <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Start</button>
     </div>
   </div>
@@ -285,7 +290,9 @@ html = f"""<!DOCTYPE html>
     const letterMap = {json.dumps(letter_map)};
     const colorMap = {json.dumps(color_map)};
     const container = document.getElementById('mynetwork');
+    const gojuonWrap = document.getElementById('gojuonWrap');
     const gojuonTable = document.getElementById('gojuonTable');
+    const tableToggleButton = document.getElementById('tableToggleButton');
     const autoPronounceButton = document.getElementById('autoPronounceButton');
     const helpLine = document.getElementById('helpLine');
     const helpExample = document.getElementById('helpExample');
@@ -303,6 +310,7 @@ html = f"""<!DOCTYPE html>
     let highlightedNodeId = null;
     let highlightedNodeColor = null;
     let speechToken = 0;
+    let tableHidden = false;
     const centerX = 500;
     const centerY = 300;
     const gojuonRows = [
@@ -442,6 +450,21 @@ html = f"""<!DOCTYPE html>
       }}
       autoPronounceButton.textContent = autoPronounceRunning ? 'Stop' : 'Auto Speak';
       autoPronounceButton.classList.toggle('stop-state', autoPronounceRunning);
+    }}
+
+    function updateTableToggleButton() {{
+      if (!tableToggleButton) {{
+        return;
+      }}
+      tableToggleButton.textContent = tableHidden ? 'Show Table' : 'Hide Table';
+    }}
+
+    function toggleTableVisibility() {{
+      tableHidden = !tableHidden;
+      if (gojuonWrap) {{
+        gojuonWrap.style.display = tableHidden ? 'none' : 'block';
+      }}
+      updateTableToggleButton();
     }}
 
     function cloneColor(colorValue) {{
@@ -703,9 +726,13 @@ html = f"""<!DOCTYPE html>
       if (autoPronounceButton) {{
         autoPronounceButton.addEventListener('click', toggleAutoPronounce);
       }}
+      if (tableToggleButton) {{
+        tableToggleButton.addEventListener('click', toggleTableVisibility);
+      }}
       window.addEventListener('resize', refreshLayout);
       window.addEventListener('orientationchange', refreshLayout);
       renderGojuonTable();
+      updateTableToggleButton();
       updateAutoPronounceButton();
       recenterOnCenterNode();
       setTimeout(refreshLayout, 50);
