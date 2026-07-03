@@ -63,7 +63,7 @@ relationship_payload = [
 # ----------------------------
 # EXPORT INTERACTIVE HTML
 # ----------------------------
-output_path = Path(__file__).resolve().parent / "docs" / "index.html"
+output_path = Path(__file__).resolve().parent.parent / "docs" / "index.html"
 
 
 def open_html_in_browser(path: Path) -> None:

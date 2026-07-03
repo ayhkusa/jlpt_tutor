@@ -2,48 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Katakana Vocabulary Network</title>
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
   <style>
     html, body {
       height: 100%;
       width: 100%;
-      margin: 0;
       overflow: hidden;
     }
     body {
+      margin: 0;
       display: flex;
       flex-direction: column;
       font-family: 'Yu Gothic', 'Noto Sans CJK JP', 'Yu Gothic', 'Meiryo', sans-serif;
       background: #f8fafc;
       color: #111827;
-      -webkit-text-size-adjust: 100%;
-      -webkit-touch-callout: none;
-      touch-action: manipulation;
     }
+      .page-header {
+        text-align: center;
+      }
     .controls {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: center;
       padding: 1rem 1.5rem 0.5rem;
       flex-shrink: 0;
+      width: 100%;
+    }
+    .control-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+      text-align: center;
+    }
+    .control-inputs {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0.75rem;
       flex-wrap: wrap;
     }
-    label {
-      font-weight: 600;
-      color: #374151;
+    .gojuon-wrap {
+      border: 1px solid #d1d5db;
+      border-radius: 0.6rem;
+      background: #ffffff;
+      padding: 0.3rem;
+      overflow-x: auto;
+      max-width: min(620px, 94vw);
     }
-    select {
-      padding: 0.4rem 0.7rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 0.4rem;
-      font-size: 0.95rem;
-      -webkit-appearance: menulist;
-      appearance: auto;
+    .gojuon-table {
+      border-collapse: collapse;
+      table-layout: fixed;
+      width: 100%;
+      min-width: 540px;
+    }
+    .gojuon-table td {
+      border: 1px solid #e5e7eb;
+      padding: 0;
+      width: 20%;
+      background: #ffffff;
+    }
+    .gojuon-cell {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 0.32rem 0.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.06rem;
+      cursor: pointer;
+      color: #111827;
+      min-height: 2.35rem;
+    }
+    .gojuon-cell:hover {
+      background: #f8fafc;
+    }
+    .gojuon-cell.active {
+      background: #dbeafe;
+      outline: 2px solid #2563eb;
+      outline-offset: -2px;
+    }
+    .gojuon-kana {
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .gojuon-roma {
+      font-size: 0.68rem;
+      color: #4b5563;
+      text-transform: lowercase;
+      letter-spacing: 0.02em;
+    }
+    .gojuon-empty {
+      height: 100%;
+      min-height: 2.35rem;
+      background: #f8fafc;
+    }
+    .auto-pronounce-button {
+      min-width: 150px;
+      align-self: center;
+      margin-top: 0.25rem;
+    }
+    .auto-pronounce-button.stop-state {
+      background: #dc2626;
+      border-color: #b91c1c;
+      color: #ffffff;
+    }
+    .auto-pronounce-button.stop-state:hover {
+      background: #b91c1c;
     }
     button {
       padding: 0.4rem 0.8rem;
@@ -53,223 +123,517 @@
       cursor: pointer;
       font-size: 0.95rem;
     }
+    .letter-help {
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      background: #ffffff;
+      color: #374151;
+      font-size: 0.84rem;
+      line-height: 1.35;
+      max-width: 440px;
+      width: min(440px, 100%);
+      text-align: center;
+    }
+    .letter-help strong {
+      color: #111827;
+    }
+    .letter-help ul {
+      margin: 0.35rem 0 0;
+      padding-left: 1.1rem;
+    }
+    .letter-help li {
+      margin: 0.08rem 0;
+    }
+    .help-line {
+      margin-top: 0.35rem;
+      color: #1f2937;
+    }
+    .help-example {
+      margin-top: 0.2rem;
+      color: #4b5563;
+    }
     h1 {
       margin: 0;
       padding: 0 1.5rem 0.25rem;
       font-size: 1.4rem;
+      text-align: center;
     }
     p {
       margin: 0;
       padding: 0 1.5rem 0.75rem;
       color: #4b5563;
+      text-align: center;
     }
-    #graphWrap {
+    #mynetwork {
+      width: 100%;
       flex: 1 1 auto;
-      position: relative;
       min-height: 320px;
-      margin: 0 0.75rem 0.75rem;
+      height: min(62vh, 560px);
+      max-height: 70vh;
       border: 1px solid #e5e7eb;
       background: white;
+      position: relative;
       overflow: hidden;
-      border-radius: 0.5rem;
     }
-    #graph {
-      width: 100%;
-      height: 100%;
-      display: block;
+    .vis-network canvas {
       touch-action: none;
-      background: white;
-    }
-    #edgeLabel {
-      position: absolute;
-      display: none;
-      pointer-events: none;
-      background: rgba(255, 255, 255, 0.95);
-      color: #111827;
-      padding: 0.3rem 0.45rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.25rem;
-      font-size: 0.8rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-      z-index: 10;
-      max-width: 220px;
-    }
-    .node {
-      cursor: pointer;
-    }
-    .edge {
-      stroke: #94a3b8;
-      stroke-width: 2;
-      fill: none;
-      cursor: pointer;
-    }
-    .node-label {
-      font-size: 16px;
-      fill: #111827;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      pointer-events: none;
-      user-select: none;
-    }
-    .center-label {
-      font-size: 22px;
-      fill: #111827;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      pointer-events: none;
-      user-select: none;
     }
   </style>
 </head>
 <body>
+  <div class="page-header">
+    <h1>Katakana Vocabulary Tutor</h1>
+    <p>Select a character to learn 10 words using it.</p>
+  </div>
   <div class="controls">
-    <label for="vowelSelect">Choose vowel</label>
-    <select id="vowelSelect">
-      <option value="a">A (ア)</option>
-      <option value="e">E (エ)</option>
-      <option value="i">I (イ)</option>
-      <option value="o">O (オ)</option>
-      <option value="u">U (ウ)</option>
-    </select>
-    <button id="pronounceButton" type="button">Play pronunciation</button>
+    <div class="control-panel">
+      <div class="control-inputs">
+        <div class="gojuon-wrap">
+          <table id="gojuonTable" class="gojuon-table" aria-label="Katakana gojuon table"></table>
+        </div>
+      </div>
+      <div class="letter-help">
+        <strong>Pronunciation Quick Guide</strong>
+        <div id="helpLine" class="help-line"></div>
+        <div id="helpExample" class="help-example"></div>
+      </div>
+      <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Start</button>
+    </div>
   </div>
-  <h1>Katakana Vocabulary Network</h1>
-  <p>Select a vowel to view its words arranged evenly around a circle.</p>
-  <div id="graphWrap">
-    <svg id="graph" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg"></svg>
-    <div id="edgeLabel"></div>
-  </div>
-  <script>
-    const relationships = [{"source": "\u30a2", "target": "\u30a2\u30cb\u30e1", "label": "Anime"}, {"source": "\u30a2", "target": "\u30a2\u30a4\u30b9", "label": "Ice cream"}, {"source": "\u30a2", "target": "\u30a2\u30e1\u30ea\u30ab", "label": "America"}, {"source": "\u30a2", "target": "\u30a2\u30d1\u30fc\u30c8", "label": "Apartment"}, {"source": "\u30a2", "target": "\u30a2\u30d7\u30ea", "label": "App"}, {"source": "\u30a2", "target": "\u30a2\u30af\u30b7\u30e7\u30f3", "label": "Action"}, {"source": "\u30a2", "target": "\u30a2\u30ab\u30a6\u30f3\u30c8", "label": "Account"}, {"source": "\u30a2", "target": "\u30a2\u30af\u30bb\u30b9", "label": "Access"}, {"source": "\u30a2", "target": "\u30a2\u30ca\u30ed\u30b0", "label": "Analog"}, {"source": "\u30a2", "target": "\u30a2\u30f3\u30c6\u30ca", "label": "Antenna"}, {"source": "\u30a4", "target": "\u30a4\u30ab", "label": "Squid"}, {"source": "\u30a4", "target": "\u30a4\u30cc", "label": "Dog"}, {"source": "\u30a4", "target": "\u30a4\u30b9", "label": "Chair"}, {"source": "\u30a4", "target": "\u30a4\u30bf\u30ea\u30a2", "label": "Italy"}, {"source": "\u30a4", "target": "\u30a4\u30e1\u30fc\u30b8", "label": "Image"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb", "label": "Install"}, {"source": "\u30a4", "target": "\u30a4\u30ce\u30d9\u30fc\u30b7\u30e7\u30f3", "label": "Innovation"}, {"source": "\u30a4", "target": "\u30a4\u30d9\u30f3\u30c8", "label": "Event"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9", "label": "Index"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30bf\u30fc", "label": "Inter"}, {"source": "\u30a6", "target": "\u30a6\u30de", "label": "Horse"}, {"source": "\u30a6", "target": "\u30a6\u30df", "label": "Sea"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30d6", "label": "Web"}, {"source": "\u30a6", "target": "\u30a6\u30a4\u30eb\u30b9", "label": "Virus"}, {"source": "\u30a6", "target": "\u30a6\u30a9\u30fc\u30bf\u30fc", "label": "Water"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30a2", "label": "Wear"}, {"source": "\u30a6", "target": "\u30a6\u30a3\u30f3\u30c9\u30a6", "label": "Window"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30fc\u30d6", "label": "Wave"}, {"source": "\u30a6", "target": "\u30a6\u30a9\u30fc\u30af", "label": "Walk"}, {"source": "\u30a6", "target": "\u30a6\u30af\u30e9\u30a4\u30ca", "label": "Ukraine"}, {"source": "\u30a8", "target": "\u30a8\u30cd\u30eb\u30ae\u30fc", "label": "Energy"}, {"source": "\u30a8", "target": "\u30a8\u30a2\u30b3\u30f3", "label": "Air conditioner"}, {"source": "\u30a8", "target": "\u30a8\u30f3\u30b8\u30f3", "label": "Engine"}, {"source": "\u30a8", "target": "\u30a8\u30ea\u30a2", "label": "Area"}, {"source": "\u30a8", "target": "\u30a8\u30ec\u30d9\u30fc\u30bf\u30fc", "label": "Elevator"}, {"source": "\u30a8", "target": "\u30a8\u30e9\u30fc", "label": "Error"}, {"source": "\u30a8", "target": "\u30a8\u30c3\u30b8", "label": "Edge"}, {"source": "\u30a8", "target": "\u30a8\u30b9\u30ab\u30ec\u30fc\u30bf\u30fc", "label": "Escalator"}, {"source": "\u30a8", "target": "\u30a8\u30b3", "label": "Eco"}, {"source": "\u30a8", "target": "\u30a8\u30c7\u30a3\u30b7\u30e7\u30f3", "label": "Edition"}, {"source": "\u30aa", "target": "\u30aa\u30d5\u30a3\u30b9", "label": "Office"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30b1\u30b9\u30c8\u30e9", "label": "Orchestra"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30b9\u30c8\u30e9\u30ea\u30a2", "label": "Australia"}, {"source": "\u30aa", "target": "\u30aa\u30d7\u30b7\u30e7\u30f3", "label": "Option"}, {"source": "\u30aa", "target": "\u30aa\u30f3\u30e9\u30a4\u30f3", "label": "Online"}, {"source": "\u30aa", "target": "\u30aa\u30d6\u30b8\u30a7\u30af\u30c8", "label": "Object"}, {"source": "\u30aa", "target": "\u30aa\u30da\u30ec\u30fc\u30b7\u30e7\u30f3", "label": "Operation"}, {"source": "\u30aa", "target": "\u30aa\u30ec\u30f3\u30b8", "label": "Orange"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30c8", "label": "Auto"}, {"source": "\u30aa", "target": "\u30aa\u30ea\u30b8\u30ca\u30eb", "label": "Original"}];
-    const vowelMap = {"a": "\u30a2", "e": "\u30a8", "i": "\u30a4", "o": "\u30aa", "u": "\u30a6"};
-    const colorMap = {"\u30a2": "#ff6b6b", "\u30a4": "#4dabf7", "\u30a6": "#51cf66", "\u30a8": "#ffd43b", "\u30aa": "#b197fc"};
-    const svg = document.getElementById('graph');
-    const edgeLabel = document.getElementById('edgeLabel');
-    const select = document.getElementById('vowelSelect');
-    const pronounceButton = document.getElementById('pronounceButton');
-    const ns = 'http://www.w3.org/2000/svg';
 
-    function speakText(text, lang = 'ja-JP') {
-      if (!('speechSynthesis' in window)) {
-        alert('Speech synthesis is not supported in this browser.');
+  <div id="mynetwork"></div>
+  <script>
+    const relationships = [{"source": "\u30a2", "target": "\u30a2\u30cb\u30e1", "label": "Anime"}, {"source": "\u30a2", "target": "\u30a2\u30a4\u30b9", "label": "Ice cream"}, {"source": "\u30a2", "target": "\u30a2\u30e1\u30ea\u30ab", "label": "America"}, {"source": "\u30a2", "target": "\u30a2\u30d1\u30fc\u30c8", "label": "Apartment"}, {"source": "\u30a2", "target": "\u30a2\u30d7\u30ea", "label": "App"}, {"source": "\u30a2", "target": "\u30a2\u30af\u30b7\u30e7\u30f3", "label": "Action"}, {"source": "\u30a2", "target": "\u30a2\u30ab\u30a6\u30f3\u30c8", "label": "Account"}, {"source": "\u30a2", "target": "\u30a2\u30af\u30bb\u30b9", "label": "Access"}, {"source": "\u30a2", "target": "\u30a2\u30ca\u30ed\u30b0", "label": "Analog"}, {"source": "\u30a2", "target": "\u30a2\u30f3\u30c6\u30ca", "label": "Antenna"}, {"source": "\u30a4", "target": "\u30a4\u30ab", "label": "Squid"}, {"source": "\u30a4", "target": "\u30a4\u30cc", "label": "Dog"}, {"source": "\u30a4", "target": "\u30a4\u30b9", "label": "Chair"}, {"source": "\u30a4", "target": "\u30a4\u30bf\u30ea\u30a2", "label": "Italy"}, {"source": "\u30a4", "target": "\u30a4\u30e1\u30fc\u30b8", "label": "Image"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb", "label": "Install"}, {"source": "\u30a4", "target": "\u30a4\u30ce\u30d9\u30fc\u30b7\u30e7\u30f3", "label": "Innovation"}, {"source": "\u30a4", "target": "\u30a4\u30d9\u30f3\u30c8", "label": "Event"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30c7\u30c3\u30af\u30b9", "label": "Index"}, {"source": "\u30a4", "target": "\u30a4\u30f3\u30af", "label": "Ink"}, {"source": "\u30a6", "target": "\u30a6\u30de", "label": "Horse"}, {"source": "\u30a6", "target": "\u30a6\u30df", "label": "Sea"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30d6", "label": "Web"}, {"source": "\u30a6", "target": "\u30a6\u30a4\u30eb\u30b9", "label": "Virus"}, {"source": "\u30a6", "target": "\u30a6\u30a9\u30fc\u30bf\u30fc", "label": "Water"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30a2", "label": "Wear"}, {"source": "\u30a6", "target": "\u30a6\u30a3\u30f3\u30c9\u30a6", "label": "Window"}, {"source": "\u30a6", "target": "\u30a6\u30a7\u30fc\u30d6", "label": "Wave"}, {"source": "\u30a6", "target": "\u30a6\u30a9\u30fc\u30af", "label": "Walk"}, {"source": "\u30a6", "target": "\u30a6\u30af\u30e9\u30a4\u30ca", "label": "Ukraine"}, {"source": "\u30a8", "target": "\u30a8\u30cd\u30eb\u30ae\u30fc", "label": "Energy"}, {"source": "\u30a8", "target": "\u30a8\u30a2\u30b3\u30f3", "label": "Air conditioner"}, {"source": "\u30a8", "target": "\u30a8\u30f3\u30b8\u30f3", "label": "Engine"}, {"source": "\u30a8", "target": "\u30a8\u30ea\u30a2", "label": "Area"}, {"source": "\u30a8", "target": "\u30a8\u30ec\u30d9\u30fc\u30bf\u30fc", "label": "Elevator"}, {"source": "\u30a8", "target": "\u30a8\u30e9\u30fc", "label": "Error"}, {"source": "\u30a8", "target": "\u30a8\u30c3\u30b8", "label": "Edge"}, {"source": "\u30a8", "target": "\u30a8\u30b9\u30ab\u30ec\u30fc\u30bf\u30fc", "label": "Escalator"}, {"source": "\u30a8", "target": "\u30a8\u30b3", "label": "Eco"}, {"source": "\u30a8", "target": "\u30a8\u30c7\u30a3\u30b7\u30e7\u30f3", "label": "Edition"}, {"source": "\u30aa", "target": "\u30aa\u30d5\u30a3\u30b9", "label": "Office"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30b1\u30b9\u30c8\u30e9", "label": "Orchestra"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30b9\u30c8\u30e9\u30ea\u30a2", "label": "Australia"}, {"source": "\u30aa", "target": "\u30aa\u30d7\u30b7\u30e7\u30f3", "label": "Option"}, {"source": "\u30aa", "target": "\u30aa\u30f3\u30e9\u30a4\u30f3", "label": "Online"}, {"source": "\u30aa", "target": "\u30aa\u30d6\u30b8\u30a7\u30af\u30c8", "label": "Object"}, {"source": "\u30aa", "target": "\u30aa\u30da\u30ec\u30fc\u30b7\u30e7\u30f3", "label": "Operation"}, {"source": "\u30aa", "target": "\u30aa\u30ec\u30f3\u30b8", "label": "Orange"}, {"source": "\u30aa", "target": "\u30aa\u30fc\u30c8", "label": "Auto"}, {"source": "\u30aa", "target": "\u30aa\u30ea\u30b8\u30ca\u30eb", "label": "Original"}, {"source": "\u30ab", "target": "\u30ab\u30e1\u30e9", "label": "Camera"}, {"source": "\u30ab", "target": "\u30ab\u30ec\u30f3\u30c0\u30fc", "label": "Calendar"}, {"source": "\u30ab", "target": "\u30b9\u30ab\u30fc\u30c8", "label": "Skirt"}, {"source": "\u30ab", "target": "\u30ab\u30fc\u30c9", "label": "Card"}, {"source": "\u30ab", "target": "\u30ab\u30bf\u30ed\u30b0", "label": "Catalog"}, {"source": "\u30ab", "target": "\u30ab\u30d5\u30a7", "label": "Cafe"}, {"source": "\u30ab", "target": "\u30ab\u30d7\u30bb\u30eb", "label": "Capsule"}, {"source": "\u30ab", "target": "\u30ab\u30f3\u30d1\u30cb\u30fc", "label": "Company"}, {"source": "\u30ab", "target": "\u30e1\u30ab\u30cb\u30c3\u30af", "label": "Mechanic"}, {"source": "\u30ab", "target": "\u30a2\u30e1\u30ea\u30ab", "label": "America"}, {"source": "\u30ad", "target": "\u30ad\u30fc\u30dc\u30fc\u30c9", "label": "Keyboard"}, {"source": "\u30ad", "target": "\u30ad\u30e3\u30f3\u30d7", "label": "Camp"}, {"source": "\u30ad", "target": "\u30b9\u30ad\u30fc", "label": "Ski"}, {"source": "\u30ad", "target": "\u30b1\u30fc\u30ad", "label": "Cake"}, {"source": "\u30ad", "target": "\u30ad\u30c3\u30c1\u30f3", "label": "Kitchen"}, {"source": "\u30ad", "target": "\u30df\u30ad\u30b5\u30fc", "label": "Mixer"}, {"source": "\u30ad", "target": "\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8", "label": "Document"}, {"source": "\u30ad", "target": "\u30ad\u30fc\u30ef\u30fc\u30c9", "label": "Keyword"}, {"source": "\u30ad", "target": "\u30ad\u30ea\u30f3", "label": "Giraffe"}, {"source": "\u30ad", "target": "\u30ad\u30e3\u30ea\u30a2", "label": "Career"}, {"source": "\u30af", "target": "\u30af\u30e9\u30b9", "label": "Class"}, {"source": "\u30af", "target": "\u30af\u30a4\u30ba", "label": "Quiz"}, {"source": "\u30af", "target": "\u30af\u30ea\u30fc\u30e0", "label": "Cream"}, {"source": "\u30af", "target": "\u30af\u30c3\u30ad\u30fc", "label": "Cookie"}, {"source": "\u30af", "target": "\u30af\u30ec\u30b8\u30c3\u30c8", "label": "Credit"}, {"source": "\u30af", "target": "\u30d0\u30c3\u30af", "label": "Bag"}, {"source": "\u30af", "target": "\u30af\u30ed\u30c3\u30af", "label": "Clock"}, {"source": "\u30af", "target": "\u30bf\u30af\u30b7\u30fc", "label": "Taxi"}, {"source": "\u30af", "target": "\u30c6\u30af\u30ce", "label": "Techno"}, {"source": "\u30af", "target": "\u30a2\u30bf\u30c3\u30af", "label": "Attack"}, {"source": "\u30b1", "target": "\u30b1\u30fc\u30ad", "label": "Cake"}, {"source": "\u30b1", "target": "\u30b1\u30fc\u30d6\u30eb", "label": "Cable"}, {"source": "\u30b1", "target": "\u30b1\u30a2", "label": "Care"}, {"source": "\u30b1", "target": "\u30b1\u30c1\u30e3\u30c3\u30d7", "label": "Ketchup"}, {"source": "\u30b1", "target": "\u30de\u30fc\u30b1\u30c3\u30c8", "label": "Market"}, {"source": "\u30b1", "target": "\u30c1\u30b1\u30c3\u30c8", "label": "Ticket"}, {"source": "\u30b1", "target": "\u30d0\u30b9\u30b1\u30c3\u30c8", "label": "Basket"}, {"source": "\u30b1", "target": "\u30a2\u30f3\u30b1\u30fc\u30c8", "label": "Survey"}, {"source": "\u30b1", "target": "\u30b1\u30f3\u30c8", "label": "Kent"}, {"source": "\u30b1", "target": "\u30aa\u30fc\u30b1\u30fc", "label": "OK"}, {"source": "\u30b3", "target": "\u30b3\u30fc\u30d2\u30fc", "label": "Coffee"}, {"source": "\u30b3", "target": "\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf", "label": "Computer"}, {"source": "\u30b3", "target": "\u30b3\u30fc\u30c8", "label": "Coat"}, {"source": "\u30b3", "target": "\u30b3\u30a4\u30f3", "label": "Coin"}, {"source": "\u30b3", "target": "\u30b3\u30f3\u30bb\u30f3\u30c8", "label": "Outlet"}, {"source": "\u30b3", "target": "\u30b3\u30f3\u30b5\u30fc\u30c8", "label": "Concert"}, {"source": "\u30b3", "target": "\u30b3\u30e1\u30f3\u30c8", "label": "Comment"}, {"source": "\u30b3", "target": "\u30ec\u30b3\u30fc\u30c9", "label": "Record"}, {"source": "\u30b3", "target": "\u30b3\u30ec\u30af\u30b7\u30e7\u30f3", "label": "Collection"}, {"source": "\u30b3", "target": "\u30a2\u30a4\u30b3\u30f3", "label": "Icon"}, {"source": "\u30b5", "target": "\u30b5\u30e9\u30c0", "label": "Salad"}, {"source": "\u30b5", "target": "\u30b5\u30c3\u30ab\u30fc", "label": "Soccer"}, {"source": "\u30b5", "target": "\u30b5\u30fc\u30d3\u30b9", "label": "Service"}, {"source": "\u30b5", "target": "\u30b5\u30f3\u30d7\u30eb", "label": "Sample"}, {"source": "\u30b5", "target": "\u30b5\u30f3\u30c9", "label": "Sandwich"}, {"source": "\u30b5", "target": "\u30b5\u30a4\u30ba", "label": "Size"}, {"source": "\u30b5", "target": "\u30b5\u30a4\u30f3", "label": "Sign"}, {"source": "\u30b5", "target": "\u30df\u30ad\u30b5\u30fc", "label": "Mixer"}, {"source": "\u30b5", "target": "\u30ea\u30b5\u30fc\u30c1", "label": "Research"}, {"source": "\u30b5", "target": "\u30bb\u30f3\u30b5\u30fc", "label": "Sensor"}, {"source": "\u30b7", "target": "\u30b7\u30b9\u30c6\u30e0", "label": "System"}, {"source": "\u30b7", "target": "\u30b7\u30f3\u30d7\u30eb", "label": "Simple"}, {"source": "\u30b7", "target": "\u30b7\u30fc\u30f3", "label": "Scene"}, {"source": "\u30b7", "target": "\u30b7\u30a7\u30a2", "label": "Share"}, {"source": "\u30b7", "target": "\u30b7\u30ca\u30ea\u30aa", "label": "Scenario"}, {"source": "\u30b7", "target": "\u30b7\u30eb\u30af", "label": "Silk"}, {"source": "\u30b7", "target": "\u30b7\u30fc\u30eb", "label": "Seal"}, {"source": "\u30b7", "target": "\u30b7\u30d5\u30c8", "label": "Shift"}, {"source": "\u30b7", "target": "\u30d5\u30a1\u30c3\u30b7\u30e7\u30f3", "label": "Fashion"}, {"source": "\u30b7", "target": "\u30ec\u30b7\u30d4", "label": "Recipe"}, {"source": "\u30b9", "target": "\u30b9\u30fc\u30d7", "label": "Soup"}, {"source": "\u30b9", "target": "\u30b9\u30de\u30db", "label": "Smartphone"}, {"source": "\u30b9", "target": "\u30b9\u30da\u30fc\u30b9", "label": "Space"}, {"source": "\u30b9", "target": "\u30b9\u30b1\u30b8\u30e5\u30fc\u30eb", "label": "Schedule"}, {"source": "\u30b9", "target": "\u30b9\u30a4\u30c3\u30c1", "label": "Switch"}, {"source": "\u30b9", "target": "\u30b9\u30ab\u30fc\u30c8", "label": "Skirt"}, {"source": "\u30b9", "target": "\u30d0\u30b9", "label": "Bus"}, {"source": "\u30b9", "target": "\u30de\u30b9\u30af", "label": "Mask"}, {"source": "\u30b9", "target": "\u30c7\u30a3\u30b9\u30af", "label": "Disk"}, {"source": "\u30b9", "target": "\u30cb\u30e5\u30fc\u30b9", "label": "News"}, {"source": "\u30bb", "target": "\u30bb\u30fc\u30eb", "label": "Sale"}, {"source": "\u30bb", "target": "\u30bb\u30f3\u30b5\u30fc", "label": "Sensor"}, {"source": "\u30bb", "target": "\u30bb\u30df\u30ca\u30fc", "label": "Seminar"}, {"source": "\u30bb", "target": "\u30bb\u30c3\u30c8", "label": "Set"}, {"source": "\u30bb", "target": "\u30bb\u30ec\u30af\u30c8", "label": "Select"}, {"source": "\u30bb", "target": "\u30bb\u30fc\u30d5", "label": "Safe"}, {"source": "\u30bb", "target": "\u30a2\u30af\u30bb\u30b9", "label": "Access"}, {"source": "\u30bb", "target": "\u30e1\u30c3\u30bb\u30fc\u30b8", "label": "Message"}, {"source": "\u30bb", "target": "\u30e9\u30a4\u30bb\u30f3\u30b9", "label": "License"}, {"source": "\u30bb", "target": "\u30b3\u30f3\u30bb\u30d7\u30c8", "label": "Concept"}, {"source": "\u30bd", "target": "\u30bd\u30d5\u30a1", "label": "Sofa"}, {"source": "\u30bd", "target": "\u30bd\u30fc\u30b9", "label": "Sauce"}, {"source": "\u30bd", "target": "\u30bd\u30d5\u30c8", "label": "Software"}, {"source": "\u30bd", "target": "\u30bd\u30f3\u30b0", "label": "Song"}, {"source": "\u30bd", "target": "\u30bd\u30b1\u30c3\u30c8", "label": "Socket"}, {"source": "\u30bd", "target": "\u30bd\u30ea\u30e5\u30fc\u30b7\u30e7\u30f3", "label": "Solution"}, {"source": "\u30bd", "target": "\u30bd\u30ed", "label": "Solo"}, {"source": "\u30bd", "target": "\u30d1\u30bd\u30b3\u30f3", "label": "PC"}, {"source": "\u30bd", "target": "\u30de\u30e9\u30bd\u30f3", "label": "Marathon"}, {"source": "\u30bd", "target": "\u30b3\u30f3\u30bd\u30fc\u30eb", "label": "Console"}, {"source": "\u30bf", "target": "\u30bf\u30af\u30b7\u30fc", "label": "Taxi"}, {"source": "\u30bf", "target": "\u30bf\u30aa\u30eb", "label": "Towel"}, {"source": "\u30bf", "target": "\u30bf\u30a4\u30c8\u30eb", "label": "Title"}, {"source": "\u30bf", "target": "\u30bf\u30d6\u30ec\u30c3\u30c8", "label": "Tablet"}, {"source": "\u30bf", "target": "\u30bf\u30b9\u30af", "label": "Task"}, {"source": "\u30bf", "target": "\u30b9\u30bf\u30fc\u30c8", "label": "Start"}, {"source": "\u30bf", "target": "\u30bb\u30f3\u30bf\u30fc", "label": "Center"}, {"source": "\u30bf", "target": "\u30c7\u30fc\u30bf", "label": "Data"}, {"source": "\u30bf", "target": "\u30ae\u30bf\u30fc", "label": "Guitar"}, {"source": "\u30bf", "target": "\u30c9\u30af\u30bf\u30fc", "label": "Doctor"}, {"source": "\u30c1", "target": "\u30c1\u30fc\u30ba", "label": "Cheese"}, {"source": "\u30c1", "target": "\u30c1\u30fc\u30e0", "label": "Team"}, {"source": "\u30c1", "target": "\u30c1\u30b1\u30c3\u30c8", "label": "Ticket"}, {"source": "\u30c1", "target": "\u30c1\u30e7\u30b3", "label": "Chocolate"}, {"source": "\u30c1", "target": "\u30ad\u30c3\u30c1\u30f3", "label": "Kitchen"}, {"source": "\u30c1", "target": "\u30e9\u30f3\u30c1", "label": "Lunch"}, {"source": "\u30c1", "target": "\u30de\u30c3\u30c1", "label": "Match"}, {"source": "\u30c1", "target": "\u30b9\u30c8\u30ec\u30c3\u30c1", "label": "Stretch"}, {"source": "\u30c1", "target": "\u30c1\u30e3\u30f3\u30b9", "label": "Chance"}, {"source": "\u30c1", "target": "\u30c1\u30e3\u30fc\u30c8", "label": "Chart"}, {"source": "\u30c4", "target": "\u30c4\u30a2\u30fc", "label": "Tour"}, {"source": "\u30c4", "target": "\u30c4\u30fc\u30eb", "label": "Tool"}, {"source": "\u30c4", "target": "\u30b9\u30fc\u30c4", "label": "Suit"}, {"source": "\u30c4", "target": "\u30b7\u30e3\u30c4", "label": "Shirt"}, {"source": "\u30c4", "target": "\u30c6\u30b9\u30c8", "label": "Test"}, {"source": "\u30c4", "target": "\u30b0\u30c3\u30ba", "label": "Goods"}, {"source": "\u30c4", "target": "\u30ad\u30c3\u30ba", "label": "Kids"}, {"source": "\u30c4", "target": "\u30ce\u30fc\u30c4", "label": "Notes"}, {"source": "\u30c4", "target": "\u30b9\u30dd\u30fc\u30c4", "label": "Sports"}, {"source": "\u30c4", "target": "\u30c4\u30a4\u30fc\u30c8", "label": "Tweet"}, {"source": "\u30c6", "target": "\u30c6\u30ec\u30d3", "label": "TV"}, {"source": "\u30c6", "target": "\u30c6\u30fc\u30d6\u30eb", "label": "Table"}, {"source": "\u30c6", "target": "\u30c6\u30b9\u30c8", "label": "Test"}, {"source": "\u30c6", "target": "\u30c6\u30ad\u30b9\u30c8", "label": "Text"}, {"source": "\u30c6", "target": "\u30db\u30c6\u30eb", "label": "Hotel"}, {"source": "\u30c6", "target": "\u30b7\u30b9\u30c6\u30e0", "label": "System"}, {"source": "\u30c6", "target": "\u30b9\u30c6\u30fc\u30b8", "label": "Stage"}, {"source": "\u30c6", "target": "\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8", "label": "Template"}, {"source": "\u30c6", "target": "\u30a2\u30a4\u30c6\u30e0", "label": "Item"}, {"source": "\u30c6", "target": "\u30b3\u30f3\u30c6\u30ca", "label": "Container"}, {"source": "\u30c8", "target": "\u30c8\u30de\u30c8", "label": "Tomato"}, {"source": "\u30c8", "target": "\u30c8\u30fc\u30b9\u30c8", "label": "Toast"}, {"source": "\u30c8", "target": "\u30c8\u30e9\u30c3\u30af", "label": "Truck"}, {"source": "\u30c8", "target": "\u30c8\u30ec\u30fc\u30cb\u30f3\u30b0", "label": "Training"}, {"source": "\u30c8", "target": "\u30c8\u30f3\u30cd\u30eb", "label": "Tunnel"}, {"source": "\u30c8", "target": "\u30ce\u30fc\u30c8", "label": "Notebook"}, {"source": "\u30c8", "target": "\u30b5\u30a4\u30c8", "label": "Site"}, {"source": "\u30c8", "target": "\u30b9\u30c8\u30fc\u30ea\u30fc", "label": "Story"}, {"source": "\u30c8", "target": "\u30d2\u30f3\u30c8", "label": "Hint"}, {"source": "\u30c8", "target": "\u30a2\u30a6\u30c8", "label": "Out"}, {"source": "\u30ca", "target": "\u30ca\u30a4\u30d5", "label": "Knife"}, {"source": "\u30ca", "target": "\u30ca\u30fc\u30b9", "label": "Nurse"}, {"source": "\u30ca", "target": "\u30ca\u30d3", "label": "Navigation"}, {"source": "\u30ca", "target": "\u30ca\u30f3\u30d0\u30fc", "label": "Number"}, {"source": "\u30ca", "target": "\u30ca\u30dd\u30ea", "label": "Naples"}, {"source": "\u30ca", "target": "\u30d0\u30ca\u30ca", "label": "Banana"}, {"source": "\u30ca", "target": "\u30de\u30ca\u30fc", "label": "Manner"}, {"source": "\u30ca", "target": "\u30b7\u30ca\u30ea\u30aa", "label": "Scenario"}, {"source": "\u30ca", "target": "\u30b5\u30a6\u30ca", "label": "Sauna"}, {"source": "\u30ca", "target": "\u30ca\u30c1\u30e5\u30e9\u30eb", "label": "Natural"}, {"source": "\u30cb", "target": "\u30cb\u30e5\u30fc\u30b9", "label": "News"}, {"source": "\u30cb", "target": "\u30cb\u30c3\u30c8", "label": "Knit"}, {"source": "\u30cb", "target": "\u30cb\u30f3\u30b8\u30f3", "label": "Carrot"}, {"source": "\u30cb", "target": "\u30cb\u30c3\u30af\u30cd\u30fc\u30e0", "label": "Nickname"}, {"source": "\u30cb", "target": "\u30cb\u30fc\u30ba", "label": "Needs"}, {"source": "\u30cb", "target": "\u30e6\u30cb\u30c3\u30c8", "label": "Unit"}, {"source": "\u30cb", "target": "\u30c6\u30cb\u30b9", "label": "Tennis"}, {"source": "\u30cb", "target": "\u30d1\u30cb\u30c3\u30af", "label": "Panic"}, {"source": "\u30cb", "target": "\u30a8\u30f3\u30b8\u30cb\u30a2", "label": "Engineer"}, {"source": "\u30cb", "target": "\u30af\u30ea\u30cb\u30c3\u30af", "label": "Clinic"}, {"source": "\u30cc", "target": "\u30cc\u30fc\u30c9\u30eb", "label": "Noodles"}, {"source": "\u30cc", "target": "\u30cc\u30fc\u30dc\u30fc", "label": "Nouveau"}, {"source": "\u30cc", "target": "\u30cc\u30ac\u30fc", "label": "Nougat"}, {"source": "\u30cc", "target": "\u30ab\u30cc\u30fc", "label": "Canoe"}, {"source": "\u30cc", "target": "\u30e1\u30cb\u30e5\u30fc", "label": "Menu"}, {"source": "\u30cc", "target": "\u30a2\u30f3\u30cc", "label": "Anne"}, {"source": "\u30cc", "target": "\u30a4\u30cc", "label": "Dog"}, {"source": "\u30cc", "target": "\u30cc\u30e1\u30ea", "label": "Slime"}, {"source": "\u30cc", "target": "\u30cc\u30fc\u30c9", "label": "Nude"}, {"source": "\u30cc", "target": "\u30cc\u30f3\u30b9", "label": "Nuns"}, {"source": "\u30cd", "target": "\u30cd\u30c3\u30c8", "label": "Net"}, {"source": "\u30cd", "target": "\u30cd\u30af\u30bf\u30a4", "label": "Necktie"}, {"source": "\u30cd", "target": "\u30cd\u30a4\u30eb", "label": "Nail"}, {"source": "\u30cd", "target": "\u30cd\u30fc\u30e0", "label": "Name"}, {"source": "\u30cd", "target": "\u30cd\u30ac", "label": "Negative"}, {"source": "\u30cd", "target": "\u30cd\u30a4\u30d3\u30fc", "label": "Navy"}, {"source": "\u30cd", "target": "\u30d1\u30cd\u30eb", "label": "Panel"}, {"source": "\u30cd", "target": "\u30de\u30e8\u30cd\u30fc\u30ba", "label": "Mayonnaise"}, {"source": "\u30cd", "target": "\u30a8\u30cd\u30eb\u30ae\u30fc", "label": "Energy"}, {"source": "\u30cd", "target": "\u30eb\u30cd\u30b5\u30f3\u30b9", "label": "Renaissance"}, {"source": "\u30ce", "target": "\u30ce\u30fc\u30c8", "label": "Notebook"}, {"source": "\u30ce", "target": "\u30ce\u30a4\u30ba", "label": "Noise"}, {"source": "\u30ce", "target": "\u30ce\u30eb\u30de", "label": "Quota"}, {"source": "\u30ce", "target": "\u30ce\u30c3\u30af", "label": "Knock"}, {"source": "\u30ce", "target": "\u30ce\u30d9\u30eb", "label": "Novel"}, {"source": "\u30ce", "target": "\u30ce\u30f3\u30a2\u30eb", "label": "Non-alcoholic"}, {"source": "\u30ce", "target": "\u30d4\u30a2\u30ce", "label": "Piano"}, {"source": "\u30ce", "target": "\u30b7\u30ca\u30e2\u30f3", "label": "Cinnamon"}, {"source": "\u30ce", "target": "\u30c6\u30af\u30ce", "label": "Techno"}, {"source": "\u30ce", "target": "\u30ab\u30b8\u30ce", "label": "Casino"}, {"source": "\u30cf", "target": "\u30cf\u30f3\u30d0\u30fc\u30ac\u30fc", "label": "Hamburger"}, {"source": "\u30cf", "target": "\u30cf\u30fc\u30c9", "label": "Hard"}, {"source": "\u30cf", "target": "\u30cf\u30b5\u30df", "label": "Scissors"}, {"source": "\u30cf", "target": "\u30cf\u30a4\u30ad\u30f3\u30b0", "label": "Hiking"}, {"source": "\u30cf", "target": "\u30cf\u30f3\u30c9\u30eb", "label": "Handle"}, {"source": "\u30cf", "target": "\u30cf\u30fc\u30c8", "label": "Heart"}, {"source": "\u30cf", "target": "\u30ea\u30cf\u30fc\u30b5\u30eb", "label": "Rehearsal"}, {"source": "\u30cf", "target": "\u30c1\u30e3\u30fc\u30cf\u30f3", "label": "Fried rice"}, {"source": "\u30cf", "target": "\u30d0\u30c3\u30cf", "label": "Bach"}, {"source": "\u30cf", "target": "\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9", "label": "Hybrid"}, {"source": "\u30d2", "target": "\u30d2\u30fc\u30ed\u30fc", "label": "Hero"}, {"source": "\u30d2", "target": "\u30d2\u30f3\u30c8", "label": "Hint"}, {"source": "\u30d2", "target": "\u30d2\u30fc\u30bf\u30fc", "label": "Heater"}, {"source": "\u30d2", "target": "\u30d2\u30c3\u30c8", "label": "Hit"}, {"source": "\u30d2", "target": "\u30d2\u30e5\u30fc\u30de\u30f3", "label": "Human"}, {"source": "\u30d2", "target": "\u30b3\u30fc\u30d2\u30fc", "label": "Coffee"}, {"source": "\u30d2", "target": "\u30b5\u30d2\u30fc\u30eb", "label": "Sahil"}, {"source": "\u30d2", "target": "\u30d2\u30c3\u30d7", "label": "Hip"}, {"source": "\u30d2", "target": "\u30d2\u30de\u30e9\u30e4", "label": "Himalaya"}, {"source": "\u30d2", "target": "\u30d2\u30b9\u30c8\u30ea\u30fc", "label": "History"}, {"source": "\u30d5", "target": "\u30d5\u30eb\u30fc\u30c4", "label": "Fruit"}, {"source": "\u30d5", "target": "\u30d5\u30e9\u30a4", "label": "Fry"}, {"source": "\u30d5", "target": "\u30d5\u30ea\u30fc", "label": "Free"}, {"source": "\u30d5", "target": "\u30d5\u30ed\u30a2", "label": "Floor"}, {"source": "\u30d5", "target": "\u30d5\u30c3\u30c8", "label": "Foot"}, {"source": "\u30d5", "target": "\u30bd\u30d5\u30a1", "label": "Sofa"}, {"source": "\u30d5", "target": "\u30b0\u30e9\u30d5", "label": "Graph"}, {"source": "\u30d5", "target": "\u30e9\u30a4\u30d5", "label": "Life"}, {"source": "\u30d5", "target": "\u30aa\u30d5\u30e9\u30a4\u30f3", "label": "Offline"}, {"source": "\u30d5", "target": "\u30d5\u30ec\u30fc\u30e0", "label": "Frame"}, {"source": "\u30d8", "target": "\u30d8\u30a2", "label": "Hair"}, {"source": "\u30d8", "target": "\u30d8\u30eb\u30d7", "label": "Help"}, {"source": "\u30d8", "target": "\u30d8\u30c3\u30c9", "label": "Head"}, {"source": "\u30d8", "target": "\u30d8\u30ea", "label": "Helicopter"}, {"source": "\u30d8", "target": "\u30d8\u30d3\u30fc", "label": "Heavy"}, {"source": "\u30d8", "target": "\u30ab\u30d5\u30a7", "label": "Cafe"}, {"source": "\u30d8", "target": "\u30da\u30fc\u30b8", "label": "Page"}, {"source": "\u30d8", "target": "\u30b7\u30a7\u30a2", "label": "Share"}, {"source": "\u30d8", "target": "\u30d8\u30eb\u30b7\u30fc", "label": "Healthy"}, {"source": "\u30d8", "target": "\u30d8\u30c3\u30c0\u30fc", "label": "Header"}, {"source": "\u30db", "target": "\u30db\u30c6\u30eb", "label": "Hotel"}, {"source": "\u30db", "target": "\u30db\u30fc\u30e0", "label": "Home"}, {"source": "\u30db", "target": "\u30db\u30fc\u30eb", "label": "Hall"}, {"source": "\u30db", "target": "\u30db\u30c3\u30c8", "label": "Hot"}, {"source": "\u30db", "target": "\u30db\u30ef\u30a4\u30c8", "label": "White"}, {"source": "\u30db", "target": "\u30b9\u30de\u30db", "label": "Smartphone"}, {"source": "\u30db", "target": "\u30a4\u30e4\u30db\u30f3", "label": "Earphones"}, {"source": "\u30db", "target": "\u30db\u30d3\u30fc", "label": "Hobby"}, {"source": "\u30db", "target": "\u30db\u30b9\u30c8", "label": "Host"}, {"source": "\u30db", "target": "\u30db\u30fc\u30b9", "label": "Hose"}, {"source": "\u30de", "target": "\u30de\u30a4\u30af", "label": "Mic"}, {"source": "\u30de", "target": "\u30de\u30c3\u30d7", "label": "Map"}, {"source": "\u30de", "target": "\u30de\u30b9\u30af", "label": "Mask"}, {"source": "\u30de", "target": "\u30de\u30ca\u30fc", "label": "Manner"}, {"source": "\u30de", "target": "\u30de\u30b7\u30f3", "label": "Machine"}, {"source": "\u30de", "target": "\u30c6\u30fc\u30de", "label": "Theme"}, {"source": "\u30de", "target": "\u30c9\u30e9\u30de", "label": "Drama"}, {"source": "\u30de", "target": "\u30bf\u30a4\u30de\u30fc", "label": "Timer"}, {"source": "\u30de", "target": "\u30b5\u30de\u30fc", "label": "Summer"}, {"source": "\u30de", "target": "\u30de\u30cd\u30fc\u30b8\u30e3\u30fc", "label": "Manager"}, {"source": "\u30df", "target": "\u30df\u30eb\u30af", "label": "Milk"}, {"source": "\u30df", "target": "\u30df\u30e9\u30fc", "label": "Mirror"}, {"source": "\u30df", "target": "\u30df\u30cb", "label": "Mini"}, {"source": "\u30df", "target": "\u30df\u30fc\u30c6\u30a3\u30f3\u30b0", "label": "Meeting"}, {"source": "\u30df", "target": "\u30df\u30c3\u30af\u30b9", "label": "Mix"}, {"source": "\u30df", "target": "\u30bb\u30df\u30ca\u30fc", "label": "Seminar"}, {"source": "\u30df", "target": "\u30d3\u30bf\u30df\u30f3", "label": "Vitamin"}, {"source": "\u30df", "target": "\u30d5\u30a1\u30df\u30ea\u30fc", "label": "Family"}, {"source": "\u30df", "target": "\u30df\u30b5\u30a4\u30eb", "label": "Missile"}, {"source": "\u30df", "target": "\u30df\u30e5\u30fc\u30b8\u30c3\u30af", "label": "Music"}, {"source": "\u30e0", "target": "\u30e0\u30fc\u30c9", "label": "Mood"}, {"source": "\u30e0", "target": "\u30e0\u30fc\u30d3\u30fc", "label": "Movie"}, {"source": "\u30e0", "target": "\u30e0\u30fc\u30b9", "label": "Mousse"}, {"source": "\u30e0", "target": "\u30e0\u30ae", "label": "Wheat"}, {"source": "\u30e0", "target": "\u30b2\u30fc\u30e0", "label": "Game"}, {"source": "\u30e0", "target": "\u30c1\u30fc\u30e0", "label": "Team"}, {"source": "\u30e0", "target": "\u30db\u30fc\u30e0", "label": "Home"}, {"source": "\u30e0", "target": "\u30ab\u30b9\u30bf\u30e0", "label": "Custom"}, {"source": "\u30e0", "target": "\u30a2\u30eb\u30d0\u30e0", "label": "Album"}, {"source": "\u30e0", "target": "\u30ea\u30ba\u30e0", "label": "Rhythm"}, {"source": "\u30e1", "target": "\u30e1\u30e2", "label": "Memo"}, {"source": "\u30e1", "target": "\u30e1\u30fc\u30eb", "label": "Mail"}, {"source": "\u30e1", "target": "\u30e1\u30cb\u30e5\u30fc", "label": "Menu"}, {"source": "\u30e1", "target": "\u30e1\u30ac\u30cd", "label": "Glasses"}, {"source": "\u30e1", "target": "\u30e1\u30ed\u30f3", "label": "Melon"}, {"source": "\u30e1", "target": "\u30b3\u30e1\u30f3\u30c8", "label": "Comment"}, {"source": "\u30e1", "target": "\u30ab\u30e1\u30e9", "label": "Camera"}, {"source": "\u30e1", "target": "\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8", "label": "Document"}, {"source": "\u30e1", "target": "\u30a4\u30e1\u30fc\u30b8", "label": "Image"}, {"source": "\u30e1", "target": "\u30e1\u30f3\u30d0\u30fc", "label": "Member"}, {"source": "\u30e2", "target": "\u30e2\u30c7\u30eb", "label": "Model"}, {"source": "\u30e2", "target": "\u30e2\u30fc\u30bf\u30fc", "label": "Motor"}, {"source": "\u30e2", "target": "\u30e2\u30cb\u30bf\u30fc", "label": "Monitor"}, {"source": "\u30e2", "target": "\u30e2\u30d0\u30a4\u30eb", "label": "Mobile"}, {"source": "\u30e2", "target": "\u30e1\u30e2", "label": "Memo"}, {"source": "\u30e2", "target": "\u30ad\u30e2\u30ce", "label": "Kimono"}, {"source": "\u30e2", "target": "\u30ea\u30e2\u30fc\u30c8", "label": "Remote"}, {"source": "\u30e2", "target": "\u30e2\u30b8\u30e5\u30fc\u30eb", "label": "Module"}, {"source": "\u30e2", "target": "\u30e2\u30ce\u30af\u30ed", "label": "Monochrome"}, {"source": "\u30e2", "target": "\u30e2\u30c1\u30d9\u30fc\u30b7\u30e7\u30f3", "label": "Motivation"}, {"source": "\u30e4", "target": "\u30e4\u30fc\u30c9", "label": "Yard"}, {"source": "\u30e4", "target": "\u30e4\u30b7", "label": "Palm tree"}, {"source": "\u30e4", "target": "\u30e4\u30f3\u30b0", "label": "Young"}, {"source": "\u30e4", "target": "\u30c0\u30a4\u30e4", "label": "Diamond"}, {"source": "\u30e4", "target": "\u30bf\u30a4\u30e4", "label": "Tire"}, {"source": "\u30e4", "target": "\u30a4\u30e4\u30db\u30f3", "label": "Earphones"}, {"source": "\u30e4", "target": "\u30d8\u30a2", "label": "Hair"}, {"source": "\u30e4", "target": "\u30ed\u30a4\u30e4\u30eb", "label": "Royal"}, {"source": "\u30e4", "target": "\u30e4\u30de\u30c8", "label": "Yamato"}, {"source": "\u30e4", "target": "\u30e4\u30d5\u30fc", "label": "Yahoo"}, {"source": "\u30e6", "target": "\u30e6\u30cb\u30d5\u30a9\u30fc\u30e0", "label": "Uniform"}, {"source": "\u30e6", "target": "\u30e6\u30fc\u30b6\u30fc", "label": "User"}, {"source": "\u30e6", "target": "\u30e6\u30fc\u30e2\u30a2", "label": "Humor"}, {"source": "\u30e6", "target": "\u30e6\u30cb\u30c3\u30c8", "label": "Unit"}, {"source": "\u30e6", "target": "\u30e6\u30cb\u30fc\u30af", "label": "Unique"}, {"source": "\u30e6", "target": "\u30df\u30e5\u30fc\u30b8\u30c3\u30af", "label": "Music"}, {"source": "\u30e6", "target": "\u30e1\u30cb\u30e5\u30fc", "label": "Menu"}, {"source": "\u30e6", "target": "\u30ad\u30e5\u30fc\u30d6", "label": "Cube"}, {"source": "\u30e6", "target": "\u30e6\u30fc\u30ed", "label": "Euro"}, {"source": "\u30e6", "target": "\u30e6\u30bf", "label": "Utah"}, {"source": "\u30e8", "target": "\u30e8\u30c3\u30c8", "label": "Yacht"}, {"source": "\u30e8", "target": "\u30e8\u30fc\u30b0\u30eb\u30c8", "label": "Yogurt"}, {"source": "\u30e8", "target": "\u30e8\u30fc\u30ed\u30c3\u30d1", "label": "Europe"}, {"source": "\u30e8", "target": "\u30e8\u30ac", "label": "Yoga"}, {"source": "\u30e8", "target": "\u30e8\u30c9\u30d0\u30b7", "label": "Yodobashi"}, {"source": "\u30e8", "target": "\u30ad\u30e8\u30b9\u30af", "label": "Kiosk"}, {"source": "\u30e8", "target": "\u30b5\u30e8\u30ca\u30e9", "label": "Goodbye"}, {"source": "\u30e8", "target": "\u30e8\u30b3", "label": "Side"}, {"source": "\u30e8", "target": "\u30d0\u30a4\u30aa", "label": "Bio"}, {"source": "\u30e8", "target": "\u30c8\u30e8\u30bf", "label": "Toyota"}, {"source": "\u30e9", "target": "\u30e9\u30fc\u30e1\u30f3", "label": "Ramen"}, {"source": "\u30e9", "target": "\u30e9\u30b8\u30aa", "label": "Radio"}, {"source": "\u30e9", "target": "\u30e9\u30a4\u30c8", "label": "Light"}, {"source": "\u30e9", "target": "\u30e9\u30d9\u30eb", "label": "Label"}, {"source": "\u30e9", "target": "\u30e9\u30a6\u30f3\u30b8", "label": "Lounge"}, {"source": "\u30e9", "target": "\u30ab\u30e1\u30e9", "label": "Camera"}, {"source": "\u30e9", "target": "\u30b5\u30e9\u30c0", "label": "Salad"}, {"source": "\u30e9", "target": "\u30d7\u30e9\u30b0", "label": "Plug"}, {"source": "\u30e9", "target": "\u30c8\u30e9\u30d9\u30eb", "label": "Travel"}, {"source": "\u30e9", "target": "\u30e9\u30c3\u30ad\u30fc", "label": "Lucky"}, {"source": "\u30ea", "target": "\u30ea\u30b9\u30c8", "label": "List"}, {"source": "\u30ea", "target": "\u30ea\u30f3\u30af", "label": "Link"}, {"source": "\u30ea", "target": "\u30ea\u30fc\u30c0\u30fc", "label": "Leader"}, {"source": "\u30ea", "target": "\u30ea\u30e2\u30b3\u30f3", "label": "Remote control"}, {"source": "\u30ea", "target": "\u30ea\u30ba\u30e0", "label": "Rhythm"}, {"source": "\u30ea", "target": "\u30ab\u30ed\u30ea\u30fc", "label": "Calorie"}, {"source": "\u30ea", "target": "\u30a2\u30d7\u30ea", "label": "App"}, {"source": "\u30ea", "target": "\u30e1\u30e2\u30ea\u30fc", "label": "Memory"}, {"source": "\u30ea", "target": "\u30ea\u30b5\u30fc\u30c1", "label": "Research"}, {"source": "\u30ea", "target": "\u30ea\u30d4\u30fc\u30c8", "label": "Repeat"}, {"source": "\u30eb", "target": "\u30eb\u30fc\u30eb", "label": "Rule"}, {"source": "\u30eb", "target": "\u30eb\u30fc\u30c8", "label": "Route"}, {"source": "\u30eb", "target": "\u30eb\u30fc\u30e0", "label": "Room"}, {"source": "\u30eb", "target": "\u30eb\u30d3\u30fc", "label": "Ruby"}, {"source": "\u30eb", "target": "\u30eb\u30fc\u30d7", "label": "Loop"}, {"source": "\u30eb", "target": "\u30db\u30c6\u30eb", "label": "Hotel"}, {"source": "\u30eb", "target": "\u30e1\u30fc\u30eb", "label": "Mail"}, {"source": "\u30eb", "target": "\u30b5\u30fc\u30af\u30eb", "label": "Circle"}, {"source": "\u30eb", "target": "\u30b7\u30f3\u30d7\u30eb", "label": "Simple"}, {"source": "\u30eb", "target": "\u30c4\u30fc\u30eb", "label": "Tool"}, {"source": "\u30ec", "target": "\u30ec\u30b9\u30c8\u30e9\u30f3", "label": "Restaurant"}, {"source": "\u30ec", "target": "\u30ec\u30d9\u30eb", "label": "Level"}, {"source": "\u30ec", "target": "\u30ec\u30b3\u30fc\u30c9", "label": "Record"}, {"source": "\u30ec", "target": "\u30ec\u30b7\u30d4", "label": "Recipe"}, {"source": "\u30ec", "target": "\u30ec\u30c3\u30b9\u30f3", "label": "Lesson"}, {"source": "\u30ec", "target": "\u30c8\u30ec\u30fc\u30cb\u30f3\u30b0", "label": "Training"}, {"source": "\u30ec", "target": "\u30d5\u30ec\u30fc\u30e0", "label": "Frame"}, {"source": "\u30ec", "target": "\u30d7\u30ec\u30bc\u30f3\u30c8", "label": "Present"}, {"source": "\u30ec", "target": "\u30a8\u30ec\u30d9\u30fc\u30bf\u30fc", "label": "Elevator"}, {"source": "\u30ec", "target": "\u30c7\u30a3\u30ec\u30af\u30c8\u30ea", "label": "Directory"}, {"source": "\u30ed", "target": "\u30ed\u30dc\u30c3\u30c8", "label": "Robot"}, {"source": "\u30ed", "target": "\u30ed\u30b1\u30c3\u30c8", "label": "Rocket"}, {"source": "\u30ed", "target": "\u30ed\u30d3\u30fc", "label": "Lobby"}, {"source": "\u30ed", "target": "\u30ed\u30b8\u30c3\u30af", "label": "Logic"}, {"source": "\u30ed", "target": "\u30ed\u30f3\u30b0", "label": "Long"}, {"source": "\u30ed", "target": "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8", "label": "Project"}, {"source": "\u30ed", "target": "\u30ab\u30ed\u30ea\u30fc", "label": "Calorie"}, {"source": "\u30ed", "target": "\u30b5\u30e9\u30ea\u30fc\u30de\u30f3", "label": "Office worker"}, {"source": "\u30ed", "target": "\u30ed\u30fc\u30de", "label": "Rome"}, {"source": "\u30ed", "target": "\u30e1\u30c8\u30ed", "label": "Metro"}, {"source": "\u30ef", "target": "\u30ef\u30a4\u30f3", "label": "Wine"}, {"source": "\u30ef", "target": "\u30ef\u30fc\u30c9", "label": "Word"}, {"source": "\u30ef", "target": "\u30ef\u30af\u30c1\u30f3", "label": "Vaccine"}, {"source": "\u30ef", "target": "\u30ef\u30f3\u30d4\u30fc\u30b9", "label": "One-piece dress"}, {"source": "\u30ef", "target": "\u30ef\u30a4\u30e4\u30fc", "label": "Wire"}, {"source": "\u30ef", "target": "\u30b7\u30e3\u30ef\u30fc", "label": "Shower"}, {"source": "\u30ef", "target": "\u30d5\u30e9\u30ef\u30fc", "label": "Flower"}, {"source": "\u30ef", "target": "\u30d1\u30ef\u30fc", "label": "Power"}, {"source": "\u30ef", "target": "\u30ef\u30fc\u30af", "label": "Work"}, {"source": "\u30ef", "target": "\u30ef\u30fc\u30eb\u30c9", "label": "World"}, {"source": "\u30f2", "target": "\u30f2\u30bf\u30af", "label": "Otaku (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30eb\u30b4\u30fc\u30eb", "label": "Music box (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30ec\u30f3\u30b8", "label": "Orange (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30da\u30e9", "label": "Opera (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30d5\u30a3\u30b9", "label": "Office (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30f3\u30e9\u30a4\u30f3", "label": "Online (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30fc\u30c8", "label": "Auto (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30a2\u30b7\u30b9", "label": "Oasis (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30ea\u30b8\u30ca\u30eb", "label": "Original (archaic spelling)"}, {"source": "\u30f2", "target": "\u30f2\u30fc\u30d7\u30f3", "label": "Open (archaic spelling)"}, {"source": "\u30f3", "target": "\u30d1\u30f3", "label": "Bread"}, {"source": "\u30f3", "target": "\u30a8\u30f3\u30b8\u30f3", "label": "Engine"}, {"source": "\u30f3", "target": "\u30a4\u30f3\u30af", "label": "Ink"}, {"source": "\u30f3", "target": "\u30aa\u30f3\u30e9\u30a4\u30f3", "label": "Online"}, {"source": "\u30f3", "target": "\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf", "label": "Computer"}, {"source": "\u30f3", "target": "\u30ad\u30e3\u30f3\u30d7", "label": "Camp"}, {"source": "\u30f3", "target": "\u30b5\u30f3\u30c9", "label": "Sandwich"}, {"source": "\u30f3", "target": "\u30b7\u30f3\u30d7\u30eb", "label": "Simple"}, {"source": "\u30f3", "target": "\u30e9\u30f3\u30c1", "label": "Lunch"}, {"source": "\u30f3", "target": "\u30e1\u30f3\u30d0\u30fc", "label": "Member"}];
+    const letterMap = {"a": "\u30a2", "e": "\u30a8", "i": "\u30a4", "o": "\u30aa", "u": "\u30a6"};
+    const colorMap = {"\u30a2": "#ff6b6b", "\u30a4": "#4dabf7", "\u30a6": "#51cf66", "\u30a8": "#ffd43b", "\u30aa": "#b197fc"};
+    const container = document.getElementById('mynetwork');
+    const gojuonTable = document.getElementById('gojuonTable');
+    const autoPronounceButton = document.getElementById('autoPronounceButton');
+    const helpLine = document.getElementById('helpLine');
+    const helpExample = document.getElementById('helpExample');
+    const nodes = new vis.DataSet();
+    const edges = new vis.DataSet();
+    const pronunciationGuide = {"a": {"label": "A (\u30a2)", "sound": "\"ah\" as in \"father\"", "example": "\u30a2\u30e1\u30ea\u30ab (America)"}, "i": {"label": "I (\u30a4)", "sound": "\"ee\" as in \"machine\"", "example": "\u30a4\u30bf\u30ea\u30a2 (Italy)"}, "u": {"label": "U (\u30a6)", "sound": "\"oo\" as in \"flute\"", "example": "\u30a6\u30a7\u30d6 (Web)"}, "e": {"label": "E (\u30a8)", "sound": "\"eh\" as in \"pet\"", "example": "\u30a8\u30e9\u30fc (Error)"}, "o": {"label": "O (\u30aa)", "sound": "\"oh\" as in \"told\"", "example": "\u30aa\u30ec\u30f3\u30b8 (Orange)"}, "ka": {"label": "Ka (\u30ab)", "sound": "\"kah\" (hard k + a)", "example": "\u30ab\u30e1\u30e9 (Camera)"}, "ki": {"label": "Ki (\u30ad)", "sound": "\"kee\" (hard k + i)", "example": "\u30ad\u30fc\u30dc\u30fc\u30c9 (Keyboard)"}, "ku": {"label": "Ku (\u30af)", "sound": "\"koo\" (hard k + u)", "example": "\u30af\u30e9\u30b9 (Class)"}, "ke": {"label": "Ke (\u30b1)", "sound": "\"keh\" (hard k + e)", "example": "\u30b1\u30fc\u30ad (Cake)"}, "ko": {"label": "Ko (\u30b3)", "sound": "\"koh\" (hard k + o)", "example": "\u30b3\u30fc\u30d2\u30fc (Coffee)"}, "sa": {"label": "Sa (\u30b5)", "sound": "\"sah\" (s + a)", "example": "\u30b5\u30e9\u30c0 (Salad)"}, "shi": {"label": "Shi (\u30b7)", "sound": "\"shee\" (soft sh + i)", "example": "\u30b7\u30b9\u30c6\u30e0 (System)"}, "su": {"label": "Su (\u30b9)", "sound": "\"soo\" (s + u)", "example": "\u30b9\u30fc\u30d7 (Soup)"}, "se": {"label": "Se (\u30bb)", "sound": "\"seh\" (s + e)", "example": "\u30bb\u30fc\u30eb (Sale)"}, "so": {"label": "So (\u30bd)", "sound": "\"soh\" (s + o)", "example": "\u30bd\u30d5\u30a1 (Sofa)"}, "ta": {"label": "Ta (\u30bf)", "sound": "\"tah\" (t + a)", "example": "\u30bf\u30af\u30b7\u30fc (Taxi)"}, "chi": {"label": "Chi (\u30c1)", "sound": "\"chee\" (ch + i)", "example": "\u30c1\u30fc\u30ba (Cheese)"}, "tsu": {"label": "Tsu (\u30c4)", "sound": "\"tsoo\" (ts + u)", "example": "\u30c4\u30a2\u30fc (Tour)"}, "te": {"label": "Te (\u30c6)", "sound": "\"teh\" (t + e)", "example": "\u30c6\u30ec\u30d3 (TV)"}, "to": {"label": "To (\u30c8)", "sound": "\"toh\" (t + o)", "example": "\u30c8\u30de\u30c8 (Tomato)"}, "na": {"label": "Na (\u30ca)", "sound": "\"nah\" (n + a)", "example": "\u30ca\u30a4\u30d5 (Knife)"}, "ni": {"label": "Ni (\u30cb)", "sound": "\"nee\" (n + i)", "example": "\u30cb\u30e5\u30fc\u30b9 (News)"}, "nu": {"label": "Nu (\u30cc)", "sound": "\"noo\" (n + u)", "example": "\u30cc\u30fc\u30c9\u30eb (Noodles)"}, "ne": {"label": "Ne (\u30cd)", "sound": "\"neh\" (n + e)", "example": "\u30cd\u30c3\u30c8 (Net)"}, "no": {"label": "No (\u30ce)", "sound": "\"noh\" (n + o)", "example": "\u30ce\u30fc\u30c8 (Notebook)"}, "ha": {"label": "Ha (\u30cf)", "sound": "\"hah\" (h + a)", "example": "\u30cf\u30f3\u30d0\u30fc\u30ac\u30fc (Hamburger)"}, "hi": {"label": "Hi (\u30d2)", "sound": "\"hee\" (h + i)", "example": "\u30d2\u30f3\u30c8 (Hint)"}, "fu": {"label": "Fu (\u30d5)", "sound": "\"foo\" (between h and f)", "example": "\u30d5\u30eb\u30fc\u30c4 (Fruit)"}, "he": {"label": "He (\u30d8)", "sound": "\"heh\" (h + e)", "example": "\u30d8\u30eb\u30d7 (Help)"}, "ho": {"label": "Ho (\u30db)", "sound": "\"hoh\" (h + o)", "example": "\u30db\u30c6\u30eb (Hotel)"}, "ma": {"label": "Ma (\u30de)", "sound": "\"mah\" (m + a)", "example": "\u30de\u30a4\u30af (Mic)"}, "mi": {"label": "Mi (\u30df)", "sound": "\"mee\" (m + i)", "example": "\u30df\u30eb\u30af (Milk)"}, "mu": {"label": "Mu (\u30e0)", "sound": "\"moo\" (m + u)", "example": "\u30e0\u30fc\u30c9 (Mood)"}, "me": {"label": "Me (\u30e1)", "sound": "\"meh\" (m + e)", "example": "\u30e1\u30e2 (Memo)"}, "mo": {"label": "Mo (\u30e2)", "sound": "\"moh\" (m + o)", "example": "\u30e2\u30c7\u30eb (Model)"}, "ya": {"label": "Ya (\u30e4)", "sound": "\"yah\" (y + a)", "example": "\u30e4\u30fc\u30c9 (Yard)"}, "yu": {"label": "Yu (\u30e6)", "sound": "\"yoo\" (y + u)", "example": "\u30e6\u30fc\u30b6\u30fc (User)"}, "yo": {"label": "Yo (\u30e8)", "sound": "\"yoh\" (y + o)", "example": "\u30e8\u30c3\u30c8 (Yacht)"}, "ra": {"label": "Ra (\u30e9)", "sound": "\"rah\" (light tapped r)", "example": "\u30e9\u30fc\u30e1\u30f3 (Ramen)"}, "ri": {"label": "Ri (\u30ea)", "sound": "\"ree\" (light tapped r)", "example": "\u30ea\u30b9\u30c8 (List)"}, "ru": {"label": "Ru (\u30eb)", "sound": "\"roo\" (light tapped r)", "example": "\u30eb\u30fc\u30eb (Rule)"}, "re": {"label": "Re (\u30ec)", "sound": "\"reh\" (light tapped r)", "example": "\u30ec\u30b9\u30c8\u30e9\u30f3 (Restaurant)"}, "ro": {"label": "Ro (\u30ed)", "sound": "\"roh\" (light tapped r)", "example": "\u30ed\u30dc\u30c3\u30c8 (Robot)"}, "wa": {"label": "Wa (\u30ef)", "sound": "\"wah\" (w + a)", "example": "\u30ef\u30a4\u30f3 (Wine)"}, "wo": {"label": "Wo (\u30f2)", "sound": "\"oh\" (historical wo; usually pronounced o)", "example": "\u30f2\u30bf\u30af (Otaku, archaic spelling)"}, "n": {"label": "N (\u30f3)", "sound": "syllabic \"n\" (like final n in \"sun\")", "example": "\u30d1\u30f3 (Bread)"}};
+    const synth = window.speechSynthesis;
+    let preferredJapaneseVoice = null;
+    let speechPrewarmed = false;
+    let activeKana = 'ア';
+    let autoPronounceRunning = false;
+    let autoPronounceTimerId = null;
+    let autoPronounceToken = 0;
+    let autoPronounceIndex = 0;
+    let highlightedNodeId = null;
+    let highlightedNodeColor = null;
+    let speechToken = 0;
+    const centerX = 500;
+    const centerY = 300;
+    const gojuonRows = [
+      [{ kana: 'ア', roman: 'a' }, { kana: 'イ', roman: 'i' }, { kana: 'ウ', roman: 'u' }, { kana: 'エ', roman: 'e' }, { kana: 'オ', roman: 'o' }],
+      [{ kana: 'カ', roman: 'ka' }, { kana: 'キ', roman: 'ki' }, { kana: 'ク', roman: 'ku' }, { kana: 'ケ', roman: 'ke' }, { kana: 'コ', roman: 'ko' }],
+      [{ kana: 'サ', roman: 'sa' }, { kana: 'シ', roman: 'shi' }, { kana: 'ス', roman: 'su' }, { kana: 'セ', roman: 'se' }, { kana: 'ソ', roman: 'so' }],
+      [{ kana: 'タ', roman: 'ta' }, { kana: 'チ', roman: 'chi' }, { kana: 'ツ', roman: 'tsu' }, { kana: 'テ', roman: 'te' }, { kana: 'ト', roman: 'to' }],
+      [{ kana: 'ナ', roman: 'na' }, { kana: 'ニ', roman: 'ni' }, { kana: 'ヌ', roman: 'nu' }, { kana: 'ネ', roman: 'ne' }, { kana: 'ノ', roman: 'no' }],
+      [{ kana: 'ハ', roman: 'ha' }, { kana: 'ヒ', roman: 'hi' }, { kana: 'フ', roman: 'fu' }, { kana: 'ヘ', roman: 'he' }, { kana: 'ホ', roman: 'ho' }],
+      [{ kana: 'マ', roman: 'ma' }, { kana: 'ミ', roman: 'mi' }, { kana: 'ム', roman: 'mu' }, { kana: 'メ', roman: 'me' }, { kana: 'モ', roman: 'mo' }],
+      [{ kana: 'ヤ', roman: 'ya' }, null, { kana: 'ユ', roman: 'yu' }, null, { kana: 'ヨ', roman: 'yo' }],
+      [{ kana: 'ラ', roman: 'ra' }, { kana: 'リ', roman: 'ri' }, { kana: 'ル', roman: 'ru' }, { kana: 'レ', roman: 're' }, { kana: 'ロ', roman: 'ro' }],
+      [{ kana: 'ワ', roman: 'wa' }, null, null, null, { kana: 'ヲ', roman: 'wo' }],
+      [{ kana: 'ン', roman: 'n' }, null, null, null, null],
+    ];
+
+    function getletterFromRoman(roman) {
+      if (!roman) {
+        return 'a';
+      }
+      const lowered = roman.toLowerCase();
+      const letter = lowered[lowered.length - 1];
+      return ['a', 'i', 'u', 'e', 'o'].includes(letter) ? letter : 'a';
+    }
+
+    function setSelection(kana, roman, buttonElement, shouldSpeak = false) {
+      activeKana = kana;
+      autoPronounceIndex = 0;
+      updatePronunciationHelp(roman);
+      buildGraph(kana, roman);
+      document.querySelectorAll('.gojuon-cell.active').forEach((btn) => btn.classList.remove('active'));
+      if (buttonElement) {
+        buttonElement.classList.add('active');
+      }
+      if (shouldSpeak) {
+        speakText(kana);
+      }
+      if (autoPronounceRunning) {
+        autoPronounceToken += 1;
+        if (autoPronounceTimerId) {
+          clearTimeout(autoPronounceTimerId);
+          autoPronounceTimerId = null;
+        }
+        runAutoPronounceStep(autoPronounceToken);
+      }
+    }
+
+    function renderGojuonTable() {
+      if (!gojuonTable) {
         return;
       }
+      const fragment = document.createDocumentFragment();
+      gojuonRows.forEach((row) => {
+        const tr = document.createElement('tr');
+        row.forEach((cell) => {
+          const td = document.createElement('td');
+          if (!cell) {
+            const empty = document.createElement('div');
+            empty.className = 'gojuon-empty';
+            td.appendChild(empty);
+            tr.appendChild(td);
+            return;
+          }
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'gojuon-cell';
+          btn.dataset.kana = cell.kana;
+          btn.dataset.roman = cell.roman;
+          btn.innerHTML = `<span class="gojuon-kana">${cell.kana}</span><span class="gojuon-roma">${cell.roman}</span>`;
+          btn.addEventListener('click', () => setSelection(cell.kana, cell.roman, btn, true));
+          td.appendChild(btn);
+          tr.appendChild(td);
+        });
+        fragment.appendChild(tr);
+      });
+      gojuonTable.innerHTML = '';
+      gojuonTable.appendChild(fragment);
+
+      const defaultButton = gojuonTable.querySelector('.gojuon-cell[data-kana="ア"]');
+      if (defaultButton) {
+        setSelection('ア', 'a', defaultButton);
+      }
+    }
+
+    function refreshVoices() {
+      if (!synth) {
+        return;
+      }
+      const voices = synth.getVoices();
+      preferredJapaneseVoice = voices.find((voice) => voice.lang && voice.lang.startsWith('ja')) || voices[0] || null;
+    }
+
+    function prewarmSpeech() {
+      if (!synth || speechPrewarmed) {
+        return;
+      }
+      refreshVoices();
+      try {
+        const warmupUtterance = new SpeechSynthesisUtterance('あ');
+        warmupUtterance.lang = 'ja-JP';
+        warmupUtterance.volume = 0;
+        if (preferredJapaneseVoice) {
+          warmupUtterance.voice = preferredJapaneseVoice;
+        }
+        synth.speak(warmupUtterance);
+        synth.cancel();
+      } catch (error) {
+        // Ignore warmup failures and continue with normal playback.
+      }
+      speechPrewarmed = true;
+    }
+
+    if (synth) {
+      refreshVoices();
+      if ('onvoiceschanged' in synth) {
+        synth.onvoiceschanged = refreshVoices;
+      }
+      window.addEventListener('pointerdown', prewarmSpeech, { once: true });
+      window.addEventListener('keydown', prewarmSpeech, { once: true });
+    }
+
+    function updatePronunciationHelp(selectedRoman) {
+      const info = pronunciationGuide[selectedRoman];
+      if (!info) {
+        helpLine.textContent = '';
+        helpExample.textContent = '';
+        return;
+      }
+      helpLine.textContent = `${info.label}: ${info.sound}`;
+      helpExample.textContent = `Example: ${info.example}`;
+    }
+
+    function updateAutoPronounceButton() {
+      if (!autoPronounceButton) {
+        return;
+      }
+      autoPronounceButton.textContent = autoPronounceRunning ? 'Stop' : 'Auto Speak';
+      autoPronounceButton.classList.toggle('stop-state', autoPronounceRunning);
+    }
+
+    function cloneColor(colorValue) {
+      if (!colorValue) {
+        return null;
+      }
+      return JSON.parse(JSON.stringify(colorValue));
+    }
+
+    function clearPronunciationHighlight() {
+      if (!highlightedNodeId) {
+        return;
+      }
+      const existingNode = nodes.get(highlightedNodeId);
+      if (existingNode) {
+        nodes.update({ id: highlightedNodeId, color: highlightedNodeColor });
+      }
+      highlightedNodeId = null;
+      highlightedNodeColor = null;
+    }
+
+    function highlightNodeForPronunciation(nodeId) {
+      clearPronunciationHighlight();
+      const node = nodes.get(nodeId);
+      if (!node) {
+        return;
+      }
+      highlightedNodeId = nodeId;
+      highlightedNodeColor = cloneColor(node.color);
+      nodes.update({
+        id: nodeId,
+        color: {
+          background: '#bbf7d0',
+          border: '#16a34a',
+          highlight: { background: '#86efac', border: '#15803d' }
+        }
+      });
+    }
+
+    function getClockwiseTargets() {
+      const allNodes = nodes.get();
+      const outerNodes = allNodes.filter((node) => node.id !== activeKana && Number.isFinite(node.x) && Number.isFinite(node.y));
+      const withAngles = outerNodes.map((node) => {
+        const theta = Math.atan2(node.y - centerY, node.x - centerX);
+        const clockwiseFromTop = (Math.PI / 2 - theta + 2 * Math.PI) % (2 * Math.PI);
+        return { id: node.id, angle: clockwiseFromTop };
+      });
+      withAngles.sort((a, b) => a.angle - b.angle);
+      return withAngles.map((item) => item.id);
+    }
+
+    function stopAutoPronounce() {
+      autoPronounceRunning = false;
+      autoPronounceToken += 1;
+      speechToken += 1;
+      autoPronounceIndex = 0;
+      if (autoPronounceTimerId) {
+        clearTimeout(autoPronounceTimerId);
+        autoPronounceTimerId = null;
+      }
+      clearPronunciationHighlight();
+      if (synth) {
+        synth.cancel();
+      }
+      updateAutoPronounceButton();
+    }
+
+    function runAutoPronounceStep(token) {
+      if (!autoPronounceRunning || token !== autoPronounceToken) {
+        return;
+      }
+
+      const clockwiseTargets = getClockwiseTargets();
+      if (!clockwiseTargets.length) {
+        stopAutoPronounce();
+        return;
+      }
+
+      const word = clockwiseTargets[autoPronounceIndex % clockwiseTargets.length];
+      autoPronounceIndex = (autoPronounceIndex + 1) % clockwiseTargets.length;
+      speakText(word, 'ja-JP', () => {
+        if (!autoPronounceRunning || token !== autoPronounceToken) {
+          return;
+        }
+        autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), 1000);
+      });
+    }
+
+    function startAutoPronounce() {
+      if (autoPronounceRunning) {
+        return;
+      }
+      autoPronounceRunning = true;
+      autoPronounceIndex = 0;
+      autoPronounceToken += 1;
+      updateAutoPronounceButton();
+      runAutoPronounceStep(autoPronounceToken);
+    }
+
+    function toggleAutoPronounce() {
+      if (autoPronounceRunning) {
+        stopAutoPronounce();
+        return;
+      }
+      startAutoPronounce();
+    }
+
+    function speakText(text, lang = 'ja-JP', onComplete = null) {
+      if (!('speechSynthesis' in window)) {
+        alert('Speech synthesis is not supported in this browser.');
+        if (typeof onComplete === 'function') {
+          onComplete();
+        }
+        return;
+      }
+      prewarmSpeech();
       const utterance = new SpeechSynthesisUtterance(text);
+      const currentSpeechToken = ++speechToken;
+      let settled = false;
+      const settleSpeech = () => {
+        if (settled || currentSpeechToken !== speechToken) {
+          return;
+        }
+        settled = true;
+        clearPronunciationHighlight();
+        if (typeof onComplete === 'function') {
+          onComplete();
+        }
+      };
       utterance.lang = lang;
       utterance.rate = 0.9;
       utterance.pitch = 1.05;
-      const voices = window.speechSynthesis.getVoices();
-      const japaneseVoice = voices.find((voice) => voice.lang.startsWith('ja')) || voices[0];
-      if (japaneseVoice) {
-        utterance.voice = japaneseVoice;
+      utterance.onend = settleSpeech;
+      utterance.onerror = settleSpeech;
+      if (preferredJapaneseVoice) {
+        utterance.voice = preferredJapaneseVoice;
       }
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utterance);
+      highlightNodeForPronunciation(text);
+      synth.cancel();
+      synth.speak(utterance);
     }
 
-    function speakPronunciation(selectedKey) {
-      const centerVowel = vowelMap[selectedKey];
-      speakText(centerVowel);
-    }
+    function buildGraph(selectedKana, selectedRoman) {
+      const childRelations = relationships.filter((rel) => rel.source === selectedKana);
+      const childTargets = childRelations.map((rel) => rel.target);
+      const nodeList = [];
+      const edgeList = [];
+      const selectedletter = getletterFromRoman(selectedRoman);
+      const centerColor = colorMap[letterMap[selectedletter]] || '#dbeafe';
 
-    function shuffle(items) {
-      const arr = items.slice();
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
+      const centerLabel = `${selectedKana}
+(${selectedRoman.toLowerCase()})`;
 
-    function showEdgeLabel(text, x, y) {
-      edgeLabel.textContent = text;
-      edgeLabel.style.display = 'block';
-      edgeLabel.style.left = Math.min(Math.max(x + 12, 8), window.innerWidth - 240) + 'px';
-      edgeLabel.style.top = Math.min(Math.max(y + 8, 8), window.innerHeight - 60) + 'px';
-    }
-
-    function hideEdgeLabel() {
-      edgeLabel.style.display = 'none';
-    }
-
-    function buildGraph(selectedKey) {
-      const centerVowel = vowelMap[selectedKey];
-      const relations = relationships.filter((rel) => rel.source === centerVowel);
-      const centerX = 500;
-      const centerY = 340;
-      const radius = 240;
-      const childCount = Math.max(relations.length, 1);
-      const shuffledIndices = shuffle([...Array(childCount).keys()]);
-      const centerLabel = centerVowel + ' / ' + selectedKey.toUpperCase();
-
-      svg.innerHTML = '';
-
-      relations.forEach((rel, index) => {
-        const positionIndex = shuffledIndices[index];
-        const angle = ((positionIndex / childCount) * 2 * Math.PI) - (Math.PI / 2);
-        const nodeX = centerX + Math.cos(angle) * radius;
-        const nodeY = centerY + Math.sin(angle) * radius;
-
-        const line = document.createElementNS(ns, 'line');
-        line.setAttribute('x1', centerX);
-        line.setAttribute('y1', centerY);
-        line.setAttribute('x2', nodeX);
-        line.setAttribute('y2', nodeY);
-        line.setAttribute('class', 'edge');
-        line.addEventListener('mouseenter', (event) => showEdgeLabel(rel.label, event.clientX, event.clientY));
-        line.addEventListener('mousemove', (event) => showEdgeLabel(rel.label, event.clientX, event.clientY));
-        line.addEventListener('mouseleave', hideEdgeLabel);
-        line.addEventListener('click', () => speakText(rel.target));
-        svg.appendChild(line);
-
-        const group = document.createElementNS(ns, 'g');
-        group.setAttribute('class', 'node');
-        group.setAttribute('data-word', rel.target);
-        group.addEventListener('click', () => speakText(rel.target));
-
-        const box = document.createElementNS(ns, 'rect');
-        box.setAttribute('x', nodeX - 92);
-        box.setAttribute('y', nodeY - 24);
-        box.setAttribute('width', 184);
-        box.setAttribute('height', 48);
-        box.setAttribute('rx', 14);
-        box.setAttribute('fill', '#f8fafc');
-        box.setAttribute('stroke', '#94a3b8');
-        box.setAttribute('stroke-width', 2);
-        group.appendChild(box);
-
-        const label = document.createElementNS(ns, 'text');
-        label.setAttribute('class', 'node-label');
-        label.setAttribute('x', nodeX);
-        label.setAttribute('y', nodeY + 2);
-        label.textContent = rel.target;
-        group.appendChild(label);
-        svg.appendChild(group);
+      nodeList.push({
+        id: selectedKana,
+        label: centerLabel,
+        title: centerLabel,
+        x: centerX,
+        y: centerY,
+        shape: 'box',
+        margin: { top: 10, right: 14, bottom: 10, left: 14 },
+        widthConstraint: { minimum: 120 },
+        fixed: { x: true, y: true },
+        color: {
+          background: centerColor,
+          border: '#111827',
+          highlight: { background: '#fde68a', border: '#92400e' }
+        },
+        font: { size: 20, face: 'Yu Gothic', color: '#111827', align: 'center', vadjust: 0, multi: false },
+        labelHighlightBold: false
       });
 
-      const centerGroup = document.createElementNS(ns, 'g');
-      const centerNode = document.createElementNS(ns, 'circle');
-      centerNode.setAttribute('cx', centerX);
-      centerNode.setAttribute('cy', centerY);
-      centerNode.setAttribute('r', 58);
-      centerNode.setAttribute('fill', colorMap[centerVowel] || '#dbeafe');
-      centerNode.setAttribute('stroke', '#111827');
-      centerNode.setAttribute('stroke-width', 2);
-      centerGroup.appendChild(centerNode);
+      const childCount = childTargets.length || 1;
+      const radius = 220;
+      const order = [...Array(childTargets.length).keys()].sort(() => Math.random() - 0.5);
+      childTargets.forEach((target, index) => {
+        const shuffledIndex = order[index];
+        const angle = ((shuffledIndex / childCount) * 2 * Math.PI) - (Math.PI / 2);
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
+        nodeList.push({
+          id: target,
+          label: target,
+          title: target,
+          x,
+          y,
+          shape: 'box',
+          size: 18,
+          fixed: { x: true, y: true },
+          color: {
+            background: '#f8fafc',
+            border: '#94a3b8',
+            highlight: { background: '#fde68a', border: '#92400e' }
+          },
+          font: { size: 16, face: 'Yu Gothic', color: '#111827' }
+        });
+      });
 
-      const centerText = document.createElementNS(ns, 'text');
-      centerText.setAttribute('class', 'center-label');
-      centerText.setAttribute('x', centerX);
-      centerText.setAttribute('y', centerY + 2);
-      centerText.textContent = centerLabel;
-      centerGroup.appendChild(centerText);
-      svg.appendChild(centerGroup);
+      childRelations.forEach((rel) => {
+        edgeList.push({
+          from: selectedKana,
+          to: rel.target,
+          label: '',
+          title: `${selectedKana} → ${rel.target}: ${rel.label}`,
+          arrows: 'to',
+          font: { size: 12, face: 'Yu Gothic', color: '#374151', align: 'middle' },
+          color: { color: '#64748b', highlight: '#ef4444' },
+          smooth: { type: 'dynamic' }
+        });
+      });
+
+      clearPronunciationHighlight();
+      nodes.clear();
+      edges.clear();
+      nodes.add(nodeList);
+      edges.add(edgeList);
     }
 
+    const options = {
+      interaction: { hover: true, navigationButtons: true, keyboard: true },
+      physics: { enabled: false },
+      nodes: {
+        shapeProperties: { interpolation: false },
+        font: { multi: true }
+      },
+      edges: {
+        arrows: { to: { enabled: true, scaleFactor: 0.8 } },
+        smooth: { type: 'dynamic' },
+        font: { align: 'middle' }
+      }
+    };
+
     function initializeGraph() {
-      select.addEventListener('change', (event) => buildGraph(event.target.value));
-      pronounceButton.addEventListener('click', () => speakPronunciation(select.value));
-      buildGraph(select.value);
+      const network = new vis.Network(container, { nodes, edges }, options);
+      const recenterOnCenterNode = () => {
+        const currentScale = network.getScale();
+        network.moveTo({
+          position: { x: centerX, y: centerY },
+          scale: currentScale,
+          animation: false
+        });
+      };
+      const refreshLayout = () => {
+        if (container) {
+          container.style.height = window.innerHeight < 700 ? '60vh' : '62vh';
+        }
+        network.redraw();
+        network.fit({ animation: false });
+        recenterOnCenterNode();
+      };
+
+      network.on('click', (params) => {
+        if (params.nodes.length > 0) {
+          const clickedNodeId = params.nodes[0];
+          if (clickedNodeId && clickedNodeId !== activeKana) {
+            speakText(clickedNodeId);
+          }
+        }
+      });
+      if (autoPronounceButton) {
+        autoPronounceButton.addEventListener('click', toggleAutoPronounce);
+      }
+      window.addEventListener('resize', refreshLayout);
+      window.addEventListener('orientationchange', refreshLayout);
+      renderGojuonTable();
+      updateAutoPronounceButton();
+      recenterOnCenterNode();
+      setTimeout(refreshLayout, 50);
+      setTimeout(refreshLayout, 250);
     }
 
     if (document.readyState === 'loading') {
