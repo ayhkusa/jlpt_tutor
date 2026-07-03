@@ -107,6 +107,29 @@
       align-self: center;
       margin-top: 0.25rem;
     }
+    .pause-control {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: #374151;
+    }
+    .pause-control input[type="range"] {
+      width: 120px;
+      cursor: pointer;
+      accent-color: #2563eb;
+      padding: 0;
+      border: none;
+      background: transparent;
+    }
+    .english-word-display {
+      min-height: 1.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2563eb;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
     .auto-pronounce-button.stop-state {
       background: #dc2626;
       border-color: #b91c1c;
@@ -255,6 +278,12 @@
       border-color: #374151;
       background: #1f2937;
     }
+    body.dark-mode .pause-control {
+      color: #d1d5db;
+    }
+    body.dark-mode .english-word-display {
+      color: #60a5fa;
+    }
   </style>
 </head>
 <body>
@@ -276,6 +305,11 @@
       </div>
       <button id="tableToggleButton" class="table-toggle-button" type="button">Hide Table</button>
       <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Start</button>
+      <div class="pause-control">
+        <label for="pauseSlider">Pause: <span id="pauseLabel">1.0</span>s</label>
+        <input type="range" id="pauseSlider" min="0.5" max="3" step="0.5" value="1" />
+      </div>
+      <div id="englishWordDisplay" class="english-word-display"></div>
       <button id="darkModeButton" class="dark-mode-button" type="button">Dark Mode</button>
     </div>
   </div>
@@ -290,6 +324,9 @@
     const gojuonTable = document.getElementById('gojuonTable');
     const tableToggleButton = document.getElementById('tableToggleButton');
     const autoPronounceButton = document.getElementById('autoPronounceButton');
+    const pauseSlider = document.getElementById('pauseSlider');
+    const pauseLabelEl = document.getElementById('pauseLabel');
+    const englishWordDisplay = document.getElementById('englishWordDisplay');
     const darkModeButton = document.getElementById('darkModeButton');
     const helpLine = document.getElementById('helpLine');
     const helpExample = document.getElementById('helpExample');
@@ -539,6 +576,9 @@
         clearTimeout(autoPronounceTimerId);
         autoPronounceTimerId = null;
       }
+      if (englishWordDisplay) {
+        englishWordDisplay.textContent = '';
+      }
       clearPronunciationHighlight();
       if (synth) {
         synth.cancel();
@@ -563,19 +603,25 @@
       const rel = relationships.find((r) => r.target === word);
       const englishLabel = rel ? rel.label : null;
 
+      if (englishWordDisplay) {
+        englishWordDisplay.textContent = englishLabel || '';
+      }
+
+      const pauseMs = Math.round(parseFloat(pauseSlider ? pauseSlider.value : 1) * 1000);
+
       const speakRepeat = (repeatCount) => {
         if (!autoPronounceRunning || token !== autoPronounceToken) {
           return;
         }
         if (repeatCount <= 0) {
-          autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), 1000);
+          autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), pauseMs);
           return;
         }
         speakText(word, 'ja-JP', () => {
           if (!autoPronounceRunning || token !== autoPronounceToken) {
             return;
           }
-          autoPronounceTimerId = setTimeout(() => speakRepeat(repeatCount - 1), 1000);
+          autoPronounceTimerId = setTimeout(() => speakRepeat(repeatCount - 1), pauseMs);
         });
       };
 
@@ -587,15 +633,11 @@
           if (!autoPronounceRunning || token !== autoPronounceToken) {
             return;
           }
-          autoPronounceTimerId = setTimeout(() => speakRepeat(2), 1000);
+          autoPronounceTimerId = setTimeout(() => speakRepeat(2), pauseMs);
         });
       };
 
-      if (englishLabel) {
-        speakText(englishLabel, 'en-US', speakFirst);
-      } else {
-        speakFirst();
-      }
+      speakFirst();
     }
 
     function startAutoPronounce() {
@@ -777,6 +819,11 @@
       });
       if (autoPronounceButton) {
         autoPronounceButton.addEventListener('click', toggleAutoPronounce);
+      }
+      if (pauseSlider && pauseLabelEl) {
+        pauseSlider.addEventListener('input', () => {
+          pauseLabelEl.textContent = parseFloat(pauseSlider.value).toFixed(1);
+        });
       }
       if (tableToggleButton) {
         tableToggleButton.addEventListener('click', toggleTableVisibility);
