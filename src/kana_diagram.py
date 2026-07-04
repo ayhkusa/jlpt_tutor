@@ -158,6 +158,26 @@ html = f"""<!DOCTYPE html>
       align-self: center;
       margin-top: 0.25rem;
     }}
+    .pause-control {{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      width: min(320px, 94vw);
+      padding: 0.35rem 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      background: #ffffff;
+      color: #1f2937;
+      font-size: 0.86rem;
+    }}
+    .pause-control label {{
+      font-weight: 600;
+    }}
+    .pause-control input[type="range"] {{
+      width: 100%;
+      accent-color: #2563eb;
+    }}
     .auto-pronounce-button.stop-state {{
       background: #dc2626;
       border-color: #b91c1c;
@@ -238,6 +258,10 @@ html = f"""<!DOCTYPE html>
       min-width: 120px;
       align-self: center;
     }}
+    .definitions-toggle-button {{
+      min-width: 150px;
+      align-self: center;
+    }}
     body.dark-mode {{
       background: #111827;
       color: #f9fafb;
@@ -288,6 +312,11 @@ html = f"""<!DOCTYPE html>
     body.dark-mode .auto-pronounce-button.stop-state:hover {{
       background: #b91c1c;
     }}
+    body.dark-mode .pause-control {{
+      border-color: #374151;
+      background: #1f2937;
+      color: #d1d5db;
+    }}
     body.dark-mode .letter-help {{
       border-color: #374151;
       background: #1f2937;
@@ -325,8 +354,13 @@ html = f"""<!DOCTYPE html>
         <div id="helpLine" class="help-line"></div>
         <div id="helpExample" class="help-example"></div>
       </div>
+      <div class="pause-control">
+        <label for="pauseSlider">Pause Between Pronunciations: <span id="pauseValue">1.0</span>s</label>
+        <input id="pauseSlider" type="range" min="0.5" max="2" step="0.5" value="1.0" />
+      </div>
       <button id="tableToggleButton" class="table-toggle-button" type="button">Hide Table</button>
       <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Start</button>
+      <button id="definitionsToggleButton" class="definitions-toggle-button" type="button">Definitions On</button>
       <button id="darkModeButton" class="dark-mode-button" type="button">Dark Mode</button>
     </div>
   </div>
@@ -341,7 +375,10 @@ html = f"""<!DOCTYPE html>
     const gojuonTable = document.getElementById('gojuonTable');
     const tableToggleButton = document.getElementById('tableToggleButton');
     const autoPronounceButton = document.getElementById('autoPronounceButton');
+    const definitionsToggleButton = document.getElementById('definitionsToggleButton');
     const darkModeButton = document.getElementById('darkModeButton');
+    const pauseSlider = document.getElementById('pauseSlider');
+    const pauseValue = document.getElementById('pauseValue');
     const helpLine = document.getElementById('helpLine');
     const helpExample = document.getElementById('helpExample');
     const nodes = new vis.DataSet();
@@ -358,9 +395,12 @@ html = f"""<!DOCTYPE html>
     let autoPronounceIndex = 0;
     let highlightedNodeId = null;
     let highlightedNodeColor = null;
+    let highlightedNodeFont = null;
     let speechToken = 0;
     let tableHidden = false;
-    let darkMode = false;
+    let darkMode = true;
+    let definitionsVisible = false;
+    let autoPronouncePauseSeconds = 1.0;
     const centerX = 500;
     const centerY = 300;
     const gojuonRows = [
@@ -503,6 +543,21 @@ html = f"""<!DOCTYPE html>
       autoPronounceButton.classList.toggle('stop-state', autoPronounceRunning);
     }}
 
+    function updatePauseDisplay() {{
+      if (pauseValue) {{
+        pauseValue.textContent = autoPronouncePauseSeconds.toFixed(1);
+      }}
+    }}
+
+    function updatePauseFromSlider() {{
+      if (!pauseSlider) {{
+        return;
+      }}
+      const parsed = Number.parseFloat(pauseSlider.value);
+      autoPronouncePauseSeconds = Number.isFinite(parsed) ? parsed : 1;
+      updatePauseDisplay();
+    }}
+
     function updateTableToggleButton() {{
       if (!tableToggleButton) {{
         return;
@@ -525,6 +580,19 @@ html = f"""<!DOCTYPE html>
       darkModeButton.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
     }}
 
+    function updateDefinitionsToggleButton() {{
+      if (!definitionsToggleButton) {{
+        return;
+      }}
+      definitionsToggleButton.textContent = definitionsVisible ? 'Definitions Off' : 'Definitions On';
+    }}
+
+    function toggleDefinitionsVisibility() {{
+      definitionsVisible = !definitionsVisible;
+      updateDefinitionsToggleButton();
+      buildGraph(activeKana, activeRoman);
+    }}
+
     function toggleDarkMode() {{
       darkMode = !darkMode;
       document.body.classList.toggle('dark-mode', darkMode);
@@ -545,10 +613,11 @@ html = f"""<!DOCTYPE html>
       }}
       const existingNode = nodes.get(highlightedNodeId);
       if (existingNode) {{
-        nodes.update({{ id: highlightedNodeId, color: highlightedNodeColor }});
+        nodes.update({{ id: highlightedNodeId, color: highlightedNodeColor, font: highlightedNodeFont }});
       }}
       highlightedNodeId = null;
       highlightedNodeColor = null;
+      highlightedNodeFont = null;
     }}
 
     function highlightNodeForPronunciation(nodeId) {{
@@ -559,19 +628,21 @@ html = f"""<!DOCTYPE html>
       }}
       highlightedNodeId = nodeId;
       highlightedNodeColor = cloneColor(node.color);
+      highlightedNodeFont = cloneColor(node.font);
       nodes.update({{
         id: nodeId,
         color: {{
-          background: '#bbf7d0',
-          border: '#16a34a',
-          highlight: {{ background: '#86efac', border: '#15803d' }}
-        }}
+          background: '#1e3a8a',
+          border: '#1e40af',
+          highlight: {{ background: '#1d4ed8', border: '#1e3a8a' }}
+        }},
+        font: {{ ...node.font, color: '#ffffff' }}
       }});
     }}
 
     function getClockwiseTargets() {{
       const allNodes = nodes.get();
-      const outerNodes = allNodes.filter((node) => node.id !== activeKana && Number.isFinite(node.x) && Number.isFinite(node.y));
+      const outerNodes = allNodes.filter((node) => node.nodeType === 'word' && Number.isFinite(node.x) && Number.isFinite(node.y));
       const withAngles = outerNodes.map((node) => {{
         const theta = Math.atan2(node.y - centerY, node.x - centerX);
         const clockwiseFromTop = (Math.PI / 2 - theta + 2 * Math.PI) % (2 * Math.PI);
@@ -614,7 +685,7 @@ html = f"""<!DOCTYPE html>
         if (!autoPronounceRunning || token !== autoPronounceToken) {{
           return;
         }}
-        autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), 1000);
+        autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), autoPronouncePauseSeconds * 1000);
       }});
     }}
 
@@ -692,6 +763,7 @@ html = f"""<!DOCTYPE html>
         id: selectedKana,
         label: centerLabel,
         title: centerLabel,
+        nodeType: 'center',
         x: centerX,
         y: centerY,
         shape: 'box',
@@ -710,15 +782,18 @@ html = f"""<!DOCTYPE html>
       const childCount = childTargets.length || 1;
       const radius = 220;
       const order = [...Array(childTargets.length).keys()].sort(() => Math.random() - 0.5);
+      const childPositionByTarget = new Map();
       childTargets.forEach((target, index) => {{
         const shuffledIndex = order[index];
         const angle = ((shuffledIndex / childCount) * 2 * Math.PI) - (Math.PI / 2);
         const x = centerX + Math.cos(angle) * radius;
         const y = centerY + Math.sin(angle) * radius;
+        childPositionByTarget.set(target, {{ x, y }});
         nodeList.push({{
           id: target,
           label: target,
           title: target,
+          nodeType: 'word',
           x,
           y,
           shape: 'box',
@@ -733,13 +808,64 @@ html = f"""<!DOCTYPE html>
         }});
       }});
 
-      childRelations.forEach((rel) => {{
+      childRelations.forEach((rel, relIndex) => {{
+        if (!definitionsVisible) {{
+          edgeList.push({{
+            from: selectedKana,
+            to: rel.target,
+            label: '',
+            title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
+            font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
+            color: {{ color: edgeColor, highlight: '#ef4444' }},
+            smooth: {{ type: 'dynamic' }}
+          }});
+          return;
+        }}
+
+        const targetPosition = childPositionByTarget.get(rel.target);
+        if (!targetPosition) {{
+          return;
+        }}
+        const dx = targetPosition.x - centerX;
+        const dy = targetPosition.y - centerY;
+        const length = Math.hypot(dx, dy) || 1;
+        const normalX = -dy / length;
+        const normalY = dx / length;
+        const defX = (centerX + targetPosition.x) / 2 + normalX * 22;
+        const defY = (centerY + targetPosition.y) / 2 + normalY * 22;
+        const definitionNodeId = `def_${{selectedKana}}_${{relIndex}}_${{rel.target}}`;
+        nodeList.push({{
+          id: definitionNodeId,
+          label: rel.label,
+          title: rel.label,
+          nodeType: 'definition',
+          x: defX,
+          y: defY,
+          shape: 'box',
+          margin: {{ top: 6, right: 10, bottom: 6, left: 10 }},
+          fixed: {{ x: true, y: true }},
+          color: {{
+            background: darkMode ? '#0f172a' : '#eef2ff',
+            border: darkMode ? '#334155' : '#6366f1',
+            highlight: {{ background: darkMode ? '#1e293b' : '#dbeafe', border: darkMode ? '#475569' : '#4f46e5' }}
+          }},
+          font: {{ size: 16, face: '{VIS_FONT}', color: fontColor, align: 'center' }}
+        }});
+
         edgeList.push({{
           from: selectedKana,
+          to: definitionNodeId,
+          label: '',
+          title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
+          font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
+          color: {{ color: edgeColor, highlight: '#ef4444' }},
+          smooth: {{ type: 'dynamic' }}
+        }});
+        edgeList.push({{
+          from: definitionNodeId,
           to: rel.target,
           label: '',
           title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
-          arrows: 'to',
           font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
           color: {{ color: edgeColor, highlight: '#ef4444' }},
           smooth: {{ type: 'dynamic' }}
@@ -761,7 +887,6 @@ html = f"""<!DOCTYPE html>
         font: {{ multi: true }}
       }},
       edges: {{
-        arrows: {{ to: {{ enabled: true, scaleFactor: 0.8 }} }},
         smooth: {{ type: 'dynamic' }},
         font: {{ align: 'middle' }}
       }}
@@ -769,6 +894,7 @@ html = f"""<!DOCTYPE html>
 
     function initializeGraph() {{
       const network = new vis.Network(container, {{ nodes, edges }}, options);
+      document.body.classList.toggle('dark-mode', darkMode);
       const recenterOnCenterNode = () => {{
         const currentScale = network.getScale();
         network.moveTo({{
@@ -789,7 +915,8 @@ html = f"""<!DOCTYPE html>
       network.on('click', (params) => {{
         if (params.nodes.length > 0) {{
           const clickedNodeId = params.nodes[0];
-          if (clickedNodeId && clickedNodeId !== activeKana) {{
+          const clickedNode = nodes.get(clickedNodeId);
+          if (clickedNodeId && clickedNode && clickedNode.nodeType === 'word') {{
             speakText(clickedNodeId);
           }}
         }}
@@ -803,11 +930,19 @@ html = f"""<!DOCTYPE html>
       if (darkModeButton) {{
         darkModeButton.addEventListener('click', toggleDarkMode);
       }}
+      if (definitionsToggleButton) {{
+        definitionsToggleButton.addEventListener('click', toggleDefinitionsVisibility);
+      }}
+      if (pauseSlider) {{
+        pauseSlider.addEventListener('input', updatePauseFromSlider);
+      }}
       window.addEventListener('resize', refreshLayout);
       window.addEventListener('orientationchange', refreshLayout);
       renderGojuonTable();
+      updatePauseFromSlider();
       updateTableToggleButton();
       updateAutoPronounceButton();
+      updateDefinitionsToggleButton();
       updateDarkModeButton();
       recenterOnCenterNode();
       setTimeout(refreshLayout, 50);
