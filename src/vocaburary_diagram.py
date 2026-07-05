@@ -2,7 +2,8 @@ import json
 import webbrowser
 from pathlib import Path
 
-from dataset import relationships
+from gana_data import relationships as gana_relationships
+from kana_data import relationships as kana_relationships
 from pronounciationguide import pronunciation_guide
 
 # CSS font-family stack resolved by the browser; no server-side font detection needed.
@@ -29,9 +30,14 @@ letter_map = {
     "u": "ウ",
 }
 
-relationship_payload = [
+kana_relationship_payload = [
     {"source": start, "target": end, "label": meaning}
-    for start, end, meaning in relationships
+  for start, end, meaning in kana_relationships
+]
+
+gana_relationship_payload = [
+  {"source": start, "target": end, "label": meaning}
+  for start, end, meaning in gana_relationships
 ]
 
 # ----------------------------
@@ -157,6 +163,19 @@ html = f"""<!DOCTYPE html>
       min-width: 150px;
       align-self: center;
       margin-top: 0.25rem;
+    }}
+    .button-row {{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      width: min(100%, 980px);
+      padding-bottom: 0.1rem;
+    }}
+    .button-row .auto-pronounce-button {{
+      margin-top: 0;
     }}
     .pause-control {{
       display: flex;
@@ -339,8 +358,8 @@ html = f"""<!DOCTYPE html>
 </head>
 <body>
   <div class="page-header">
-    <h1>Katakana Vocabulary Tutor</h1>
-    <p>Select a character to learn 10 words using it.</p>
+    <h1 id="pageTitle">Hiragana Vocabulary Tutor</h1>
+    <p id="pageSubtitle">Select a character to learn 10 words using it.</p>
   </div>
   <div class=\"controls\">
     <div class=\"control-panel\">
@@ -358,25 +377,34 @@ html = f"""<!DOCTYPE html>
         <label for="pauseSlider">Pause Between Pronunciations: <span id="pauseValue">1.0</span>s</label>
         <input id="pauseSlider" type="range" min="0.5" max="2" step="0.5" value="1.0" />
       </div>
-      <button id="tableToggleButton" class="table-toggle-button" type="button">Hide Table</button>
-      <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Start</button>
-      <button id="definitionsToggleButton" class="definitions-toggle-button" type="button">Definitions On</button>
-      <button id="darkModeButton" class="dark-mode-button" type="button">Dark Mode</button>
+      <div class="button-row">
+        <button id="vocabularyToggleButton" class="table-toggle-button" type="button">Switch to Kana</button>
+        <button id="tableToggleButton" class="table-toggle-button" type="button">Hide Table</button>
+        <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Auto Speak</button>
+        <button id="definitionsToggleButton" class="definitions-toggle-button" type="button">Definition On</button>
+        <button id="darkModeButton" class="dark-mode-button" type="button">Light Mode</button>
+      </div>
     </div>
   </div>
 
   <div id="mynetwork"></div>
   <script>
-    const relationships = {json.dumps(relationship_payload)};
+    const relationshipSets = {{
+      kana: {json.dumps(kana_relationship_payload)},
+      gana: {json.dumps(gana_relationship_payload)}
+    }};
     const letterMap = {json.dumps(letter_map)};
     const colorMap = {json.dumps(color_map)};
     const container = document.getElementById('mynetwork');
     const gojuonWrap = document.getElementById('gojuonWrap');
     const gojuonTable = document.getElementById('gojuonTable');
+    const vocabularyToggleButton = document.getElementById('vocabularyToggleButton');
     const tableToggleButton = document.getElementById('tableToggleButton');
     const autoPronounceButton = document.getElementById('autoPronounceButton');
     const definitionsToggleButton = document.getElementById('definitionsToggleButton');
     const darkModeButton = document.getElementById('darkModeButton');
+    const pageTitle = document.getElementById('pageTitle');
+    const pageSubtitle = document.getElementById('pageSubtitle');
     const pauseSlider = document.getElementById('pauseSlider');
     const pauseValue = document.getElementById('pauseValue');
     const helpLine = document.getElementById('helpLine');
@@ -387,7 +415,8 @@ html = f"""<!DOCTYPE html>
     const synth = window.speechSynthesis;
     let preferredJapaneseVoice = null;
     let speechPrewarmed = false;
-    let activeKana = 'ア';
+    let currentVocabulary = 'gana';
+    let activeKana = 'あ';
     let activeRoman = 'a';
     let autoPronounceRunning = false;
     let autoPronounceTimerId = null;
@@ -403,7 +432,7 @@ html = f"""<!DOCTYPE html>
     let autoPronouncePauseSeconds = 1.0;
     const centerX = 500;
     const centerY = 300;
-    const gojuonRows = [
+    const kanaGojuonRows = [
       [{{ kana: 'ア', roman: 'a' }}, {{ kana: 'イ', roman: 'i' }}, {{ kana: 'ウ', roman: 'u' }}, {{ kana: 'エ', roman: 'e' }}, {{ kana: 'オ', roman: 'o' }}],
       [{{ kana: 'カ', roman: 'ka' }}, {{ kana: 'キ', roman: 'ki' }}, {{ kana: 'ク', roman: 'ku' }}, {{ kana: 'ケ', roman: 'ke' }}, {{ kana: 'コ', roman: 'ko' }}],
       [{{ kana: 'サ', roman: 'sa' }}, {{ kana: 'シ', roman: 'shi' }}, {{ kana: 'ス', roman: 'su' }}, {{ kana: 'セ', roman: 'se' }}, {{ kana: 'ソ', roman: 'so' }}],
@@ -416,6 +445,70 @@ html = f"""<!DOCTYPE html>
       [{{ kana: 'ワ', roman: 'wa' }}, null, null, null, {{ kana: 'ヲ', roman: 'wo' }}],
       [{{ kana: 'ン', roman: 'n' }}, null, null, null, null],
     ];
+
+    const ganaGojuonRows = [
+      [{{ kana: 'あ', roman: 'a' }}, {{ kana: 'い', roman: 'i' }}, {{ kana: 'う', roman: 'u' }}, {{ kana: 'え', roman: 'e' }}, {{ kana: 'お', roman: 'o' }}],
+      [{{ kana: 'か', roman: 'ka' }}, {{ kana: 'き', roman: 'ki' }}, {{ kana: 'く', roman: 'ku' }}, {{ kana: 'け', roman: 'ke' }}, {{ kana: 'こ', roman: 'ko' }}],
+      [{{ kana: 'さ', roman: 'sa' }}, {{ kana: 'し', roman: 'shi' }}, {{ kana: 'す', roman: 'su' }}, {{ kana: 'せ', roman: 'se' }}, {{ kana: 'そ', roman: 'so' }}],
+      [{{ kana: 'た', roman: 'ta' }}, {{ kana: 'ち', roman: 'chi' }}, {{ kana: 'つ', roman: 'tsu' }}, {{ kana: 'て', roman: 'te' }}, {{ kana: 'と', roman: 'to' }}],
+      [{{ kana: 'な', roman: 'na' }}, {{ kana: 'に', roman: 'ni' }}, {{ kana: 'ぬ', roman: 'nu' }}, {{ kana: 'ね', roman: 'ne' }}, {{ kana: 'の', roman: 'no' }}],
+      [{{ kana: 'は', roman: 'ha' }}, {{ kana: 'ひ', roman: 'hi' }}, {{ kana: 'ふ', roman: 'fu' }}, {{ kana: 'へ', roman: 'he' }}, {{ kana: 'ほ', roman: 'ho' }}],
+      [{{ kana: 'ま', roman: 'ma' }}, {{ kana: 'み', roman: 'mi' }}, {{ kana: 'む', roman: 'mu' }}, {{ kana: 'め', roman: 'me' }}, {{ kana: 'も', roman: 'mo' }}],
+      [{{ kana: 'や', roman: 'ya' }}, null, {{ kana: 'ゆ', roman: 'yu' }}, null, {{ kana: 'よ', roman: 'yo' }}],
+      [{{ kana: 'ら', roman: 'ra' }}, {{ kana: 'り', roman: 'ri' }}, {{ kana: 'る', roman: 'ru' }}, {{ kana: 'れ', roman: 're' }}, {{ kana: 'ろ', roman: 'ro' }}],
+      [{{ kana: 'わ', roman: 'wa' }}, null, null, null, {{ kana: 'を', roman: 'wo' }}],
+      [{{ kana: 'ん', roman: 'n' }}, null, null, null, null],
+      [{{ kana: 'が', roman: 'ga' }}, {{ kana: 'ぎ', roman: 'gi' }}, {{ kana: 'ぐ', roman: 'gu' }}, {{ kana: 'げ', roman: 'ge' }}, null],
+    ];
+
+    const vocabularyMeta = {{
+      kana: {{
+        label: 'Kana',
+        title: 'Katakana Vocabulary Tutor',
+        subtitle: 'Select a character to learn 10 words using it.',
+        tableAria: 'Katakana gojuon table',
+        defaultKana: 'ア',
+        defaultRoman: 'a',
+        rows: kanaGojuonRows
+      }},
+      gana: {{
+        label: 'Gana',
+        title: 'Hiragana Vocabulary Tutor',
+        subtitle: 'Select a character to learn 10 words using it.',
+        tableAria: 'Hiragana gojuon table',
+        defaultKana: 'あ',
+        defaultRoman: 'a',
+        rows: ganaGojuonRows
+      }}
+    }};
+
+    function getActiveRelationships() {{
+      return relationshipSets[currentVocabulary] || [];
+    }}
+
+    function getActiveVocabularyMeta() {{
+      return vocabularyMeta[currentVocabulary] || vocabularyMeta.gana;
+    }}
+
+    function updateVocabularyToggleButton() {{
+      if (!vocabularyToggleButton) {{
+        return;
+      }}
+      vocabularyToggleButton.textContent = currentVocabulary === 'gana' ? 'Switch to Kana' : 'Switch to Gana';
+    }}
+
+    function updateVocabularyHeading() {{
+      const meta = getActiveVocabularyMeta();
+      if (pageTitle) {{
+        pageTitle.textContent = meta.title;
+      }}
+      if (pageSubtitle) {{
+        pageSubtitle.textContent = meta.subtitle;
+      }}
+      if (gojuonTable) {{
+        gojuonTable.setAttribute('aria-label', meta.tableAria);
+      }}
+    }}
 
     function getletterFromRoman(roman) {{
       if (!roman) {{
@@ -453,8 +546,10 @@ html = f"""<!DOCTYPE html>
       if (!gojuonTable) {{
         return;
       }}
+      const meta = getActiveVocabularyMeta();
+      const activeRows = meta.rows || [];
       const fragment = document.createDocumentFragment();
-      gojuonRows.forEach((row) => {{
+      activeRows.forEach((row) => {{
         const tr = document.createElement('tr');
         row.forEach((cell) => {{
           const td = document.createElement('td');
@@ -481,10 +576,17 @@ html = f"""<!DOCTYPE html>
       gojuonTable.innerHTML = '';
       gojuonTable.appendChild(fragment);
 
-      const defaultButton = gojuonTable.querySelector('.gojuon-cell[data-kana="ア"]');
+      const defaultButton = gojuonTable.querySelector(`.gojuon-cell[data-kana="${{meta.defaultKana}}"]`);
       if (defaultButton) {{
-        setSelection('ア', 'a', defaultButton);
+        setSelection(meta.defaultKana, meta.defaultRoman, defaultButton);
       }}
+    }}
+
+    function toggleVocabulary() {{
+      currentVocabulary = currentVocabulary === 'gana' ? 'kana' : 'gana';
+      updateVocabularyHeading();
+      updateVocabularyToggleButton();
+      renderGojuonTable();
     }}
 
     function refreshVoices() {{
@@ -584,7 +686,7 @@ html = f"""<!DOCTYPE html>
       if (!definitionsToggleButton) {{
         return;
       }}
-      definitionsToggleButton.textContent = definitionsVisible ? 'Definitions Off' : 'Definitions On';
+      definitionsToggleButton.textContent = definitionsVisible ? 'Definition Off' : 'Definition On';
     }}
 
     function toggleDefinitionsVisibility() {{
@@ -744,7 +846,7 @@ html = f"""<!DOCTYPE html>
     }}
 
     function buildGraph(selectedKana, selectedRoman) {{
-      const childRelations = relationships.filter((rel) => rel.source === selectedKana);
+      const childRelations = getActiveRelationships().filter((rel) => rel.source === selectedKana);
       const childTargets = childRelations.map((rel) => rel.target);
       const nodeList = [];
       const edgeList = [];
@@ -780,7 +882,7 @@ html = f"""<!DOCTYPE html>
       }});
 
       const childCount = childTargets.length || 1;
-      const radius = 220;
+      const radius = 160;
       const order = [...Array(childTargets.length).keys()].sort(() => Math.random() - 0.5);
       const childPositionByTarget = new Map();
       childTargets.forEach((target, index) => {{
@@ -798,7 +900,6 @@ html = f"""<!DOCTYPE html>
           y,
           shape: 'box',
           size: 18,
-          fixed: {{ x: true, y: true }},
           color: {{
             background: childBg,
             border: childBorder,
@@ -816,8 +917,7 @@ html = f"""<!DOCTYPE html>
             label: '',
             title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
             font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
-            color: {{ color: edgeColor, highlight: '#ef4444' }},
-            smooth: {{ type: 'dynamic' }}
+            color: {{ color: edgeColor, highlight: '#ef4444' }}
           }});
           return;
         }}
@@ -843,7 +943,6 @@ html = f"""<!DOCTYPE html>
           y: defY,
           shape: 'box',
           margin: {{ top: 6, right: 10, bottom: 6, left: 10 }},
-          fixed: {{ x: true, y: true }},
           color: {{
             background: darkMode ? '#0f172a' : '#eef2ff',
             border: darkMode ? '#334155' : '#6366f1',
@@ -858,8 +957,7 @@ html = f"""<!DOCTYPE html>
           label: '',
           title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
           font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
-          color: {{ color: edgeColor, highlight: '#ef4444' }},
-          smooth: {{ type: 'dynamic' }}
+          color: {{ color: edgeColor, highlight: '#ef4444' }}
         }});
         edgeList.push({{
           from: definitionNodeId,
@@ -867,8 +965,29 @@ html = f"""<!DOCTYPE html>
           label: '',
           title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
           font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
-          color: {{ color: edgeColor, highlight: '#ef4444' }},
-          smooth: {{ type: 'dynamic' }}
+          color: {{ color: edgeColor, highlight: '#ef4444' }}
+        }});
+      }});
+
+      const pairToIndexes = new Map();
+      edgeList.forEach((edge, index) => {{
+        const key = `${{edge.from}}->${{edge.to}}`;
+        if (!pairToIndexes.has(key)) {{
+          pairToIndexes.set(key, []);
+        }}
+        pairToIndexes.get(key).push(index);
+      }});
+
+      pairToIndexes.forEach((indexes) => {{
+        const count = indexes.length;
+        indexes.forEach((edgeIndex, idx) => {{
+          const offset = idx - (count - 1) / 2;
+          const roundness = offset === 0 ? 0.08 : Math.min(0.45, 0.12 + Math.abs(offset) * 0.1);
+          edgeList[edgeIndex].smooth = {{
+            enabled: true,
+            type: offset >= 0 ? 'curvedCW' : 'curvedCCW',
+            roundness
+          }};
         }});
       }});
 
@@ -881,13 +1000,25 @@ html = f"""<!DOCTYPE html>
 
     const options = {{
       interaction: {{ hover: true, navigationButtons: true, keyboard: true }},
-      physics: {{ enabled: false }},
+      physics: {{
+        enabled: true,
+        solver: 'barnesHut',
+        barnesHut: {{
+          gravitationalConstant: -2600,
+          springLength: 105,
+          springConstant: 0.05,
+          damping: 0.14,
+          avoidOverlap: 1
+        }},
+        stabilization: {{ iterations: 300, fit: true }}
+      }},
       nodes: {{
         shapeProperties: {{ interpolation: false }},
         font: {{ multi: true }}
       }},
       edges: {{
-        smooth: {{ type: 'dynamic' }},
+        length: 95,
+        smooth: false,
         font: {{ align: 'middle' }}
       }}
     }};
@@ -924,6 +1055,9 @@ html = f"""<!DOCTYPE html>
       if (autoPronounceButton) {{
         autoPronounceButton.addEventListener('click', toggleAutoPronounce);
       }}
+      if (vocabularyToggleButton) {{
+        vocabularyToggleButton.addEventListener('click', toggleVocabulary);
+      }}
       if (tableToggleButton) {{
         tableToggleButton.addEventListener('click', toggleTableVisibility);
       }}
@@ -940,6 +1074,8 @@ html = f"""<!DOCTYPE html>
       window.addEventListener('orientationchange', refreshLayout);
       renderGojuonTable();
       updatePauseFromSlider();
+      updateVocabularyHeading();
+      updateVocabularyToggleButton();
       updateTableToggleButton();
       updateAutoPronounceButton();
       updateDefinitionsToggleButton();
