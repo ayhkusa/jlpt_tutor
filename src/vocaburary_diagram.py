@@ -3,8 +3,9 @@ import webbrowser
 from pathlib import Path
 
 from gana_data import relationships as gana_relationships
+from gana_guide import pronunciation_guide as gana_pronunciation_guide
 from kana_data import relationships as kana_relationships
-from pronounciationguide import pronunciation_guide
+from kana_guide import pronunciation_guide as kana_pronunciation_guide
 
 # CSS font-family stack resolved by the browser; no server-side font detection needed.
 JP_FONT = "Noto Sans CJK JP, Yu Gothic, Meiryo, MS Gothic, Hiragino Sans, sans-serif"
@@ -30,13 +31,113 @@ letter_map = {
     "u": "ウ",
 }
 
+BASE_ROMAJI = {
+  "あ": "a", "い": "i", "う": "u", "え": "e", "お": "o",
+  "か": "ka", "き": "ki", "く": "ku", "け": "ke", "こ": "ko",
+  "さ": "sa", "し": "shi", "す": "su", "せ": "se", "そ": "so",
+  "た": "ta", "ち": "chi", "つ": "tsu", "て": "te", "と": "to",
+  "な": "na", "に": "ni", "ぬ": "nu", "ね": "ne", "の": "no",
+  "は": "ha", "ひ": "hi", "ふ": "fu", "へ": "he", "ほ": "ho",
+  "ま": "ma", "み": "mi", "む": "mu", "め": "me", "も": "mo",
+  "や": "ya", "ゆ": "yu", "よ": "yo",
+  "ら": "ra", "り": "ri", "る": "ru", "れ": "re", "ろ": "ro",
+  "わ": "wa", "を": "o", "ん": "n",
+  "が": "ga", "ぎ": "gi", "ぐ": "gu", "げ": "ge", "ご": "go",
+  "ざ": "za", "じ": "ji", "ず": "zu", "ぜ": "ze", "ぞ": "zo",
+  "だ": "da", "ぢ": "ji", "づ": "zu", "で": "de", "ど": "do",
+  "ば": "ba", "び": "bi", "ぶ": "bu", "べ": "be", "ぼ": "bo",
+  "ぱ": "pa", "ぴ": "pi", "ぷ": "pu", "ぺ": "pe", "ぽ": "po",
+  "ゔ": "vu",
+  "ぁ": "a", "ぃ": "i", "ぅ": "u", "ぇ": "e", "ぉ": "o",
+}
+
+DIGRAPH_ROMAJI = {
+  "きゃ": "kya", "きゅ": "kyu", "きょ": "kyo",
+  "ぎゃ": "gya", "ぎゅ": "gyu", "ぎょ": "gyo",
+  "しゃ": "sha", "しゅ": "shu", "しょ": "sho",
+  "じゃ": "ja", "じゅ": "ju", "じょ": "jo",
+  "ちゃ": "cha", "ちゅ": "chu", "ちょ": "cho",
+  "にゃ": "nya", "にゅ": "nyu", "にょ": "nyo",
+  "ひゃ": "hya", "ひゅ": "hyu", "ひょ": "hyo",
+  "びゃ": "bya", "びゅ": "byu", "びょ": "byo",
+  "ぴゃ": "pya", "ぴゅ": "pyu", "ぴょ": "pyo",
+  "みゃ": "mya", "みゅ": "myu", "みょ": "myo",
+  "りゃ": "rya", "りゅ": "ryu", "りょ": "ryo",
+  "ふぁ": "fa", "ふぃ": "fi", "ふぇ": "fe", "ふぉ": "fo", "ふゅ": "fyu",
+  "ゔぁ": "va", "ゔぃ": "vi", "ゔぇ": "ve", "ゔぉ": "vo", "ゔゅ": "vyu",
+  "てぃ": "ti", "でぃ": "di", "とぅ": "tu", "どぅ": "du",
+  "うぃ": "wi", "うぇ": "we", "うぉ": "wo",
+  "しぇ": "she", "じぇ": "je", "ちぇ": "che",
+}
+
+
+def to_hiragana(text: str) -> str:
+    chars = []
+    for char in text:
+        code = ord(char)
+        if 0x30A1 <= code <= 0x30F6:
+            chars.append(chr(code - 0x60))
+        else:
+            chars.append(char)
+    return "".join(chars)
+
+
+def last_vowel(roman: str) -> str:
+    for char in reversed(roman):
+        if char in "aeiou":
+            return char
+    return ""
+
+
+def romanize_kana(text: str) -> str:
+    normalized = to_hiragana(text)
+    parts = []
+    index = 0
+    while index < len(normalized):
+        char = normalized[index]
+
+        if char == "ー":
+            if parts:
+                vowel = last_vowel(parts[-1])
+                if vowel:
+                    parts[-1] = parts[-1] + vowel
+            index += 1
+            continue
+
+        if char == "っ":
+            next_roman = ""
+            if index + 2 <= len(normalized):
+                next_pair = normalized[index + 1:index + 3]
+                next_roman = DIGRAPH_ROMAJI.get(next_pair, "")
+            if not next_roman and index + 1 < len(normalized):
+                next_roman = BASE_ROMAJI.get(normalized[index + 1], "")
+            if next_roman:
+                parts.append(next_roman[0])
+            index += 1
+            continue
+
+        pair = normalized[index:index + 2]
+        if pair in DIGRAPH_ROMAJI:
+            parts.append(DIGRAPH_ROMAJI[pair])
+            index += 2
+            continue
+
+        base = BASE_ROMAJI.get(char)
+        if base:
+            parts.append(base)
+        else:
+            parts.append(char)
+        index += 1
+
+    return "".join(parts)
+
 kana_relationship_payload = [
-    {"source": start, "target": end, "label": meaning}
+  {"source": start, "target": end, "label": meaning, "phonetic": romanize_kana(end)}
   for start, end, meaning in kana_relationships
 ]
 
 gana_relationship_payload = [
-  {"source": start, "target": end, "label": meaning}
+  {"source": start, "target": end, "label": meaning, "phonetic": romanize_kana(end)}
   for start, end, meaning in gana_relationships
 ]
 
@@ -363,6 +464,13 @@ html = f"""<!DOCTYPE html>
   </div>
   <div class=\"controls\">
     <div class=\"control-panel\">
+      <div class="button-row">
+        <button id="vocabularyToggleButton" class="table-toggle-button" type="button">Switch to Kana</button>
+        <button id="tableToggleButton" class="table-toggle-button" type="button">Hide Table</button>
+        <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Auto Speak</button>
+        <button id="definitionsToggleButton" class="definitions-toggle-button" type="button">Definition On</button>
+        <button id="darkModeButton" class="dark-mode-button" type="button">Light Mode</button>
+      </div>
       <div class=\"control-inputs\">
         <div id="gojuonWrap" class="gojuon-wrap">
           <table id="gojuonTable" class="gojuon-table" aria-label="Katakana gojuon table"></table>
@@ -376,13 +484,6 @@ html = f"""<!DOCTYPE html>
       <div class="pause-control">
         <label for="pauseSlider">Pause Between Pronunciations: <span id="pauseValue">1.0</span>s</label>
         <input id="pauseSlider" type="range" min="0.5" max="2" step="0.5" value="1.0" />
-      </div>
-      <div class="button-row">
-        <button id="vocabularyToggleButton" class="table-toggle-button" type="button">Switch to Kana</button>
-        <button id="tableToggleButton" class="table-toggle-button" type="button">Hide Table</button>
-        <button id="autoPronounceButton" class="auto-pronounce-button" type="button">Auto Speak</button>
-        <button id="definitionsToggleButton" class="definitions-toggle-button" type="button">Definition On</button>
-        <button id="darkModeButton" class="dark-mode-button" type="button">Light Mode</button>
       </div>
     </div>
   </div>
@@ -411,7 +512,10 @@ html = f"""<!DOCTYPE html>
     const helpExample = document.getElementById('helpExample');
     const nodes = new vis.DataSet();
     const edges = new vis.DataSet();
-    const pronunciationGuide = {json.dumps(pronunciation_guide)};
+    const pronunciationGuides = {{
+      kana: {json.dumps(kana_pronunciation_guide)},
+      gana: {json.dumps(gana_pronunciation_guide)}
+    }};
     const synth = window.speechSynthesis;
     let preferredJapaneseVoice = null;
     let speechPrewarmed = false;
@@ -425,6 +529,8 @@ html = f"""<!DOCTYPE html>
     let highlightedNodeId = null;
     let highlightedNodeColor = null;
     let highlightedNodeFont = null;
+    let graphNetwork = null;
+    let wakeLockSentinel = null;
     let speechToken = 0;
     let tableHidden = false;
     let darkMode = true;
@@ -490,6 +596,10 @@ html = f"""<!DOCTYPE html>
       return vocabularyMeta[currentVocabulary] || vocabularyMeta.gana;
     }}
 
+    function getActivePronunciationGuide() {{
+      return pronunciationGuides[currentVocabulary] || pronunciationGuides.gana;
+    }}
+
     function updateVocabularyToggleButton() {{
       if (!vocabularyToggleButton) {{
         return;
@@ -530,7 +640,7 @@ html = f"""<!DOCTYPE html>
         buttonElement.classList.add('active');
       }}
       if (shouldSpeak) {{
-        speakText(kana);
+        speakText(kana, 'ja-JP', null, `center_${{kana}}`);
       }}
       if (autoPronounceRunning) {{
         autoPronounceToken += 1;
@@ -627,7 +737,8 @@ html = f"""<!DOCTYPE html>
     }}
 
     function updatePronunciationHelp(selectedRoman) {{
-      const info = pronunciationGuide[selectedRoman];
+      const activeGuide = getActivePronunciationGuide();
+      const info = activeGuide[selectedRoman];
       if (!info) {{
         helpLine.textContent = '';
         helpExample.textContent = '';
@@ -722,6 +833,12 @@ html = f"""<!DOCTYPE html>
       highlightedNodeFont = null;
     }}
 
+    function clearNetworkSelection() {{
+      if (graphNetwork) {{
+        graphNetwork.unselectAll();
+      }}
+    }}
+
     function highlightNodeForPronunciation(nodeId) {{
       clearPronunciationHighlight();
       const node = nodes.get(nodeId);
@@ -754,6 +871,32 @@ html = f"""<!DOCTYPE html>
       return withAngles.map((item) => item.id);
     }}
 
+    async function requestWakeLock() {{
+      if (!autoPronounceRunning || wakeLockSentinel || !('wakeLock' in navigator)) {{
+        return;
+      }}
+      try {{
+        wakeLockSentinel = await navigator.wakeLock.request('screen');
+        wakeLockSentinel.addEventListener('release', () => {{
+          wakeLockSentinel = null;
+        }});
+      }} catch (error) {{
+        wakeLockSentinel = null;
+      }}
+    }}
+
+    async function releaseWakeLock() {{
+      if (!wakeLockSentinel) {{
+        return;
+      }}
+      try {{
+        await wakeLockSentinel.release();
+      }} catch (error) {{
+        // Ignore release failures.
+      }}
+      wakeLockSentinel = null;
+    }}
+
     function stopAutoPronounce() {{
       autoPronounceRunning = false;
       autoPronounceToken += 1;
@@ -764,9 +907,11 @@ html = f"""<!DOCTYPE html>
         autoPronounceTimerId = null;
       }}
       clearPronunciationHighlight();
+      clearNetworkSelection();
       if (synth) {{
         synth.cancel();
       }}
+      releaseWakeLock();
       updateAutoPronounceButton();
     }}
 
@@ -781,14 +926,16 @@ html = f"""<!DOCTYPE html>
         return;
       }}
 
-      const word = clockwiseTargets[autoPronounceIndex % clockwiseTargets.length];
+      const wordNodeId = clockwiseTargets[autoPronounceIndex % clockwiseTargets.length];
       autoPronounceIndex = (autoPronounceIndex + 1) % clockwiseTargets.length;
-      speakText(word, 'ja-JP', () => {{
+      const wordNode = nodes.get(wordNodeId);
+      const wordText = wordNode && typeof wordNode.label === 'string' ? wordNode.label : wordNodeId;
+      speakText(wordText, 'ja-JP', () => {{
         if (!autoPronounceRunning || token !== autoPronounceToken) {{
           return;
         }}
         autoPronounceTimerId = setTimeout(() => runAutoPronounceStep(token), autoPronouncePauseSeconds * 1000);
-      }});
+      }}, wordNodeId);
     }}
 
     function startAutoPronounce() {{
@@ -798,6 +945,7 @@ html = f"""<!DOCTYPE html>
       autoPronounceRunning = true;
       autoPronounceIndex = 0;
       autoPronounceToken += 1;
+      requestWakeLock();
       updateAutoPronounceButton();
       runAutoPronounceStep(autoPronounceToken);
     }}
@@ -810,7 +958,7 @@ html = f"""<!DOCTYPE html>
       startAutoPronounce();
     }}
 
-    function speakText(text, lang = 'ja-JP', onComplete = null) {{
+    function speakText(text, lang = 'ja-JP', onComplete = null, highlightNodeId = null) {{
       if (!('speechSynthesis' in window)) {{
         alert('Speech synthesis is not supported in this browser.');
         if (typeof onComplete === 'function') {{
@@ -828,6 +976,7 @@ html = f"""<!DOCTYPE html>
         }}
         settled = true;
         clearPronunciationHighlight();
+        clearNetworkSelection();
         if (typeof onComplete === 'function') {{
           onComplete();
         }}
@@ -840,7 +989,9 @@ html = f"""<!DOCTYPE html>
       if (preferredJapaneseVoice) {{
         utterance.voice = preferredJapaneseVoice;
       }}
-      highlightNodeForPronunciation(text);
+      clearNetworkSelection();
+      const targetHighlightId = highlightNodeId || text;
+      highlightNodeForPronunciation(targetHighlightId);
       synth.cancel();
       synth.speak(utterance);
     }}
@@ -850,6 +1001,8 @@ html = f"""<!DOCTYPE html>
       const childTargets = childRelations.map((rel) => rel.target);
       const nodeList = [];
       const edgeList = [];
+      const centerNodeId = `center_${{selectedKana}}`;
+      const wordNodeIdByTarget = new Map();
       const selectedletter = getletterFromRoman(selectedRoman);
       const centerColor = darkMode ? '#1e3a5f' : (colorMap[letterMap[selectedletter]] || '#dbeafe');
       const fontColor = darkMode ? '#f9fafb' : '#111827';
@@ -862,7 +1015,7 @@ html = f"""<!DOCTYPE html>
       const centerLabel = `${{selectedKana}}\n(${{selectedRoman.toLowerCase()}})`;
 
       nodeList.push({{
-        id: selectedKana,
+        id: centerNodeId,
         label: centerLabel,
         title: centerLabel,
         nodeType: 'center',
@@ -886,18 +1039,23 @@ html = f"""<!DOCTYPE html>
       const order = [...Array(childTargets.length).keys()].sort(() => Math.random() - 0.5);
       const childPositionByTarget = new Map();
       childTargets.forEach((target, index) => {{
+        const relation = childRelations.find((rel) => rel.target === target);
+        const phoneticLine = relation && relation.phonetic ? `\nPhonetic: ${{relation.phonetic}}` : '';
         const shuffledIndex = order[index];
         const angle = ((shuffledIndex / childCount) * 2 * Math.PI) - (Math.PI / 2);
         const x = centerX + Math.cos(angle) * radius;
         const y = centerY + Math.sin(angle) * radius;
+        const wordNodeId = `word_${{selectedKana}}_${{target}}`;
+        wordNodeIdByTarget.set(target, wordNodeId);
         childPositionByTarget.set(target, {{ x, y }});
         nodeList.push({{
-          id: target,
+          id: wordNodeId,
           label: target,
-          title: target,
+          title: `${{target}}${{phoneticLine}}`,
           nodeType: 'word',
           x,
           y,
+          fixed: {{ x: true, y: true }},
           shape: 'box',
           size: 18,
           color: {{
@@ -911,9 +1069,13 @@ html = f"""<!DOCTYPE html>
 
       childRelations.forEach((rel, relIndex) => {{
         if (!definitionsVisible) {{
+          const targetNodeId = wordNodeIdByTarget.get(rel.target);
+          if (!targetNodeId) {{
+            return;
+          }}
           edgeList.push({{
-            from: selectedKana,
-            to: rel.target,
+            from: centerNodeId,
+            to: targetNodeId,
             label: '',
             title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
             font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
@@ -923,16 +1085,24 @@ html = f"""<!DOCTYPE html>
         }}
 
         const targetPosition = childPositionByTarget.get(rel.target);
-        if (!targetPosition) {{
+        const targetNodeId = wordNodeIdByTarget.get(rel.target);
+        if (!targetPosition || !targetNodeId) {{
           return;
         }}
         const dx = targetPosition.x - centerX;
         const dy = targetPosition.y - centerY;
         const length = Math.hypot(dx, dy) || 1;
-        const normalX = -dy / length;
-        const normalY = dx / length;
-        const defX = (centerX + targetPosition.x) / 2 + normalX * 22;
-        const defY = (centerY + targetPosition.y) / 2 + normalY * 22;
+        const radialX = dx / length;
+        const radialY = dy / length;
+        const tangentX = -radialY;
+        const tangentY = radialX;
+        const sideOffset = relIndex % 2 === 0 ? 10 : -10;
+        const estimatedWordHalfSize = 26;
+        const estimatedDefinitionHalfWidth = Math.max(54, rel.label.length * 4.2);
+        const minimumSeparation = estimatedWordHalfSize + estimatedDefinitionHalfWidth + 16;
+        const radialOffset = Math.max(76, minimumSeparation);
+        const defX = targetPosition.x + radialX * radialOffset + tangentX * sideOffset;
+        const defY = targetPosition.y + radialY * radialOffset + tangentY * sideOffset;
         const definitionNodeId = `def_${{selectedKana}}_${{relIndex}}_${{rel.target}}`;
         nodeList.push({{
           id: definitionNodeId,
@@ -941,6 +1111,7 @@ html = f"""<!DOCTYPE html>
           nodeType: 'definition',
           x: defX,
           y: defY,
+          fixed: {{ x: true, y: true }},
           shape: 'box',
           margin: {{ top: 6, right: 10, bottom: 6, left: 10 }},
           color: {{
@@ -952,18 +1123,19 @@ html = f"""<!DOCTYPE html>
         }});
 
         edgeList.push({{
-          from: selectedKana,
-          to: definitionNodeId,
+          from: centerNodeId,
+          to: targetNodeId,
           label: '',
           title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
           font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
           color: {{ color: edgeColor, highlight: '#ef4444' }}
         }});
         edgeList.push({{
-          from: definitionNodeId,
-          to: rel.target,
+          from: targetNodeId,
+          to: definitionNodeId,
           label: '',
-          title: `${{selectedKana}} → ${{rel.target}}: ${{rel.label}}`,
+          length: 40,
+          title: `${{rel.target}}: ${{rel.label}}`,
           font: {{ size: 12, face: '{VIS_FONT}', color: edgeFontColor, align: 'middle' }},
           color: {{ color: edgeColor, highlight: '#ef4444' }}
         }});
@@ -1024,7 +1196,8 @@ html = f"""<!DOCTYPE html>
     }};
 
     function initializeGraph() {{
-      const network = new vis.Network(container, {{ nodes, edges }}, options);
+      graphNetwork = new vis.Network(container, {{ nodes, edges }}, options);
+      const network = graphNetwork;
       document.body.classList.toggle('dark-mode', darkMode);
       const recenterOnCenterNode = () => {{
         const currentScale = network.getScale();
@@ -1048,7 +1221,7 @@ html = f"""<!DOCTYPE html>
           const clickedNodeId = params.nodes[0];
           const clickedNode = nodes.get(clickedNodeId);
           if (clickedNodeId && clickedNode && clickedNode.nodeType === 'word') {{
-            speakText(clickedNodeId);
+            speakText(clickedNode.label, 'ja-JP', null, clickedNodeId);
           }}
         }}
       }});
@@ -1070,6 +1243,12 @@ html = f"""<!DOCTYPE html>
       if (pauseSlider) {{
         pauseSlider.addEventListener('input', updatePauseFromSlider);
       }}
+      document.addEventListener('visibilitychange', () => {{
+        if (document.visibilityState === 'visible' && autoPronounceRunning) {{
+          requestWakeLock();
+        }}
+      }});
+      window.addEventListener('beforeunload', () => releaseWakeLock());
       window.addEventListener('resize', refreshLayout);
       window.addEventListener('orientationchange', refreshLayout);
       renderGojuonTable();
