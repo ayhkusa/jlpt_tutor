@@ -1,0 +1,487 @@
+import json
+from pathlib import Path
+
+
+HIRAGANA_ENTRIES = [
+    {"kana": "あ", "romaji": "a", "pronunciation": "ah (as in father)"},
+    {"kana": "い", "romaji": "i", "pronunciation": "ee (as in machine)"},
+    {"kana": "う", "romaji": "u", "pronunciation": "oo (as in flute)"},
+    {"kana": "え", "romaji": "e", "pronunciation": "eh (as in pet)"},
+    {"kana": "お", "romaji": "o", "pronunciation": "oh (as in go)"},
+    {"kana": "か", "romaji": "ka", "pronunciation": "kah"},
+    {"kana": "き", "romaji": "ki", "pronunciation": "kee"},
+    {"kana": "く", "romaji": "ku", "pronunciation": "koo"},
+    {"kana": "け", "romaji": "ke", "pronunciation": "keh"},
+    {"kana": "こ", "romaji": "ko", "pronunciation": "koh"},
+    {"kana": "さ", "romaji": "sa", "pronunciation": "sah"},
+    {"kana": "し", "romaji": "shi", "pronunciation": "shee"},
+    {"kana": "す", "romaji": "su", "pronunciation": "soo"},
+    {"kana": "せ", "romaji": "se", "pronunciation": "seh"},
+    {"kana": "そ", "romaji": "so", "pronunciation": "soh"},
+    {"kana": "た", "romaji": "ta", "pronunciation": "tah"},
+    {"kana": "ち", "romaji": "chi", "pronunciation": "chee"},
+    {"kana": "つ", "romaji": "tsu", "pronunciation": "tsoo"},
+    {"kana": "て", "romaji": "te", "pronunciation": "teh"},
+    {"kana": "と", "romaji": "to", "pronunciation": "toh"},
+    {"kana": "な", "romaji": "na", "pronunciation": "nah"},
+    {"kana": "に", "romaji": "ni", "pronunciation": "nee"},
+    {"kana": "ぬ", "romaji": "nu", "pronunciation": "noo"},
+    {"kana": "ね", "romaji": "ne", "pronunciation": "neh"},
+    {"kana": "の", "romaji": "no", "pronunciation": "noh"},
+]
+
+
+def build_html(entries: list[dict[str, str]]) -> str:
+    payload = json.dumps(entries, ensure_ascii=False)
+    return f"""<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"UTF-8\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+  <title>Hiragana Matching Practice</title>
+  <style>
+    :root {{
+      --bg: #f7f8f3;
+      --panel: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+      --ok: #166534;
+      --ok-soft: #dcfce7;
+      --bad: #991b1b;
+      --bad-soft: #fee2e2;
+      --line: #d1d5db;
+    }}
+
+    * {{ box-sizing: border-box; }}
+
+    body {{
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, #d1fae5 0%, transparent 35%),
+        radial-gradient(circle at 90% 15%, #fde68a 0%, transparent 30%),
+        var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1rem;
+    }}
+
+    .page-tabs {{
+      width: min(980px, 100%);
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.25rem;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+    }}
+
+    .page-tab {{
+      flex: 1;
+      text-align: center;
+      padding: 0.55rem 0.8rem;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: #134e4a;
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+    }}
+
+    .page-tab.active {{
+      background: linear-gradient(135deg, #0f766e, #0ea5a4);
+      color: #ffffff;
+      border-color: transparent;
+    }}
+
+    .app {{
+      width: min(980px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }}
+
+    .header {{
+      padding: 1rem 1.25rem;
+      background: linear-gradient(135deg, #0f766e, #0ea5a4);
+      color: #f0fdfa;
+    }}
+
+    h1 {{
+      margin: 0;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }}
+
+    .sub {{
+      margin: 0.35rem 0 0;
+      font-size: 0.95rem;
+      opacity: 0.95;
+    }}
+
+    .stats {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--line);
+    }}
+
+    .status {{
+      font-size: 0.95rem;
+      color: var(--muted);
+    }}
+
+    .actions button {{
+      border: 0;
+      border-radius: 10px;
+      padding: 0.55rem 0.8rem;
+      background: var(--accent);
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: 600;
+    }}
+
+    .actions {{
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }}
+
+    .actions button:hover {{
+      filter: brightness(1.05);
+    }}
+
+    .board {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      padding: 1rem;
+    }}
+
+    .col {{
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.8rem;
+      background: #fcfcfb;
+    }}
+
+    .col h2 {{
+      margin: 0 0 0.65rem;
+      font-size: 1rem;
+      color: #334155;
+    }}
+
+    .grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
+      gap: 0.5rem;
+    }}
+
+    .card {{
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #ffffff;
+      padding: 0.6rem 0.45rem;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 120ms ease, background-color 120ms ease;
+      min-height: 56px;
+    }}
+
+    .card:hover {{
+      transform: translateY(-1px);
+      background: #f8fafc;
+    }}
+
+    .card.selected {{
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }}
+
+    .card.correct {{
+      border-color: var(--ok);
+      background: var(--ok-soft);
+      color: var(--ok);
+      cursor: default;
+    }}
+
+    .card.wrong {{
+      border-color: var(--bad);
+      background: var(--bad-soft);
+      color: var(--bad);
+    }}
+
+    .card.known {{
+      border-color: #047857;
+      background: #d1fae5;
+      color: #065f46;
+    }}
+
+    .kana {{
+      font-size: 1.6rem;
+      line-height: 1;
+      margin-bottom: 0.15rem;
+    }}
+
+    .hint {{
+      font-size: 0.72rem;
+      color: var(--muted);
+    }}
+
+    .pron-answer {{
+      margin-top: 0.2rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f766e;
+    }}
+
+    @media (max-width: 760px) {{
+      .page-tabs {{
+        width: 100%;
+      }}
+
+      .board {{
+        grid-template-columns: 1fr;
+      }}
+    }}
+  </style>
+</head>
+<body>
+  <nav class=\"page-tabs\" aria-label=\"Page tabs\">
+    <a class=\"page-tab\" href=\"index.html\">Vocabulary Network</a>
+    <a class=\"page-tab active\" href=\"hiragana_match.html\" aria-current=\"page\">Hiragana Match</a>
+  </nav>
+
+  <main class=\"app\">
+    <section class=\"header\">
+      <h1>Match Hiragana to Pronunciation</h1>
+      <p class=\"sub\">Set: vowels (a, i, u, e, o) + k, s, t, n rows</p>
+    </section>
+
+    <section class=\"stats\">
+      <div class=\"status\" id=\"status\">Select one Hiragana and one pronunciation.</div>
+      <div class=\"actions\">
+        <button id=\"modeBtn\" type=\"button\">Match Logic: On</button>
+        <button id=\"resetBtn\" type=\"button\">Shuffle / Reset</button>
+      </div>
+    </section>
+
+    <section class=\"board\">
+      <article class=\"col\">
+        <h2>Hiragana</h2>
+        <div id=\"kanaGrid\" class=\"grid\"></div>
+      </article>
+
+      <article class=\"col\">
+        <h2>Pronunciation</h2>
+        <div id=\"pronGrid\" class=\"grid\"></div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const entries = {payload};
+
+    const state = {{
+      left: null,
+      right: null,
+      solved: new Set(),
+    }};
+
+    const statusEl = document.getElementById("status");
+    const kanaGrid = document.getElementById("kanaGrid");
+    const pronGrid = document.getElementById("pronGrid");
+    const modeBtn = document.getElementById("modeBtn");
+    const resetBtn = document.getElementById("resetBtn");
+
+    let matchLogicEnabled = true;
+
+    function shuffle(items) {{
+      const copy = [...items];
+      for (let i = copy.length - 1; i > 0; i -= 1) {{
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }}
+      return copy;
+    }}
+
+    function updateStatus(message) {{
+      statusEl.textContent = message;
+    }}
+
+    function clearTempWrong() {{
+      document.querySelectorAll(".wrong").forEach((node) => node.classList.remove("wrong"));
+    }}
+
+    function setModeLabel() {{
+      modeBtn.textContent = matchLogicEnabled ? "Match Logic: On" : "Match Logic: Off (Mark Known)";
+    }}
+
+    function deselectAll() {{
+      document.querySelectorAll(".selected").forEach((node) => node.classList.remove("selected"));
+      state.left = null;
+      state.right = null;
+    }}
+
+    function tryMatch() {{
+      if (state.left === null || state.right === null) return;
+
+      const leftBtn = document.querySelector(`[data-side="left"][data-id="${{state.left}}"]`);
+      const rightBtn = document.querySelector(`[data-side="right"][data-id="${{state.right}}"]`);
+
+      if (state.left === state.right) {{
+        state.solved.add(state.left);
+        leftBtn.classList.remove("selected");
+        rightBtn.classList.remove("selected");
+        leftBtn.classList.add("correct");
+        rightBtn.classList.add("correct");
+        leftBtn.disabled = true;
+        rightBtn.disabled = true;
+        state.left = null;
+        state.right = null;
+
+        const done = state.solved.size;
+        const total = entries.length;
+        if (done === total) {{
+          updateStatus(`Great job! You matched all ${{total}} pairs.`);
+        }} else {{
+          updateStatus(`Correct! ${{done}}/${{total}} solved.`);
+        }}
+      }} else {{
+        leftBtn.classList.add("wrong");
+        rightBtn.classList.add("wrong");
+        updateStatus("Not a match. Try again.");
+        setTimeout(() => {{
+          clearTempWrong();
+          deselectAll();
+        }}, 450);
+      }}
+    }}
+
+    function handleSelect(side, id, button) {{
+      if (!matchLogicEnabled) {{
+        if (side === "left") {{
+          button.classList.toggle("known");
+
+          const pairedPronunciation = document.querySelector(`[data-side="right"][data-id="${{id}}"]`);
+          if (pairedPronunciation) {{
+            if (button.classList.contains("known")) {{
+              pairedPronunciation.classList.add("known");
+            }} else {{
+              pairedPronunciation.classList.remove("known");
+            }}
+          }}
+
+          const knownCount = document.querySelectorAll('[data-side="left"].known').length;
+          updateStatus(`Mark-known mode: ${{knownCount}}/${{entries.length}} kana marked as known.`);
+        }} else {{
+          const answer = button.querySelector(".pron-answer");
+          if (answer) {{
+            answer.remove();
+          }} else {{
+            const answerEl = document.createElement("div");
+            answerEl.className = "pron-answer";
+            answerEl.textContent = button.dataset.kana;
+            button.appendChild(answerEl);
+          }}
+        }}
+        return;
+      }}
+
+      if (button.disabled) return;
+      clearTempWrong();
+
+      if (side === "left") {{
+        document.querySelectorAll('[data-side="left"].selected').forEach((node) => node.classList.remove("selected"));
+        state.left = id;
+      }} else {{
+        document.querySelectorAll('[data-side="right"].selected').forEach((node) => node.classList.remove("selected"));
+        state.right = id;
+      }}
+
+      button.classList.add("selected");
+      tryMatch();
+    }}
+
+    function render() {{
+      kanaGrid.innerHTML = "";
+      pronGrid.innerHTML = "";
+      state.left = null;
+      state.right = null;
+      state.solved = new Set();
+
+      const leftItems = shuffle(entries);
+      const rightItems = shuffle(entries);
+
+      leftItems.forEach((item) => {{
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "card";
+        btn.dataset.side = "left";
+        btn.dataset.id = item.romaji;
+        btn.innerHTML = `<div class=\"kana\">${{item.kana}}</div>`;
+        btn.addEventListener("click", () => handleSelect("left", item.romaji, btn));
+        kanaGrid.appendChild(btn);
+      }});
+
+      rightItems.forEach((item) => {{
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "card";
+        btn.dataset.side = "right";
+        btn.dataset.id = item.romaji;
+        btn.dataset.kana = item.kana;
+        btn.textContent = item.pronunciation;
+        btn.addEventListener("click", () => handleSelect("right", item.romaji, btn));
+        pronGrid.appendChild(btn);
+      }});
+
+      if (matchLogicEnabled) {{
+        updateStatus("Select one Hiragana and one pronunciation.");
+      }} else {{
+        updateStatus("Mark-known mode: click kana to mark known, click pronunciations to reveal kana.");
+      }}
+    }}
+
+    modeBtn.addEventListener("click", () => {{
+      matchLogicEnabled = !matchLogicEnabled;
+      setModeLabel();
+      render();
+    }});
+
+    setModeLabel();
+    resetBtn.addEventListener("click", render);
+    render();
+  </script>
+</body>
+</html>
+"""
+
+
+def generate_html(output_file: Path | None = None) -> Path:
+    if output_file is None:
+        output_file = Path(__file__).resolve().parent.parent / "docs" / "hiragana_match.html"
+
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    output_file.write_text(build_html(HIRAGANA_ENTRIES), encoding="utf-8")
+    return output_file
+
+
+if __name__ == "__main__":
+    path = generate_html()
+    print(f"Created: {path}")

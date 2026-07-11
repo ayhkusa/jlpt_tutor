@@ -177,6 +177,34 @@ html = f"""<!DOCTYPE html>
       background: #f8fafc;
       color: #111827;
     }}
+    .page-tabs {{
+      display: flex;
+      gap: 0.5rem;
+      width: min(980px, calc(100% - 2rem));
+      margin: 0.75rem auto 0.3rem;
+      padding: 0.25rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.6rem;
+      background: #ffffff;
+      flex-shrink: 0;
+    }}
+    .page-tab {{
+      flex: 1;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.45rem;
+      padding: 0.42rem 0.65rem;
+      color: #1f2937;
+      background: #f8fafc;
+    }}
+    .page-tab.active {{
+      color: #ffffff;
+      background: #2563eb;
+      border-color: #2563eb;
+    }}
       .page-header {{
         text-align: center;
       }}
@@ -455,9 +483,28 @@ html = f"""<!DOCTYPE html>
       border-color: #374151;
       background: #1f2937;
     }}
+    body.dark-mode .page-tabs {{
+      border-color: #374151;
+      background: #1f2937;
+    }}
+    body.dark-mode .page-tab {{
+      border-color: #4b5563;
+      background: #374151;
+      color: #f9fafb;
+    }}
+    body.dark-mode .page-tab.active {{
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #ffffff;
+    }}
   </style>
 </head>
 <body>
+  <nav class="page-tabs" aria-label="Page tabs">
+    <a class="page-tab active" href="index.html" aria-current="page">Vocabulary Network</a>
+    <a class="page-tab" href="hiragana_match.html">Hiragana Match</a>
+  </nav>
+
   <div class="page-header">
     <h1 id="pageTitle">Hiragana Vocabulary Tutor</h1>
     <p id="pageSubtitle">Select a character to learn 10 words using it.</p>
@@ -530,8 +577,8 @@ html = f"""<!DOCTYPE html>
     let highlightedNodeColor = null;
     let highlightedNodeFont = null;
     let graphNetwork = null;
-    let wakeLockSentinel = null;
     let speechToken = 0;
+    let lastHoveredNodeId = null;
     let tableHidden = false;
     let darkMode = true;
     let definitionsVisible = false;
@@ -871,32 +918,6 @@ html = f"""<!DOCTYPE html>
       return withAngles.map((item) => item.id);
     }}
 
-    async function requestWakeLock() {{
-      if (!autoPronounceRunning || wakeLockSentinel || !('wakeLock' in navigator)) {{
-        return;
-      }}
-      try {{
-        wakeLockSentinel = await navigator.wakeLock.request('screen');
-        wakeLockSentinel.addEventListener('release', () => {{
-          wakeLockSentinel = null;
-        }});
-      }} catch (error) {{
-        wakeLockSentinel = null;
-      }}
-    }}
-
-    async function releaseWakeLock() {{
-      if (!wakeLockSentinel) {{
-        return;
-      }}
-      try {{
-        await wakeLockSentinel.release();
-      }} catch (error) {{
-        // Ignore release failures.
-      }}
-      wakeLockSentinel = null;
-    }}
-
     function stopAutoPronounce() {{
       autoPronounceRunning = false;
       autoPronounceToken += 1;
@@ -911,7 +932,6 @@ html = f"""<!DOCTYPE html>
       if (synth) {{
         synth.cancel();
       }}
-      releaseWakeLock();
       updateAutoPronounceButton();
     }}
 
@@ -945,7 +965,6 @@ html = f"""<!DOCTYPE html>
       autoPronounceRunning = true;
       autoPronounceIndex = 0;
       autoPronounceToken += 1;
-      requestWakeLock();
       updateAutoPronounceButton();
       runAutoPronounceStep(autoPronounceToken);
     }}
@@ -1225,6 +1244,28 @@ html = f"""<!DOCTYPE html>
           }}
         }}
       }});
+      network.on('hoverNode', (params) => {{
+        const hoveredNodeId = params.node || (params.nodes && params.nodes[0]);
+        if (!hoveredNodeId) {{
+          return;
+        }}
+        const hoveredNode = nodes.get(hoveredNodeId);
+        if (!hoveredNode || hoveredNodeId === lastHoveredNodeId) {{
+          return;
+        }}
+        if (hoveredNode.nodeType === 'center') {{
+          lastHoveredNodeId = hoveredNodeId;
+          speakText(activeKana, 'ja-JP', null, hoveredNodeId);
+          return;
+        }}
+        if (hoveredNode.nodeType === 'word') {{
+          lastHoveredNodeId = hoveredNodeId;
+          speakText(hoveredNode.label, 'ja-JP', null, hoveredNodeId);
+        }}
+      }});
+      network.on('blurNode', () => {{
+        lastHoveredNodeId = null;
+      }});
       if (autoPronounceButton) {{
         autoPronounceButton.addEventListener('click', toggleAutoPronounce);
       }}
@@ -1243,12 +1284,6 @@ html = f"""<!DOCTYPE html>
       if (pauseSlider) {{
         pauseSlider.addEventListener('input', updatePauseFromSlider);
       }}
-      document.addEventListener('visibilitychange', () => {{
-        if (document.visibilityState === 'visible' && autoPronounceRunning) {{
-          requestWakeLock();
-        }}
-      }});
-      window.addEventListener('beforeunload', () => releaseWakeLock());
       window.addEventListener('resize', refreshLayout);
       window.addEventListener('orientationchange', refreshLayout);
       renderGojuonTable();
