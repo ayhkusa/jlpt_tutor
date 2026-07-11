@@ -250,6 +250,15 @@ def build_html(entries: list[dict[str, str]]) -> str:
       color: #0f766e;
     }}
 
+    .romaji-reveal {{
+      margin-top: 0.2rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #0f766e;
+      text-transform: lowercase;
+      letter-spacing: 0.02em;
+    }}
+
     @media (max-width: 760px) {{
       .page-tabs {{
         width: 100%;
@@ -378,6 +387,16 @@ def build_html(entries: list[dict[str, str]]) -> str:
         if (side === "left") {{
           button.classList.toggle("known");
 
+          const romajiReveal = button.querySelector(".romaji-reveal");
+          if (romajiReveal) {{
+            romajiReveal.remove();
+          }} else {{
+            const revealEl = document.createElement("div");
+            revealEl.className = "romaji-reveal";
+            revealEl.textContent = button.dataset.romaji;
+            button.appendChild(revealEl);
+          }}
+
           const pairedPronunciation = document.querySelector(`[data-side="right"][data-id="${{id}}"]`);
           if (pairedPronunciation) {{
             if (button.classList.contains("known")) {{
@@ -434,6 +453,7 @@ def build_html(entries: list[dict[str, str]]) -> str:
         btn.className = "card";
         btn.dataset.side = "left";
         btn.dataset.id = item.romaji;
+        btn.dataset.romaji = item.romaji;
         btn.innerHTML = `<div class=\"kana\">${{item.kana}}</div>`;
         btn.addEventListener("click", () => handleSelect("left", item.romaji, btn));
         kanaGrid.appendChild(btn);
