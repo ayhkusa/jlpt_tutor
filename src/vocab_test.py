@@ -1,35 +1,7 @@
 import json
 from pathlib import Path
 
-
-HIRAGANA_ENTRIES = [
-    {"kana": "あ", "romaji": "a", "pronunciation": "ah (as in father)"},
-    {"kana": "い", "romaji": "i", "pronunciation": "ee (as in machine)"},
-    {"kana": "う", "romaji": "u", "pronunciation": "oo (as in flute)"},
-    {"kana": "え", "romaji": "e", "pronunciation": "eh (as in pet)"},
-    {"kana": "お", "romaji": "o", "pronunciation": "oh (as in go)"},
-    {"kana": "か", "romaji": "ka", "pronunciation": "kah"},
-    {"kana": "き", "romaji": "ki", "pronunciation": "kee"},
-    {"kana": "く", "romaji": "ku", "pronunciation": "koo"},
-    {"kana": "け", "romaji": "ke", "pronunciation": "keh"},
-    {"kana": "こ", "romaji": "ko", "pronunciation": "koh"},
-    {"kana": "さ", "romaji": "sa", "pronunciation": "sah"},
-    {"kana": "し", "romaji": "shi", "pronunciation": "shee"},
-    {"kana": "す", "romaji": "su", "pronunciation": "soo"},
-    {"kana": "せ", "romaji": "se", "pronunciation": "seh"},
-    {"kana": "そ", "romaji": "so", "pronunciation": "soh"},
-    {"kana": "た", "romaji": "ta", "pronunciation": "tah"},
-    {"kana": "ち", "romaji": "chi", "pronunciation": "chee"},
-    {"kana": "つ", "romaji": "tsu", "pronunciation": "tsoo"},
-    {"kana": "て", "romaji": "te", "pronunciation": "teh"},
-    {"kana": "と", "romaji": "to", "pronunciation": "toh"},
-    {"kana": "な", "romaji": "na", "pronunciation": "nah"},
-    {"kana": "に", "romaji": "ni", "pronunciation": "nee"},
-    {"kana": "ぬ", "romaji": "nu", "pronunciation": "noo"},
-    {"kana": "ね", "romaji": "ne", "pronunciation": "neh"},
-    {"kana": "の", "romaji": "no", "pronunciation": "noh"},
-]
-
+from gana_speed_test_data import HIRAGANA_ENTRIES
 
 def build_html(entries: list[dict[str, str]]) -> str:
     payload = json.dumps(entries, ensure_ascii=False)
@@ -168,7 +140,7 @@ def build_html(entries: list[dict[str, str]]) -> str:
 
     .board {{
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 0.8rem;
       padding: 1rem;
     }}
@@ -188,7 +160,8 @@ def build_html(entries: list[dict[str, str]]) -> str:
 
     .grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
+      --grid-cols: 5;
+      grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
       gap: 0.5rem;
     }}
 
@@ -243,20 +216,121 @@ def build_html(entries: list[dict[str, str]]) -> str:
       color: var(--muted);
     }}
 
-    .pron-answer {{
-      margin-top: 0.2rem;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #0f766e;
-    }}
-
     .romaji-reveal {{
       margin-top: 0.2rem;
       font-size: 0.78rem;
       font-weight: 700;
       color: #0f766e;
-      text-transform: lowercase;
       letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }}
+
+    .romaji-text {{
+      text-transform: lowercase;
+    }}
+
+    .romaji-helper {{
+      font-size: 0.72rem;
+      color: #0b5f58;
+      font-weight: 600;
+    }}
+
+    body.dark-mode {{
+      color: #e5e7eb;
+      background:
+        radial-gradient(circle at 10% 10%, #134e4a 0%, transparent 40%),
+        radial-gradient(circle at 90% 15%, #78350f 0%, transparent 35%),
+        #0b1220;
+    }}
+
+    body.dark-mode .page-tabs {{
+      background: #111827;
+      border-color: #334155;
+      box-shadow: 0 6px 16px rgba(2, 6, 23, 0.5);
+    }}
+
+    body.dark-mode .page-tab {{
+      background: #172554;
+      border-color: #1d4ed8;
+      color: #dbeafe;
+    }}
+
+    body.dark-mode .app {{
+      background: #111827;
+      border-color: #334155;
+      box-shadow: 0 16px 40px rgba(2, 6, 23, 0.55);
+    }}
+
+    body.dark-mode .stats {{
+      border-bottom-color: #334155;
+    }}
+
+    body.dark-mode .status {{
+      color: #9ca3af;
+    }}
+
+    body.dark-mode .actions button {{
+      background: #0e7490;
+      color: #ecfeff;
+    }}
+
+    body.dark-mode .col {{
+      border-color: #334155;
+      background: #0f172a;
+    }}
+
+    body.dark-mode .col h2 {{
+      color: #cbd5e1;
+    }}
+
+    body.dark-mode .card {{
+      border-color: #475569;
+      background: #1e293b;
+      color: #e2e8f0;
+    }}
+
+    body.dark-mode .card:hover {{
+      background: #273449;
+    }}
+
+    body.dark-mode .card.selected {{
+      border-color: #2dd4bf;
+      background: #134e4a;
+      color: #ccfbf1;
+    }}
+
+    body.dark-mode .card.correct {{
+      border-color: #22c55e;
+      background: #14532d;
+      color: #bbf7d0;
+    }}
+
+    body.dark-mode .card.wrong {{
+      border-color: #ef4444;
+      background: #7f1d1d;
+      color: #fecaca;
+    }}
+
+    body.dark-mode .card.known {{
+      border-color: #34d399;
+      background: #064e3b;
+      color: #a7f3d0;
+    }}
+
+    body.dark-mode .hint {{
+      color: #94a3b8;
+    }}
+
+    body.dark-mode .romaji-reveal {{
+      color: #5eead4;
+    }}
+
+    body.dark-mode .romaji-helper {{
+      color: #99f6e4;
     }}
 
     @media (max-width: 760px) {{
@@ -278,14 +352,14 @@ def build_html(entries: list[dict[str, str]]) -> str:
 
   <main class=\"app\">
     <section class=\"header\">
-      <h1>Match Hiragana to Pronunciation</h1>
+      <h1>Hiragana Mark Known Practice</h1>
       <p class=\"sub\">Set: vowels (a, i, u, e, o) + k, s, t, n rows</p>
     </section>
 
     <section class=\"stats\">
-      <div class=\"status\" id=\"status\">Select one Hiragana and one pronunciation.</div>
+      <div class="status" id="status">Click a Hiragana card to mark it known and reveal romaji.</div>
       <div class=\"actions\">
-        <button id=\"modeBtn\" type=\"button\">Match Logic: On</button>
+        <button id="themeBtn" type="button">Dark Mode</button>
         <button id=\"resetBtn\" type=\"button\">Shuffle / Reset</button>
       </div>
     </section>
@@ -295,30 +369,29 @@ def build_html(entries: list[dict[str, str]]) -> str:
         <h2>Hiragana</h2>
         <div id=\"kanaGrid\" class=\"grid\"></div>
       </article>
-
-      <article class=\"col\">
-        <h2>Pronunciation</h2>
-        <div id=\"pronGrid\" class=\"grid\"></div>
-      </article>
     </section>
   </main>
 
   <script>
     const entries = {payload};
 
-    const state = {{
-      left: null,
-      right: null,
-      solved: new Set(),
-    }};
-
     const statusEl = document.getElementById("status");
     const kanaGrid = document.getElementById("kanaGrid");
-    const pronGrid = document.getElementById("pronGrid");
-    const modeBtn = document.getElementById("modeBtn");
+    const themeBtn = document.getElementById("themeBtn");
     const resetBtn = document.getElementById("resetBtn");
+    const GRID_MIN_CARD_WIDTH = 108;
+    const GRID_MIN_COLS = 1;
+    const GRID_MAX_COLS = 8;
 
-    let matchLogicEnabled = true;
+    function setThemeButtonLabel() {{
+      themeBtn.textContent = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+    }}
+
+    function setDarkMode(enabled) {{
+      document.body.classList.toggle("dark-mode", enabled);
+      localStorage.setItem("hiraganaMatchTheme", enabled ? "dark" : "light");
+      setThemeButtonLabel();
+    }}
 
     function shuffle(items) {{
       const copy = [...items];
@@ -333,159 +406,66 @@ def build_html(entries: list[dict[str, str]]) -> str:
       statusEl.textContent = message;
     }}
 
-    function clearTempWrong() {{
-      document.querySelectorAll(".wrong").forEach((node) => node.classList.remove("wrong"));
+    function updateGridColumns() {{
+      const availableWidth = Math.floor(kanaGrid.getBoundingClientRect().width);
+      const calculatedCols = Math.floor(availableWidth / GRID_MIN_CARD_WIDTH);
+      const cols = Math.max(GRID_MIN_COLS, Math.min(GRID_MAX_COLS, calculatedCols || GRID_MIN_COLS));
+      kanaGrid.style.setProperty("--grid-cols", String(cols));
     }}
 
-    function setModeLabel() {{
-      modeBtn.textContent = matchLogicEnabled ? "Match Logic: On" : "Match Logic: Off (Mark Known)";
-    }}
+    function handleSelect(button) {{
+      button.classList.toggle("known");
 
-    function deselectAll() {{
-      document.querySelectorAll(".selected").forEach((node) => node.classList.remove("selected"));
-      state.left = null;
-      state.right = null;
-    }}
-
-    function tryMatch() {{
-      if (state.left === null || state.right === null) return;
-
-      const leftBtn = document.querySelector(`[data-side="left"][data-id="${{state.left}}"]`);
-      const rightBtn = document.querySelector(`[data-side="right"][data-id="${{state.right}}"]`);
-
-      if (state.left === state.right) {{
-        state.solved.add(state.left);
-        leftBtn.classList.remove("selected");
-        rightBtn.classList.remove("selected");
-        leftBtn.classList.add("correct");
-        rightBtn.classList.add("correct");
-        leftBtn.disabled = true;
-        rightBtn.disabled = true;
-        state.left = null;
-        state.right = null;
-
-        const done = state.solved.size;
-        const total = entries.length;
-        if (done === total) {{
-          updateStatus(`Great job! You matched all ${{total}} pairs.`);
-        }} else {{
-          updateStatus(`Correct! ${{done}}/${{total}} solved.`);
-        }}
+      const romajiReveal = button.querySelector(".romaji-reveal");
+      if (romajiReveal) {{
+        romajiReveal.remove();
       }} else {{
-        leftBtn.classList.add("wrong");
-        rightBtn.classList.add("wrong");
-        updateStatus("Not a match. Try again.");
-        setTimeout(() => {{
-          clearTempWrong();
-          deselectAll();
-        }}, 450);
-      }}
-    }}
-
-    function handleSelect(side, id, button) {{
-      if (!matchLogicEnabled) {{
-        if (side === "left") {{
-          button.classList.toggle("known");
-
-          const romajiReveal = button.querySelector(".romaji-reveal");
-          if (romajiReveal) {{
-            romajiReveal.remove();
-          }} else {{
-            const revealEl = document.createElement("div");
-            revealEl.className = "romaji-reveal";
-            revealEl.textContent = button.dataset.romaji;
-            button.appendChild(revealEl);
-          }}
-
-          const pairedPronunciation = document.querySelector(`[data-side="right"][data-id="${{id}}"]`);
-          if (pairedPronunciation) {{
-            if (button.classList.contains("known")) {{
-              pairedPronunciation.classList.add("known");
-            }} else {{
-              pairedPronunciation.classList.remove("known");
-            }}
-          }}
-
-          const knownCount = document.querySelectorAll('[data-side="left"].known').length;
-          updateStatus(`Mark-known mode: ${{knownCount}}/${{entries.length}} kana marked as known.`);
-        }} else {{
-          const answer = button.querySelector(".pron-answer");
-          if (answer) {{
-            answer.remove();
-          }} else {{
-            const answerEl = document.createElement("div");
-            answerEl.className = "pron-answer";
-            answerEl.textContent = button.dataset.kana;
-            button.appendChild(answerEl);
-          }}
-        }}
-        return;
+        const revealEl = document.createElement("div");
+        revealEl.className = "romaji-reveal";
+        revealEl.innerHTML = `<span class="romaji-text">${{button.dataset.romaji}}</span><span class="romaji-helper">(${{button.dataset.pronunciation}})</span>`;
+        button.appendChild(revealEl);
       }}
 
-      if (button.disabled) return;
-      clearTempWrong();
-
-      if (side === "left") {{
-        document.querySelectorAll('[data-side="left"].selected').forEach((node) => node.classList.remove("selected"));
-        state.left = id;
-      }} else {{
-        document.querySelectorAll('[data-side="right"].selected').forEach((node) => node.classList.remove("selected"));
-        state.right = id;
-      }}
-
-      button.classList.add("selected");
-      tryMatch();
+      const knownCount = document.querySelectorAll('.card.known').length;
+      updateStatus(`Mark-known mode: ${{knownCount}}/${{entries.length}} kana marked as known.`);
     }}
 
     function render() {{
       kanaGrid.innerHTML = "";
-      pronGrid.innerHTML = "";
-      state.left = null;
-      state.right = null;
-      state.solved = new Set();
 
       const leftItems = shuffle(entries);
-      const rightItems = shuffle(entries);
 
       leftItems.forEach((item) => {{
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "card";
-        btn.dataset.side = "left";
-        btn.dataset.id = item.romaji;
         btn.dataset.romaji = item.romaji;
+        btn.dataset.pronunciation = item.pronunciation;
         btn.innerHTML = `<div class=\"kana\">${{item.kana}}</div>`;
-        btn.addEventListener("click", () => handleSelect("left", item.romaji, btn));
+        btn.addEventListener("click", () => handleSelect(btn));
         kanaGrid.appendChild(btn);
       }});
 
-      rightItems.forEach((item) => {{
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "card";
-        btn.dataset.side = "right";
-        btn.dataset.id = item.romaji;
-        btn.dataset.kana = item.kana;
-        btn.textContent = item.pronunciation;
-        btn.addEventListener("click", () => handleSelect("right", item.romaji, btn));
-        pronGrid.appendChild(btn);
-      }});
+      updateGridColumns();
 
-      if (matchLogicEnabled) {{
-        updateStatus("Select one Hiragana and one pronunciation.");
-      }} else {{
-        updateStatus("Mark-known mode: click kana to mark known, click pronunciations to reveal kana.");
-      }}
+      updateStatus("Mark-known mode: click any kana card to toggle known and reveal romaji.");
     }}
 
-    modeBtn.addEventListener("click", () => {{
-      matchLogicEnabled = !matchLogicEnabled;
-      setModeLabel();
-      render();
+    themeBtn.addEventListener("click", () => {{
+      setDarkMode(!document.body.classList.contains("dark-mode"));
     }});
 
-    setModeLabel();
+    setDarkMode(localStorage.getItem("hiraganaMatchTheme") === "dark");
+
     resetBtn.addEventListener("click", render);
+    window.addEventListener("resize", updateGridColumns);
+    window.addEventListener("orientationchange", updateGridColumns);
+
+    if (typeof ResizeObserver !== "undefined") {{
+      const resizeObserver = new ResizeObserver(updateGridColumns);
+      resizeObserver.observe(kanaGrid);
+    }}
+
     render();
   </script>
 </body>
