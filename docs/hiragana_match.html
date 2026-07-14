@@ -375,6 +375,11 @@
     const GRID_MIN_CARD_WIDTH = 108;
     const GRID_MIN_COLS = 1;
     const GRID_MAX_COLS = 8;
+    const ATTEMPT_HISTORY_KEY = "hiraganaMatchAttemptHistory";
+    const MAX_ATTEMPT_HISTORY = 5;
+
+    let attemptStartMs = Date.now();
+    let roundCompleted = false;
 
     function setThemeButtonLabel() {
       themeBtn.textContent = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
@@ -406,6 +411,47 @@
       kanaGrid.style.setProperty("--grid-cols", String(cols));
     }
 
+    function loadAttemptHistory() {
+      try {
+        const raw = localStorage.getItem(ATTEMPT_HISTORY_KEY);
+        if (!raw) {
+          return [];
+        }
+
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) {
+          return [];
+        }
+
+        return parsed
+          .filter((item) => Number.isFinite(item?.seconds))
+          .map((item) => ({ seconds: Math.max(0, Math.round(item.seconds)) }))
+          .slice(0, MAX_ATTEMPT_HISTORY);
+      } catch (_error) {
+        return [];
+      }
+    }
+
+    function saveAttemptHistory(history) {
+      localStorage.setItem(ATTEMPT_HISTORY_KEY, JSON.stringify(history.slice(0, MAX_ATTEMPT_HISTORY)));
+    }
+
+    function recordAttempt(seconds) {
+      const history = loadAttemptHistory();
+      history.unshift({ seconds });
+      const nextHistory = history.slice(0, MAX_ATTEMPT_HISTORY);
+      saveAttemptHistory(nextHistory);
+      return nextHistory;
+    }
+
+    function formatHistory(history) {
+      if (!history.length) {
+        return "No previous attempts yet.";
+      }
+
+      return `Last ${history.length}: ${history.map((attempt) => `${attempt.seconds}s`).join(", ")}`;
+    }
+
     function handleSelect(button) {
       button.classList.toggle("known");
 
@@ -420,10 +466,21 @@
       }
 
       const knownCount = document.querySelectorAll('.card.known').length;
+
+      if (knownCount === entries.length && !roundCompleted) {
+        roundCompleted = true;
+        const elapsedSeconds = Math.max(0, Math.round((Date.now() - attemptStartMs) / 1000));
+        const history = recordAttempt(elapsedSeconds);
+        updateStatus(`Finished in ${elapsedSeconds} seconds. ${formatHistory(history)}`);
+        return;
+      }
+
       updateStatus(`Mark-known mode: ${knownCount}/${entries.length} kana marked as known.`);
     }
 
     function render() {
+      attemptStartMs = Date.now();
+      roundCompleted = false;
       kanaGrid.innerHTML = "";
 
       const leftItems = shuffle(entries);
