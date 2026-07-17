@@ -3,6 +3,8 @@ from pathlib import Path
 
 from gana_speed_test_data import HIRAGANA_ENTRIES
 
+STARTER_SET_SIZE = 25
+
 def build_html(entries: list[dict[str, str]]) -> str:
     payload = json.dumps(entries, ensure_ascii=False)
     return f"""<!DOCTYPE html>
@@ -353,12 +355,13 @@ def build_html(entries: list[dict[str, str]]) -> str:
   <main class=\"app\">
     <section class=\"header\">
       <h1>Hiragana Mark Known Practice</h1>
-      <p class=\"sub\">Set: vowels (a, i, u, e, o) + k, s, t, n rows</p>
+      <p class=\"sub\" id=\"setLabel\">Set: vowels (a, i, u, e, o) + k, s, t, n rows</p>
     </section>
 
     <section class=\"stats\">
       <div class="status" id="status">Click a Hiragana card to mark it known and reveal romaji.</div>
       <div class=\"actions\">
+        <button id="switchSetBtn" type="button">Switch to Remaining Set</button>
         <button id="themeBtn" type="button">Dark Mode</button>
         <button id=\"resetBtn\" type=\"button\">Shuffle / Reset</button>
       </div>
@@ -376,7 +379,9 @@ def build_html(entries: list[dict[str, str]]) -> str:
     const entries = {payload};
 
     const statusEl = document.getElementById("status");
+    const setLabelEl = document.getElementById("setLabel");
     const kanaGrid = document.getElementById("kanaGrid");
+    const switchSetBtn = document.getElementById("switchSetBtn");
     const themeBtn = document.getElementById("themeBtn");
     const resetBtn = document.getElementById("resetBtn");
     const GRID_MIN_CARD_WIDTH = 108;
@@ -384,9 +389,35 @@ def build_html(entries: list[dict[str, str]]) -> str:
     const GRID_MAX_COLS = 8;
     const ATTEMPT_HISTORY_KEY = "hiraganaMatchAttemptHistory";
     const MAX_ATTEMPT_HISTORY = 5;
+    const STARTER_SET_SIZE = {STARTER_SET_SIZE};
+    const STARTER_SET_TEXT = "vowels (a, i, u, e, o) + k, s, t, n rows";
+    const REMAINING_SET_TEXT = "remaining rows: h, m, y, r, w + n, g (ga gi gu ge)";
 
     let attemptStartMs = Date.now();
     let roundCompleted = false;
+    let activeEntries = [];
+    let showingRemainingSet = false;
+
+    function getStarterEntries() {{
+      return entries.slice(0, Math.min(STARTER_SET_SIZE, entries.length));
+    }}
+
+    function getRemainingEntries() {{
+      if (entries.length <= STARTER_SET_SIZE) {{
+        return [];
+      }}
+      return entries.slice(STARTER_SET_SIZE);
+    }}
+
+    function setSetButtonLabel() {{
+      switchSetBtn.textContent = showingRemainingSet ? "Switch to Starter Set" : "Switch to Remaining Set";
+    }}
+
+    function setSetSubtitle() {{
+      setLabelEl.textContent = showingRemainingSet
+        ? `Set: ${{REMAINING_SET_TEXT}}`
+        : `Set: ${{STARTER_SET_TEXT}}`;
+    }}
 
     function setThemeButtonLabel() {{
       themeBtn.textContent = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
@@ -472,9 +503,9 @@ def build_html(entries: list[dict[str, str]]) -> str:
         button.appendChild(revealEl);
       }}
 
-      const knownCount = document.querySelectorAll('.card.known').length;
+      const knownCount = kanaGrid.querySelectorAll('.card.known').length;
 
-      if (knownCount === entries.length && !roundCompleted) {{
+      if (knownCount === activeEntries.length && !roundCompleted) {{
         roundCompleted = true;
         const elapsedSeconds = Math.max(0, Math.round((Date.now() - attemptStartMs) / 1000));
         const history = recordAttempt(elapsedSeconds);
@@ -482,7 +513,7 @@ def build_html(entries: list[dict[str, str]]) -> str:
         return;
       }}
 
-      updateStatus(`Mark-known mode: ${{knownCount}}/${{entries.length}} kana marked as known.`);
+      updateStatus(`Mark-known mode: ${{knownCount}}/${{activeEntries.length}} kana marked as known.`);
     }}
 
     function render() {{
@@ -490,9 +521,18 @@ def build_html(entries: list[dict[str, str]]) -> str:
       roundCompleted = false;
       kanaGrid.innerHTML = "";
 
-      const leftItems = shuffle(entries);
+      const sourceEntries = showingRemainingSet ? getRemainingEntries() : getStarterEntries();
+      activeEntries = shuffle(sourceEntries);
 
-      leftItems.forEach((item) => {{
+      if (!activeEntries.length) {{
+        updateStatus("No kana found for this set. Check your data source.");
+        return;
+      }}
+
+      setSetButtonLabel();
+      setSetSubtitle();
+
+      activeEntries.forEach((item) => {{
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "card";
@@ -513,6 +553,11 @@ def build_html(entries: list[dict[str, str]]) -> str:
     }});
 
     setDarkMode(localStorage.getItem("hiraganaMatchTheme") === "dark");
+
+    switchSetBtn.addEventListener("click", () => {{
+      showingRemainingSet = !showingRemainingSet;
+      render();
+    }});
 
     resetBtn.addEventListener("click", render);
     window.addEventListener("resize", updateGridColumns);

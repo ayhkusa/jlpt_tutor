@@ -346,12 +346,13 @@
   <main class="app">
     <section class="header">
       <h1>Hiragana Mark Known Practice</h1>
-      <p class="sub">Set: vowels (a, i, u, e, o) + k, s, t, n rows</p>
+      <p class="sub" id="setLabel">Set: vowels (a, i, u, e, o) + k, s, t, n rows</p>
     </section>
 
     <section class="stats">
       <div class="status" id="status">Click a Hiragana card to mark it known and reveal romaji.</div>
       <div class="actions">
+        <button id="switchSetBtn" type="button">Switch to Remaining Set</button>
         <button id="themeBtn" type="button">Dark Mode</button>
         <button id="resetBtn" type="button">Shuffle / Reset</button>
       </div>
@@ -366,10 +367,12 @@
   </main>
 
   <script>
-    const entries = [{"kana": "あ", "romaji": "a", "pronunciation": "ah"}, {"kana": "い", "romaji": "i", "pronunciation": "ee"}, {"kana": "う", "romaji": "u", "pronunciation": "oo"}, {"kana": "え", "romaji": "e", "pronunciation": "eh"}, {"kana": "お", "romaji": "o", "pronunciation": "oh"}, {"kana": "か", "romaji": "ka", "pronunciation": "kah"}, {"kana": "き", "romaji": "ki", "pronunciation": "kee"}, {"kana": "く", "romaji": "ku", "pronunciation": "koo"}, {"kana": "け", "romaji": "ke", "pronunciation": "keh"}, {"kana": "こ", "romaji": "ko", "pronunciation": "koh"}, {"kana": "さ", "romaji": "sa", "pronunciation": "sah"}, {"kana": "し", "romaji": "shi", "pronunciation": "shee"}, {"kana": "す", "romaji": "su", "pronunciation": "soo"}, {"kana": "せ", "romaji": "se", "pronunciation": "seh"}, {"kana": "そ", "romaji": "so", "pronunciation": "soh"}, {"kana": "た", "romaji": "ta", "pronunciation": "tah"}, {"kana": "ち", "romaji": "chi", "pronunciation": "chee"}, {"kana": "つ", "romaji": "tsu", "pronunciation": "tsoo"}, {"kana": "て", "romaji": "te", "pronunciation": "teh"}, {"kana": "と", "romaji": "to", "pronunciation": "toh"}, {"kana": "な", "romaji": "na", "pronunciation": "nah"}, {"kana": "に", "romaji": "ni", "pronunciation": "nee"}, {"kana": "ぬ", "romaji": "nu", "pronunciation": "noo"}, {"kana": "ね", "romaji": "ne", "pronunciation": "neh"}, {"kana": "の", "romaji": "no", "pronunciation": "noh"}];
+    const entries = [{"kana": "あ", "romaji": "a", "pronunciation": "ah"}, {"kana": "い", "romaji": "i", "pronunciation": "ee"}, {"kana": "う", "romaji": "u", "pronunciation": "oo"}, {"kana": "え", "romaji": "e", "pronunciation": "eh"}, {"kana": "お", "romaji": "o", "pronunciation": "oh"}, {"kana": "か", "romaji": "ka", "pronunciation": "kah"}, {"kana": "き", "romaji": "ki", "pronunciation": "kee"}, {"kana": "く", "romaji": "ku", "pronunciation": "koo"}, {"kana": "け", "romaji": "ke", "pronunciation": "keh"}, {"kana": "こ", "romaji": "ko", "pronunciation": "koh"}, {"kana": "さ", "romaji": "sa", "pronunciation": "sah"}, {"kana": "し", "romaji": "shi", "pronunciation": "shee"}, {"kana": "す", "romaji": "su", "pronunciation": "soo"}, {"kana": "せ", "romaji": "se", "pronunciation": "seh"}, {"kana": "そ", "romaji": "so", "pronunciation": "soh"}, {"kana": "た", "romaji": "ta", "pronunciation": "tah"}, {"kana": "ち", "romaji": "chi", "pronunciation": "chee"}, {"kana": "つ", "romaji": "tsu", "pronunciation": "tsoo"}, {"kana": "て", "romaji": "te", "pronunciation": "teh"}, {"kana": "と", "romaji": "to", "pronunciation": "toh"}, {"kana": "な", "romaji": "na", "pronunciation": "nah"}, {"kana": "に", "romaji": "ni", "pronunciation": "nee"}, {"kana": "ぬ", "romaji": "nu", "pronunciation": "noo"}, {"kana": "ね", "romaji": "ne", "pronunciation": "neh"}, {"kana": "の", "romaji": "no", "pronunciation": "noh"}, {"kana": "は", "romaji": "ha", "pronunciation": "hah"}, {"kana": "ひ", "romaji": "hi", "pronunciation": "hee"}, {"kana": "ふ", "romaji": "fu", "pronunciation": "foo"}, {"kana": "へ", "romaji": "he", "pronunciation": "heh"}, {"kana": "ほ", "romaji": "ho", "pronunciation": "hoh"}, {"kana": "ま", "romaji": "ma", "pronunciation": "mah"}, {"kana": "み", "romaji": "mi", "pronunciation": "mee"}, {"kana": "む", "romaji": "mu", "pronunciation": "moo"}, {"kana": "め", "romaji": "me", "pronunciation": "meh"}, {"kana": "も", "romaji": "mo", "pronunciation": "moh"}, {"kana": "や", "romaji": "ya", "pronunciation": "yah"}, {"kana": "ゆ", "romaji": "yu", "pronunciation": "yoo"}, {"kana": "よ", "romaji": "yo", "pronunciation": "yoh"}, {"kana": "ら", "romaji": "ra", "pronunciation": "rah"}, {"kana": "り", "romaji": "ri", "pronunciation": "ree"}, {"kana": "る", "romaji": "ru", "pronunciation": "roo"}, {"kana": "れ", "romaji": "re", "pronunciation": "reh"}, {"kana": "ろ", "romaji": "ro", "pronunciation": "roh"}, {"kana": "わ", "romaji": "wa", "pronunciation": "wah"}, {"kana": "を", "romaji": "wo", "pronunciation": "oh"}, {"kana": "ん", "romaji": "n", "pronunciation": "n"}, {"kana": "が", "romaji": "ga", "pronunciation": "gah"}, {"kana": "ぎ", "romaji": "gi", "pronunciation": "gee"}, {"kana": "ぐ", "romaji": "gu", "pronunciation": "goo"}, {"kana": "げ", "romaji": "ge", "pronunciation": "geh"}];
 
     const statusEl = document.getElementById("status");
+    const setLabelEl = document.getElementById("setLabel");
     const kanaGrid = document.getElementById("kanaGrid");
+    const switchSetBtn = document.getElementById("switchSetBtn");
     const themeBtn = document.getElementById("themeBtn");
     const resetBtn = document.getElementById("resetBtn");
     const GRID_MIN_CARD_WIDTH = 108;
@@ -377,9 +380,35 @@
     const GRID_MAX_COLS = 8;
     const ATTEMPT_HISTORY_KEY = "hiraganaMatchAttemptHistory";
     const MAX_ATTEMPT_HISTORY = 5;
+    const STARTER_SET_SIZE = 25;
+    const STARTER_SET_TEXT = "vowels (a, i, u, e, o) + k, s, t, n rows";
+    const REMAINING_SET_TEXT = "remaining rows: h, m, y, r, w + n, g (ga gi gu ge)";
 
     let attemptStartMs = Date.now();
     let roundCompleted = false;
+    let activeEntries = [];
+    let showingRemainingSet = false;
+
+    function getStarterEntries() {
+      return entries.slice(0, Math.min(STARTER_SET_SIZE, entries.length));
+    }
+
+    function getRemainingEntries() {
+      if (entries.length <= STARTER_SET_SIZE) {
+        return [];
+      }
+      return entries.slice(STARTER_SET_SIZE);
+    }
+
+    function setSetButtonLabel() {
+      switchSetBtn.textContent = showingRemainingSet ? "Switch to Starter Set" : "Switch to Remaining Set";
+    }
+
+    function setSetSubtitle() {
+      setLabelEl.textContent = showingRemainingSet
+        ? `Set: ${REMAINING_SET_TEXT}`
+        : `Set: ${STARTER_SET_TEXT}`;
+    }
 
     function setThemeButtonLabel() {
       themeBtn.textContent = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
@@ -465,9 +494,9 @@
         button.appendChild(revealEl);
       }
 
-      const knownCount = document.querySelectorAll('.card.known').length;
+      const knownCount = kanaGrid.querySelectorAll('.card.known').length;
 
-      if (knownCount === entries.length && !roundCompleted) {
+      if (knownCount === activeEntries.length && !roundCompleted) {
         roundCompleted = true;
         const elapsedSeconds = Math.max(0, Math.round((Date.now() - attemptStartMs) / 1000));
         const history = recordAttempt(elapsedSeconds);
@@ -475,7 +504,7 @@
         return;
       }
 
-      updateStatus(`Mark-known mode: ${knownCount}/${entries.length} kana marked as known.`);
+      updateStatus(`Mark-known mode: ${knownCount}/${activeEntries.length} kana marked as known.`);
     }
 
     function render() {
@@ -483,9 +512,18 @@
       roundCompleted = false;
       kanaGrid.innerHTML = "";
 
-      const leftItems = shuffle(entries);
+      const sourceEntries = showingRemainingSet ? getRemainingEntries() : getStarterEntries();
+      activeEntries = shuffle(sourceEntries);
 
-      leftItems.forEach((item) => {
+      if (!activeEntries.length) {
+        updateStatus("No kana found for this set. Check your data source.");
+        return;
+      }
+
+      setSetButtonLabel();
+      setSetSubtitle();
+
+      activeEntries.forEach((item) => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "card";
@@ -506,6 +544,11 @@
     });
 
     setDarkMode(localStorage.getItem("hiraganaMatchTheme") === "dark");
+
+    switchSetBtn.addEventListener("click", () => {
+      showingRemainingSet = !showingRemainingSet;
+      render();
+    });
 
     resetBtn.addEventListener("click", render);
     window.addEventListener("resize", updateGridColumns);
