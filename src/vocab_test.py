@@ -354,14 +354,14 @@ def build_html(entries: list[dict[str, str]]) -> str:
 
   <main class=\"app\">
     <section class=\"header\">
-      <h1>Hiragana Mark Known Practice</h1>
+      <h1>Hiragana 1st/2nd Set Practice</h1>
       <p class=\"sub\" id=\"setLabel\">Set: vowels (a, i, u, e, o) + k, s, t, n rows</p>
     </section>
 
     <section class=\"stats\">
       <div class="status" id="status">Click a Hiragana card to mark it known and reveal romaji.</div>
       <div class=\"actions\">
-        <button id="switchSetBtn" type="button">Switch to Remaining Set</button>
+        <button id="switchSetBtn" type="button">Switch to 2nd Set</button>
         <button id="modeBtn" type="button">Switch to Match Romaji</button>
         <button id="themeBtn" type="button">Dark Mode</button>
         <button id=\"resetBtn\" type=\"button\">Shuffle / Reset</button>
@@ -414,7 +414,7 @@ def build_html(entries: list[dict[str, str]]) -> str:
     }}
 
     function setSetButtonLabel() {{
-      switchSetBtn.textContent = showingRemainingSet ? "Switch to Starter Set" : "Switch to Remaining Set";
+      switchSetBtn.textContent = showingRemainingSet ? "Switch to 1st Set" : "Switch to 2nd Set";
     }}
 
     function setSetSubtitle() {{
