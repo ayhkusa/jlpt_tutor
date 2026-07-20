@@ -362,6 +362,7 @@ def build_html(entries: list[dict[str, str]]) -> str:
       <div class="status" id="status">Click a Hiragana card to mark it known and reveal romaji.</div>
       <div class=\"actions\">
         <button id="switchSetBtn" type="button">Switch to Remaining Set</button>
+        <button id="modeBtn" type="button">Switch to Match Romaji</button>
         <button id="themeBtn" type="button">Dark Mode</button>
         <button id=\"resetBtn\" type=\"button\">Shuffle / Reset</button>
       </div>
@@ -382,12 +383,14 @@ def build_html(entries: list[dict[str, str]]) -> str:
     const setLabelEl = document.getElementById("setLabel");
     const kanaGrid = document.getElementById("kanaGrid");
     const switchSetBtn = document.getElementById("switchSetBtn");
+    const modeBtn = document.getElementById("modeBtn");
     const themeBtn = document.getElementById("themeBtn");
     const resetBtn = document.getElementById("resetBtn");
     const GRID_MIN_CARD_WIDTH = 108;
     const GRID_MIN_COLS = 1;
     const GRID_MAX_COLS = 8;
     const ATTEMPT_HISTORY_KEY = "hiraganaMatchAttemptHistory";
+    const MATCH_MODE_KEY = "hiraganaMatchMode";
     const MAX_ATTEMPT_HISTORY = 5;
     const STARTER_SET_SIZE = {STARTER_SET_SIZE};
     const STARTER_SET_TEXT = "vowels (a, i, u, e, o) + k, s, t, n rows";
@@ -397,6 +400,7 @@ def build_html(entries: list[dict[str, str]]) -> str:
     let roundCompleted = false;
     let activeEntries = [];
     let showingRemainingSet = false;
+    let matchingRomaji = localStorage.getItem(MATCH_MODE_KEY) === "romaji";
 
     function getStarterEntries() {{
       return entries.slice(0, Math.min(STARTER_SET_SIZE, entries.length));
@@ -417,6 +421,16 @@ def build_html(entries: list[dict[str, str]]) -> str:
       setLabelEl.textContent = showingRemainingSet
         ? `Set: ${{REMAINING_SET_TEXT}}`
         : `Set: ${{STARTER_SET_TEXT}}`;
+    }}
+
+    function setModeButtonLabel() {{
+      modeBtn.textContent = matchingRomaji ? "Switch to Match Hiragana" : "Switch to Match Romaji";
+    }}
+
+    function setMatchingMode(enabled) {{
+      matchingRomaji = enabled;
+      localStorage.setItem(MATCH_MODE_KEY, enabled ? "romaji" : "kana");
+      setModeButtonLabel();
     }}
 
     function setThemeButtonLabel() {{
@@ -499,7 +513,9 @@ def build_html(entries: list[dict[str, str]]) -> str:
       }} else {{
         const revealEl = document.createElement("div");
         revealEl.className = "romaji-reveal";
-        revealEl.innerHTML = `<span class="romaji-text">${{button.dataset.romaji}}</span><span class="romaji-helper">(${{button.dataset.pronunciation}})</span>`;
+        revealEl.innerHTML = matchingRomaji
+          ? `<span class="romaji-text">${{button.dataset.kana}}</span><span class="romaji-helper">(${{button.dataset.pronunciation}})</span>`
+          : `<span class="romaji-text">${{button.dataset.romaji}}</span><span class="romaji-helper">(${{button.dataset.pronunciation}})</span>`;
         button.appendChild(revealEl);
       }}
 
@@ -513,7 +529,9 @@ def build_html(entries: list[dict[str, str]]) -> str:
         return;
       }}
 
-      updateStatus(`Mark-known mode: ${{knownCount}}/${{activeEntries.length}} kana marked as known.`);
+      updateStatus(matchingRomaji
+        ? `Romaji-to-kana mode: ${{knownCount}}/${{activeEntries.length}} cards marked as known.`
+        : `Hiragana-to-romaji mode: ${{knownCount}}/${{activeEntries.length}} kana marked as known.`);
     }}
 
     function render() {{
@@ -531,21 +549,27 @@ def build_html(entries: list[dict[str, str]]) -> str:
 
       setSetButtonLabel();
       setSetSubtitle();
+      setModeButtonLabel();
 
       activeEntries.forEach((item) => {{
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "card";
         btn.dataset.romaji = item.romaji;
+        btn.dataset.kana = item.kana;
         btn.dataset.pronunciation = item.pronunciation;
-        btn.innerHTML = `<div class=\"kana\">${{item.kana}}</div>`;
+        btn.innerHTML = matchingRomaji
+          ? `<div class="kana">${{item.romaji}}</div>`
+          : `<div class="kana">${{item.kana}}</div>`;
         btn.addEventListener("click", () => handleSelect(btn));
         kanaGrid.appendChild(btn);
       }});
 
       updateGridColumns();
 
-      updateStatus("Mark-known mode: click any kana card to toggle known and reveal romaji.");
+      updateStatus(matchingRomaji
+        ? "Romaji-to-kana mode: click any romaji card to toggle known and reveal hiragana."
+        : "Hiragana-to-romaji mode: click any kana card to toggle known and reveal romaji.");
     }}
 
     themeBtn.addEventListener("click", () => {{
@@ -556,6 +580,11 @@ def build_html(entries: list[dict[str, str]]) -> str:
 
     switchSetBtn.addEventListener("click", () => {{
       showingRemainingSet = !showingRemainingSet;
+      render();
+    }});
+
+    modeBtn.addEventListener("click", () => {{
+      setMatchingMode(!matchingRomaji);
       render();
     }});
 
