@@ -352,6 +352,11 @@
     <section class="stats">
       <div class="status" id="status">Click a Hiragana card to mark it known and reveal romaji.</div>
       <div class="actions">
+        <button data-vowel="a" type="button">a</button>
+        <button data-vowel="i" type="button">i</button>
+        <button data-vowel="u" type="button">u</button>
+        <button data-vowel="e" type="button">e</button>
+        <button data-vowel="o" type="button">o</button>
         <button id="switchSetBtn" type="button">Switch to 2nd Set</button>
         <button id="modeBtn" type="button">Switch to Match Romaji</button>
         <button id="themeBtn" type="button">Dark Mode</button>
@@ -377,12 +382,14 @@
     const modeBtn = document.getElementById("modeBtn");
     const themeBtn = document.getElementById("themeBtn");
     const resetBtn = document.getElementById("resetBtn");
+    const vowelButtons = Array.from(document.querySelectorAll('.actions button[data-vowel]'));
     const GRID_MIN_CARD_WIDTH = 108;
     const GRID_MIN_COLS = 1;
     const GRID_MAX_COLS = 8;
     const ATTEMPT_HISTORY_KEY = "hiraganaMatchAttemptHistory";
     const MATCH_MODE_KEY = "hiraganaMatchMode";
     const MAX_ATTEMPT_HISTORY = 5;
+    const VOWEL_GROUPS = ["a", "i", "u", "e", "o"];
     const STARTER_SET_SIZE = 25;
     const STARTER_SET_TEXT = "vowels (a, i, u, e, o) + k, s, t, n rows";
     const REMAINING_SET_TEXT = "remaining rows: h, m, y, r, w + n, g (ga gi gu ge)";
@@ -391,6 +398,7 @@
     let roundCompleted = false;
     let activeEntries = [];
     let showingRemainingSet = false;
+    let activeVowel = null;
     let matchingRomaji = localStorage.getItem(MATCH_MODE_KEY) === "romaji";
 
     function getStarterEntries() {
@@ -409,9 +417,35 @@
     }
 
     function setSetSubtitle() {
-      setLabelEl.textContent = showingRemainingSet
-        ? `Set: ${REMAINING_SET_TEXT}`
-        : `Set: ${STARTER_SET_TEXT}`;
+      const setText = showingRemainingSet ? REMAINING_SET_TEXT : STARTER_SET_TEXT;
+      setLabelEl.textContent = activeVowel
+        ? `Set: 1st + 2nd | vowel group: ${activeVowel}`
+        : `Set: ${setText}`;
+    }
+
+    function setActiveVowel(vowel) {
+      activeVowel = vowel;
+      vowelButtons.forEach((button) => {
+        const isActive = button.dataset.vowel === activeVowel;
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    }
+
+    function getVowelGroup(romaji) {
+      for (let i = romaji.length - 1; i >= 0; i -= 1) {
+        const char = romaji[i].toLowerCase();
+        if (VOWEL_GROUPS.includes(char)) {
+          return char;
+        }
+      }
+      return null;
+    }
+
+    function filterByVowelGroup(items) {
+      if (!activeVowel) {
+        return items;
+      }
+      return items.filter((item) => getVowelGroup(item.romaji) === activeVowel);
     }
 
     function setModeButtonLabel() {
@@ -530,11 +564,15 @@
       roundCompleted = false;
       kanaGrid.innerHTML = "";
 
-      const sourceEntries = showingRemainingSet ? getRemainingEntries() : getStarterEntries();
-      activeEntries = shuffle(sourceEntries);
+      const sourceEntries = activeVowel
+        ? entries
+        : (showingRemainingSet ? getRemainingEntries() : getStarterEntries());
+      activeEntries = shuffle(filterByVowelGroup(sourceEntries));
 
       if (!activeEntries.length) {
-        updateStatus("No kana found for this set. Check your data source.");
+        updateStatus(activeVowel
+          ? `No kana found for vowel group '${activeVowel}' in this set.`
+          : "No kana found for this set. Check your data source.");
         return;
       }
 
@@ -559,8 +597,8 @@
       updateGridColumns();
 
       updateStatus(matchingRomaji
-        ? "Romaji-to-kana mode: click any romaji card to toggle known and reveal hiragana."
-        : "Hiragana-to-romaji mode: click any kana card to toggle known and reveal romaji.");
+        ? `${activeVowel ? `Romaji-to-kana mode (${activeVowel}-group)` : "Romaji-to-kana mode"}: click any romaji card to toggle known and reveal hiragana.`
+        : `${activeVowel ? `Hiragana-to-romaji mode (${activeVowel}-group)` : "Hiragana-to-romaji mode"}: click any kana card to toggle known and reveal romaji.`);
     }
 
     themeBtn.addEventListener("click", () => {
@@ -579,6 +617,14 @@
       render();
     });
 
+    vowelButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedVowel = button.dataset.vowel;
+        setActiveVowel(activeVowel === selectedVowel ? null : selectedVowel);
+        render();
+      });
+    });
+
     resetBtn.addEventListener("click", render);
     window.addEventListener("resize", updateGridColumns);
     window.addEventListener("orientationchange", updateGridColumns);
@@ -588,6 +634,7 @@
       resizeObserver.observe(kanaGrid);
     }
 
+    setActiveVowel(null);
     render();
   </script>
 </body>
