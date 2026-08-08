@@ -1,0 +1,492 @@
+window.phraseData = [
+  {
+    "hiragana": "こんにちは",
+    "romaji": "konnichiwa",
+    "english": "Hello / Good afternoon"
+  },
+  {
+    "hiragana": "こんばんは",
+    "romaji": "konbanwa",
+    "english": "Good evening"
+  },
+  {
+    "hiragana": "おはようございます",
+    "romaji": "ohayou gozaimasu",
+    "english": "Good morning"
+  },
+  {
+    "hiragana": "ありがとう",
+    "romaji": "arigatou",
+    "english": "Thank you"
+  },
+  {
+    "hiragana": "すみません",
+    "romaji": "sumimasen",
+    "english": "Excuse me / Sorry"
+  },
+  {
+    "hiragana": "はい",
+    "romaji": "hai",
+    "english": "Yes"
+  },
+  {
+    "hiragana": "いいえ",
+    "romaji": "iie",
+    "english": "No"
+  },
+  {
+    "hiragana": "おねがいします",
+    "romaji": "onegai shimasu",
+    "english": "Please / I request"
+  },
+  {
+    "hiragana": "さようなら",
+    "romaji": "sayounara",
+    "english": "Goodbye"
+  },
+  {
+    "hiragana": "おげんきですか",
+    "romaji": "ogenki desu ka",
+    "english": "How are you?"
+  },
+  {
+    "hiragana": "ありがとうございます",
+    "romaji": "arigatou gozaimasu",
+    "english": "Thank you very much"
+  },
+  {
+    "hiragana": "いただきます",
+    "romaji": "itadakimasu",
+    "english": "I'll eat / Let's eat"
+  },
+  {
+    "hiragana": "ごちそうさま",
+    "romaji": "gochisousama",
+    "english": "Thanks for the meal"
+  },
+  {
+    "hiragana": "しつれいします",
+    "romaji": "shitsurei shimasu",
+    "english": "Excuse me / I'll be going"
+  },
+  {
+    "hiragana": "しつれいしました",
+    "romaji": "shitsurei shimashita",
+    "english": "Pardon me / Sorry for bothering you"
+  },
+  {
+    "hiragana": "いらっしゃいませ",
+    "romaji": "irasshaimase",
+    "english": "Welcome"
+  },
+  {
+    "hiragana": "ただいま",
+    "romaji": "tadaima",
+    "english": "I'm home"
+  },
+  {
+    "hiragana": "おかえりなさい",
+    "romaji": "okaerinasai",
+    "english": "Welcome back"
+  },
+  {
+    "hiragana": "おやすみなさい",
+    "romaji": "oyasuminasai",
+    "english": "Good night / Sleep well"
+  },
+  {
+    "hiragana": "じゃあね",
+    "romaji": "jaa ne",
+    "english": "See you"
+  },
+  {
+    "hiragana": "またね",
+    "romaji": "mata ne",
+    "english": "See you later"
+  },
+  {
+    "hiragana": "どうぞ",
+    "romaji": "douzo",
+    "english": "Please / Go ahead"
+  },
+  {
+    "hiragana": "どうも",
+    "romaji": "doumo",
+    "english": "Thanks / Much appreciated"
+  },
+  {
+    "hiragana": "よろしくおねがいします",
+    "romaji": "yoroshiku onegaishimasu",
+    "english": "Please take care of me"
+  },
+  {
+    "hiragana": "すぐもどります",
+    "romaji": "sugu modorimasu",
+    "english": "I'll be right back"
+  },
+  {
+    "hiragana": "ちょっとまってください",
+    "romaji": "chotto matte kudasai",
+    "english": "Please wait a moment"
+  },
+  {
+    "hiragana": "もういちどおねがいします",
+    "romaji": "mou ichido onegaishimasu",
+    "english": "One more time please"
+  },
+  {
+    "hiragana": "なんですか",
+    "romaji": "nan desu ka",
+    "english": "What is it?"
+  },
+  {
+    "hiragana": "なにをしていますか",
+    "romaji": "nani o shiteimasu ka",
+    "english": "What are you doing?"
+  },
+  {
+    "hiragana": "なんじですか",
+    "romaji": "nanji desu ka",
+    "english": "What time is it?"
+  },
+  {
+    "hiragana": "どこですか",
+    "romaji": "doko desu ka",
+    "english": "Where is it?"
+  },
+  {
+    "hiragana": "いつですか",
+    "romaji": "itsu desu ka",
+    "english": "When is it?"
+  },
+  {
+    "hiragana": "どうして",
+    "romaji": "doushite",
+    "english": "Why?"
+  },
+  {
+    "hiragana": "どういうことですか",
+    "romaji": "dou iu koto desu ka",
+    "english": "What do you mean?"
+  },
+  {
+    "hiragana": "いいですか",
+    "romaji": "ii desu ka",
+    "english": "Is it okay?"
+  },
+  {
+    "hiragana": "だいじょうぶです",
+    "romaji": "daijoubu desu",
+    "english": "It's all right"
+  },
+  {
+    "hiragana": "たぶん",
+    "romaji": "tabun",
+    "english": "Probably"
+  },
+  {
+    "hiragana": "たくさん",
+    "romaji": "takusan",
+    "english": "A lot"
+  },
+  {
+    "hiragana": "すこし",
+    "romaji": "sukoshi",
+    "english": "A little"
+  },
+  {
+    "hiragana": "ぜんぶ",
+    "romaji": "zenbu",
+    "english": "All / Everything"
+  },
+  {
+    "hiragana": "ひとつ",
+    "romaji": "hitotsu",
+    "english": "One"
+  },
+  {
+    "hiragana": "ふたつ",
+    "romaji": "futatsu",
+    "english": "Two"
+  },
+  {
+    "hiragana": "みっつ",
+    "romaji": "mittsu",
+    "english": "Three"
+  },
+  {
+    "hiragana": "よく",
+    "romaji": "yoku",
+    "english": "Often / Well"
+  },
+  {
+    "hiragana": "まず",
+    "romaji": "mazu",
+    "english": "First / At first"
+  },
+  {
+    "hiragana": "まだ",
+    "romaji": "mada",
+    "english": "Still / Not yet"
+  },
+  {
+    "hiragana": "もう",
+    "romaji": "mou",
+    "english": "Already / More"
+  },
+  {
+    "hiragana": "すぐ",
+    "romaji": "sugu",
+    "english": "Right away"
+  },
+  {
+    "hiragana": "いま",
+    "romaji": "ima",
+    "english": "Now"
+  },
+  {
+    "hiragana": "あとで",
+    "romaji": "ato de",
+    "english": "Later"
+  },
+  {
+    "hiragana": "これから",
+    "romaji": "kore kara",
+    "english": "From now on"
+  },
+  {
+    "hiragana": "そのまま",
+    "romaji": "sonomama",
+    "english": "As it is"
+  },
+  {
+    "hiragana": "しばらく",
+    "romaji": "shibaraku",
+    "english": "For a while"
+  },
+  {
+    "hiragana": "つづけてください",
+    "romaji": "tsuzukete kudasai",
+    "english": "Please continue"
+  },
+  {
+    "hiragana": "ください",
+    "romaji": "kudasai",
+    "english": "Please"
+  },
+  {
+    "hiragana": "みてください",
+    "romaji": "mite kudasai",
+    "english": "Please look"
+  },
+  {
+    "hiragana": "きいてください",
+    "romaji": "kiite kudasai",
+    "english": "Please listen"
+  },
+  {
+    "hiragana": "かいてください",
+    "romaji": "kaite kudasai",
+    "english": "Please write"
+  },
+  {
+    "hiragana": "あけてください",
+    "romaji": "akete kudasai",
+    "english": "Please open"
+  },
+  {
+    "hiragana": "しめてください",
+    "romaji": "shimete kudasai",
+    "english": "Please close"
+  },
+  {
+    "hiragana": "はいてください",
+    "romaji": "haite kudasai",
+    "english": "Please come in"
+  },
+  {
+    "hiragana": "でてください",
+    "romaji": "dete kudasai",
+    "english": "Please go out"
+  },
+  {
+    "hiragana": "どうぞおすわりください",
+    "romaji": "douzo osuwari kudasai",
+    "english": "Please have a seat"
+  },
+  {
+    "hiragana": "どうぞおはいりください",
+    "romaji": "douzo ohairi kudasai",
+    "english": "Please come in"
+  },
+  {
+    "hiragana": "ごじゆうに",
+    "romaji": "gojiyuu ni",
+    "english": "Please feel free"
+  },
+  {
+    "hiragana": "おきをつけて",
+    "romaji": "oki wo tsukete",
+    "english": "Take care"
+  },
+  {
+    "hiragana": "いってらっしゃい",
+    "romaji": "itterasshai",
+    "english": "Have a good trip"
+  },
+  {
+    "hiragana": "いってきます",
+    "romaji": "itte kimasu",
+    "english": "I'm off"
+  },
+  {
+    "hiragana": "ごめんなさい",
+    "romaji": "gomen nasai",
+    "english": "I'm sorry"
+  },
+  {
+    "hiragana": "すごい",
+    "romaji": "sugoi",
+    "english": "Amazing / Great"
+  },
+  {
+    "hiragana": "やさしい",
+    "romaji": "yasashii",
+    "english": "Gentle / Easy"
+  },
+  {
+    "hiragana": "たのしい",
+    "romaji": "tanoshii",
+    "english": "Fun"
+  },
+  {
+    "hiragana": "かなしい",
+    "romaji": "kanashii",
+    "english": "Sad"
+  },
+  {
+    "hiragana": "うれしい",
+    "romaji": "ureshii",
+    "english": "Happy"
+  },
+  {
+    "hiragana": "さびしい",
+    "romaji": "sabishii",
+    "english": "Lonely"
+  },
+  {
+    "hiragana": "つかれました",
+    "romaji": "tsukaremashita",
+    "english": "I'm tired"
+  },
+  {
+    "hiragana": "おなかがすきました",
+    "romaji": "onaka ga sukimashita",
+    "english": "I'm hungry"
+  },
+  {
+    "hiragana": "たのしみです",
+    "romaji": "tanoshimi desu",
+    "english": "I'm looking forward to it"
+  },
+  {
+    "hiragana": "しっています",
+    "romaji": "shitteimasu",
+    "english": "I know"
+  },
+  {
+    "hiragana": "しらない",
+    "romaji": "shiranai",
+    "english": "I don't know"
+  },
+  {
+    "hiragana": "いきましょう",
+    "romaji": "ikimashou",
+    "english": "Let's go"
+  },
+  {
+    "hiragana": "みましょう",
+    "romaji": "mimashou",
+    "english": "Let's see"
+  },
+  {
+    "hiragana": "ちょっと",
+    "romaji": "chotto",
+    "english": "A little bit"
+  },
+  {
+    "hiragana": "だめです",
+    "romaji": "dame desu",
+    "english": "It's no good"
+  },
+  {
+    "hiragana": "いいです",
+    "romaji": "ii desu",
+    "english": "It's good"
+  },
+  {
+    "hiragana": "いいですね",
+    "romaji": "ii desu ne",
+    "english": "That's nice"
+  },
+  {
+    "hiragana": "すごく",
+    "romaji": "sugoku",
+    "english": "Very"
+  },
+  {
+    "hiragana": "ほんとうです",
+    "romaji": "hontou desu",
+    "english": "It's true"
+  },
+  {
+    "hiragana": "ほんとうに",
+    "romaji": "hontou ni",
+    "english": "Really / Truly"
+  },
+  {
+    "hiragana": "ええ",
+    "romaji": "ee",
+    "english": "Yeah / Yes"
+  },
+  {
+    "hiragana": "うん",
+    "romaji": "un",
+    "english": "Yeah"
+  },
+  {
+    "hiragana": "ううん",
+    "romaji": "uun",
+    "english": "No"
+  },
+  {
+    "hiragana": "それで",
+    "romaji": "sore de",
+    "english": "And so / Then"
+  },
+  {
+    "hiragana": "それでは",
+    "romaji": "sore dewa",
+    "english": "Well then"
+  },
+  {
+    "hiragana": "またあとで",
+    "romaji": "mata atode",
+    "english": "See you later"
+  },
+  {
+    "hiragana": "あとすこし",
+    "romaji": "ato sukoshi",
+    "english": "A little more"
+  },
+  {
+    "hiragana": "もうすこし",
+    "romaji": "mou sukoshi",
+    "english": "A little more"
+  },
+  {
+    "hiragana": "もうかえります",
+    "romaji": "mou kaerimasu",
+    "english": "I'm going home"
+  }
+];

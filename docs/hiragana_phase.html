@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hiragana Phrases Practice</title>
+  <style>
+    :root {
+      --bg: #f7f8f3;
+      --panel: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+      --line: #d1d5db;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .page-tabs {
+      width: min(980px, 100%);
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.25rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+      margin: 0 auto 1rem;
+    }
+
+    .page-tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.55rem 0.8rem;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: #134e4a;
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+    }
+
+    .page-tab.active {
+      background: linear-gradient(135deg, #0f766e, #0ea5a4);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    .app {
+      width: min(980px, 100%);
+      margin: 0 auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 1rem 1.25rem;
+      background: linear-gradient(135deg, #0f766e, #0ea5a4);
+      color: #f0fdfa;
+    }
+
+    h1 { margin: 0; font-size: 1.4rem; }
+    .sub { margin: 0.35rem 0 0; font-size: 0.95rem; opacity: 0.95; }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1rem 0;
+    }
+
+    .controls button,
+    .controls .pause-control {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      color: var(--ink);
+      padding: 0.55rem 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .definitions-hidden .romaji,
+    .definitions-hidden .meaning {
+      display: none;
+    }
+
+    .definitions-hidden .item-field:nth-child(2),
+    .definitions-hidden .item-field:nth-child(3) {
+      display: none;
+    }
+
+    .controls button:hover {
+      filter: brightness(1.03);
+    }
+
+    .controls .pause-control {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+    }
+
+    .controls input[type="range"] {
+      accent-color: var(--accent);
+    }
+
+    .list {
+      display: grid;
+      gap: 0.75rem;
+      padding: 1rem;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 1rem 1rem;
+    }
+
+    .pagination button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--ink);
+      padding: 0.45rem 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.85rem 0.95rem;
+      background: #fcfcfb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      text-align: center;
+      transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background-color 120ms ease;
+    }
+
+    .item.active {
+      border-color: #92400e;
+      background: #fff7d6;
+      box-shadow: 0 0 0 2px rgba(146, 64, 14, 0.24);
+      transform: translateY(-1px);
+    }
+
+    .item.active .hiragana {
+      background: #fde68a;
+      color: #7c2d12;
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      box-shadow: 0 0 0 1px rgba(146, 64, 14, 0.15);
+    }
+
+    .item-field {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.1rem;
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      flex-wrap: nowrap;
+    }
+
+    .hiragana-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .show-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 999px;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0 0.35rem;
+      border: 1px solid #fde68a;
+    }
+
+    .tile-action,
+    .tile-show {
+      border: 0;
+      border-radius: 999px;
+      background: #0f766e;
+      color: #ffffff;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tile-action:hover,
+    .tile-show:hover {
+      filter: brightness(1.06);
+    }
+
+    body.dark-mode {
+      color: #e5e7eb;
+      background: #0f172a;
+    }
+
+    body.dark-mode .page-tabs {
+      background: #111827;
+      border-color: #334155;
+    }
+
+    body.dark-mode .page-tab {
+      background: #172554;
+      border-color: #1d4ed8;
+      color: #dbeafe;
+    }
+
+    body.dark-mode .app {
+      background: #111827;
+      border-color: #334155;
+    }
+
+    body.dark-mode .item {
+      background: #1f2937;
+      border-color: #374151;
+      color: #f9fafb;
+    }
+
+    body.dark-mode .controls button,
+    body.dark-mode .controls .pause-control {
+      background: #1f2937;
+      color: #f9fafb;
+      border-color: #374151;
+    }
+
+    .hiragana {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0f766e;
+    }
+
+    .romaji {
+      color: #d97706;
+    }
+
+    .meaning {
+      color: #ca8a04;
+    }
+
+    .label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <nav class="page-tabs" aria-label="Page tabs">
+    <a class="page-tab" href="index.html">Vocabulary Network</a>
+    <a class="page-tab" href="hiragana_match.html">Hiragana Match</a>
+    <a class="page-tab active" href="hiragana_phase.html" aria-current="page">Hirgana Phases</a>
+  </nav>
+
+  <main class="app">
+    <section class="header">
+      <h1>Hiragana Phrase Practice</h1>
+      <p class="sub">Common Japanese phrases in hiragana with romaji and English meaning.</p>
+    </section>
+
+    <section class="controls">
+      <button id="autoPronounceButton" type="button">Auto Speak</button>
+      <button id="darkModeButton" type="button">Light Mode</button>
+      <button id="definitionsToggleButton" type="button">Definition Off</button>
+      <button id="shuffleButton" type="button">Shuffle</button>
+      <button id="resetCountsButton" type="button">Reset Counts</button>
+      <label class="pause-control" for="pauseSlider">
+        Delay <span id="pauseValue">1.0s</span>
+        <input id="pauseSlider" type="range" min="1" max="5" step="1" value="1" />
+      </label>
+    </section>
+
+    <section class="list" id="phraseList"></section>
+    <section class="pagination" aria-label="Phrase pagination">
+      <button id="prevPageButton" type="button">Prev</button>
+      <span id="pageInfo">Page 1</span>
+      <button id="nextPageButton" type="button">Next</button>
+    </section>
+  </main>
+
+  <script src="phrase-data.js"></script>
+  <script>
+    const phraseList = document.getElementById('phraseList');
+    const autoPronounceButton = document.getElementById('autoPronounceButton');
+    const darkModeButton = document.getElementById('darkModeButton');
+    const definitionsToggleButton = document.getElementById('definitionsToggleButton');
+    const shuffleButton = document.getElementById('shuffleButton');
+    const resetCountsButton = document.getElementById('resetCountsButton');
+    const prevPageButton = document.getElementById('prevPageButton');
+    const nextPageButton = document.getElementById('nextPageButton');
+    const pageInfo = document.getElementById('pageInfo');
+    const pauseSlider = document.getElementById('pauseSlider');
+    const pauseValue = document.getElementById('pauseValue');
+
+    const synth = window.speechSynthesis;
+    const showCountsStorageKey = 'hiraganaPhraseShowCounts';
+    let phrases = [];
+    let displayedPhrases = [];
+    let isShuffled = false;
+    let autoPronounceRunning = false;
+    let autoPronounceIndex = 0;
+    let autoPronounceTimerId = null;
+    let autoPronounceToken = 0;
+    let pauseSeconds = 1.0;
+    let darkMode = localStorage.getItem('hiraganaPhraseTheme') === 'dark';
+    let definitionsVisible = false;
+    let showCounts = {};
+    let currentPage = 0;
+    const pageSize = 5;
+
+    function loadShowCounts() {
+      try {
+        const storedCounts = localStorage.getItem(showCountsStorageKey);
+        if (storedCounts) {
+          const parsedCounts = JSON.parse(storedCounts);
+          if (parsedCounts && typeof parsedCounts === 'object') {
+            showCounts = parsedCounts;
+          }
+        }
+      } catch (error) {
+        console.error('Failed to load show counts', error);
+        showCounts = {};
+      }
+    }
+
+    function saveShowCounts() {
+      localStorage.setItem(showCountsStorageKey, JSON.stringify(showCounts));
+    }
+
+    function recordShowClick(hiragana) {
+      const key = (hiragana || '').trim();
+      if (!key) {
+        return;
+      }
+      showCounts[key] = (showCounts[key] || 0) + 1;
+      saveShowCounts();
+    }
+
+    loadShowCounts();
+
+    function renderPhrases() {
+      phraseList.classList.toggle('definitions-hidden', !definitionsVisible);
+      const totalPages = Math.max(1, Math.ceil(displayedPhrases.length / pageSize));
+      currentPage = Math.min(currentPage, totalPages - 1);
+      const startIndex = currentPage * pageSize;
+      const visiblePhrases = displayedPhrases.slice(startIndex, startIndex + pageSize);
+      pageInfo.textContent = `Page ${currentPage + 1} / ${totalPages}`;
+      prevPageButton.disabled = currentPage === 0;
+      nextPageButton.disabled = currentPage >= totalPages - 1;
+      phraseList.innerHTML = visiblePhrases.map((phrase, index) => `
+        <article class="item ${autoPronounceRunning && index === autoPronounceIndex ? 'active' : ''}">
+          <div class="item-field">
+            <div class="hiragana-line">
+              <span class="label">Hiragana</span>
+              <span class="show-count" aria-label="Show count">${showCounts[phrase.hiragana] || 0}</span>
+              <span class="hiragana">${phrase.hiragana}</span>
+              <div class="item-actions">
+                <button class="tile-action" type="button" data-hiragana="${phrase.hiragana}" data-romaji="${phrase.romaji}" data-english="${phrase.english}">Speak</button>
+                <button class="tile-show" type="button" data-hiragana="${phrase.hiragana}" data-romaji="${phrase.romaji}" data-english="${phrase.english}">Show</button>
+              </div>
+            </div>
+          </div>
+          <div class="item-field">
+            <span class="label">Romaji</span>
+            <span class="romaji">${phrase.romaji}</span>
+          </div>
+          <div class="item-field">
+            <span class="label">English</span>
+            <span class="meaning">${phrase.english}</span>
+          </div>
+        </article>
+      `).join('');
+
+      phraseList.querySelectorAll('.tile-action').forEach((button) => {
+        button.addEventListener('click', () => {
+          const utterance = new SpeechSynthesisUtterance(button.dataset.hiragana);
+          utterance.lang = 'ja-JP';
+          synth.cancel();
+          synth.speak(utterance);
+        });
+      });
+
+      phraseList.querySelectorAll('.tile-show').forEach((button) => {
+        button.addEventListener('click', () => {
+          const card = button.closest('.item');
+          if (!card) {
+            return;
+          }
+          recordShowClick(button.dataset.hiragana);
+          const countBadge = card.querySelector('.show-count');
+          if (countBadge) {
+            countBadge.textContent = showCounts[button.dataset.hiragana] || 0;
+          }
+          card.querySelector('.romaji').textContent = button.dataset.romaji;
+          card.querySelector('.meaning').textContent = button.dataset.english;
+          card.querySelector('.romaji').style.display = 'block';
+          card.querySelector('.meaning').style.display = 'block';
+          card.querySelector('.item-field:nth-child(2)').style.display = 'flex';
+          card.querySelector('.item-field:nth-child(3)').style.display = 'flex';
+        });
+      });
+
+      if (autoPronounceRunning && displayedPhrases[autoPronounceIndex]) {
+        const targetPhrase = displayedPhrases[autoPronounceIndex];
+        const targetIndex = displayedPhrases.findIndex((phrase) => phrase.hiragana === targetPhrase.hiragana);
+        const targetPage = Math.floor(targetIndex / pageSize);
+        if (targetPage !== currentPage) {
+          currentPage = targetPage;
+          renderPhrases();
+        }
+        const activeItem = phraseList.querySelector('.item.active');
+        if (activeItem) {
+          activeItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    }
+
+    function shuffleArray(items) {
+      const copy = [...items];
+      const groupedByShowCount = copy.reduce((accumulator, item) => {
+        const count = showCounts[item.hiragana] || 0;
+        if (!accumulator[count]) {
+          accumulator[count] = [];
+        }
+        accumulator[count].push(item);
+        return accumulator;
+      }, {});
+
+      const orderedCounts = Object.keys(groupedByShowCount)
+        .map(Number)
+        .sort((left, right) => left - right);
+
+      const result = [];
+      orderedCounts.forEach((count) => {
+        const bucket = groupedByShowCount[count];
+        for (let i = bucket.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [bucket[i], bucket[j]] = [bucket[j], bucket[i]];
+        }
+        result.push(...bucket);
+      });
+
+      return result;
+    }
+
+    function updatePauseDisplay() {
+      pauseValue.textContent = `${pauseSeconds.toFixed(1)}s`;
+    }
+
+    function setDarkMode(enabled) {
+      darkMode = enabled;
+      document.body.classList.toggle('dark-mode', darkMode);
+      darkModeButton.textContent = darkMode ? 'Dark Mode' : 'Light Mode';
+      localStorage.setItem('hiraganaPhraseTheme', darkMode ? 'dark' : 'light');
+    }
+
+    function updateDefinitionsButton() {
+      definitionsToggleButton.textContent = definitionsVisible ? 'Definition On' : 'Definition Off';
+    }
+
+    function toggleDefinitions() {
+      definitionsVisible = !definitionsVisible;
+      updateDefinitionsButton();
+      renderPhrases();
+    }
+
+    function resetPhrases() {
+      displayedPhrases = [...phrases];
+      isShuffled = false;
+      currentPage = 0;
+      renderPhrases();
+      shuffleButton.textContent = 'Shuffle';
+    }
+
+    function resetShowCounts() {
+      showCounts = {};
+      saveShowCounts();
+      renderPhrases();
+    }
+
+    function goToPrevPage() {
+      if (currentPage > 0) {
+        currentPage -= 1;
+        renderPhrases();
+      }
+    }
+
+    function goToNextPage() {
+      const totalPages = Math.max(1, Math.ceil(displayedPhrases.length / pageSize));
+      if (currentPage < totalPages - 1) {
+        currentPage += 1;
+        renderPhrases();
+      }
+    }
+
+    function loadPhrases() {
+      try {
+        const loadedPhrases = window.phraseData || [];
+        phrases = loadedPhrases;
+        displayedPhrases = [...phrases];
+        renderPhrases();
+      } catch (error) {
+        console.error('Failed to load phrases', error);
+        phraseList.innerHTML = '<p>Unable to load phrase data.</p>';
+      }
+    }
+
+    function toggleShuffle() {
+      displayedPhrases = shuffleArray(phrases);
+      isShuffled = true;
+      renderPhrases();
+      shuffleButton.textContent = 'Shuffle';
+      stopAutoPronounce();
+    }
+
+    function stopAutoPronounce() {
+      autoPronounceRunning = false;
+      autoPronounceToken += 1;
+      autoPronounceIndex = 0;
+      if (autoPronounceTimerId) {
+        clearTimeout(autoPronounceTimerId);
+        autoPronounceTimerId = null;
+      }
+      if (synth) {
+        synth.cancel();
+      }
+      autoPronounceButton.textContent = 'Auto Speak';
+    }
+
+    function speakPhrase(phrase, token) {
+      if (!synth || !autoPronounceRunning || token !== autoPronounceToken) {
+        return;
+      }
+
+      const activeIndex = displayedPhrases.findIndex((entry) => entry.hiragana === phrase.hiragana);
+      if (activeIndex >= 0) {
+        autoPronounceIndex = activeIndex;
+      }
+      renderPhrases();
+      const utterance = new SpeechSynthesisUtterance(phrase.hiragana);
+      utterance.lang = 'ja-JP';
+      utterance.onend = () => {
+        if (!autoPronounceRunning || token !== autoPronounceToken) {
+          return;
+        }
+        autoPronounceTimerId = window.setTimeout(() => {
+          autoPronounceIndex += 1;
+          if (autoPronounceIndex >= displayedPhrases.length) {
+            stopAutoPronounce();
+            return;
+          }
+          speakPhrase(displayedPhrases[autoPronounceIndex], token);
+        }, pauseSeconds * 1000);
+      };
+      utterance.onerror = () => {
+        if (autoPronounceRunning && token === autoPronounceToken) {
+          autoPronounceIndex += 1;
+          if (autoPronounceIndex >= displayedPhrases.length) {
+            stopAutoPronounce();
+          } else {
+            speakPhrase(displayedPhrases[autoPronounceIndex], token);
+          }
+        }
+      };
+      synth.cancel();
+      synth.speak(utterance);
+    }
+
+    function startAutoPronounce() {
+      if (autoPronounceRunning) {
+        return;
+      }
+
+      autoPronounceRunning = true;
+      autoPronounceIndex = 0;
+      autoPronounceToken += 1;
+      autoPronounceButton.textContent = 'Stop';
+      speakPhrase(displayedPhrases[autoPronounceIndex], autoPronounceToken);
+    }
+
+    function toggleAutoPronounce() {
+      if (autoPronounceRunning) {
+        stopAutoPronounce();
+      } else {
+        startAutoPronounce();
+      }
+    }
+
+    function updatePauseFromSlider() {
+      const parsed = Number.parseFloat(pauseSlider.value);
+      pauseSeconds = Number.isFinite(parsed) ? parsed : 1;
+      updatePauseDisplay();
+    }
+
+    updatePauseDisplay();
+    updateDefinitionsButton();
+    setDarkMode(darkMode);
+    loadPhrases();
+
+    autoPronounceButton.addEventListener('click', toggleAutoPronounce);
+    darkModeButton.addEventListener('click', () => setDarkMode(!darkMode));
+    definitionsToggleButton.addEventListener('click', toggleDefinitions);
+    shuffleButton.addEventListener('click', toggleShuffle);
+    resetCountsButton.addEventListener('click', resetShowCounts);
+    prevPageButton.addEventListener('click', goToPrevPage);
+    nextPageButton.addEventListener('click', goToNextPage);
+    pauseSlider.addEventListener('input', updatePauseFromSlider);
+  </script>
+</body>
+</html>
