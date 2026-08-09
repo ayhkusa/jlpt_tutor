@@ -3,7 +3,8 @@ from pathlib import Path
 
 from gana_speed_test_data import HIRAGANA_ENTRIES
 
-STARTER_SET_SIZE = 25
+FIRST_SET_SIZE = 25
+SECOND_SET_SIZE = 22
 
 def build_html(entries: list[dict[str, str]]) -> str:
     payload = json.dumps(entries, ensure_ascii=False)
@@ -350,11 +351,12 @@ def build_html(entries: list[dict[str, str]]) -> str:
   <nav class=\"page-tabs\" aria-label=\"Page tabs\">
     <a class=\"page-tab\" href=\"index.html\">Vocabulary Network</a>
     <a class=\"page-tab active\" href=\"hiragana_match.html\" aria-current=\"page\">Hiragana Match</a>
+    <a class=\"page-tab\" href=\"hiragana_phase.html\">Hirgana Phases</a>
   </nav>
 
   <main class=\"app\">
     <section class=\"header\">
-      <h1>Hiragana 1st/2nd Set Practice</h1>
+      <h1>Hiragana Set Practice</h1>
       <p class=\"sub\" id=\"setLabel\">Set: vowels (a, i, u, e, o) + k, s, t, n rows</p>
     </section>
 
@@ -399,37 +401,54 @@ def build_html(entries: list[dict[str, str]]) -> str:
     const MATCH_MODE_KEY = "hiraganaMatchMode";
     const MAX_ATTEMPT_HISTORY = 5;
     const VOWEL_GROUPS = ["a", "i", "u", "e", "o"];
-    const STARTER_SET_SIZE = {STARTER_SET_SIZE};
-    const STARTER_SET_TEXT = "vowels (a, i, u, e, o) + k, s, t, n rows";
-    const REMAINING_SET_TEXT = "remaining rows: h, m, y, r, w + n, g (ga gi gu ge)";
+    const FIRST_SET_SIZE = {FIRST_SET_SIZE};
+    const SECOND_SET_SIZE = {SECOND_SET_SIZE};
+    const SET_DEFINITIONS = [
+      {{
+        name: "1st Set",
+        description: "vowels (a, i, u, e, o) + k, s, t, n rows",
+        getEntries: () => entries.slice(0, Math.min(FIRST_SET_SIZE, entries.length)),
+      }},
+      {{
+        name: "2nd Set",
+        description: "h, m, y, r, w + ん",
+        getEntries: () => entries.slice(
+          Math.min(FIRST_SET_SIZE, entries.length),
+          Math.min(FIRST_SET_SIZE + SECOND_SET_SIZE, entries.length),
+        ),
+      }},
+      {{
+        name: "3rd Set",
+        description: "voiced/semi-voiced rows: g, z, d, b, p",
+        getEntries: () => entries.slice(Math.min(FIRST_SET_SIZE + SECOND_SET_SIZE, entries.length)),
+      }},
+    ];
 
     let attemptStartMs = Date.now();
     let roundCompleted = false;
     let activeEntries = [];
-    let showingRemainingSet = false;
+    let currentSetIndex = 0;
     let activeVowel = null;
     let matchingRomaji = localStorage.getItem(MATCH_MODE_KEY) === "romaji";
 
-    function getStarterEntries() {{
-      return entries.slice(0, Math.min(STARTER_SET_SIZE, entries.length));
+    function getCurrentSetDefinition() {{
+      return SET_DEFINITIONS[currentSetIndex] ?? SET_DEFINITIONS[0];
     }}
 
-    function getRemainingEntries() {{
-      if (entries.length <= STARTER_SET_SIZE) {{
-        return [];
-      }}
-      return entries.slice(STARTER_SET_SIZE);
+    function getCurrentSetEntries() {{
+      return getCurrentSetDefinition().getEntries();
     }}
 
     function setSetButtonLabel() {{
-      switchSetBtn.textContent = showingRemainingSet ? "Switch to 1st Set" : "Switch to 2nd Set";
+      const nextSetIndex = (currentSetIndex + 1) % SET_DEFINITIONS.length;
+      switchSetBtn.textContent = `Switch to ${{SET_DEFINITIONS[nextSetIndex].name}}`;
     }}
 
     function setSetSubtitle() {{
-      const setText = showingRemainingSet ? REMAINING_SET_TEXT : STARTER_SET_TEXT;
+      const setDefinition = getCurrentSetDefinition();
       setLabelEl.textContent = activeVowel
-        ? `Set: 1st + 2nd | vowel group: ${{activeVowel}}`
-        : `Set: ${{setText}}`;
+        ? `Set: all sets | vowel group: ${{activeVowel}}`
+        : `Set: ${{setDefinition.name}} — ${{setDefinition.description}}`;
     }}
 
     function setActiveVowel(vowel) {{
@@ -575,12 +594,12 @@ def build_html(entries: list[dict[str, str]]) -> str:
 
       const sourceEntries = activeVowel
         ? entries
-        : (showingRemainingSet ? getRemainingEntries() : getStarterEntries());
+        : getCurrentSetEntries();
       activeEntries = shuffle(filterByVowelGroup(sourceEntries));
 
       if (!activeEntries.length) {{
         updateStatus(activeVowel
-          ? `No kana found for vowel group '${{activeVowel}}' in this set.`
+          ? `No kana found for vowel group '${{activeVowel}}'.`
           : "No kana found for this set. Check your data source.");
         return;
       }}
@@ -617,7 +636,7 @@ def build_html(entries: list[dict[str, str]]) -> str:
     setDarkMode(localStorage.getItem("hiraganaMatchTheme") === "dark");
 
     switchSetBtn.addEventListener("click", () => {{
-      showingRemainingSet = !showingRemainingSet;
+      currentSetIndex = (currentSetIndex + 1) % SET_DEFINITIONS.length;
       render();
     }});
 
