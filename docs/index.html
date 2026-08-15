@@ -6,6 +6,17 @@
   <title>Katakana Vocabulary Network</title>
   <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
   <style>
+    :root {
+      --bg: #f7f8f3;
+      --panel: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+      --line: #d1d5db;
+      --shadow: rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
     html, body {
       height: 100%;
       width: 100%;
@@ -15,48 +26,81 @@
       margin: 0;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1rem;
       font-family: Noto Sans CJK JP, Yu Gothic, Meiryo, MS Gothic, Hiragino Sans, sans-serif;
-      background: #f8fafc;
-      color: #111827;
+      background:
+        radial-gradient(circle at 10% 10%, #d1fae5 0%, transparent 35%),
+        radial-gradient(circle at 90% 15%, #fde68a 0%, transparent 30%),
+        var(--bg);
+      color: var(--ink);
     }
     .page-tabs {
       display: flex;
       gap: 0.5rem;
-      width: min(980px, calc(100% - 2rem));
-      margin: 0.75rem auto 0.3rem;
+      width: min(980px, 100%);
       padding: 0.25rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.6rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
       background: #ffffff;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
       flex-shrink: 0;
     }
     .page-tab {
       flex: 1;
       text-align: center;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 700;
-      border: 1px solid #cbd5e1;
-      border-radius: 0.45rem;
-      padding: 0.42rem 0.65rem;
-      color: #1f2937;
-      background: #f8fafc;
+      border: 1px solid #99f6e4;
+      border-radius: 9px;
+      padding: 0.55rem 0.8rem;
+      color: #134e4a;
+      background: #f0fdfa;
+      transition: transform 120ms ease, filter 120ms ease;
+    }
+    .page-tab:hover {
+      filter: brightness(1.03);
     }
     .page-tab.active {
       color: #ffffff;
-      background: #2563eb;
-      border-color: #2563eb;
+      background: linear-gradient(135deg, #0f766e, #0ea5a4);
+      border-color: transparent;
     }
-      .page-header {
-        text-align: center;
-      }
+    .page-header {
+      text-align: center;
+      width: min(980px, 100%);
+      background: linear-gradient(135deg, #0f766e, #0ea5a4);
+      color: #f0fdfa;
+      padding: 1rem 1.25rem;
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+    }
+    .page-header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+    }
+    .page-header p {
+      margin: 0.35rem 0 0;
+      font-size: 0.95rem;
+      opacity: 0.95;
+      color: #f0fdfa;
+    }
     .controls {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem 1.5rem 0.5rem;
+      padding: 0.85rem 1.25rem;
       flex-shrink: 0;
-      width: 100%;
+      width: min(980px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
     }
     .control-panel {
       display: flex;
@@ -73,22 +117,24 @@
       flex-wrap: wrap;
     }
     .gojuon-wrap {
-      border: 1px solid #d1d5db;
-      border-radius: 0.6rem;
-      background: #ffffff;
-      padding: 0.3rem;
-      overflow-x: auto;
-      overflow-y: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fcfcfb;
+      padding: 0.8rem;
+      overflow: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       max-width: min(620px, 94vw);
       width: 100%;
+      max-height: 240px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
     }
     .gojuon-wrap::-webkit-scrollbar {
       height: 8px;
+      width: 8px;
     }
     .gojuon-wrap::-webkit-scrollbar-thumb {
-      background: rgba(100, 116, 139, 0.45);
+      background: rgba(15, 118, 110, 0.35);
       border-radius: 999px;
     }
     .gojuon-table {
@@ -96,16 +142,20 @@
       table-layout: fixed;
       width: 100%;
       min-width: 540px;
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
     }
-    @media (max-width: 640px) {
+    @media (max-width: 760px) {
       body {
         overflow-x: hidden;
+        padding: 0.75rem;
+      }
+      .page-tabs {
+        width: 100%;
       }
       .controls {
         padding: 0.75rem 0.5rem 0.5rem;
-      }
-      .page-tabs {
-        width: calc(100% - 0.75rem);
       }
       .button-row {
         justify-content: flex-start;
@@ -114,6 +164,7 @@
       .gojuon-wrap {
         max-width: 100vw;
         width: 100%;
+        max-height: 220px;
       }
       .gojuon-table {
         min-width: 420px;
@@ -122,7 +173,7 @@
         height: min(52vh, 420px);
       }
     }
-    @media (min-width: 641px) and (max-width: 980px) {
+    @media (min-width: 761px) and (max-width: 980px) {
       .gojuon-wrap {
         max-width: 100%;
       }
@@ -193,10 +244,15 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       overflow-x: auto;
       width: min(100%, 980px);
       padding-bottom: 0.1rem;
+    }
+    .button-row > button {
+      flex: 1 1 140px;
+      min-width: 120px;
+      max-width: 200px;
     }
     .button-row .auto-pronounce-button {
       margin-top: 0;
@@ -230,16 +286,37 @@
       background: #b91c1c;
     }
     .table-toggle-button {
-      min-width: 150px;
+      min-width: 120px;
       align-self: center;
     }
+    .dark-mode-button {
+      min-width: 120px;
+      align-self: center;
+    }
+    .definitions-toggle-button {
+      min-width: 140px;
+      align-self: center;
+    }
+    .auto-pronounce-button {
+      min-width: 120px;
+      align-self: center;
+      margin-top: 0.25rem;
+    }
     button {
-      padding: 0.4rem 0.8rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 0.4rem;
-      background: #ffffff;
+      border: 0;
+      border-radius: 10px;
+      padding: 0.55rem 0.8rem;
+      background: var(--accent);
+      color: #ffffff;
       cursor: pointer;
       font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.15);
+      transition: transform 120ms ease, filter 120ms ease;
+    }
+    button:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
     }
     .letter-help {
       padding: 0.6rem 0.8rem;
@@ -315,6 +392,25 @@
     body.dark-mode p {
       color: #9ca3af;
     }
+    body.dark-mode .controls {
+      background: #111827;
+      border-color: #374151;
+      box-shadow: 0 16px 40px rgba(2, 6, 23, 0.55);
+    }
+    body.dark-mode .page-tabs {
+      border-color: #374151;
+      background: #1f2937;
+    }
+    body.dark-mode .page-tab {
+      border-color: #4b5563;
+      background: #374151;
+      color: #f9fafb;
+    }
+    body.dark-mode .page-tab.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #ffffff;
+    }
     body.dark-mode .gojuon-wrap {
       border-color: #374151;
       background: #1f2937;
@@ -378,19 +474,8 @@
       border-color: #374151;
       background: #1f2937;
     }
-    body.dark-mode .page-tabs {
-      border-color: #374151;
-      background: #1f2937;
-    }
-    body.dark-mode .page-tab {
-      border-color: #4b5563;
-      background: #374151;
-      color: #f9fafb;
-    }
-    body.dark-mode .page-tab.active {
-      background: #2563eb;
-      border-color: #2563eb;
-      color: #ffffff;
+    body.dark-mode .page-header {
+      box-shadow: 0 16px 40px rgba(2, 6, 23, 0.55);
     }
   </style>
 </head>
@@ -398,6 +483,7 @@
   <nav class="page-tabs" aria-label="Page tabs">
     <a class="page-tab active" href="index.html" aria-current="page">Vocabulary Network</a>
     <a class="page-tab" href="hiragana_match.html">Hiragana Match</a>
+    <a class="page-tab" href="hiragana_phase.html">Hirgana Phases</a>
   </nav>
 
   <div class="page-header">
