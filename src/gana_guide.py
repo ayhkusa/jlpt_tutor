@@ -90,5 +90,100 @@ pronunciation_guide.update(
             "sound": '"geh" (g + e)',
             "example": "げんき (Healthy, energetic)",
         },
+        "go": {
+            "label": "Go (ご)",
+            "sound": '"goh" (g + o)',
+            "example": "ごはん (Meal)",
+        },
+        "za": {
+            "label": "Za (ざ)",
+            "sound": '"zah" (z + a)',
+            "example": "ざっし (Magazine)",
+        },
+        "ji": {
+            "label": "Ji (じ)",
+            "sound": '"jee" (j + i)',
+            "example": "じてんしゃ (Bicycle)",
+        },
+        "zu": {
+            "label": "Zu (ず)",
+            "sound": '"zoo" (z + u)',
+            "example": "ずっと (All the time)",
+        },
+        "ze": {
+            "label": "Ze (ぜ)",
+            "sound": '"zeh" (z + e)',
+            "example": "ぜんぶ (Everything)",
+        },
+        "zo": {
+            "label": "Zo (ぞ)",
+            "sound": '"zoh" (z + o)',
+            "example": "ぞう (Elephant)",
+        },
+        "da": {
+            "label": "Da (だ)",
+            "sound": '"dah" (d + a)',
+            "example": "だいがく (University)",
+        },
+        "de": {
+            "label": "De (で)",
+            "sound": '"deh" (d + e)',
+            "example": "でんしゃ (Train)",
+        },
+        "do": {
+            "label": "Do (ど)",
+            "sound": '"doh" (d + o)',
+            "example": "どこ (Where)",
+        },
+        "ba": {
+            "label": "Ba (ば)",
+            "sound": '"bah" (b + a)',
+            "example": "ばか (Idiot)",
+        },
+        "bi": {
+            "label": "Bi (び)",
+            "sound": '"bee" (b + i)',
+            "example": "びょういん (Hospital)",
+        },
+        "bu": {
+            "label": "Bu (ぶ)",
+            "sound": '"boo" (b + u)',
+            "example": "ぶた (Pork)",
+        },
+        "be": {
+            "label": "Be (べ)",
+            "sound": '"beh" (b + e)',
+            "example": "べんきょう (Study)",
+        },
+        "bo": {
+            "label": "Bo (ぼ)",
+            "sound": '"boh" (b + o)',
+            "example": "ぼうし (Hat)",
+        },
+        "pa": {
+            "label": "Pa (ぱ)",
+            "sound": '"pah" (p + a)',
+            "example": "ぱん (Bread)",
+        },
+        "pi": {
+            "label": "Pi (ぴ)",
+            "sound": '"pee" (p + i)',
+            "example": "ぴかぴか (Shiny)",
+        },
+        "pu": {
+            "label": "Pu (ぷ)",
+            "sound": '"poo" (p + u)',
+            "example": "ぷりん (Print)",
+        },
+        "pe": {
+            "label": "Pe (ぺ)",
+            "sound": '"peh" (p + e)',
+            "example": "ぺん (Pen)",
+        },
+        "po": {
+            "label": "Po (ぽ)",
+            "sound": '"poh" (p + o)',
+            "example": "ぽつぽつ (Dots)",
+        },
     }
 )

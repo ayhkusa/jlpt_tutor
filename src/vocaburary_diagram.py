@@ -611,7 +611,11 @@ html = f"""<!DOCTYPE html>
       [{{ kana: 'ら', roman: 'ra' }}, {{ kana: 'り', roman: 'ri' }}, {{ kana: 'る', roman: 'ru' }}, {{ kana: 'れ', roman: 're' }}, {{ kana: 'ろ', roman: 'ro' }}],
       [{{ kana: 'わ', roman: 'wa' }}, null, null, null, {{ kana: 'を', roman: 'wo' }}],
       [{{ kana: 'ん', roman: 'n' }}, null, null, null, null],
-      [{{ kana: 'が', roman: 'ga' }}, {{ kana: 'ぎ', roman: 'gi' }}, {{ kana: 'ぐ', roman: 'gu' }}, {{ kana: 'げ', roman: 'ge' }}, null],
+      [{{ kana: 'が', roman: 'ga' }}, {{ kana: 'ぎ', roman: 'gi' }}, {{ kana: 'ぐ', roman: 'gu' }}, {{ kana: 'げ', roman: 'ge' }}, {{ kana: 'ご', roman: 'go' }}],
+      [{{ kana: 'ざ', roman: 'za' }}, {{ kana: 'じ', roman: 'ji' }}, {{ kana: 'ず', roman: 'zu' }}, {{ kana: 'ぜ', roman: 'ze' }}, {{ kana: 'ぞ', roman: 'zo' }}],
+      [{{ kana: 'だ', roman: 'da' }}, {{ kana: 'ぢ', roman: 'ji/di' }}, {{ kana: 'づ', roman: 'zu/dzu' }}, {{ kana: 'で', roman: 'de' }}, {{ kana: 'ど', roman: 'do' }}],
+      [{{ kana: 'ば', roman: 'ba' }}, {{ kana: 'び', roman: 'bi' }}, {{ kana: 'ぶ', roman: 'bu' }}, {{ kana: 'べ', roman: 'be' }}, {{ kana: 'ぼ', roman: 'bo' }}],
+      [{{ kana: 'ぱ', roman: 'pa' }}, {{ kana: 'ぴ', roman: 'pi' }}, {{ kana: 'ぷ', roman: 'pu' }}, {{ kana: 'ぺ', roman: 'pe' }}, {{ kana: 'ぽ', roman: 'po' }}],
     ];
 
     const vocabularyMeta = {{
