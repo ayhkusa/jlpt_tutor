@@ -236,13 +236,66 @@ html = f"""<!DOCTYPE html>
       background: #ffffff;
       padding: 0.3rem;
       overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
       max-width: min(620px, 94vw);
+      width: 100%;
+    }}
+    .gojuon-wrap::-webkit-scrollbar {{
+      height: 8px;
+    }}
+    .gojuon-wrap::-webkit-scrollbar-thumb {{
+      background: rgba(100, 116, 139, 0.45);
+      border-radius: 999px;
     }}
     .gojuon-table {{
       border-collapse: collapse;
       table-layout: fixed;
       width: 100%;
       min-width: 540px;
+    }}
+    @media (max-width: 640px) {{
+      body {{
+        overflow-x: hidden;
+      }}
+      .controls {{
+        padding: 0.75rem 0.5rem 0.5rem;
+      }}
+      .page-tabs {{
+        width: calc(100% - 0.75rem);
+      }}
+      .button-row {{
+        justify-content: flex-start;
+        overflow-x: auto;
+      }}
+      .gojuon-wrap {{
+        max-width: 100vw;
+        width: 100%;
+      }}
+      .gojuon-table {{
+        min-width: 420px;
+      }}
+      #mynetwork {{
+        height: min(52vh, 420px);
+      }}
+    }}
+    @media (min-width: 641px) and (max-width: 980px) {{
+      .gojuon-wrap {{
+        max-width: 100%;
+      }}
+      .gojuon-table {{
+        min-width: 480px;
+      }}
+    }}
+    body.mobile-layout .gojuon-wrap,
+    body.windows-layout .gojuon-wrap {{
+      max-width: 100vw;
+      width: 100%;
+    }}
+    body.mobile-layout .gojuon-table,
+    body.windows-layout .gojuon-table {{
+      min-width: 420px;
     }}
     .gojuon-table td {{
       border: 1px solid #e5e7eb;
@@ -564,6 +617,27 @@ html = f"""<!DOCTYPE html>
       gana: {json.dumps(gana_pronunciation_guide)}
     }};
     const synth = window.speechSynthesis;
+    const platformInfo = {{
+      isMobile: /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 0),
+      isWindows: /Win|Windows/i.test(navigator.userAgent) || /Win|Windows/i.test(navigator.platform || '')
+    }};
+    const isSmallViewport = window.matchMedia('(max-width: 640px)').matches;
+    function applyPlatformLayout() {{
+      const mobileLayout = platformInfo.isMobile || isSmallViewport;
+      const windowsLayout = platformInfo.isWindows && !mobileLayout;
+      document.body.classList.toggle('mobile-layout', mobileLayout);
+      document.body.classList.toggle('windows-layout', windowsLayout);
+
+      if (gojuonWrap) {{
+        gojuonWrap.style.maxWidth = mobileLayout ? '100vw' : 'min(620px, 94vw)';
+        gojuonWrap.style.width = mobileLayout ? '100%' : 'auto';
+      }}
+
+      if (gojuonTable) {{
+        const minWidth = mobileLayout ? 420 : (windowsLayout ? 500 : 540);
+        gojuonTable.style.minWidth = `${{minWidth}}px`;
+      }}
+    }}
     let preferredJapaneseVoice = null;
     let speechPrewarmed = false;
     let currentVocabulary = 'gana';
@@ -1288,8 +1362,15 @@ html = f"""<!DOCTYPE html>
       if (pauseSlider) {{
         pauseSlider.addEventListener('input', updatePauseFromSlider);
       }}
-      window.addEventListener('resize', refreshLayout);
-      window.addEventListener('orientationchange', refreshLayout);
+      window.addEventListener('resize', () => {{
+        applyPlatformLayout();
+        refreshLayout();
+      }});
+      window.addEventListener('orientationchange', () => {{
+        applyPlatformLayout();
+        refreshLayout();
+      }});
+      applyPlatformLayout();
       renderGojuonTable();
       updatePauseFromSlider();
       updateVocabularyHeading();
