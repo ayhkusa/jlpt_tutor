@@ -351,7 +351,8 @@ def build_html(entries: list[dict[str, str]]) -> str:
   <nav class=\"page-tabs\" aria-label=\"Page tabs\">
     <a class=\"page-tab\" href=\"index.html\">Vocabulary Network</a>
     <a class=\"page-tab active\" href=\"hiragana_match.html\" aria-current=\"page\">Hiragana Match</a>
-    <a class=\"page-tab\" href=\"hiragana_phase.html\">Hirgana Phases</a>
+    <a class=\"page-tab\" href=\"hiragana_phase.html\">Hiragana Phrases</a>
+    <a class=\"page-tab\" href=\"hiragana_particle.html\">Learn Particles</a>
   </nav>
 
   <main class=\"app\">

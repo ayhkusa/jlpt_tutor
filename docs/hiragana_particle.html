@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hiragana Phrases Practice</title>
+  <title>Hiragana Particles Practice</title>
   <style>
     :root {
       --bg: #f7f8f3;
@@ -96,13 +96,13 @@
       cursor: pointer;
     }
 
-    .definitions-hidden .romaji,
-    .definitions-hidden .meaning {
+    .definitions-hidden .particle,
+    .definitions-hidden .particle-meaning,
+    .definitions-hidden .english {
       display: none;
     }
 
-    .definitions-hidden .item-field:nth-child(2),
-    .definitions-hidden .item-field:nth-child(3) {
+    .definitions-hidden .item-field:nth-child(2) {
       display: none;
     }
 
@@ -274,11 +274,15 @@
       color: #0f766e;
     }
 
-    .romaji {
+    .particle {
       color: #d97706;
     }
 
-    .meaning {
+    .particle-meaning {
+      color: #ca8a04;
+    }
+
+    .english {
       color: #ca8a04;
     }
 
@@ -295,14 +299,14 @@
   <nav class="page-tabs" aria-label="Page tabs">
     <a class="page-tab" href="index.html">Vocabulary Network</a>
     <a class="page-tab" href="hiragana_match.html">Hiragana Match</a>
-    <a class="page-tab active" href="hiragana_phase.html" aria-current="page">Hiragana Phrases</a>
-    <a class="page-tab" href="hiragana_particle.html">Learn Particles</a>
+    <a class="page-tab" href="hiragana_phase.html">Hiragana Phrases</a>
+    <a class="page-tab active" href="hiragana_particle.html" aria-current="page">Learn Particles</a>
   </nav>
 
   <main class="app">
     <section class="header">
-      <h1>Hiragana Phrase Practice</h1>
-      <p class="sub">Common Japanese phrases in hiragana with romaji and English meaning.</p>
+      <h1>Hiragana Particle Practice</h1>
+      <p class="sub">Japanese sentences in hiragana with particles and English meaning.</p>
     </section>
 
     <section class="controls">
@@ -317,17 +321,17 @@
       </label>
     </section>
 
-    <section class="list" id="phraseList"></section>
-    <section class="pagination" aria-label="Phrase pagination">
+    <section class="list" id="particleList"></section>
+    <section class="pagination" aria-label="Particle pagination">
       <button id="prevPageButton" type="button">Prev</button>
       <span id="pageInfo">Page 1</span>
       <button id="nextPageButton" type="button">Next</button>
     </section>
   </main>
 
-  <script src="phrase-data.js"></script>
+  <script src="particle-data.js"></script>
   <script>
-    const phraseList = document.getElementById('phraseList');
+    const phraseList = document.getElementById('particleList');
     const autoPronounceButton = document.getElementById('autoPronounceButton');
     const darkModeButton = document.getElementById('darkModeButton');
     const definitionsToggleButton = document.getElementById('definitionsToggleButton');
@@ -340,7 +344,7 @@
     const pauseValue = document.getElementById('pauseValue');
 
     const synth = window.speechSynthesis;
-    const showCountsStorageKey = 'hiraganaPhraseShowCounts';
+    const showCountsStorageKey = 'hiraganaParticleShowCounts';
     let phrases = [];
     let displayedPhrases = [];
     let isShuffled = false;
@@ -350,7 +354,7 @@
     let autoPronounceToken = 0;
     let pauseSeconds = 1.0;
     let darkMode = localStorage.getItem('hiraganaPhraseTheme') === 'dark';
-    let definitionsVisible = false;
+    let definitionsVisible = true;
     let showCounts = {};
     let currentPage = 0;
     const pageSize = 5;
@@ -398,22 +402,22 @@
         <article class="item ${autoPronounceRunning && index === autoPronounceIndex ? 'active' : ''}">
           <div class="item-field">
             <div class="hiragana-line">
-              <span class="label">Hiragana</span>
+              <span class="label">Sentence</span>
               <span class="show-count" aria-label="Show count">${showCounts[phrase.hiragana] || 0}</span>
               <span class="hiragana">${phrase.hiragana}</span>
               <div class="item-actions">
-                <button class="tile-action" type="button" data-hiragana="${phrase.hiragana}" data-romaji="${phrase.romaji}" data-english="${phrase.english}">Speak</button>
-                <button class="tile-show" type="button" data-hiragana="${phrase.hiragana}" data-romaji="${phrase.romaji}" data-english="${phrase.english}">Show</button>
+                <button class="tile-action" type="button" data-hiragana="${phrase.hiragana}" data-particle="${phrase.particle}" data-meaning="${phrase.meaning}" data-english="${phrase.english}">Speak</button>
+                <button class="tile-show" type="button" data-hiragana="${phrase.hiragana}" data-particle="${phrase.particle}" data-meaning="${phrase.meaning}" data-english="${phrase.english}">Show</button>
               </div>
             </div>
+            <span class="english">${phrase.english}</span>
           </div>
           <div class="item-field">
-            <span class="label">Romaji</span>
-            <span class="romaji">${phrase.romaji}</span>
-          </div>
-          <div class="item-field">
-            <span class="label">English</span>
-            <span class="meaning">${phrase.english}</span>
+            <div class="hiragana-line">
+              <span class="label">Particle</span>
+              <span class="particle">${phrase.particle}</span>
+              <span class="particle-meaning">${phrase.meaning}</span>
+            </div>
           </div>
         </article>
       `).join('');
@@ -438,12 +442,13 @@
           if (countBadge) {
             countBadge.textContent = showCounts[button.dataset.hiragana] || 0;
           }
-          card.querySelector('.romaji').textContent = button.dataset.romaji;
-          card.querySelector('.meaning').textContent = button.dataset.english;
-          card.querySelector('.romaji').style.display = 'block';
-          card.querySelector('.meaning').style.display = 'block';
+          card.querySelector('.particle').textContent = button.dataset.particle;
+          card.querySelector('.particle-meaning').textContent = button.dataset.meaning;
+          card.querySelector('.english').textContent = button.dataset.english;
+          card.querySelector('.particle').style.display = 'block';
+          card.querySelector('.particle-meaning').style.display = 'inline';
+          card.querySelector('.english').style.display = 'block';
           card.querySelector('.item-field:nth-child(2)').style.display = 'flex';
-          card.querySelector('.item-field:nth-child(3)').style.display = 'flex';
         });
       });
 
@@ -542,13 +547,13 @@
 
     function loadPhrases() {
       try {
-        const loadedPhrases = window.phraseData || [];
+        const loadedPhrases = window.particleData || [];
         phrases = loadedPhrases;
         displayedPhrases = [...phrases];
         renderPhrases();
       } catch (error) {
         console.error('Failed to load phrases', error);
-        phraseList.innerHTML = '<p>Unable to load phrase data.</p>';
+        phraseList.innerHTML = '<p>Unable to load particle data.</p>';
       }
     }
 
