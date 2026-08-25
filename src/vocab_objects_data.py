@@ -286,4 +286,1205 @@ HOUSEHOLD_OBJECTS = [
             {"text": "入れます", "meaning": "put in", "function": "polite verb"},
         ],
     },
+    {
+        "word": "なべ",
+        "english_word": "pot",
+        "sentence": "なべでスープを作ります。",
+        "english_sentence": "I make soup in a pot.",
+        "breakdown": [
+            {"text": "なべで", "meaning": "in a pot", "function": "means phrase"},
+            {"text": "スープを作ります。", "meaning": "make soup", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "フライパン",
+        "english_word": "frying pan",
+        "sentence": "フライパンで卵を焼きます。",
+        "english_sentence": "I fry an egg in a frying pan.",
+        "breakdown": [
+            {"text": "フライパンで", "meaning": "in a frying pan", "function": "means phrase"},
+            {"text": "卵を焼きます。", "meaning": "fry an egg", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "包丁",
+        "english_word": "kitchen knife",
+        "sentence": "包丁で野菜を切ります。",
+        "english_sentence": "I cut vegetables with a kitchen knife.",
+        "breakdown": [
+            {"text": "包丁で", "meaning": "with a kitchen knife", "function": "means phrase"},
+            {"text": "野菜を切ります。", "meaning": "cut vegetables", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "まな板",
+        "english_word": "cutting board",
+        "sentence": "まな板の上で魚を切ります。",
+        "english_sentence": "I cut fish on the cutting board.",
+        "breakdown": [
+            {"text": "まな板の上で", "meaning": "on the cutting board", "function": "location phrase"},
+            {"text": "魚を切ります。", "meaning": "cut fish", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "皿",
+        "english_word": "plate",
+        "sentence": "料理を皿に盛りつけます。",
+        "english_sentence": "I arrange the food on a plate.",
+        "breakdown": [
+            {"text": "料理を", "meaning": "food", "function": "object"},
+            {"text": "皿に盛りつけます。", "meaning": "arrange on a plate", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "茶わん",
+        "english_word": "rice bowl",
+        "sentence": "茶わんにご飯をよそいます。",
+        "english_sentence": "I serve rice into a rice bowl.",
+        "breakdown": [
+            {"text": "茶わんに", "meaning": "into a rice bowl", "function": "destination phrase"},
+            {"text": "ご飯をよそいます。", "meaning": "serve rice", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "はし",
+        "english_word": "chopsticks",
+        "sentence": "はしで麺を食べます。",
+        "english_sentence": "I eat noodles with chopsticks.",
+        "breakdown": [
+            {"text": "はしで", "meaning": "with chopsticks", "function": "means phrase"},
+            {"text": "麺を食べます。", "meaning": "eat noodles", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "スプーン",
+        "english_word": "spoon",
+        "sentence": "スプーンでスープを飲みます。",
+        "english_sentence": "I eat soup with a spoon.",
+        "breakdown": [
+            {"text": "スプーンで", "meaning": "with a spoon", "function": "means phrase"},
+            {"text": "スープを飲みます。", "meaning": "eat soup", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "フォーク",
+        "english_word": "fork",
+        "sentence": "フォークでパスタを食べました。",
+        "english_sentence": "I ate pasta with a fork.",
+        "breakdown": [
+            {"text": "フォークで", "meaning": "with a fork", "function": "means phrase"},
+            {"text": "パスタを食べました。", "meaning": "ate pasta", "function": "polite past verb"},
+        ],
+    },
+    {
+        "word": "やかん",
+        "english_word": "kettle",
+        "sentence": "やかんでお湯を沸かします。",
+        "english_sentence": "I boil water in a kettle.",
+        "breakdown": [
+            {"text": "やかんで", "meaning": "in a kettle", "function": "means phrase"},
+            {"text": "お湯を沸かします。", "meaning": "boil water", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "電子レンジ",
+        "english_word": "microwave",
+        "sentence": "電子レンジでご飯を温めます。",
+        "english_sentence": "I heat the rice in the microwave.",
+        "breakdown": [
+            {"text": "電子レンジで", "meaning": "in the microwave", "function": "means phrase"},
+            {"text": "ご飯を温めます。", "meaning": "heat the rice", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "炊飯器",
+        "english_word": "rice cooker",
+        "sentence": "炊飯器で毎朝ご飯を炊きます。",
+        "english_sentence": "I cook rice in the rice cooker every morning.",
+        "breakdown": [
+            {"text": "炊飯器で", "meaning": "in the rice cooker", "function": "means phrase"},
+            {"text": "毎朝ご飯を炊きます。", "meaning": "cook rice every morning", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "歯ブラシ",
+        "english_word": "toothbrush",
+        "sentence": "新しい歯ブラシで歯を磨きます。",
+        "english_sentence": "I brush my teeth with a new toothbrush.",
+        "breakdown": [
+            {"text": "新しい歯ブラシで", "meaning": "with a new toothbrush", "function": "means phrase"},
+            {"text": "歯を磨きます。", "meaning": "brush my teeth", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "歯みがき粉",
+        "english_word": "toothpaste",
+        "sentence": "歯みがき粉を歯ブラシにつけます。",
+        "english_sentence": "I put toothpaste on the toothbrush.",
+        "breakdown": [
+            {"text": "歯みがき粉を", "meaning": "toothpaste", "function": "object"},
+            {"text": "歯ブラシにつけます。", "meaning": "put on the toothbrush", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "せっけん",
+        "english_word": "soap",
+        "sentence": "せっけんで手を洗います。",
+        "english_sentence": "I wash my hands with soap.",
+        "breakdown": [
+            {"text": "せっけんで", "meaning": "with soap", "function": "means phrase"},
+            {"text": "手を洗います。", "meaning": "wash my hands", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "シャンプー",
+        "english_word": "shampoo",
+        "sentence": "シャンプーで髪を洗います。",
+        "english_sentence": "I wash my hair with shampoo.",
+        "breakdown": [
+            {"text": "シャンプーで", "meaning": "with shampoo", "function": "means phrase"},
+            {"text": "髪を洗います。", "meaning": "wash my hair", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ドライヤー",
+        "english_word": "hair dryer",
+        "sentence": "ドライヤーで髪を乾かします。",
+        "english_sentence": "I dry my hair with a hair dryer.",
+        "breakdown": [
+            {"text": "ドライヤーで", "meaning": "with a hair dryer", "function": "means phrase"},
+            {"text": "髪を乾かします。", "meaning": "dry my hair", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "くし",
+        "english_word": "comb",
+        "sentence": "くしで髪をとかします。",
+        "english_sentence": "I comb my hair with a comb.",
+        "breakdown": [
+            {"text": "くしで", "meaning": "with a comb", "function": "means phrase"},
+            {"text": "髪をとかします。", "meaning": "comb my hair", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "洗面器",
+        "english_word": "wash basin",
+        "sentence": "洗面器に水を入れます。",
+        "english_sentence": "I put water in the wash basin.",
+        "breakdown": [
+            {"text": "洗面器に", "meaning": "in the wash basin", "function": "destination phrase"},
+            {"text": "水を入れます。", "meaning": "put in water", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "便座",
+        "english_word": "toilet seat",
+        "sentence": "便座をきれいに拭きます。",
+        "english_sentence": "I wipe the toilet seat clean.",
+        "breakdown": [
+            {"text": "便座を", "meaning": "toilet seat", "function": "object"},
+            {"text": "きれいに拭きます。", "meaning": "wipe clean", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "シャワー",
+        "english_word": "shower",
+        "sentence": "朝、シャワーを浴びます。",
+        "english_sentence": "I take a shower in the morning.",
+        "breakdown": [
+            {"text": "朝、", "meaning": "in the morning", "function": "time phrase"},
+            {"text": "シャワーを浴びます。", "meaning": "take a shower", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "バスマット",
+        "english_word": "bath mat",
+        "sentence": "バスマットを毎日洗います。",
+        "english_sentence": "I wash the bath mat every day.",
+        "breakdown": [
+            {"text": "バスマットを", "meaning": "bath mat", "function": "object"},
+            {"text": "毎日洗います。", "meaning": "wash every day", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "体重計",
+        "english_word": "bathroom scale",
+        "sentence": "毎朝体重計に乗ります。",
+        "english_sentence": "I step on the scale every morning.",
+        "breakdown": [
+            {"text": "毎朝", "meaning": "every morning", "function": "time phrase"},
+            {"text": "体重計に乗ります。", "meaning": "step on the scale", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "トイレットペーパー",
+        "english_word": "toilet paper",
+        "sentence": "トイレットペーパーを買い足しました。",
+        "english_sentence": "I bought more toilet paper.",
+        "breakdown": [
+            {"text": "トイレットペーパーを", "meaning": "toilet paper", "function": "object"},
+            {"text": "買い足しました。", "meaning": "bought more", "function": "polite past verb"},
+        ],
+    },
+    {
+        "word": "布団",
+        "english_word": "futon",
+        "sentence": "布団を押し入れにしまいます。",
+        "english_sentence": "I put the futon away in the closet.",
+        "breakdown": [
+            {"text": "布団を", "meaning": "futon", "function": "object"},
+            {"text": "押し入れにしまいます。", "meaning": "put away in the closet", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "毛布",
+        "english_word": "blanket",
+        "sentence": "寒いので毛布をかけました。",
+        "english_sentence": "I covered myself with a blanket because it was cold.",
+        "breakdown": [
+            {"text": "寒いので", "meaning": "because it was cold", "function": "reason clause"},
+            {"text": "毛布をかけました。", "meaning": "covered myself with a blanket", "function": "polite past verb"},
+        ],
+    },
+    {
+        "word": "シーツ",
+        "english_word": "bed sheet",
+        "sentence": "週末にシーツを取り替えます。",
+        "english_sentence": "I change the bed sheets on the weekend.",
+        "breakdown": [
+            {"text": "週末に", "meaning": "on the weekend", "function": "time phrase"},
+            {"text": "シーツを取り替えます。", "meaning": "change the bed sheets", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "枕カバー",
+        "english_word": "pillowcase",
+        "sentence": "枕カバーを洗濯機で洗います。",
+        "english_sentence": "I wash the pillowcase in the washing machine.",
+        "breakdown": [
+            {"text": "枕カバーを", "meaning": "pillowcase", "function": "object"},
+            {"text": "洗濯機で洗います。", "meaning": "wash in the washing machine", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "洋服だんす",
+        "english_word": "wardrobe",
+        "sentence": "冬のコートを洋服だんすに入れます。",
+        "english_sentence": "I put my winter coat in the wardrobe.",
+        "breakdown": [
+            {"text": "冬のコートを", "meaning": "winter coat", "function": "object"},
+            {"text": "洋服だんすに入れます。", "meaning": "put in the wardrobe", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ハンガー",
+        "english_word": "hanger",
+        "sentence": "シャツをハンガーにかけます。",
+        "english_sentence": "I hang the shirt on a hanger.",
+        "breakdown": [
+            {"text": "シャツを", "meaning": "shirt", "function": "object"},
+            {"text": "ハンガーにかけます。", "meaning": "hang on a hanger", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "カーテン",
+        "english_word": "curtain",
+        "sentence": "朝、カーテンを開けます。",
+        "english_sentence": "I open the curtains in the morning.",
+        "breakdown": [
+            {"text": "朝、", "meaning": "in the morning", "function": "time phrase"},
+            {"text": "カーテンを開けます。", "meaning": "open the curtains", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "目覚まし時計",
+        "english_word": "alarm clock",
+        "sentence": "目覚まし時計を七時にセットします。",
+        "english_sentence": "I set the alarm clock for seven o'clock.",
+        "breakdown": [
+            {"text": "目覚まし時計を", "meaning": "alarm clock", "function": "object"},
+            {"text": "七時にセットします。", "meaning": "set for seven o'clock", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "収納箱",
+        "english_word": "storage box",
+        "sentence": "おもちゃを収納箱に入れます。",
+        "english_sentence": "I put the toys in the storage box.",
+        "breakdown": [
+            {"text": "おもちゃを", "meaning": "toys", "function": "object"},
+            {"text": "収納箱に入れます。", "meaning": "put in the storage box", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ナイトテーブル",
+        "english_word": "bedside table",
+        "sentence": "ナイトテーブルに本を置きます。",
+        "english_sentence": "I put a book on the bedside table.",
+        "breakdown": [
+            {"text": "ナイトテーブルに", "meaning": "on the bedside table", "function": "destination phrase"},
+            {"text": "本を置きます。", "meaning": "put a book", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "パジャマ",
+        "english_word": "pajamas",
+        "sentence": "寝る前にパジャマに着替えます。",
+        "english_sentence": "I change into pajamas before going to bed.",
+        "breakdown": [
+            {"text": "寝る前に", "meaning": "before going to bed", "function": "time phrase"},
+            {"text": "パジャマに着替えます。", "meaning": "change into pajamas", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "衣類",
+        "english_word": "clothing",
+        "sentence": "衣類を種類ごとに分けて収納します。",
+        "english_sentence": "I sort and store the clothing by type.",
+        "breakdown": [
+            {"text": "衣類を", "meaning": "clothing", "function": "object"},
+            {"text": "種類ごとに分けて収納します。", "meaning": "sort and store by type", "function": "て-form connector and verb"},
+        ],
+    },
+    {
+        "word": "ソファ",
+        "english_word": "sofa",
+        "sentence": "ソファで本を読みます。",
+        "english_sentence": "I read a book on the sofa.",
+        "breakdown": [
+            {"text": "ソファで", "meaning": "on the sofa", "function": "location phrase"},
+            {"text": "本を読みます。", "meaning": "read a book", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "じゅうたん",
+        "english_word": "carpet",
+        "sentence": "じゅうたんの上で子どもが遊びます。",
+        "english_sentence": "The child plays on the carpet.",
+        "breakdown": [
+            {"text": "じゅうたんの上で", "meaning": "on the carpet", "function": "location phrase"},
+            {"text": "子どもが遊びます。", "meaning": "the child plays", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "クッション",
+        "english_word": "cushion",
+        "sentence": "ソファにクッションを置きました。",
+        "english_sentence": "I put a cushion on the sofa.",
+        "breakdown": [
+            {"text": "ソファに", "meaning": "on the sofa", "function": "destination phrase"},
+            {"text": "クッションを置きました。", "meaning": "put a cushion", "function": "polite past verb"},
+        ],
+    },
+    {
+        "word": "本棚",
+        "english_word": "bookshelf",
+        "sentence": "読み終わった本を本棚に戻します。",
+        "english_sentence": "I return the book I finished to the bookshelf.",
+        "breakdown": [
+            {"text": "読み終わった本を", "meaning": "the book I finished", "function": "object"},
+            {"text": "本棚に戻します。", "meaning": "return to the bookshelf", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "花びん",
+        "english_word": "vase",
+        "sentence": "花びんに花を飾ります。",
+        "english_sentence": "I display flowers in a vase.",
+        "breakdown": [
+            {"text": "花びんに", "meaning": "in a vase", "function": "destination phrase"},
+            {"text": "花を飾ります。", "meaning": "display flowers", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "写真立て",
+        "english_word": "photo frame",
+        "sentence": "写真立てを棚の上に飾っています。",
+        "english_sentence": "I display a photo frame on the shelf.",
+        "breakdown": [
+            {"text": "写真立てを", "meaning": "photo frame", "function": "object"},
+            {"text": "棚の上に飾っています。", "meaning": "display on the shelf", "function": "polite progressive verb"},
+        ],
+    },
+    {
+        "word": "ごみ袋",
+        "english_word": "garbage bag",
+        "sentence": "いっぱいになったごみ袋を外に出します。",
+        "english_sentence": "I take the full garbage bag outside.",
+        "breakdown": [
+            {"text": "いっぱいになったごみ袋を", "meaning": "full garbage bag", "function": "object"},
+            {"text": "外に出します。", "meaning": "take outside", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "扇風機",
+        "english_word": "electric fan",
+        "sentence": "暑い日は扇風機をつけます。",
+        "english_sentence": "I turn on the fan on hot days.",
+        "breakdown": [
+            {"text": "暑い日は", "meaning": "on hot days", "function": "time phrase"},
+            {"text": "扇風機をつけます。", "meaning": "turn on the fan", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "エアコン",
+        "english_word": "air conditioner",
+        "sentence": "夏はエアコンを弱くつけます。",
+        "english_sentence": "In summer, I turn the air conditioner on low.",
+        "breakdown": [
+            {"text": "夏は", "meaning": "in summer", "function": "time phrase"},
+            {"text": "エアコンを弱くつけます。", "meaning": "turn the air conditioner on low", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "掛け時計",
+        "english_word": "wall clock",
+        "sentence": "掛け時計で時間を確認します。",
+        "english_sentence": "I check the time on the wall clock.",
+        "breakdown": [
+            {"text": "掛け時計で", "meaning": "on the wall clock", "function": "means phrase"},
+            {"text": "時間を確認します。", "meaning": "check the time", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "電気スタンド",
+        "english_word": "desk lamp",
+        "sentence": "電気スタンドをつけて本を読みます。",
+        "english_sentence": "I turn on the desk lamp and read a book.",
+        "breakdown": [
+            {"text": "電気スタンドをつけて", "meaning": "turning on the desk lamp", "function": "て-form connector"},
+            {"text": "本を読みます。", "meaning": "read a book", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ボールペン",
+        "english_word": "ballpoint pen",
+        "sentence": "ボールペンで名前を書きます。",
+        "english_sentence": "I write my name with a ballpoint pen.",
+        "breakdown": [
+            {"text": "ボールペンで", "meaning": "with a ballpoint pen", "function": "means phrase"},
+            {"text": "名前を書きます。", "meaning": "write my name", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "鉛筆",
+        "english_word": "pencil",
+        "sentence": "鉛筆で地図に印をつけます。",
+        "english_sentence": "I mark the map with a pencil.",
+        "breakdown": [
+            {"text": "鉛筆で", "meaning": "with a pencil", "function": "means phrase"},
+            {"text": "地図に印をつけます。", "meaning": "mark the map", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "消しゴム",
+        "english_word": "eraser",
+        "sentence": "消しゴムで間違いを消します。",
+        "english_sentence": "I erase the mistake with an eraser.",
+        "breakdown": [
+            {"text": "消しゴムで", "meaning": "with an eraser", "function": "means phrase"},
+            {"text": "間違いを消します。", "meaning": "erase the mistake", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ノート",
+        "english_word": "notebook",
+        "sentence": "ノートに大切なことを書き留めます。",
+        "english_sentence": "I write important things down in my notebook.",
+        "breakdown": [
+            {"text": "ノートに", "meaning": "in my notebook", "function": "destination phrase"},
+            {"text": "大切なことを書き留めます。", "meaning": "write important things down", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "はさみ",
+        "english_word": "scissors",
+        "sentence": "はさみで紙を切ります。",
+        "english_sentence": "I cut paper with scissors.",
+        "breakdown": [
+            {"text": "はさみで", "meaning": "with scissors", "function": "means phrase"},
+            {"text": "紙を切ります。", "meaning": "cut paper", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "のり",
+        "english_word": "glue",
+        "sentence": "のりで写真を台紙に貼ります。",
+        "english_sentence": "I glue the photo to the backing paper.",
+        "breakdown": [
+            {"text": "のりで", "meaning": "with glue", "function": "means phrase"},
+            {"text": "写真を台紙に貼ります。", "meaning": "glue the photo to the backing paper", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "定規",
+        "english_word": "ruler",
+        "sentence": "定規でまっすぐな線を引きます。",
+        "english_sentence": "I draw a straight line with a ruler.",
+        "breakdown": [
+            {"text": "定規で", "meaning": "with a ruler", "function": "means phrase"},
+            {"text": "まっすぐな線を引きます。", "meaning": "draw a straight line", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ホッチキス",
+        "english_word": "stapler",
+        "sentence": "ホッチキスで書類をとじます。",
+        "english_sentence": "I staple the documents with a stapler.",
+        "breakdown": [
+            {"text": "ホッチキスで", "meaning": "with a stapler", "function": "means phrase"},
+            {"text": "書類をとじます。", "meaning": "staple the documents", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "クリップ",
+        "english_word": "paper clip",
+        "sentence": "クリップで紙をまとめます。",
+        "english_sentence": "I hold the papers together with a paper clip.",
+        "breakdown": [
+            {"text": "クリップで", "meaning": "with a paper clip", "function": "means phrase"},
+            {"text": "紙をまとめます。", "meaning": "hold the papers together", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "封筒",
+        "english_word": "envelope",
+        "sentence": "手紙を封筒に入れて送ります。",
+        "english_sentence": "I put the letter in an envelope and send it.",
+        "breakdown": [
+            {"text": "手紙を封筒に入れて", "meaning": "put the letter in an envelope and", "function": "て-form connector"},
+            {"text": "送ります。", "meaning": "send it", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "プリンター",
+        "english_word": "printer",
+        "sentence": "プリンターで資料を印刷します。",
+        "english_sentence": "I print the materials with the printer.",
+        "breakdown": [
+            {"text": "プリンターで", "meaning": "with the printer", "function": "means phrase"},
+            {"text": "資料を印刷します。", "meaning": "print the materials", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ファイル",
+        "english_word": "file folder",
+        "sentence": "領収書をファイルに整理します。",
+        "english_sentence": "I organize the receipts in a file folder.",
+        "breakdown": [
+            {"text": "領収書を", "meaning": "receipts", "function": "object"},
+            {"text": "ファイルに整理します。", "meaning": "organize in a file folder", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ほうき",
+        "english_word": "broom",
+        "sentence": "ほうきで玄関を掃きます。",
+        "english_sentence": "I sweep the entrance with a broom.",
+        "breakdown": [
+            {"text": "ほうきで", "meaning": "with a broom", "function": "means phrase"},
+            {"text": "玄関を掃きます。", "meaning": "sweep the entrance", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ちり取り",
+        "english_word": "dustpan",
+        "sentence": "ちり取りでごみを集めます。",
+        "english_sentence": "I collect the trash with a dustpan.",
+        "breakdown": [
+            {"text": "ちり取りで", "meaning": "with a dustpan", "function": "means phrase"},
+            {"text": "ごみを集めます。", "meaning": "collect the trash", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "モップ",
+        "english_word": "mop",
+        "sentence": "モップで床を水拭きします。",
+        "english_sentence": "I mop the floor with a wet mop.",
+        "breakdown": [
+            {"text": "モップで", "meaning": "with a mop", "function": "means phrase"},
+            {"text": "床を水拭きします。", "meaning": "mop the floor", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "雑巾",
+        "english_word": "cleaning cloth",
+        "sentence": "雑巾で窓を拭きます。",
+        "english_sentence": "I wipe the window with a cleaning cloth.",
+        "breakdown": [
+            {"text": "雑巾で", "meaning": "with a cleaning cloth", "function": "means phrase"},
+            {"text": "窓を拭きます。", "meaning": "wipe the window", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "バケツ",
+        "english_word": "bucket",
+        "sentence": "バケツに水をくみます。",
+        "english_sentence": "I fill the bucket with water.",
+        "breakdown": [
+            {"text": "バケツに", "meaning": "in the bucket", "function": "destination phrase"},
+            {"text": "水をくみます。", "meaning": "fill with water", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "洗剤",
+        "english_word": "detergent",
+        "sentence": "洗剤を少し入れて洗います。",
+        "english_sentence": "I add a little detergent and wash it.",
+        "breakdown": [
+            {"text": "洗剤を少し入れて", "meaning": "add a little detergent and", "function": "て-form connector"},
+            {"text": "洗います。", "meaning": "wash it", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "スポンジ",
+        "english_word": "sponge",
+        "sentence": "スポンジで皿を洗います。",
+        "english_sentence": "I wash the dishes with a sponge.",
+        "breakdown": [
+            {"text": "スポンジで", "meaning": "with a sponge", "function": "means phrase"},
+            {"text": "皿を洗います。", "meaning": "wash the dishes", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ゴム手袋",
+        "english_word": "rubber gloves",
+        "sentence": "ゴム手袋をして掃除します。",
+        "english_sentence": "I clean while wearing rubber gloves.",
+        "breakdown": [
+            {"text": "ゴム手袋をして", "meaning": "wearing rubber gloves and", "function": "て-form connector"},
+            {"text": "掃除します。", "meaning": "clean", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ブラシ",
+        "english_word": "brush",
+        "sentence": "ブラシで靴の泥を落とします。",
+        "english_sentence": "I brush the mud off my shoes.",
+        "breakdown": [
+            {"text": "ブラシで", "meaning": "with a brush", "function": "means phrase"},
+            {"text": "靴の泥を落とします。", "meaning": "brush the mud off the shoes", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "洗濯かご",
+        "english_word": "laundry basket",
+        "sentence": "脱いだ服を洗濯かごに入れます。",
+        "english_sentence": "I put my clothes in the laundry basket after taking them off.",
+        "breakdown": [
+            {"text": "脱いだ服を", "meaning": "clothes I took off", "function": "object"},
+            {"text": "洗濯かごに入れます。", "meaning": "put in the laundry basket", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "アイロン",
+        "english_word": "iron",
+        "sentence": "アイロンでシャツのしわを伸ばします。",
+        "english_sentence": "I smooth the wrinkles in the shirt with an iron.",
+        "breakdown": [
+            {"text": "アイロンで", "meaning": "with an iron", "function": "means phrase"},
+            {"text": "シャツのしわを伸ばします。", "meaning": "smooth the shirt wrinkles", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "アイロン台",
+        "english_word": "ironing board",
+        "sentence": "アイロン台を広げて服にアイロンをかけます。",
+        "english_sentence": "I unfold the ironing board and iron the clothes.",
+        "breakdown": [
+            {"text": "アイロン台を広げて", "meaning": "unfold the ironing board and", "function": "て-form connector"},
+            {"text": "服にアイロンをかけます。", "meaning": "iron the clothes", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ドライバー",
+        "english_word": "screwdriver",
+        "sentence": "ドライバーでねじを締めます。",
+        "english_sentence": "I tighten the screw with a screwdriver.",
+        "breakdown": [
+            {"text": "ドライバーで", "meaning": "with a screwdriver", "function": "means phrase"},
+            {"text": "ねじを締めます。", "meaning": "tighten the screw", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "かなづち",
+        "english_word": "hammer",
+        "sentence": "かなづちでくぎを打ちます。",
+        "english_sentence": "I hammer in a nail.",
+        "breakdown": [
+            {"text": "かなづちで", "meaning": "with a hammer", "function": "means phrase"},
+            {"text": "くぎを打ちます。", "meaning": "hammer in a nail", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ペンチ",
+        "english_word": "pliers",
+        "sentence": "ペンチで針金を曲げます。",
+        "english_sentence": "I bend the wire with pliers.",
+        "breakdown": [
+            {"text": "ペンチで", "meaning": "with pliers", "function": "means phrase"},
+            {"text": "針金を曲げます。", "meaning": "bend the wire", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "のこぎり",
+        "english_word": "saw",
+        "sentence": "のこぎりで木を切ります。",
+        "english_sentence": "I cut wood with a saw.",
+        "breakdown": [
+            {"text": "のこぎりで", "meaning": "with a saw", "function": "means phrase"},
+            {"text": "木を切ります。", "meaning": "cut wood", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "メジャー",
+        "english_word": "tape measure",
+        "sentence": "メジャーで部屋の長さを測ります。",
+        "english_sentence": "I measure the length of the room with a tape measure.",
+        "breakdown": [
+            {"text": "メジャーで", "meaning": "with a tape measure", "function": "means phrase"},
+            {"text": "部屋の長さを測ります。", "meaning": "measure the length of the room", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ねじ",
+        "english_word": "screw",
+        "sentence": "ねじを箱にまとめて入れます。",
+        "english_sentence": "I put the screws together in a box.",
+        "breakdown": [
+            {"text": "ねじを", "meaning": "screws", "function": "object"},
+            {"text": "箱にまとめて入れます。", "meaning": "put together in a box", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "くぎ",
+        "english_word": "nail",
+        "sentence": "くぎを壁に打ち込みます。",
+        "english_sentence": "I drive a nail into the wall.",
+        "breakdown": [
+            {"text": "くぎを", "meaning": "nail", "function": "object"},
+            {"text": "壁に打ち込みます。", "meaning": "drive into the wall", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "工具箱",
+        "english_word": "toolbox",
+        "sentence": "工具箱に道具をしまいます。",
+        "english_sentence": "I put the tools away in the toolbox.",
+        "breakdown": [
+            {"text": "工具箱に", "meaning": "in the toolbox", "function": "destination phrase"},
+            {"text": "道具をしまいます。", "meaning": "put the tools away", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "はしご",
+        "english_word": "ladder",
+        "sentence": "はしごに上って電球を替えます。",
+        "english_sentence": "I climb the ladder and replace the light bulb.",
+        "breakdown": [
+            {"text": "はしごに上って", "meaning": "climb the ladder and", "function": "て-form connector"},
+            {"text": "電球を替えます。", "meaning": "replace the light bulb", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "きり",
+        "english_word": "awl",
+        "sentence": "きりで木に小さな穴を開けます。",
+        "english_sentence": "I make a small hole in the wood with an awl.",
+        "breakdown": [
+            {"text": "きりで", "meaning": "with an awl", "function": "means phrase"},
+            {"text": "木に小さな穴を開けます。", "meaning": "make a small hole in the wood", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ガムテープ",
+        "english_word": "duct tape",
+        "sentence": "ガムテープで箱をしっかり閉じます。",
+        "english_sentence": "I seal the box firmly with duct tape.",
+        "breakdown": [
+            {"text": "ガムテープで", "meaning": "with duct tape", "function": "means phrase"},
+            {"text": "箱をしっかり閉じます。", "meaning": "seal the box firmly", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "接着剤",
+        "english_word": "adhesive",
+        "sentence": "接着剤で壊れたおもちゃを直します。",
+        "english_sentence": "I repair the broken toy with adhesive.",
+        "breakdown": [
+            {"text": "接着剤で", "meaning": "with adhesive", "function": "means phrase"},
+            {"text": "壊れたおもちゃを直します。", "meaning": "repair the broken toy", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "シャツ",
+        "english_word": "shirt",
+        "sentence": "白いシャツを着て出かけます。",
+        "english_sentence": "I go out wearing a white shirt.",
+        "breakdown": [
+            {"text": "白いシャツを着て", "meaning": "wearing a white shirt and", "function": "て-form connector"},
+            {"text": "出かけます。", "meaning": "go out", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ズボン",
+        "english_word": "trousers",
+        "sentence": "ズボンのポケットに鍵を入れました。",
+        "english_sentence": "I put the key in my trouser pocket.",
+        "breakdown": [
+            {"text": "ズボンのポケットに", "meaning": "in the trouser pocket", "function": "destination phrase"},
+            {"text": "鍵を入れました。", "meaning": "put the key in", "function": "polite past verb"},
+        ],
+    },
+    {
+        "word": "スカート",
+        "english_word": "skirt",
+        "sentence": "このスカートは春にちょうどいいです。",
+        "english_sentence": "This skirt is just right for spring.",
+        "breakdown": [
+            {"text": "このスカートは", "meaning": "this skirt", "function": "topic"},
+            {"text": "春にちょうどいいです。", "meaning": "is just right for spring", "function": "polite adjective phrase"},
+        ],
+    },
+    {
+        "word": "コート",
+        "english_word": "coat",
+        "sentence": "寒いのでコートを着ます。",
+        "english_sentence": "I wear a coat because it is cold.",
+        "breakdown": [
+            {"text": "寒いので", "meaning": "because it is cold", "function": "reason clause"},
+            {"text": "コートを着ます。", "meaning": "wear a coat", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "セーター",
+        "english_word": "sweater",
+        "sentence": "セーターをたたんで引き出しに入れます。",
+        "english_sentence": "I fold the sweater and put it in the drawer.",
+        "breakdown": [
+            {"text": "セーターをたたんで", "meaning": "fold the sweater and", "function": "て-form connector"},
+            {"text": "引き出しに入れます。", "meaning": "put it in the drawer", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "靴",
+        "english_word": "shoes",
+        "sentence": "玄関で靴を脱ぎます。",
+        "english_sentence": "I take off my shoes at the entrance.",
+        "breakdown": [
+            {"text": "玄関で", "meaning": "at the entrance", "function": "location phrase"},
+            {"text": "靴を脱ぎます。", "meaning": "take off my shoes", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "靴下",
+        "english_word": "socks",
+        "sentence": "靴下を左右そろえて洗濯します。",
+        "english_sentence": "I match the socks and wash them.",
+        "breakdown": [
+            {"text": "靴下を左右そろえて", "meaning": "match the left and right socks and", "function": "て-form connector"},
+            {"text": "洗濯します。", "meaning": "wash them", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "帽子",
+        "english_word": "hat",
+        "sentence": "日差しが強いので帽子をかぶります。",
+        "english_sentence": "I wear a hat because the sunlight is strong.",
+        "breakdown": [
+            {"text": "日差しが強いので", "meaning": "because the sunlight is strong", "function": "reason clause"},
+            {"text": "帽子をかぶります。", "meaning": "wear a hat", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "手袋",
+        "english_word": "gloves",
+        "sentence": "冬は手袋をして自転車に乗ります。",
+        "english_sentence": "In winter, I ride my bicycle wearing gloves.",
+        "breakdown": [
+            {"text": "冬は", "meaning": "in winter", "function": "time phrase"},
+            {"text": "手袋をして自転車に乗ります。", "meaning": "ride a bicycle wearing gloves", "function": "て-form connector and verb"},
+        ],
+    },
+    {
+        "word": "ベルト",
+        "english_word": "belt",
+        "sentence": "ベルトでズボンのサイズを調整します。",
+        "english_sentence": "I adjust the size of my trousers with a belt.",
+        "breakdown": [
+            {"text": "ベルトで", "meaning": "with a belt", "function": "means phrase"},
+            {"text": "ズボンのサイズを調整します。", "meaning": "adjust the size of the trousers", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "マフラー",
+        "english_word": "scarf",
+        "sentence": "マフラーを首に巻いて出かけます。",
+        "english_sentence": "I wrap a scarf around my neck and go out.",
+        "breakdown": [
+            {"text": "マフラーを首に巻いて", "meaning": "wrap a scarf around my neck and", "function": "て-form connector"},
+            {"text": "出かけます。", "meaning": "go out", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "下着",
+        "english_word": "underwear",
+        "sentence": "下着は毎日取り替えます。",
+        "english_sentence": "I change my underwear every day.",
+        "breakdown": [
+            {"text": "下着は", "meaning": "underwear", "function": "topic"},
+            {"text": "毎日取り替えます。", "meaning": "change every day", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "戸棚",
+        "english_word": "cupboard",
+        "sentence": "戸棚に食器をしまいます。",
+        "english_sentence": "I put the dishes away in the cupboard.",
+        "breakdown": [
+            {"text": "戸棚に", "meaning": "in the cupboard", "function": "destination phrase"},
+            {"text": "食器をしまいます。", "meaning": "put the dishes away", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "引き出し",
+        "english_word": "drawer",
+        "sentence": "引き出しから印鑑を出します。",
+        "english_sentence": "I take the personal seal out of the drawer.",
+        "breakdown": [
+            {"text": "引き出しから", "meaning": "from the drawer", "function": "source phrase"},
+            {"text": "印鑑を出します。", "meaning": "take out the personal seal", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "棚",
+        "english_word": "shelf",
+        "sentence": "棚の上に小物を並べます。",
+        "english_sentence": "I line up small items on the shelf.",
+        "breakdown": [
+            {"text": "棚の上に", "meaning": "on the shelf", "function": "destination phrase"},
+            {"text": "小物を並べます。", "meaning": "line up small items", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "収納棚",
+        "english_word": "storage shelf",
+        "sentence": "収納棚に箱を重ねて置きます。",
+        "english_sentence": "I stack boxes on the storage shelf.",
+        "breakdown": [
+            {"text": "収納棚に", "meaning": "on the storage shelf", "function": "destination phrase"},
+            {"text": "箱を重ねて置きます。", "meaning": "stack and place boxes", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "衣装ケース",
+        "english_word": "clothes storage case",
+        "sentence": "衣装ケースに夏服を入れます。",
+        "english_sentence": "I put summer clothes in the clothes storage case.",
+        "breakdown": [
+            {"text": "衣装ケースに", "meaning": "in the clothes storage case", "function": "destination phrase"},
+            {"text": "夏服を入れます。", "meaning": "put summer clothes in", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "袋",
+        "english_word": "bag",
+        "sentence": "買った物を袋に入れます。",
+        "english_sentence": "I put the things I bought in a bag.",
+        "breakdown": [
+            {"text": "買った物を", "meaning": "things I bought", "function": "object"},
+            {"text": "袋に入れます。", "meaning": "put in a bag", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "紙袋",
+        "english_word": "paper bag",
+        "sentence": "紙袋に本を入れて運びます。",
+        "english_sentence": "I put the books in a paper bag and carry them.",
+        "breakdown": [
+            {"text": "紙袋に本を入れて", "meaning": "put books in a paper bag and", "function": "て-form connector"},
+            {"text": "運びます。", "meaning": "carry them", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ポリ袋",
+        "english_word": "plastic bag",
+        "sentence": "ポリ袋に濡れた傘を入れます。",
+        "english_sentence": "I put the wet umbrella in a plastic bag.",
+        "breakdown": [
+            {"text": "ポリ袋に", "meaning": "in a plastic bag", "function": "destination phrase"},
+            {"text": "濡れた傘を入れます。", "meaning": "put the wet umbrella in", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ふた",
+        "english_word": "lid",
+        "sentence": "使った容器にふたをします。",
+        "english_sentence": "I put the lid on the container after using it.",
+        "breakdown": [
+            {"text": "使った容器に", "meaning": "on the used container", "function": "destination phrase"},
+            {"text": "ふたをします。", "meaning": "put on the lid", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "箱",
+        "english_word": "box",
+        "sentence": "プレゼントを箱に入れて包みます。",
+        "english_sentence": "I put the present in a box and wrap it.",
+        "breakdown": [
+            {"text": "プレゼントを箱に入れて", "meaning": "put the present in a box and", "function": "て-form connector"},
+            {"text": "包みます。", "meaning": "wrap it", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "かご",
+        "english_word": "basket",
+        "sentence": "かごに果物を入れて食卓に置きます。",
+        "english_sentence": "I put fruit in a basket and place it on the dining table.",
+        "breakdown": [
+            {"text": "かごに果物を入れて", "meaning": "put fruit in a basket and", "function": "て-form connector"},
+            {"text": "食卓に置きます。", "meaning": "place on the dining table", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "貯金箱",
+        "english_word": "piggy bank",
+        "sentence": "毎週少しずつ貯金箱にお金を入れます。",
+        "english_sentence": "I put a little money in the piggy bank every week.",
+        "breakdown": [
+            {"text": "毎週少しずつ", "meaning": "a little each week", "function": "time and quantity phrase"},
+            {"text": "貯金箱にお金を入れます。", "meaning": "put money in the piggy bank", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "充電器",
+        "english_word": "charger",
+        "sentence": "寝る前にスマートフォンを充電器につなぎます。",
+        "english_sentence": "I connect my smartphone to the charger before bed.",
+        "breakdown": [
+            {"text": "寝る前に", "meaning": "before bed", "function": "time phrase"},
+            {"text": "スマートフォンを充電器につなぎます。", "meaning": "connect the smartphone to the charger", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "電池",
+        "english_word": "battery",
+        "sentence": "リモコンの電池を交換します。",
+        "english_sentence": "I replace the batteries in the remote control.",
+        "breakdown": [
+            {"text": "リモコンの電池を", "meaning": "the remote control batteries", "function": "object"},
+            {"text": "交換します。", "meaning": "replace", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "電源コード",
+        "english_word": "power cord",
+        "sentence": "電源コードをコンセントに差し込みます。",
+        "english_sentence": "I plug the power cord into the outlet.",
+        "breakdown": [
+            {"text": "電源コードを", "meaning": "power cord", "function": "object"},
+            {"text": "コンセントに差し込みます。", "meaning": "plug into the outlet", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ラジオ",
+        "english_word": "radio",
+        "sentence": "朝、ラジオを聞きながら朝ご飯を食べます。",
+        "english_sentence": "In the morning, I eat breakfast while listening to the radio.",
+        "breakdown": [
+            {"text": "朝、", "meaning": "in the morning", "function": "time phrase"},
+            {"text": "ラジオを聞きながら", "meaning": "while listening to the radio", "function": "simultaneous action phrase"},
+            {"text": "朝ご飯を食べます。", "meaning": "eat breakfast", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "ヘッドホン",
+        "english_word": "headphones",
+        "sentence": "ヘッドホンで音楽を楽しみます。",
+        "english_sentence": "I enjoy music with headphones.",
+        "breakdown": [
+            {"text": "ヘッドホンで", "meaning": "with headphones", "function": "means phrase"},
+            {"text": "音楽を楽しみます。", "meaning": "enjoy music", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "イヤホン",
+        "english_word": "earphones",
+        "sentence": "イヤホンをかばんのポケットに入れます。",
+        "english_sentence": "I put the earphones in a pocket of my bag.",
+        "breakdown": [
+            {"text": "イヤホンを", "meaning": "earphones", "function": "object"},
+            {"text": "かばんのポケットに入れます。", "meaning": "put in a pocket of the bag", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "キーボード",
+        "english_word": "keyboard",
+        "sentence": "キーボードで文章を入力します。",
+        "english_sentence": "I type text with the keyboard.",
+        "breakdown": [
+            {"text": "キーボードで", "meaning": "with the keyboard", "function": "means phrase"},
+            {"text": "文章を入力します。", "meaning": "type text", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "マウス",
+        "english_word": "computer mouse",
+        "sentence": "マウスを動かして画面を操作します。",
+        "english_sentence": "I operate the screen by moving the mouse.",
+        "breakdown": [
+            {"text": "マウスを動かして", "meaning": "moving the mouse and", "function": "て-form connector"},
+            {"text": "画面を操作します。", "meaning": "operate the screen", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "USBメモリ",
+        "english_word": "USB drive",
+        "sentence": "ファイルをUSBメモリに保存します。",
+        "english_sentence": "I save the file to a USB drive.",
+        "breakdown": [
+            {"text": "ファイルを", "meaning": "file", "function": "object"},
+            {"text": "USBメモリに保存します。", "meaning": "save to a USB drive", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "電卓",
+        "english_word": "calculator",
+        "sentence": "電卓で合計金額を計算します。",
+        "english_sentence": "I calculate the total amount with a calculator.",
+        "breakdown": [
+            {"text": "電卓で", "meaning": "with a calculator", "function": "means phrase"},
+            {"text": "合計金額を計算します。", "meaning": "calculate the total amount", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "電球",
+        "english_word": "light bulb",
+        "sentence": "切れた電球を新しいものに替えます。",
+        "english_sentence": "I replace the burned-out light bulb with a new one.",
+        "breakdown": [
+            {"text": "切れた電球を", "meaning": "burned-out light bulb", "function": "object"},
+            {"text": "新しいものに替えます。", "meaning": "replace with a new one", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "電話機",
+        "english_word": "telephone",
+        "sentence": "電話機のそばにメモを置きます。",
+        "english_sentence": "I put a note beside the telephone.",
+        "breakdown": [
+            {"text": "電話機のそばに", "meaning": "beside the telephone", "function": "location phrase"},
+            {"text": "メモを置きます。", "meaning": "put a note", "function": "polite verb"},
+        ],
+    },
+    {
+        "word": "電気ポット",
+        "english_word": "electric kettle",
+        "sentence": "電気ポットでお茶のお湯を沸かします。",
+        "english_sentence": "I boil water for tea in the electric kettle.",
+        "breakdown": [
+            {"text": "電気ポットで", "meaning": "in the electric kettle", "function": "means phrase"},
+            {"text": "お茶のお湯を沸かします。", "meaning": "boil water for tea", "function": "polite verb"},
+        ],
+    },
 ]
