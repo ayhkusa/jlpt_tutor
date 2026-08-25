@@ -123,19 +123,44 @@
             <article class="panel">
                 <span class="label">Sentence breakdown</span>
                 <table>
-                    <thead><tr><th>Japanese</th><th>Meaning</th><th>Function</th></tr></thead>
-                    <tbody><tr><td>この</td><td>this</td><td>determiner</td></tr><tr><td>いすは</td><td>chair</td><td>topic</td></tr><tr><td>長く</td><td>for a long time</td><td>adverb</td></tr><tr><td>座っても</td><td>even after sitting</td><td>concessive phrase</td></tr><tr><td>疲れません</td><td>do not get tired</td><td>polite negative verb</td></tr></tbody>
+                    <thead><tr><th>Japanese</th><th>Pronounce</th><th>Meaning</th><th>Function</th></tr></thead>
+                    <tbody><tr><td>この</td><td><button class="speak-button row-speak-button" type="button" data-japanese="この">Pronounce</button></td><td>this</td><td>determiner</td></tr><tr><td>いすは</td><td><button class="speak-button row-speak-button" type="button" data-japanese="いすは">Pronounce</button></td><td>chair</td><td>topic</td></tr><tr><td>長く</td><td><button class="speak-button row-speak-button" type="button" data-japanese="長く">Pronounce</button></td><td>for a long time</td><td>adverb</td></tr><tr><td>座っても</td><td><button class="speak-button row-speak-button" type="button" data-japanese="座っても">Pronounce</button></td><td>even after sitting</td><td>concessive phrase</td></tr><tr><td>疲れません</td><td><button class="speak-button row-speak-button" type="button" data-japanese="疲れません">Pronounce</button></td><td>do not get tired</td><td>polite negative verb</td></tr></tbody>
                 </table>
+                <button class="speak-button" id="speakBreakdownButton" type="button">Pronounce all</button>
             </article>
         </section>
     </main>
     <script>
-        document.getElementById("speakSentenceButton").addEventListener("click", () => {
-            const sentence = document.querySelector(".sentence").textContent;
-            const utterance = new SpeechSynthesisUtterance(sentence);
+        let speechRequestId = 0;
+
+        function speakJapanese(text) {
+            const requestId = ++speechRequestId;
+            const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = "ja-JP";
             window.speechSynthesis.cancel();
-            window.speechSynthesis.speak(utterance);
+            window.setTimeout(() => {
+                if (requestId === speechRequestId) {
+                    window.speechSynthesis.speak(utterance);
+                }
+            }, 0);
+        }
+
+        document.getElementById("speakSentenceButton").addEventListener("click", () => {
+            const sentence = document.querySelector(".sentence").textContent;
+            speakJapanese(sentence);
+        });
+
+        document.getElementById("speakBreakdownButton").addEventListener("click", () => {
+            const breakdown = Array.from(document.querySelectorAll("table tbody tr td:first-child"))
+                .map((cell) => cell.textContent.trim())
+                .join("、");
+            speakJapanese(breakdown);
+        });
+
+        document.querySelectorAll(".row-speak-button").forEach((button) => {
+            button.addEventListener("click", () => {
+                speakJapanese(button.dataset.japanese);
+            });
         });
     </script>
 </body>

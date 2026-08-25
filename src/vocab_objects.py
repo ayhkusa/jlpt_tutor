@@ -30,6 +30,7 @@ def build_household_object_html(entry: dict[str, object]) -> str:
         breakdown_rows = "".join(
                 "<tr>"
                 f"<td>{html.escape(str(component['text']))}</td>"
+            f"<td><button class=\"speak-button row-speak-button\" type=\"button\" data-japanese=\"{html.escape(str(component['text']), quote=True)}\">Pronounce</button></td>"
                 f"<td>{html.escape(str(component['meaning']))}</td>"
                 f"<td>{html.escape(str(component['function']))}</td>"
                 "</tr>"
@@ -161,19 +162,44 @@ def build_household_object_html(entry: dict[str, object]) -> str:
             <article class="panel">
                 <span class="label">Sentence breakdown</span>
                 <table>
-                    <thead><tr><th>Japanese</th><th>Meaning</th><th>Function</th></tr></thead>
+                    <thead><tr><th>Japanese</th><th>Pronounce</th><th>Meaning</th><th>Function</th></tr></thead>
                     <tbody>{breakdown_rows}</tbody>
                 </table>
+                <button class="speak-button" id="speakBreakdownButton" type="button">Pronounce all</button>
             </article>
         </section>
     </main>
     <script>
-        document.getElementById("speakSentenceButton").addEventListener("click", () => {{
-            const sentence = document.querySelector(".sentence").textContent;
-            const utterance = new SpeechSynthesisUtterance(sentence);
+        let speechRequestId = 0;
+
+        function speakJapanese(text) {{
+            const requestId = ++speechRequestId;
+            const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = "ja-JP";
             window.speechSynthesis.cancel();
-            window.speechSynthesis.speak(utterance);
+            window.setTimeout(() => {{
+                if (requestId === speechRequestId) {{
+                    window.speechSynthesis.speak(utterance);
+                }}
+            }}, 0);
+        }}
+
+        document.getElementById("speakSentenceButton").addEventListener("click", () => {{
+            const sentence = document.querySelector(".sentence").textContent;
+            speakJapanese(sentence);
+        }});
+
+        document.getElementById("speakBreakdownButton").addEventListener("click", () => {{
+            const breakdown = Array.from(document.querySelectorAll("table tbody tr td:first-child"))
+                .map((cell) => cell.textContent.trim())
+                .join("、");
+            speakJapanese(breakdown);
+        }});
+
+        document.querySelectorAll(".row-speak-button").forEach((button) => {{
+            button.addEventListener("click", () => {{
+                speakJapanese(button.dataset.japanese);
+            }});
         }});
     </script>
 </body>
