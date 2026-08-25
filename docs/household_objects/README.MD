@@ -1,0 +1,1 @@
+Example path https://ayhkusa.github.io/jlpt_tutor/household_objects/36TEG7jrz0KH.html
