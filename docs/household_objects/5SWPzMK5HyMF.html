@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>whisk | Japanese Household Vocabulary</title>
+    <style>
+        :root {
+            --bg: #f7f8f3;
+            --panel: #ffffff;
+            --ink: #1f2937;
+            --muted: #6b7280;
+            --accent: #0f766e;
+            --accent-soft: #ccfbf1;
+            --line: #d1d5db;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 1rem;
+            min-height: 100vh;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+        }
+        .page-tabs, .app { width: min(980px, 100%); margin: 0 auto; }
+        .page-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.25rem;
+            margin-bottom: 1rem;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+        }
+        .page-tab {
+            flex: 1;
+            padding: 0.55rem 0.8rem;
+            border: 1px solid #99f6e4;
+            border-radius: 9px;
+            color: #134e4a;
+            background: #f0fdfa;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+        .page-tab.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #0f766e, #0ea5a4);
+            border-color: transparent;
+        }
+        .app {
+            overflow: hidden;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+        }
+        .header {
+            padding: 1.25rem;
+            color: #f0fdfa;
+            background: linear-gradient(135deg, #0f766e, #0ea5a4);
+        }
+        h1 { margin: 0; font-size: 2rem; }
+        .japanese { margin: 0.65rem 0 0; font-size: 1.5rem; font-weight: 700; }
+        .hiragana { margin: 0.15rem 0 0; color: var(--muted); font-size: 1rem; }
+        .english.word { margin: 0.35rem 0 0; font-size: 1.2rem; }
+        .content { display: grid; gap: 1rem; padding: 1rem; }
+        .panel { padding: 1rem; background: #fcfcfb; border: 1px solid var(--line); border-radius: 12px; }
+        .label {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: #64748b;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .sentence { font-size: 1.2rem; line-height: 1.7; }
+        .translation { color: #b45309; line-height: 1.6; }
+        .speak-button {
+            margin-top: 0.75rem;
+            padding: 0.55rem 0.8rem;
+            border: 0;
+            border-radius: 10px;
+            color: #ffffff;
+            background: var(--accent);
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .speak-button:hover { filter: brightness(1.06); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.65rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+        th { color: #134e4a; background: var(--accent-soft); }
+        tr:last-child td { border-bottom: 0; }
+        @media (max-width: 600px) {
+            .page-tabs { flex-wrap: wrap; }
+            .page-tab { min-width: 45%; }
+            th, td { padding: 0.5rem 0.35rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="page-tabs" aria-label="Page tabs">
+        <a class="page-tab" href="../index.html">Home</a>
+        <a class="page-tab active" href="hTgWeiTsgE8B.html">Next Word</a>
+    </nav>
+    <main class="app">
+        <header class="header">
+            <h1>泡立て器 : あわだてき</h1>
+            <p class="english word">whisk</p>
+        </header>
+        <section class="content">
+            <article class="panel">
+                <span class="label">Japanese sentence</span>
+                <div class="sentence">泡立て器で卵をよく混ぜて、料理に使います。</div>
+                <button class="speak-button" id="speakSentenceButton" type="button">Speak sentence</button>
+            </article>
+            <article class="panel">
+                <span class="label">English sentence</span>
+                <div class="translation">I whisk the eggs well and use them in the dish.</div>
+            </article>
+            <article class="panel">
+                <span class="label">Sentence breakdown</span>
+                <table>
+                    <thead><tr><th>Japanese</th><th>Pronounce</th><th>Meaning</th><th>Function</th></tr></thead>
+                    <tbody><tr><td>泡立て器で</td><td><button class="speak-button row-speak-button" type="button" data-japanese="泡立て器で">Pronounce</button></td><td>with a whisk</td><td>で particle: marks the tool used</td></tr><tr><td>卵を</td><td><button class="speak-button row-speak-button" type="button" data-japanese="卵を">Pronounce</button></td><td>eggs</td><td>を particle: marks the object mixed</td></tr><tr><td>よく</td><td><button class="speak-button row-speak-button" type="button" data-japanese="よく">Pronounce</button></td><td>well</td><td>adverb</td></tr><tr><td>混ぜて</td><td><button class="speak-button row-speak-button" type="button" data-japanese="混ぜて">Pronounce</button></td><td>mix and</td><td>て-form: links mixing with using</td></tr><tr><td>料理に使います</td><td><button class="speak-button row-speak-button" type="button" data-japanese="料理に使います">Pronounce</button></td><td>use in the dish</td><td>に particle marks the dish where the eggs are used; polite verb phrase</td></tr><tr><td>Grammar note</td><td></td><td>で marks the tool, and に marks what the eggs are used in; the subject &#x27;I&#x27; is omitted</td><td>learner grammar guidance</td></tr></tbody>
+                </table>
+                <button class="speak-button" id="speakBreakdownButton" type="button">Pronounce all</button>
+            </article>
+        </section>
+    </main>
+    <script>
+        let speechRequestId = 0;
+
+        function speakJapanese(text) {
+            const requestId = ++speechRequestId;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = "ja-JP";
+            window.speechSynthesis.cancel();
+            window.setTimeout(() => {
+                if (requestId === speechRequestId) {
+                    window.speechSynthesis.speak(utterance);
+                }
+            }, 0);
+        }
+
+        document.getElementById("speakSentenceButton").addEventListener("click", () => {
+            const sentence = document.querySelector(".sentence").textContent;
+            speakJapanese(sentence);
+        });
+
+        document.getElementById("speakBreakdownButton").addEventListener("click", () => {
+            const breakdown = Array.from(document.querySelectorAll("table tbody tr td:first-child"))
+                .filter((cell) => cell.textContent.trim() !== "Grammar note")
+                .map((cell) => cell.textContent.trim())
+                .join("、");
+            speakJapanese(breakdown);
+        });
+
+        document.querySelectorAll(".row-speak-button").forEach((button) => {
+            button.addEventListener("click", () => {
+                speakJapanese(button.dataset.japanese);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+what are the special Japanese grammars a new learner should be aware
+
+If you're building a Japanese beginner/JLPT tutor, I would teach **Japanese grammar as a set of “special rules” that differ significantly from English**, rather than just as a list of conjugations.
+
+Here are the most important ones for a new learner.
+
+### 1. Particles determine the role of a word
+
+Japanese relies heavily on particles rather than word order.
+
+> 私**は**学生**です。
+> I am a student.
+
+The major beginner particles:
+
+| Particle | Main function              | Example      |
+| -------- | -------------------------- | ------------ |
+| は        | topic                      | 私**は**学生です   |
+| が        | subject/emphasis           | 猫**が**います    |
+| を        | direct object              | 本**を**読みます   |
+| に        | destination/time/existence | 学校**に**行きます  |
+| で        | location of action / means | 学校**で**勉強します |
+| と        | with / quotation           | 家族**と**食べます  |
+| の        | possession/relationship    | 私**の**本      |
+| も        | also                       | 私**も**学生です   |
+| から       | from/because               | 東京**から**来ました |
+| まで       | until/to                   | 5時**まで**     |
+| へ        | toward                     | 学校**へ**行きます  |
+
+**This is probably the single most important concept for an English-speaking beginner.**
+
+---
+
+### 2. Japanese normally omits the subject
+
+Japanese doesn't constantly say **I, you, he, she**, etc.
+
+> 毎日、日本語を勉強します。
+> I study Japanese every day.
+
+Literally, there is no "I" in the sentence.
+
+Context determines who is doing the action.
+
+This is a major difference from English.
+
+---
+
+### 3. The verb usually comes at the end
+
+English:
+
+> I eat dinner.
+
+Japanese:
+
+> 私は晩ご飯を**食べます**。
+
+Pattern:
+
+**Subject → Object → Verb**
+
+> 私は → 晩ご飯を → 食べます
+
+This becomes particularly important with longer sentences.
+
+---
+
+### 4. Japanese has politeness levels
+
+A beginner should learn the distinction between:
+
+**食べる** — eat (plain)
+
+**食べます** — eat (polite)
+
+**食べました** — ate (polite past)
+
+**食べません** — don't eat
+
+**食べませんでした** — didn't eat
+
+The **ます form** is the safest conversational starting point for beginners.
+
+---
+
+### 5. Verbs don't change according to the subject
+
+English:
+
+> I eat
+> He eats
+> They eat
+
+Japanese:
+
+> 私は食べます。
+> 彼は食べます。
+> みんな食べます。
+
+The verb remains **食べます**.
+
+This makes Japanese conjugation easier in some ways.
+
+---
+
+### 6. Japanese adjectives behave differently
+
+There are two major types.
+
+**い-adjectives**
+
+> 大きい — big
+> 大きくない — not big
+> 大きかった — was big
+
+**な-adjectives**
+
+> きれい — clean/beautiful
+> きれいじゃない — not clean
+> きれいでした — was clean
+
+A new learner often assumes every adjective behaves like English adjectives. It doesn't.
+
+---
+
+### 7. です is not simply "is"
+
+Beginners often learn:
+
+> です = is
+
+But that's an oversimplification.
+
+> 学生です。
+> I am a student.
+
+> 静かです。
+> It is quiet.
+
+But:
+
+> 食べです ❌
+
+You don't attach です directly to a normal verb.
+
+Understanding **です vs ます** early prevents many mistakes.
+
+---
+
+### 8. あります vs います
+
+Japanese distinguishes between **inanimate** and **animate** existence.
+
+**あります** → things
+
+> 本があります。
+> There is a book.
+
+**います** → people/animals
+
+> 猫がいます。
+> There is a cat.
+
+This distinction is particularly important for beginners.
+
+---
+
+### 9. に has many different meanings
+
+This is one of the hardest beginner concepts.
+
+> 7時**に**起きます。
+> I wake up **at** 7.
+
+> 学校**に**行きます。
+> I go **to** school.
+
+> 机の上**に**本があります。
+> There is a book **on** the desk.
+
+So don't teach **に = to**.
+
+It's better to teach **に as a relationship marker whose meaning depends on the construction.**
+
+---
+
+### 10. で has multiple meanings too
+
+> 学校**で**勉強します。
+> Study **at** school.
+
+> 箸**で**食べます。
+> Eat **with** chopsticks.
+
+> 電車**で**行きます。
+> Go **by** train.
+
+The common idea is often **the setting or means of an action**.
+
+---
+
+### 11. は and が are not interchangeable
+
+This is one of the most important—and eventually difficult—Japanese grammar concepts.
+
+> 私**は**学生です。
+
+> 私**が**学生です。
+
+Both can translate roughly as:
+
+> I am a student.
+
+But the emphasis/context differs.
+
+A beginner doesn't need the full linguistic explanation immediately. Initially, teach:
+
+**は → topic**
+
+**が → subject / identification / emphasis**
+
+Then introduce the deeper distinction later.
+
+---
+
+### 12. The て-form is extremely important
+
+The て-form isn't just one grammar pattern. It becomes a **building block for many constructions**.
+
+> 食べ**て**います
+> am eating
+
+> 食べ**て**ください
+> please eat
+
+> 食べ**ても**いいです
+> may eat
+
+> 食べ**ては**いけません
+> must not eat
+
+> 本を読ん**で**、寝ます。
+> I read a book and go to sleep.
+
+For an N4 tutor, I would make the **て-form a major milestone**.
+
+---
+
+### 13. Japanese has counters
+
+Instead of simply saying:
+
+> three books
+
+Japanese uses a counter:
+
+> 本**を3冊**買いました。
+
+Different things use different counters:
+
+* 人 — people
+* 本 — long cylindrical objects
+* 枚 — flat objects
+* 冊 — books
+* 台 — machines/vehicles
+* 匹 — small animals
+* 個 — general small objects
+
+And counters can cause pronunciation changes:
+
+> 一人（ひとり）
+> 二人（ふたり）
+> 三人（さんにん）
+
+This is an area where memorization is unavoidable.
+
+---
+
+### 14. Numbers can change pronunciation
+
+Japanese counters create many sound changes:
+
+> 一個 — いっこ
+> 六個 — ろっこ
+> 八個 — はっこ
+
+> 一本 — いっぽん
+> 三本 — さんぼん
+> 六本 — ろっぽん
+
+So learners shouldn't assume that Japanese numbers are always pronounced independently.
+
+---
+
+### 15. Relative clauses come BEFORE the noun
+
+English:
+
+> the book **that I bought**
+
+Japanese:
+
+> **私が買った**本
+
+Literally:
+
+> **I bought** + book
+
+This becomes extremely important around N4/N3.
+
+Another example:
+
+> 昨日買った本
+> the book I bought yesterday
+
+This is a major structural difference from English.
+
+---
+
+### 16. Japanese uses "modifier stacking"
+
+You can keep putting information before a noun:
+
+> 昨日駅で買った日本語の本
+
+Literally:
+
+> yesterday + at the station + bought + Japanese + book
+
+Meaning:
+
+> the Japanese book I bought at the station yesterday
+
+Japanese can therefore build very long noun phrases before you reach the main noun.
+
+---
+
+### 17. Questions don't require inversion
+
+English:
+
+> Do you eat sushi?
+
+Japanese:
+
+> 寿司を食べますか。
+
+It's basically:
+
+> Sushi eat?
+
+Add **か** to a polite statement to make it a question.
+
+---
+
+### 18. Japanese has different "I" and "you" choices
+
+"I":
+
+* 私（わたし）
+* 僕（ぼく）
+* 俺（おれ）
+
+"You":
+
+* あなた
+* 君（きみ）
+* お前（おまえ）
+
+They aren't simply interchangeable. **Politeness, gender, relationship, and situation matter.**
+
+A beginner should learn **私** first and avoid overusing **あなた**.
+
+---
+
+### 19. Japanese has levels of politeness
+
+Eventually learners encounter:
+
+> 行く
+> 行きます
+> いらっしゃいます
+> お越しになります
+
+These can all relate to "go/come," but the social relationship changes the appropriate form.
+
+For N5/N4, focus on:
+
+**plain → polite → negative → past**
+
+and introduce **keigo** much later.
+
+---
+
+### 20. Word order is more flexible than English
+
+Because particles indicate grammatical roles:
+
+> 私は本を読みます。
+
+can sometimes be rearranged:
+
+> 本を私は読みます。
+
+The second sounds more emphatic/marked, but the particles still tell us who does what.
+
+So Japanese is **particle-driven**, not purely word-order-driven.
+
+---
+
+## The most important ones for your JLPT Tutor
+
+If I were designing your curriculum, I'd prioritize them like this:
+
+### N5 foundation
+
+**① Particles**
+は / が / を / に / で / と / の / も
+
+**② Basic sentence structure**
+Subject → Object → Verb
+
+**③ Omitted subjects**
+
+**④ です / ます**
+
+**⑤ Verb conjugation**
+
+**⑥ い-adjectives / な-adjectives**
+
+**⑦ あります / います**
+
+**⑧ Basic に / で distinction**
+
+**⑨ Questions with か**
+
+**⑩ Basic て-form**
+
+### N4 expansion
+
+Then add:
+
+**⑪ ている**
+
+**⑫ てください**
+
+**⑬ てもいい**
+
+**⑭ てはいけない**
+
+**⑮ たり～たり**
+
+**⑯ ないで**
+
+**⑰ と思います**
+
+**⑱ ので / から**
+
+**⑲ Relative clauses**
+
+**⑳ Potential form**
+
+**㉑ ～たことがある**
+
+**㉒ ～ながら**
+
+**㉓ ～すぎる**
+
+**㉔ ～やすい / ～にくい**
+
+**㉕ Transitive vs. intransitive verbs**
+
+That last one—**transitive vs. intransitive verbs**—is particularly important because it introduces a distinctly Japanese way of thinking about actions and states:
+
+> ドア**を**開けました。
+> I opened the door.
+
+vs.
+
+> ドア**が**開きました。
+> The door opened.
+
+For the kind of **vocabulary → example sentence → grammar explanation** system you're building, I would make these grammar concepts explicit metadata attached to every generated sentence. That would allow your app to say not just **"this is an N4 sentence"**, but **"this sentence teaches テーブル + で (location of action) + を + ます."**

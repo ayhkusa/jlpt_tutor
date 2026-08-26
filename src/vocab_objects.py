@@ -3,9 +3,13 @@
 import csv
 import hashlib
 import html
+import argparse
 from pathlib import Path
 
-from .vocab_objects_data import HOUSEHOLD_OBJECTS
+try:
+    from .vocab_objects_data import HOUSEHOLD_OBJECTS
+except ImportError:
+    from vocab_objects_data import HOUSEHOLD_OBJECTS
 
 
 BASE62_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -38,20 +42,35 @@ def sentence_to_base62_hash(word: str) -> str:
     return "".join(reversed(characters))
 
 
-def build_household_object_html(entry: dict[str, object]) -> str:
+def build_breakdown_row(component: dict[str, str]) -> str:
+    japanese_text = html.escape(str(component["text"]), quote=True)
+    pronounce_button = ""
+    if component["text"] != "Grammar note":
+        pronounce_button = (
+            f'<button class="speak-button row-speak-button" type="button" '
+            f'data-japanese="{japanese_text}">Pronounce</button>'
+        )
+    return (
+        "<tr>"
+        f"<td>{japanese_text}</td>"
+        f"<td>{pronounce_button}</td>"
+        f"<td>{html.escape(str(component['meaning']))}</td>"
+        f"<td>{html.escape(str(component['function']))}</td>"
+        "</tr>"
+    )
+
+
+def build_household_object_html(entry: dict[str, object], next_page: str = "#") -> str:
         """Build one styled HTML page for a household-object vocabulary entry."""
         word = html.escape(str(entry["word"]))
+        hiragana = html.escape(str(entry["hiragana"]))
         english_word = html.escape(str(entry["english_word"]))
         sentence = html.escape(str(entry["sentence"]))
         english_sentence = html.escape(str(entry["english_sentence"]))
+        next_page = html.escape(next_page, quote=True)
         breakdown_rows = "".join(
-                "<tr>"
-                f"<td>{html.escape(str(component['text']))}</td>"
-            f"<td><button class=\"speak-button row-speak-button\" type=\"button\" data-japanese=\"{html.escape(str(component['text']), quote=True)}\">Pronounce</button></td>"
-                f"<td>{html.escape(str(component['meaning']))}</td>"
-                f"<td>{html.escape(str(component['function']))}</td>"
-                "</tr>"
-                for component in entry["breakdown"]
+            build_breakdown_row(component)
+            for component in entry["breakdown"]
         )
 
         return f"""<!DOCTYPE html>
@@ -119,8 +138,10 @@ def build_household_object_html(entry: dict[str, object]) -> str:
             color: #f0fdfa;
             background: linear-gradient(135deg, #0f766e, #0ea5a4);
         }}
-        h1 {{ margin: 0; font-size: 1.6rem; }}
+        h1 {{ margin: 0; font-size: 2rem; }}
         .japanese {{ margin: 0.65rem 0 0; font-size: 1.5rem; font-weight: 700; }}
+        .hiragana {{ margin: 0.15rem 0 0; color: var(--muted); font-size: 1rem; }}
+        .english.word {{ margin: 0.35rem 0 0; font-size: 1.2rem; }}
         .content {{ display: grid; gap: 1rem; padding: 1rem; }}
         .panel {{ padding: 1rem; background: #fcfcfb; border: 1px solid var(--line); border-radius: 12px; }}
         .label {{
@@ -158,13 +179,13 @@ def build_household_object_html(entry: dict[str, object]) -> str:
 </head>
 <body>
     <nav class="page-tabs" aria-label="Page tabs">
-        <a class="page-tab" href="../hiragana_phase.html">Hiragana Phrases</a>
-        <a class="page-tab active" href="#">Household Object</a>
+        <a class="page-tab" href="../index.html">Home</a>
+        <a class="page-tab active" href="{next_page}">Next Word</a>
     </nav>
     <main class="app">
         <header class="header">
-            <h1>{english_word}</h1>
-            <p class="japanese">{word}</p>
+            <h1>{word} : {hiragana}</h1>
+            <p class="english word">{english_word}</p>
         </header>
         <section class="content">
             <article class="panel">
@@ -208,6 +229,7 @@ def build_household_object_html(entry: dict[str, object]) -> str:
 
         document.getElementById("speakBreakdownButton").addEventListener("click", () => {{
             const breakdown = Array.from(document.querySelectorAll("table tbody tr td:first-child"))
+                .filter((cell) => cell.textContent.trim() !== "Grammar note")
                 .map((cell) => cell.textContent.trim())
                 .join("、");
             speakJapanese(breakdown);
@@ -224,8 +246,14 @@ def build_household_object_html(entry: dict[str, object]) -> str:
 """
 
 
-def generate_household_object_pages(output_dir: Path | None = None) -> list[Path]:
-    """Create one hash-named HTML file for each household-object sentence."""
+def generate_household_object_pages(
+    output_dir: Path | None = None,
+    limit: int | None = 1,
+) -> list[Path]:
+    """Create hash-named HTML files for a limited number of vocabulary entries."""
+    if limit is not None and limit < 0:
+        raise ValueError("limit must be non-negative or None")
+
     output_dir = output_dir or Path(__file__).resolve().parent.parent / "docs" / "household_objects"
     output_dir.mkdir(parents=True, exist_ok=True)
     generated_paths = []
@@ -235,16 +263,24 @@ def generate_household_object_pages(output_dir: Path | None = None) -> list[Path
     qr_output_dir = Path(__file__).resolve().parent / "qrcodes"
     qr_output_dir.mkdir(parents=True, exist_ok=True)
 
-    for entry in HOUSEHOLD_OBJECTS:
+    entries = HOUSEHOLD_OBJECTS if limit is None else HOUSEHOLD_OBJECTS[:limit]
+    hash_by_word = {
+        str(entry["word"]): sentence_to_base62_hash(str(entry["word"]))
+        for entry in HOUSEHOLD_OBJECTS
+    }
+    for entry in entries:
         word = str(entry["word"])
-        word_hash = sentence_to_base62_hash(word)
+        word_hash = hash_by_word[word]
         filename = f"{word_hash}.html"
         if filename in seen_hashes and seen_hashes[filename] != word:
             raise ValueError(f"Hash collision for {filename}")
         seen_hashes[filename] = word
         hash_pairs[word] = word_hash
         output_path = output_dir / filename
-        output_path.write_text(build_household_object_html(entry), encoding="utf-8")
+        entry_index = HOUSEHOLD_OBJECTS.index(entry)
+        next_entry = HOUSEHOLD_OBJECTS[(entry_index + 1) % len(HOUSEHOLD_OBJECTS)]
+        next_filename = f"{hash_by_word[str(next_entry['word'])]}.html"
+        output_path.write_text(build_household_object_html(entry, next_filename), encoding="utf-8")
         qr_path = qr_output_dir / f"{output_path.stem}_qr.png"
         if not qr_path.exists():
             create_qr_code(f"{site_url}/{filename}", qr_path)
@@ -257,5 +293,30 @@ def generate_household_object_pages(output_dir: Path | None = None) -> list[Path
         writer.writerows(hash_pairs.items())
 
     return generated_paths
+
+
+def main() -> None:
+    """Generate one household-object page, or all pages when requested."""
+    parser = argparse.ArgumentParser(description="Generate household-object vocabulary pages.")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
+        "--all",
+        action="store_true",
+        help="generate pages for all household-object entries",
+    )
+    mode.add_argument(
+        "--limit",
+        type=int,
+        metavar="N",
+        help="generate pages for the first N entries",
+    )
+    arguments = parser.parse_args()
+    limit = None if arguments.all else (arguments.limit if arguments.limit is not None else 1)
+    generated_paths = generate_household_object_pages(limit=limit)
+    print(f"Generated {len(generated_paths)} household-object page(s).")
+
+
+if __name__ == "__main__":
+    main()
 
 

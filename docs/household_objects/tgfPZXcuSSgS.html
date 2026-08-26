@@ -63,8 +63,10 @@
             color: #f0fdfa;
             background: linear-gradient(135deg, #0f766e, #0ea5a4);
         }
-        h1 { margin: 0; font-size: 1.6rem; }
+        h1 { margin: 0; font-size: 2rem; }
         .japanese { margin: 0.65rem 0 0; font-size: 1.5rem; font-weight: 700; }
+        .hiragana { margin: 0.15rem 0 0; color: var(--muted); font-size: 1rem; }
+        .english.word { margin: 0.35rem 0 0; font-size: 1.2rem; }
         .content { display: grid; gap: 1rem; padding: 1rem; }
         .panel { padding: 1rem; background: #fcfcfb; border: 1px solid var(--line); border-radius: 12px; }
         .label {
@@ -102,29 +104,29 @@
 </head>
 <body>
     <nav class="page-tabs" aria-label="Page tabs">
-        <a class="page-tab" href="../hiragana_phase.html">Hiragana Phrases</a>
-        <a class="page-tab active" href="#">Household Object</a>
+        <a class="page-tab" href="../index.html">Home</a>
+        <a class="page-tab active" href="3Rl9L92bOBV7.html">Next Word</a>
     </nav>
     <main class="app">
         <header class="header">
-            <h1>cutting board</h1>
-            <p class="japanese">まな板</p>
+            <h1>まな板 : まないた</h1>
+            <p class="english word">cutting board</p>
         </header>
         <section class="content">
             <article class="panel">
                 <span class="label">Japanese sentence</span>
-                <div class="sentence">まな板の上で魚を切ります。</div>
+                <div class="sentence">まな板を洗って、野菜のにおいを落とします。</div>
                 <button class="speak-button" id="speakSentenceButton" type="button">Speak sentence</button>
             </article>
             <article class="panel">
                 <span class="label">English sentence</span>
-                <div class="translation">I cut fish on the cutting board.</div>
+                <div class="translation">I wash the cutting board and remove the smell of vegetables.</div>
             </article>
             <article class="panel">
                 <span class="label">Sentence breakdown</span>
                 <table>
                     <thead><tr><th>Japanese</th><th>Pronounce</th><th>Meaning</th><th>Function</th></tr></thead>
-                    <tbody><tr><td>まな板の上で</td><td><button class="speak-button row-speak-button" type="button" data-japanese="まな板の上で">Pronounce</button></td><td>on the cutting board</td><td>location phrase</td></tr><tr><td>魚を切ります。</td><td><button class="speak-button row-speak-button" type="button" data-japanese="魚を切ります。">Pronounce</button></td><td>cut fish</td><td>polite verb</td></tr></tbody>
+                    <tbody><tr><td>まな板を</td><td><button class="speak-button row-speak-button" type="button" data-japanese="まな板を">Pronounce</button></td><td>cutting board</td><td>object</td></tr><tr><td>洗って</td><td><button class="speak-button row-speak-button" type="button" data-japanese="洗って">Pronounce</button></td><td>wash and</td><td>て-form connector</td></tr><tr><td>野菜の</td><td><button class="speak-button row-speak-button" type="button" data-japanese="野菜の">Pronounce</button></td><td>of vegetables</td><td>possessive phrase</td></tr><tr><td>においを</td><td><button class="speak-button row-speak-button" type="button" data-japanese="においを">Pronounce</button></td><td>smell</td><td>object</td></tr><tr><td>落とします</td><td><button class="speak-button row-speak-button" type="button" data-japanese="落とします">Pronounce</button></td><td>remove</td><td>polite verb</td></tr><tr><td>Grammar note</td><td></td><td>の links vegetables with their smell; the て-form links washing with removing it</td><td>learner grammar guidance</td></tr></tbody>
                 </table>
                 <button class="speak-button" id="speakBreakdownButton" type="button">Pronounce all</button>
             </article>
@@ -152,6 +154,7 @@
 
         document.getElementById("speakBreakdownButton").addEventListener("click", () => {
             const breakdown = Array.from(document.querySelectorAll("table tbody tr td:first-child"))
+                .filter((cell) => cell.textContent.trim() !== "Grammar note")
                 .map((cell) => cell.textContent.trim())
                 .join("、");
             speakJapanese(breakdown);

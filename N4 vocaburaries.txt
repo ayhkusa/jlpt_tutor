@@ -1,0 +1,316 @@
+### 1. People & relationships
+
+|  # | Japanese | Reading | English         |
+| -: | -------- | ------- | --------------- |
+|  1 | 家族       | かぞく     | family          |
+|  2 | 両親       | りょうしん   | parents         |
+|  3 | 父親       | ちちおや    | father          |
+|  4 | 母親       | ははおや    | mother          |
+|  5 | 息子       | むすこ     | son             |
+|  6 | 娘        | むすめ     | daughter        |
+|  7 | 夫        | おっと     | husband         |
+|  8 | 妻        | つま      | wife            |
+|  9 | 夫婦       | ふうふ     | married couple  |
+| 10 | 親        | おや      | parent          |
+| 11 | 子供       | こども     | child           |
+| 12 | 兄弟       | きょうだい   | siblings        |
+| 13 | 兄        | あに      | older brother   |
+| 14 | 姉        | あね      | older sister    |
+| 15 | 弟        | おとうと    | younger brother |
+| 16 | 妹        | いもうと    | younger sister  |
+| 17 | 友達       | ともだち    | friend          |
+| 18 | 近所       | きんじょ    | neighborhood    |
+| 19 | 皆さん      | みなさん    | everyone        |
+| 20 | 自分       | じぶん     | oneself         |
+
+### 2. Home & household
+
+|  # | Japanese | Reading | English           |
+| -: | -------- | ------- | ----------------- |
+| 21 | 家        | いえ      | house             |
+| 22 | 部屋       | へや      | room              |
+| 23 | 台所       | だいどころ   | kitchen           |
+| 24 | 玄関       | げんかん    | entrance          |
+| 25 | 庭        | にわ      | garden            |
+| 26 | 階段       | かいだん    | stairs            |
+| 27 | 壁        | かべ      | wall              |
+| 28 | 窓        | まど      | window            |
+| 29 | ドア       | ドア      | door              |
+| 30 | 冷蔵庫      | れいぞうこ   | refrigerator      |
+| 31 | 洗濯機      | せんたくき   | washing machine   |
+| 32 | 掃除機      | そうじき    | vacuum cleaner    |
+| 33 | テーブル     | テーブル    | table             |
+| 34 | 椅子       | いす      | chair             |
+| 35 | 本棚       | ほんだな    | bookshelf         |
+| 36 | 電気       | でんき     | light/electricity |
+| 37 | 電灯       | でんとう    | electric light    |
+| 38 | 布団       | ふとん     | futon             |
+| 39 | 荷物       | にもつ     | luggage           |
+| 40 | 段ボール     | だんボール   | cardboard         |
+
+### 3. Food & eating
+
+|  # | Japanese | Reading | English       |
+| -: | -------- | ------- | ------------- |
+| 41 | 朝ご飯      | あさごはん   | breakfast     |
+| 42 | 昼ご飯      | ひるごはん   | lunch         |
+| 43 | 晩ご飯      | ばんごはん   | dinner        |
+| 44 | 食事       | しょくじ    | meal          |
+| 45 | 野菜       | やさい     | vegetables    |
+| 46 | 果物       | くだもの    | fruit         |
+| 47 | 肉        | にく      | meat          |
+| 48 | 魚        | さかな     | fish          |
+| 49 | 卵        | たまご     | egg           |
+| 50 | 牛乳       | ぎゅうにゅう  | milk          |
+| 51 | 飲み物      | のみもの    | drink         |
+| 52 | 食べ物      | たべもの    | food          |
+| 53 | 料理       | りょうり    | cooking/dish  |
+| 54 | 味        | あじ      | taste         |
+| 55 | 塩        | しお      | salt          |
+| 56 | 砂糖       | さとう     | sugar         |
+| 57 | 米        | こめ      | rice          |
+| 58 | パン       | パン      | bread         |
+| 59 | お茶       | おちゃ     | tea           |
+| 60 | お菓子      | おかし     | sweets/snacks |
+
+### 4. School & learning
+
+|  # | Japanese | Reading | English          |
+| -: | -------- | ------- | ---------------- |
+| 61 | 学校       | がっこう    | school           |
+| 62 | 大学       | だいがく    | university       |
+| 63 | 教室       | きょうしつ   | classroom        |
+| 64 | 学生       | がくせい    | student          |
+| 65 | 生徒       | せいと     | student/pupil    |
+| 66 | 先生       | せんせい    | teacher          |
+| 67 | 授業       | じゅぎょう   | class/lesson     |
+| 68 | 宿題       | しゅくだい   | homework         |
+| 69 | 試験       | しけん     | examination      |
+| 70 | 質問       | しつもん    | question         |
+| 71 | 答え       | こたえ     | answer           |
+| 72 | 問題       | もんだい    | problem/question |
+| 73 | 勉強       | べんきょう   | study            |
+| 74 | 練習       | れんしゅう   | practice         |
+| 75 | 教科書      | きょうかしょ  | textbook         |
+| 76 | 辞書       | じしょ     | dictionary       |
+| 77 | 漢字       | かんじ     | kanji            |
+| 78 | 英語       | えいご     | English          |
+| 79 | 日本語      | にほんご    | Japanese         |
+| 80 | 意味       | いみ      | meaning          |
+
+### 5. Work & daily activities
+
+|   # | Japanese | Reading | English         |
+| --: | -------- | ------- | --------------- |
+|  81 | 仕事       | しごと     | work/job        |
+|  82 | 会社       | かいしゃ    | company         |
+|  83 | 社員       | しゃいん    | employee        |
+|  84 | 店員       | てんいん    | store clerk     |
+|  85 | 銀行員      | ぎんこういん  | bank employee   |
+|  86 | 医者       | いしゃ     | doctor          |
+|  87 | 看護師      | かんごし    | nurse           |
+|  88 | 会議       | かいぎ     | meeting         |
+|  89 | 予定       | よてい     | plan/schedule   |
+|  90 | 用事       | ようじ     | errand/business |
+|  91 | 休み       | やすみ     | rest/day off    |
+|  92 | 休日       | きゅうじつ   | holiday/day off |
+|  93 | 生活       | せいかつ    | daily life      |
+|  94 | 準備       | じゅんび    | preparation     |
+|  95 | 掃除       | そうじ     | cleaning        |
+|  96 | 洗濯       | せんたく    | laundry         |
+|  97 | 買い物      | かいもの    | shopping        |
+|  98 | 引っ越し     | ひっこし    | moving house    |
+|  99 | 散歩       | さんぽ     | walk            |
+| 100 | 運動       | うんどう    | exercise        |
+
+### 6. Places & transportation
+
+|   # | Japanese | Reading | English           |
+| --: | -------- | ------- | ----------------- |
+| 101 | 駅        | えき      | station           |
+| 102 | 空港       | くうこう    | airport           |
+| 103 | 病院       | びょういん   | hospital          |
+| 104 | 銀行       | ぎんこう    | bank              |
+| 105 | 郵便局      | ゆうびんきょく | post office       |
+| 106 | 図書館      | としょかん   | library           |
+| 107 | 公園       | こうえん    | park              |
+| 108 | 映画館      | えいがかん   | movie theater     |
+| 109 | 美術館      | びじゅつかん  | art museum        |
+| 110 | 店        | みせ      | store             |
+| 111 | スーパー     | スーパー    | supermarket       |
+| 112 | コンビニ     | コンビニ    | convenience store |
+| 113 | レストラン    | レストラン   | restaurant        |
+| 114 | 道        | みち      | road/way          |
+| 115 | 交差点      | こうさてん   | intersection      |
+| 116 | 電車       | でんしゃ    | train             |
+| 117 | 地下鉄      | ちかてつ    | subway            |
+| 118 | 自転車      | じてんしゃ   | bicycle           |
+| 119 | 自動車      | じどうしゃ   | automobile        |
+| 120 | 飛行機      | ひこうき    | airplane          |
+
+### 7. Travel & directions
+
+|   # | Japanese | Reading | English             |
+| --: | -------- | ------- | ------------------- |
+| 121 | 旅行       | りょこう    | travel/trip         |
+| 122 | 観光       | かんこう    | sightseeing         |
+| 123 | 旅館       | りょかん    | Japanese inn        |
+| 124 | ホテル      | ホテル     | hotel               |
+| 125 | 部屋       | へや      | room                |
+| 126 | 地図       | ちず      | map                 |
+| 127 | 切符       | きっぷ     | ticket              |
+| 128 | 入口       | いりぐち    | entrance            |
+| 129 | 出口       | でぐち     | exit                |
+| 130 | 左        | ひだり     | left                |
+| 131 | 右        | みぎ      | right               |
+| 132 | 前        | まえ      | front/before        |
+| 133 | 後ろ       | うしろ     | behind              |
+| 134 | 上        | うえ      | above/on            |
+| 135 | 下        | した      | below/under         |
+| 136 | 中        | なか      | inside              |
+| 137 | 外        | そと      | outside             |
+| 138 | 横        | よこ      | beside              |
+| 139 | 向こう      | むこう     | over there/opposite |
+| 140 | 角        | かど      | corner              |
+
+### 8. Time
+
+|   # | Japanese | Reading | English          |
+| --: | -------- | ------- | ---------------- |
+| 141 | 今朝       | けさ      | this morning     |
+| 142 | 今晩       | こんばん    | tonight          |
+| 143 | 昨日       | きのう     | yesterday        |
+| 144 | 今日       | きょう     | today            |
+| 145 | 明日       | あした     | tomorrow         |
+| 146 | 最近       | さいきん    | recently         |
+| 147 | 毎日       | まいにち    | every day        |
+| 148 | 毎週       | まいしゅう   | every week       |
+| 149 | 毎月       | まいつき    | every month      |
+| 150 | 毎年       | まいとし    | every year       |
+| 151 | 週末       | しゅうまつ   | weekend          |
+| 152 | 来週       | らいしゅう   | next week        |
+| 153 | 先週       | せんしゅう   | last week        |
+| 154 | 来月       | らいげつ    | next month       |
+| 155 | 先月       | せんげつ    | last month       |
+| 156 | 来年       | らいねん    | next year        |
+| 157 | 去年       | きょねん    | last year        |
+| 158 | 時間       | じかん     | time             |
+| 159 | 間        | あいだ     | interval/between |
+| 160 | 場合       | ばあい     | case/situation   |
+
+### 9. Common verbs
+
+|   # | Japanese | Reading | English               |
+| --: | -------- | ------- | --------------------- |
+| 161 | 始める      | はじめる    | start something       |
+| 162 | 始まる      | はじまる    | begin                 |
+| 163 | 終わる      | おわる     | finish/end            |
+| 164 | 続ける      | つづける    | continue              |
+| 165 | 続く       | つづく     | continue/be continued |
+| 166 | 決める      | きめる     | decide                |
+| 167 | 選ぶ       | えらぶ     | choose                |
+| 168 | 変える      | かえる     | change something      |
+| 169 | 変わる      | かわる     | change                |
+| 170 | 開ける      | あける     | open something        |
+| 171 | 開く       | あく      | open                  |
+| 172 | 閉める      | しめる     | close something       |
+| 173 | 閉まる      | しまる     | close                 |
+| 174 | 入れる      | いれる     | put in                |
+| 175 | 入る       | はいる     | enter                 |
+| 176 | 出す       | だす      | take out              |
+| 177 | 出る       | でる      | leave/go out          |
+| 178 | 忘れる      | わすれる    | forget                |
+| 179 | 覚える      | おぼえる    | remember/learn        |
+| 180 | 思う       | おもう     | think                 |
+
+### 10. More common verbs
+
+|   # | Japanese | Reading | English          |
+| --: | -------- | ------- | ---------------- |
+| 181 | 知る       | しる      | know/find out    |
+| 182 | 考える      | かんがえる   | think/consider   |
+| 183 | 説明する     | せつめいする  | explain          |
+| 184 | 練習する     | れんしゅうする | practice         |
+| 185 | 用意する     | よういする   | prepare          |
+| 186 | 運転する     | うんてんする  | drive            |
+| 187 | 連絡する     | れんらくする  | contact          |
+| 188 | 約束する     | やくそくする  | promise          |
+| 189 | 招待する     | しょうたいする | invite           |
+| 190 | 運ぶ       | はこぶ     | carry/transport  |
+| 191 | 送る       | おくる     | send             |
+| 192 | 迎える      | むかえる    | pick up/welcome  |
+| 193 | 返す       | かえす     | return something |
+| 194 | 貸す       | かす      | lend             |
+| 195 | 借りる      | かりる     | borrow           |
+| 196 | 受ける      | うける     | receive/take     |
+| 197 | 使う       | つかう     | use              |
+| 198 | 作る       | つくる     | make             |
+| 199 | 直す       | なおす     | repair/fix       |
+| 200 | 壊れる      | こわれる    | break            |
+
+### 11. Adjectives
+
+|   # | Japanese | Reading | English           |
+| --: | -------- | ------- | ----------------- |
+| 201 | 大切       | たいせつ    | important         |
+| 202 | 必要       | ひつよう    | necessary         |
+| 203 | 簡単       | かんたん    | easy/simple       |
+| 204 | 複雑       | ふくざつ    | complicated       |
+| 205 | 特別       | とくべつ    | special           |
+| 206 | 有名       | ゆうめい    | famous            |
+| 207 | 安全       | あんぜん    | safe              |
+| 208 | 危険       | きけん     | dangerous         |
+| 209 | 静か       | しずか     | quiet             |
+| 210 | 賑やか      | にぎやか    | lively            |
+| 211 | 親切       | しんせつ    | kind              |
+| 212 | 便利       | べんり     | convenient        |
+| 213 | 不便       | ふべん     | inconvenient      |
+| 214 | 元気       | げんき     | healthy/energetic |
+| 215 | 暇        | ひま      | free/not busy     |
+| 216 | 忙しい      | いそがしい   | busy              |
+| 217 | 楽しい      | たのしい    | enjoyable         |
+| 218 | 面白い      | おもしろい   | interesting/funny |
+| 219 | 難しい      | むずかしい   | difficult         |
+| 220 | 珍しい      | めずらしい   | rare/unusual      |
+
+### 12. Useful descriptive & abstract vocabulary
+
+|   # | Japanese | Reading | English      |
+| --: | -------- | ------- | ------------ |
+| 221 | 若い       | わかい     | young        |
+| 222 | 年上       | としうえ    | older        |
+| 223 | 暑い       | あつい     | hot weather  |
+| 224 | 寒い       | さむい     | cold weather |
+| 225 | 暖かい      | あたたかい   | warm         |
+| 226 | 涼しい      | すずしい    | cool         |
+| 227 | 明るい      | あかるい    | bright       |
+| 228 | 暗い       | くらい     | dark         |
+| 229 | 重い       | おもい     | heavy        |
+| 230 | 軽い       | かるい     | light        |
+| 231 | 近い       | ちかい     | near         |
+| 232 | 遠い       | とおい     | far          |
+| 233 | 早い       | はやい     | early/fast   |
+| 234 | 遅い       | おそい     | late/slow    |
+| 235 | 多い       | おおい     | many         |
+| 236 | 少ない      | すくない    | few/little   |
+| 237 | 同じ       | おなじ     | same         |
+| 238 | 違う       | ちがう     | different    |
+| 239 | 自由       | じゆう     | free/freedom |
+| 240 | 便利       | べんり     | convenient   |
+
+**Note:** 便利 appears twice in this practical list (#212 and #240), so if you're importing this into your JLPT Tutor database, **remove #240 or replace it with another N4 word**, such as **必要（ひつよう）** if your dataset doesn't already contain it.
+
+For your application, I'd recommend storing each vocabulary item as something like:
+
+```json
+{
+  "word": "テーブル",
+  "reading": "てーぶる",
+  "english": "table",
+  "jlpt": "N4",
+  "part_of_speech": "noun",
+  "examples": []
+}
+```
+
+Then you can generate **multiple N4 sentences per vocabulary word**, while separately tagging the grammar used in each sentence.

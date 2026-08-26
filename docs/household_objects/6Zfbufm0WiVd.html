@@ -63,8 +63,10 @@
             color: #f0fdfa;
             background: linear-gradient(135deg, #0f766e, #0ea5a4);
         }
-        h1 { margin: 0; font-size: 1.6rem; }
+        h1 { margin: 0; font-size: 2rem; }
         .japanese { margin: 0.65rem 0 0; font-size: 1.5rem; font-weight: 700; }
+        .hiragana { margin: 0.15rem 0 0; color: var(--muted); font-size: 1rem; }
+        .english.word { margin: 0.35rem 0 0; font-size: 1.2rem; }
         .content { display: grid; gap: 1rem; padding: 1rem; }
         .panel { padding: 1rem; background: #fcfcfb; border: 1px solid var(--line); border-radius: 12px; }
         .label {
@@ -102,13 +104,13 @@
 </head>
 <body>
     <nav class="page-tabs" aria-label="Page tabs">
-        <a class="page-tab" href="../hiragana_phase.html">Hiragana Phrases</a>
-        <a class="page-tab active" href="#">Household Object</a>
+        <a class="page-tab" href="../index.html">Home</a>
+        <a class="page-tab active" href="eobqAFNwD8xO.html">Next Word</a>
     </nav>
     <main class="app">
         <header class="header">
-            <h1>table</h1>
-            <p class="japanese">テーブル</p>
+            <h1>テーブル : てーぶる</h1>
+            <p class="english word">table</p>
         </header>
         <section class="content">
             <article class="panel">
@@ -124,7 +126,7 @@
                 <span class="label">Sentence breakdown</span>
                 <table>
                     <thead><tr><th>Japanese</th><th>Pronounce</th><th>Meaning</th><th>Function</th></tr></thead>
-                    <tbody><tr><td>家族と</td><td><button class="speak-button row-speak-button" type="button" data-japanese="家族と">Pronounce</button></td><td>with my family</td><td>companion phrase</td></tr><tr><td>テーブルで</td><td><button class="speak-button row-speak-button" type="button" data-japanese="テーブルで">Pronounce</button></td><td>at the table</td><td>location phrase</td></tr><tr><td>晩ご飯を</td><td><button class="speak-button row-speak-button" type="button" data-japanese="晩ご飯を">Pronounce</button></td><td>dinner</td><td>object</td></tr><tr><td>食べます</td><td><button class="speak-button row-speak-button" type="button" data-japanese="食べます">Pronounce</button></td><td>eat</td><td>polite verb</td></tr></tbody>
+                    <tbody><tr><td>家族と</td><td><button class="speak-button row-speak-button" type="button" data-japanese="家族と">Pronounce</button></td><td>with my family</td><td>と particle: companion; &#x27;with&#x27; a person</td></tr><tr><td>テーブルで</td><td><button class="speak-button row-speak-button" type="button" data-japanese="テーブルで">Pronounce</button></td><td>at the table</td><td>で particle: place where an action occurs</td></tr><tr><td>晩ご飯を</td><td><button class="speak-button row-speak-button" type="button" data-japanese="晩ご飯を">Pronounce</button></td><td>dinner</td><td>を particle: marks the direct object of 食べます</td></tr><tr><td>食べます</td><td><button class="speak-button row-speak-button" type="button" data-japanese="食べます">Pronounce</button></td><td>eat</td><td>polite verb; Japanese normally omits the subject when context is clear</td></tr><tr><td>Grammar note</td><td></td><td>と marks the companion, で marks the place, and を marks the food eaten</td><td>learner grammar guidance</td></tr></tbody>
                 </table>
                 <button class="speak-button" id="speakBreakdownButton" type="button">Pronounce all</button>
             </article>
@@ -152,6 +154,7 @@
 
         document.getElementById("speakBreakdownButton").addEventListener("click", () => {
             const breakdown = Array.from(document.querySelectorAll("table tbody tr td:first-child"))
+                .filter((cell) => cell.textContent.trim() !== "Grammar note")
                 .map((cell) => cell.textContent.trim())
                 .join("、");
             speakJapanese(breakdown);
