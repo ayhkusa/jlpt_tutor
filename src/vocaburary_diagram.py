@@ -2,6 +2,13 @@ import json
 import webbrowser
 from pathlib import Path
 
+try:
+  from .vocab_objects import sentence_to_base62_hash
+  from .vocabulary_repository import load_household_objects
+except ImportError:
+  from vocab_objects import sentence_to_base62_hash
+  from vocabulary_repository import load_household_objects
+
 from gana_data import relationships as gana_relationships
 from gana_guide import pronunciation_guide as gana_pronunciation_guide
 from kana_data import relationships as kana_relationships
@@ -145,6 +152,10 @@ gana_relationship_payload = [
 # EXPORT INTERACTIVE HTML
 # ----------------------------
 output_path = Path(__file__).resolve().parent.parent / "docs" / "index.html"
+n5_vocabulary_page_urls = [
+  f"household_objects/n5/n5-household-{sentence_to_base62_hash(str(entry['word']))}.html"
+  for entry in load_household_objects("N5")
+]
 
 
 def open_html_in_browser(path: Path) -> None:
@@ -643,6 +654,7 @@ html = f"""<!DOCTYPE html>
     <a class="page-tab" href="hiragana_match.html">Hiragana Match</a>
     <a class="page-tab" href="hiragana_phase.html">Hiragana Phrases</a>
     <a class="page-tab" href="hiragana_particle.html">Learn Particles</a>
+    <a class="page-tab" id="learnVocabLink" href="#">Learn Vocab</a>
   </nav>
 
   <div class="page-header">
@@ -683,10 +695,12 @@ html = f"""<!DOCTYPE html>
     }};
     const letterMap = {json.dumps(letter_map)};
     const colorMap = {json.dumps(color_map)};
+    const n5VocabularyPageUrls = {json.dumps(n5_vocabulary_page_urls)};
     const container = document.getElementById('mynetwork');
     const gojuonWrap = document.getElementById('gojuonWrap');
     const gojuonTable = document.getElementById('gojuonTable');
     const vocabularyToggleButton = document.getElementById('vocabularyToggleButton');
+    const learnVocabLink = document.getElementById('learnVocabLink');
     const tableToggleButton = document.getElementById('tableToggleButton');
     const autoPronounceButton = document.getElementById('autoPronounceButton');
     const definitionsToggleButton = document.getElementById('definitionsToggleButton');
@@ -697,6 +711,14 @@ html = f"""<!DOCTYPE html>
     const pauseValue = document.getElementById('pauseValue');
     const helpLine = document.getElementById('helpLine');
     const helpExample = document.getElementById('helpExample');
+    learnVocabLink.addEventListener('click', (event) => {{
+      event.preventDefault();
+      if (!n5VocabularyPageUrls.length) {{
+        return;
+      }}
+      const randomIndex = Math.floor(Math.random() * n5VocabularyPageUrls.length);
+      window.location.assign(n5VocabularyPageUrls[randomIndex]);
+    }});
     const nodes = new vis.DataSet();
     const edges = new vis.DataSet();
     const pronunciationGuides = {{

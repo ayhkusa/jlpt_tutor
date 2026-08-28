@@ -1,0 +1,5068 @@
+[
+  {
+    "id": "n5-household-001",
+    "target_level": "N5",
+    "word_id": "household-object-04-テーブル",
+    "japanese": "このテーブルは私の家にあります。とても便利です。",
+    "english": "This table is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "このテーブルは",
+        "meaning": "this table",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-002",
+    "target_level": "N5",
+    "word_id": "household-object-03-冷凍庫",
+    "japanese": "新しい冷凍庫を買いました。家で毎日使います。",
+    "english": "I bought a new freezer. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい冷凍庫を",
+        "meaning": "a new freezer",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-003",
+    "target_level": "N5",
+    "word_id": "household-object-05-トースター",
+    "japanese": "母はトースターを使います。私はそばで見ます。",
+    "english": "My mother uses the toaster. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "トースターを",
+        "meaning": "the toaster",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-004",
+    "target_level": "N5",
+    "word_id": "household-object-05-食器洗い機",
+    "japanese": "その食器洗い機は小さいです。でもよく使います。",
+    "english": "That dishwasher is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その食器洗い機は",
+        "meaning": "that dishwasher",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-005",
+    "target_level": "N5",
+    "word_id": "household-object-02-水筒",
+    "japanese": "私は水筒が好きです。色がきれいです。",
+    "english": "I like this water bottle. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "水筒が",
+        "meaning": "the water bottle",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-006",
+    "target_level": "N5",
+    "word_id": "household-object-05-水切りかご",
+    "japanese": "この水切りかごは私の家にあります。とても便利です。",
+    "english": "This dish drainer is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この水切りかごは",
+        "meaning": "this dish drainer",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-007",
+    "target_level": "N5",
+    "word_id": "household-object-03-ふきん",
+    "japanese": "新しいふきんを買いました。家で毎日使います。",
+    "english": "I bought a new dishcloth. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しいふきんを",
+        "meaning": "a new dishcloth",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-008",
+    "target_level": "N5",
+    "word_id": "household-object-03-ラップ",
+    "japanese": "母はラップを使います。私はそばで見ます。",
+    "english": "My mother uses the plastic wrap. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "ラップを",
+        "meaning": "the plastic wrap",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-009",
+    "target_level": "N5",
+    "word_id": "household-object-06-アルミホイル",
+    "japanese": "そのアルミホイルは小さいです。でもよく使います。",
+    "english": "That aluminum foil is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "そのアルミホイルは",
+        "meaning": "that aluminum foil",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-010",
+    "target_level": "N5",
+    "word_id": "household-object-03-まな板",
+    "japanese": "私はまな板が好きです。色がきれいです。",
+    "english": "I like this cutting board. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "まな板が",
+        "meaning": "the cutting board",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-011",
+    "target_level": "N5",
+    "word_id": "household-object-04-しゃもじ",
+    "japanese": "このしゃもじは私の家にあります。とても便利です。",
+    "english": "This rice paddle is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "このしゃもじは",
+        "meaning": "this rice paddle",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-012",
+    "target_level": "N5",
+    "word_id": "household-object-02-急須",
+    "japanese": "新しい急須を買いました。家で毎日使います。",
+    "english": "I bought a new teapot. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい急須を",
+        "meaning": "a new teapot",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-013",
+    "target_level": "N5",
+    "word_id": "household-object-03-おたま",
+    "japanese": "母はおたまを使います。私はそばで見ます。",
+    "english": "My mother uses the ladle. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "おたまを",
+        "meaning": "the ladle",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-014",
+    "target_level": "N5",
+    "word_id": "household-object-02-ざる",
+    "japanese": "そのざるは小さいです。でもよく使います。",
+    "english": "That colander is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "そのざるは",
+        "meaning": "that colander",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-015",
+    "target_level": "N5",
+    "word_id": "household-object-05-計量カップ",
+    "japanese": "私は計量カップが好きです。色がきれいです。",
+    "english": "I like this measuring cup. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "計量カップが",
+        "meaning": "the measuring cup",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-016",
+    "target_level": "N5",
+    "word_id": "household-object-05-洗濯ばさみ",
+    "japanese": "この洗濯ばさみは私の家にあります。とても便利です。",
+    "english": "This clothespin is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この洗濯ばさみは",
+        "meaning": "this clothespin",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-017",
+    "target_level": "N5",
+    "word_id": "household-object-05-物干しざお",
+    "japanese": "新しい物干しざおを買いました。家で毎日使います。",
+    "english": "I bought a new clothesline pole. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい物干しざおを",
+        "meaning": "a new clothesline pole",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-018",
+    "target_level": "N5",
+    "word_id": "household-object-05-洗濯ネット",
+    "japanese": "母は洗濯ネットを使います。私はそばで見ます。",
+    "english": "My mother uses the laundry net. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "洗濯ネットを",
+        "meaning": "the laundry net",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-019",
+    "target_level": "N5",
+    "word_id": "household-object-05-掃除用手袋",
+    "japanese": "その掃除用手袋は小さいです。でもよく使います。",
+    "english": "That cleaning gloves is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その掃除用手袋は",
+        "meaning": "that cleaning gloves",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-020",
+    "target_level": "N5",
+    "word_id": "household-object-06-消臭スプレー",
+    "japanese": "私は消臭スプレーが好きです。色がきれいです。",
+    "english": "I like this deodorizing spray. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "消臭スプレーが",
+        "meaning": "the deodorizing spray",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-021",
+    "target_level": "N5",
+    "word_id": "household-object-05-蚊取り線香",
+    "japanese": "この蚊取り線香は私の家にあります。とても便利です。",
+    "english": "This mosquito coil is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この蚊取り線香は",
+        "meaning": "this mosquito coil",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-022",
+    "target_level": "N5",
+    "word_id": "household-object-06-ティッシュ箱",
+    "japanese": "新しいティッシュ箱を買いました。家で毎日使います。",
+    "english": "I bought a new tissue box. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しいティッシュ箱を",
+        "meaning": "a new tissue box",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-023",
+    "target_level": "N5",
+    "word_id": "household-object-03-ごみ袋",
+    "japanese": "母はごみ袋を使います。私はそばで見ます。",
+    "english": "My mother uses the garbage bag. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "ごみ袋を",
+        "meaning": "the garbage bag",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-024",
+    "target_level": "N5",
+    "word_id": "household-object-05-段ボール箱",
+    "japanese": "その段ボール箱は小さいです。でもよく使います。",
+    "english": "That cardboard box is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その段ボール箱は",
+        "meaning": "that cardboard box",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-025",
+    "target_level": "N5",
+    "word_id": "household-object-04-オーブン",
+    "japanese": "私はオーブンが好きです。色がきれいです。",
+    "english": "I like this oven. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "オーブンが",
+        "meaning": "the oven",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-026",
+    "target_level": "N5",
+    "word_id": "household-object-05-ガスコンロ",
+    "japanese": "このガスコンロは私の家にあります。とても便利です。",
+    "english": "This gas stove is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "このガスコンロは",
+        "meaning": "this gas stove",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-027",
+    "target_level": "N5",
+    "word_id": "household-object-03-換気扇",
+    "japanese": "新しい換気扇を買いました。家で毎日使います。",
+    "english": "I bought a new ventilation fan. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい換気扇を",
+        "meaning": "a new ventilation fan",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-028",
+    "target_level": "N5",
+    "word_id": "household-object-03-冷蔵庫",
+    "japanese": "母は冷蔵庫を使います。私はそばで見ます。",
+    "english": "My mother uses the refrigerator. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "冷蔵庫を",
+        "meaning": "the refrigerator",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-029",
+    "target_level": "N5",
+    "word_id": "household-object-05-調味料入れ",
+    "japanese": "その調味料入れは小さいです。でもよく使います。",
+    "english": "That seasoning container is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その調味料入れは",
+        "meaning": "that seasoning container",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-030",
+    "target_level": "N5",
+    "word_id": "household-object-03-塩入れ",
+    "japanese": "私は塩入れが好きです。色がきれいです。",
+    "english": "I like this salt shaker. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "塩入れが",
+        "meaning": "the salt shaker",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-031",
+    "target_level": "N5",
+    "word_id": "household-object-04-砂糖入れ",
+    "japanese": "この砂糖入れは私の家にあります。とても便利です。",
+    "english": "This sugar bowl is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この砂糖入れは",
+        "meaning": "this sugar bowl",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-032",
+    "target_level": "N5",
+    "word_id": "household-object-03-水差し",
+    "japanese": "新しい水差しを買いました。家で毎日使います。",
+    "english": "I bought a new water pitcher. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい水差しを",
+        "meaning": "a new water pitcher",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-033",
+    "target_level": "N5",
+    "word_id": "household-object-04-保存容器",
+    "japanese": "母は保存容器を使います。私はそばで見ます。",
+    "english": "My mother uses the food storage container. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "保存容器を",
+        "meaning": "the food storage container",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-034",
+    "target_level": "N5",
+    "word_id": "household-object-03-缶切り",
+    "japanese": "その缶切りは小さいです。でもよく使います。",
+    "english": "That can opener is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その缶切りは",
+        "meaning": "that can opener",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-035",
+    "target_level": "N5",
+    "word_id": "household-object-03-栓抜き",
+    "japanese": "私は栓抜きが好きです。色がきれいです。",
+    "english": "I like this bottle opener. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "栓抜きが",
+        "meaning": "the bottle opener",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-036",
+    "target_level": "N5",
+    "word_id": "household-object-03-包み紙",
+    "japanese": "この包み紙は私の家にあります。とても便利です。",
+    "english": "This wrapping paper is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この包み紙は",
+        "meaning": "this wrapping paper",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-037",
+    "target_level": "N5",
+    "word_id": "household-object-03-弁当箱",
+    "japanese": "新しい弁当箱を買いました。家で毎日使います。",
+    "english": "I bought a new lunch box. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい弁当箱を",
+        "meaning": "a new lunch box",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-038",
+    "target_level": "N5",
+    "word_id": "household-object-04-おろし金",
+    "japanese": "母はおろし金を使います。私はそばで見ます。",
+    "english": "My mother uses the grater. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "おろし金を",
+        "meaning": "the grater",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-039",
+    "target_level": "N5",
+    "word_id": "household-object-04-泡立て器",
+    "japanese": "その泡立て器は小さいです。でもよく使います。",
+    "english": "That whisk is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その泡立て器は",
+        "meaning": "that whisk",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-040",
+    "target_level": "N5",
+    "word_id": "household-object-02-菜箸",
+    "japanese": "私は菜箸が好きです。色がきれいです。",
+    "english": "I like this cooking chopsticks. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "菜箸が",
+        "meaning": "the cooking chopsticks",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-041",
+    "target_level": "N5",
+    "word_id": "household-object-03-鍋敷き",
+    "japanese": "この鍋敷きは私の家にあります。とても便利です。",
+    "english": "This pot coaster is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この鍋敷きは",
+        "meaning": "this pot coaster",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-042",
+    "target_level": "N5",
+    "word_id": "household-object-08-キッチンペーパー",
+    "japanese": "新しいキッチンペーパーを買いました。家で毎日使います。",
+    "english": "I bought a new paper towel. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しいキッチンペーパーを",
+        "meaning": "a new paper towel",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-043",
+    "target_level": "N5",
+    "word_id": "household-object-04-エプロン",
+    "japanese": "母はエプロンを使います。私はそばで見ます。",
+    "english": "My mother uses the apron. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "エプロンを",
+        "meaning": "the apron",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-044",
+    "target_level": "N5",
+    "word_id": "household-object-05-台所用洗剤",
+    "japanese": "その台所用洗剤は小さいです。でもよく使います。",
+    "english": "That dish soap is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その台所用洗剤は",
+        "meaning": "that dish soap",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-045",
+    "target_level": "N5",
+    "word_id": "household-object-07-ふた付きごみ箱",
+    "japanese": "私はふた付きごみ箱が好きです。色がきれいです。",
+    "english": "I like this lidded trash can. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "ふた付きごみ箱が",
+        "meaning": "the lidded trash can",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-046",
+    "target_level": "N5",
+    "word_id": "household-object-02-水道",
+    "japanese": "この水道は私の家にあります。とても便利です。",
+    "english": "This water tap is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この水道は",
+        "meaning": "this water tap",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-047",
+    "target_level": "N5",
+    "word_id": "household-object-02-蛇口",
+    "japanese": "新しい蛇口を買いました。家で毎日使います。",
+    "english": "I bought a new faucet. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい蛇口を",
+        "meaning": "a new faucet",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-048",
+    "target_level": "N5",
+    "word_id": "household-object-03-排水口",
+    "japanese": "母は排水口を使います。私はそばで見ます。",
+    "english": "My mother uses the drain. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "排水口を",
+        "meaning": "the drain",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-049",
+    "target_level": "N5",
+    "word_id": "household-object-04-風呂おけ",
+    "japanese": "その風呂おけは小さいです。でもよく使います。",
+    "english": "That bath bucket is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その風呂おけは",
+        "meaning": "that bath bucket",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-050",
+    "target_level": "N5",
+    "word_id": "household-object-04-風呂いす",
+    "japanese": "私は風呂いすが好きです。色がきれいです。",
+    "english": "I like this bath stool. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "風呂いすが",
+        "meaning": "the bath stool",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-051",
+    "target_level": "N5",
+    "word_id": "household-object-02-浴槽",
+    "japanese": "この浴槽は私の家にあります。とても便利です。",
+    "english": "This bathtub is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この浴槽は",
+        "meaning": "this bathtub",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-052",
+    "target_level": "N5",
+    "word_id": "household-object-04-風呂ぶた",
+    "japanese": "新しい風呂ぶたを買いました。家で毎日使います。",
+    "english": "I bought a new bathtub lid. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい風呂ぶたを",
+        "meaning": "a new bathtub lid",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-053",
+    "target_level": "N5",
+    "word_id": "household-object-05-浴室乾燥機",
+    "japanese": "母は浴室乾燥機を使います。私はそばで見ます。",
+    "english": "My mother uses the bathroom dryer. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "浴室乾燥機を",
+        "meaning": "the bathroom dryer",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-054",
+    "target_level": "N5",
+    "word_id": "household-object-03-手おけ",
+    "japanese": "その手おけは小さいです。でもよく使います。",
+    "english": "That small wash bucket is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その手おけは",
+        "meaning": "that small wash bucket",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-055",
+    "target_level": "N5",
+    "word_id": "household-object-06-洗顔フォーム",
+    "japanese": "私は洗顔フォームが好きです。色がきれいです。",
+    "english": "I like this facial cleanser. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "洗顔フォームが",
+        "meaning": "the facial cleanser",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-056",
+    "target_level": "N5",
+    "word_id": "household-object-03-化粧水",
+    "japanese": "この化粧水は私の家にあります。とても便利です。",
+    "english": "This skin lotion is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この化粧水は",
+        "meaning": "this skin lotion",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-057",
+    "target_level": "N5",
+    "word_id": "household-object-03-洗面台",
+    "japanese": "新しい洗面台を買いました。家で毎日使います。",
+    "english": "I bought a new washbasin counter. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい洗面台を",
+        "meaning": "a new washbasin counter",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-058",
+    "target_level": "N5",
+    "word_id": "household-object-05-歯間ブラシ",
+    "japanese": "母は歯間ブラシを使います。私はそばで見ます。",
+    "english": "My mother uses the interdental brush. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "歯間ブラシを",
+        "meaning": "the interdental brush",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-059",
+    "target_level": "N5",
+    "word_id": "household-object-06-洗濯機用洗剤",
+    "japanese": "その洗濯機用洗剤は小さいです。でもよく使います。",
+    "english": "That laundry detergent is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その洗濯機用洗剤は",
+        "meaning": "that laundry detergent",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-060",
+    "target_level": "N5",
+    "word_id": "household-object-03-柔軟剤",
+    "japanese": "私は柔軟剤が好きです。色がきれいです。",
+    "english": "I like this fabric softener. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "柔軟剤が",
+        "meaning": "the fabric softener",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-061",
+    "target_level": "N5",
+    "word_id": "household-object-03-洗濯板",
+    "japanese": "この洗濯板は私の家にあります。とても便利です。",
+    "english": "This washboard is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この洗濯板は",
+        "meaning": "this washboard",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-062",
+    "target_level": "N5",
+    "word_id": "household-object-05-衣類乾燥機",
+    "japanese": "新しい衣類乾燥機を買いました。家で毎日使います。",
+    "english": "I bought a new clothes dryer. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい衣類乾燥機を",
+        "meaning": "a new clothes dryer",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-063",
+    "target_level": "N5",
+    "word_id": "household-object-07-衣類スチーマー",
+    "japanese": "母は衣類スチーマーを使います。私はそばで見ます。",
+    "english": "My mother uses the clothing steamer. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "衣類スチーマーを",
+        "meaning": "the clothing steamer",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-064",
+    "target_level": "N5",
+    "word_id": "household-object-05-洗濯物入れ",
+    "japanese": "その洗濯物入れは小さいです。でもよく使います。",
+    "english": "That laundry hamper is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その洗濯物入れは",
+        "meaning": "that laundry hamper",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-065",
+    "target_level": "N5",
+    "word_id": "household-object-05-布団乾燥機",
+    "japanese": "私は布団乾燥機が好きです。色がきれいです。",
+    "english": "I like this futon dryer. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "布団乾燥機が",
+        "meaning": "the futon dryer",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-066",
+    "target_level": "N5",
+    "word_id": "household-object-02-蚊帳",
+    "japanese": "この蚊帳は私の家にあります。とても便利です。",
+    "english": "This mosquito net is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この蚊帳は",
+        "meaning": "this mosquito net",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-067",
+    "target_level": "N5",
+    "word_id": "household-object-04-電気毛布",
+    "japanese": "新しい電気毛布を買いました。家で毎日使います。",
+    "english": "I bought a new electric blanket. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい電気毛布を",
+        "meaning": "a new electric blanket",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-068",
+    "target_level": "N5",
+    "word_id": "household-object-04-湯たんぽ",
+    "japanese": "母は湯たんぽを使います。私はそばで見ます。",
+    "english": "My mother uses the hot-water bottle. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "湯たんぽを",
+        "meaning": "the hot-water bottle",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-069",
+    "target_level": "N5",
+    "word_id": "household-object-05-枕元ライト",
+    "japanese": "その枕元ライトは小さいです。でもよく使います。",
+    "english": "That bedside light is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その枕元ライトは",
+        "meaning": "that bedside light",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-070",
+    "target_level": "N5",
+    "word_id": "household-object-03-本立て",
+    "japanese": "私は本立てが好きです。色がきれいです。",
+    "english": "I like this book stand. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "本立てが",
+        "meaning": "the book stand",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-071",
+    "target_level": "N5",
+    "word_id": "household-object-04-衣替え箱",
+    "japanese": "この衣替え箱は私の家にあります。とても便利です。",
+    "english": "This seasonal clothing box is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この衣替え箱は",
+        "meaning": "this seasonal clothing box",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-072",
+    "target_level": "N5",
+    "word_id": "household-object-05-衣類ケース",
+    "japanese": "新しい衣類ケースを買いました。家で毎日使います。",
+    "english": "I bought a new clothing storage case. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい衣類ケースを",
+        "meaning": "a new clothing storage case",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-073",
+    "target_level": "N5",
+    "word_id": "household-object-05-衣類圧縮袋",
+    "japanese": "母は衣類圧縮袋を使います。私はそばで見ます。",
+    "english": "My mother uses the clothing compression bag. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "衣類圧縮袋を",
+        "meaning": "the clothing compression bag",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-074",
+    "target_level": "N5",
+    "word_id": "household-object-04-帽子掛け",
+    "japanese": "その帽子掛けは小さいです。でもよく使います。",
+    "english": "That hat rack is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その帽子掛けは",
+        "meaning": "that hat rack",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-075",
+    "target_level": "N5",
+    "word_id": "household-object-03-靴べら",
+    "japanese": "私は靴べらが好きです。色がきれいです。",
+    "english": "I like this shoehorn. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "靴べらが",
+        "meaning": "the shoehorn",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-076",
+    "target_level": "N5",
+    "word_id": "household-object-04-スリッパ",
+    "japanese": "このスリッパは私の家にあります。とても便利です。",
+    "english": "This slippers is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "このスリッパは",
+        "meaning": "this slippers",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-077",
+    "target_level": "N5",
+    "word_id": "household-object-02-靴箱",
+    "japanese": "新しい靴箱を買いました。家で毎日使います。",
+    "english": "I bought a new shoe cabinet. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい靴箱を",
+        "meaning": "a new shoe cabinet",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-078",
+    "target_level": "N5",
+    "word_id": "household-object-03-傘立て",
+    "japanese": "母は傘立てを使います。私はそばで見ます。",
+    "english": "My mother uses the umbrella stand. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "傘立てを",
+        "meaning": "the umbrella stand",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-079",
+    "target_level": "N5",
+    "word_id": "household-object-05-玄関マット",
+    "japanese": "その玄関マットは小さいです。でもよく使います。",
+    "english": "That entryway mat is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その玄関マットは",
+        "meaning": "that entryway mat",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-080",
+    "target_level": "N5",
+    "word_id": "household-object-03-物入れ",
+    "japanese": "私は物入れが好きです。色がきれいです。",
+    "english": "I like this storage cabinet. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "物入れが",
+        "meaning": "the storage cabinet",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-081",
+    "target_level": "N5",
+    "word_id": "household-object-04-小物入れ",
+    "japanese": "この小物入れは私の家にあります。とても便利です。",
+    "english": "This small-item tray is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この小物入れは",
+        "meaning": "this small-item tray",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-082",
+    "target_level": "N5",
+    "word_id": "household-object-03-救急箱",
+    "japanese": "新しい救急箱を買いました。家で毎日使います。",
+    "english": "I bought a new first-aid kit. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい救急箱を",
+        "meaning": "a new first-aid kit",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-083",
+    "target_level": "N5",
+    "word_id": "household-object-03-体温計",
+    "japanese": "母は体温計を使います。私はそばで見ます。",
+    "english": "My mother uses the thermometer. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "体温計を",
+        "meaning": "the thermometer",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-084",
+    "target_level": "N5",
+    "word_id": "household-object-04-懐中電灯",
+    "japanese": "その懐中電灯は小さいです。でもよく使います。",
+    "english": "That flashlight is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その懐中電灯は",
+        "meaning": "that flashlight",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-085",
+    "target_level": "N5",
+    "word_id": "household-object-05-延長コード",
+    "japanese": "私は延長コードが好きです。色がきれいです。",
+    "english": "I like this extension cord. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "延長コードが",
+        "meaning": "the extension cord",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-086",
+    "target_level": "N5",
+    "word_id": "household-object-05-コンセント",
+    "japanese": "このコンセントは私の家にあります。とても便利です。",
+    "english": "This electrical outlet is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "このコンセントは",
+        "meaning": "this electrical outlet",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-087",
+    "target_level": "N5",
+    "word_id": "household-object-05-電源タップ",
+    "japanese": "新しい電源タップを買いました。家で毎日使います。",
+    "english": "I bought a new power strip. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい電源タップを",
+        "meaning": "a new power strip",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-088",
+    "target_level": "N5",
+    "word_id": "household-object-06-リモコン入れ",
+    "japanese": "母はリモコン入れを使います。私はそばで見ます。",
+    "english": "My mother uses the remote-control holder. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "リモコン入れを",
+        "meaning": "the remote-control holder",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-089",
+    "target_level": "N5",
+    "word_id": "household-object-03-時計台",
+    "japanese": "その時計台は小さいです。でもよく使います。",
+    "english": "That clock stand is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その時計台は",
+        "meaning": "that clock stand",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-090",
+    "target_level": "N5",
+    "word_id": "household-object-04-花瓶敷き",
+    "japanese": "私は花瓶敷きが好きです。色がきれいです。",
+    "english": "I like this vase coaster. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "花瓶敷きが",
+        "meaning": "the vase coaster",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-091",
+    "target_level": "N5",
+    "word_id": "household-object-02-灰皿",
+    "japanese": "この灰皿は私の家にあります。とても便利です。",
+    "english": "This ashtray is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この灰皿は",
+        "meaning": "this ashtray",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-092",
+    "target_level": "N5",
+    "word_id": "household-object-05-空気清浄機",
+    "japanese": "新しい空気清浄機を買いました。家で毎日使います。",
+    "english": "I bought a new air purifier. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい空気清浄機を",
+        "meaning": "a new air purifier",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-093",
+    "target_level": "N5",
+    "word_id": "household-object-03-加湿器",
+    "japanese": "母は加湿器を使います。私はそばで見ます。",
+    "english": "My mother uses the humidifier. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "加湿器を",
+        "meaning": "the humidifier",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-094",
+    "target_level": "N5",
+    "word_id": "household-object-02-扇子",
+    "japanese": "その扇子は小さいです。でもよく使います。",
+    "english": "That folding fan is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その扇子は",
+        "meaning": "that folding fan",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-095",
+    "target_level": "N5",
+    "word_id": "household-object-03-うちわ",
+    "japanese": "私はうちわが好きです。色がきれいです。",
+    "english": "I like this hand fan. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "うちわが",
+        "meaning": "the hand fan",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-096",
+    "target_level": "N5",
+    "word_id": "household-object-07-虫よけスプレー",
+    "japanese": "この虫よけスプレーは私の家にあります。とても便利です。",
+    "english": "This insect repellent spray is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この虫よけスプレーは",
+        "meaning": "this insect repellent spray",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-097",
+    "target_level": "N5",
+    "word_id": "household-object-05-ほこり取り",
+    "japanese": "新しいほこり取りを買いました。家で毎日使います。",
+    "english": "I bought a new duster. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しいほこり取りを",
+        "meaning": "a new duster",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-098",
+    "target_level": "N5",
+    "word_id": "household-object-06-粘着ローラー",
+    "japanese": "母は粘着ローラーを使います。私はそばで見ます。",
+    "english": "My mother uses the lint roller. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "粘着ローラーを",
+        "meaning": "the lint roller",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-099",
+    "target_level": "N5",
+    "word_id": "household-object-04-ゴムベラ",
+    "japanese": "そのゴムベラは小さいです。でもよく使います。",
+    "english": "That rubber spatula is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "そのゴムベラは",
+        "meaning": "that rubber spatula",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-100",
+    "target_level": "N5",
+    "word_id": "household-object-05-洗車ブラシ",
+    "japanese": "私は洗車ブラシが好きです。色がきれいです。",
+    "english": "I like this car-washing brush. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "洗車ブラシが",
+        "meaning": "the car-washing brush",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-101",
+    "target_level": "N5",
+    "word_id": "household-object-04-じょうろ",
+    "japanese": "このじょうろは私の家にあります。とても便利です。",
+    "english": "This watering can is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "このじょうろは",
+        "meaning": "this watering can",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-102",
+    "target_level": "N5",
+    "word_id": "household-object-03-植木鉢",
+    "japanese": "新しい植木鉢を買いました。家で毎日使います。",
+    "english": "I bought a new flowerpot. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい植木鉢を",
+        "meaning": "a new flowerpot",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-103",
+    "target_level": "N5",
+    "word_id": "household-object-05-園芸ばさみ",
+    "japanese": "母は園芸ばさみを使います。私はそばで見ます。",
+    "english": "My mother uses the gardening shears. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "園芸ばさみを",
+        "meaning": "the gardening shears",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-104",
+    "target_level": "N5",
+    "word_id": "household-object-05-ごみ分別箱",
+    "japanese": "そのごみ分別箱は小さいです。でもよく使います。",
+    "english": "That waste-sorting bin is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "そのごみ分別箱は",
+        "meaning": "that waste-sorting bin",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-105",
+    "target_level": "N5",
+    "word_id": "household-object-06-リサイクル箱",
+    "japanese": "私はリサイクル箱が好きです。色がきれいです。",
+    "english": "I like this recycling box. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "リサイクル箱が",
+        "meaning": "the recycling box",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-106",
+    "target_level": "N5",
+    "word_id": "household-object-05-古新聞入れ",
+    "japanese": "この古新聞入れは私の家にあります。とても便利です。",
+    "english": "This newspaper holder is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この古新聞入れは",
+        "meaning": "this newspaper holder",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-107",
+    "target_level": "N5",
+    "word_id": "household-object-04-郵便受け",
+    "japanese": "新しい郵便受けを買いました。家で毎日使います。",
+    "english": "I bought a new mailbox. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい郵便受けを",
+        "meaning": "a new mailbox",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-108",
+    "target_level": "N5",
+    "word_id": "household-object-02-表札",
+    "japanese": "母は表札を使います。私はそばで見ます。",
+    "english": "My mother uses the nameplate. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "表札を",
+        "meaning": "the nameplate",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-109",
+    "target_level": "N5",
+    "word_id": "household-object-04-ドアベル",
+    "japanese": "そのドアベルは小さいです。でもよく使います。",
+    "english": "That doorbell is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "そのドアベルは",
+        "meaning": "that doorbell",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-110",
+    "target_level": "N5",
+    "word_id": "household-object-05-防犯ブザー",
+    "japanese": "私は防犯ブザーが好きです。色がきれいです。",
+    "english": "I like this security alarm. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "防犯ブザーが",
+        "meaning": "the security alarm",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-111",
+    "target_level": "N5",
+    "word_id": "household-object-02-表箱",
+    "japanese": "この表箱は私の家にあります。とても便利です。",
+    "english": "This display box is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この表箱は",
+        "meaning": "this display box",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-112",
+    "target_level": "N5",
+    "word_id": "household-object-06-写真アルバム",
+    "japanese": "新しい写真アルバムを買いました。家で毎日使います。",
+    "english": "I bought a new photo album. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい写真アルバムを",
+        "meaning": "a new photo album",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-113",
+    "target_level": "N5",
+    "word_id": "household-object-02-額縁",
+    "japanese": "母は額縁を使います。私はそばで見ます。",
+    "english": "My mother uses the picture frame. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "額縁を",
+        "meaning": "the picture frame",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-114",
+    "target_level": "N5",
+    "word_id": "household-object-06-壁掛けフック",
+    "japanese": "その壁掛けフックは小さいです。でもよく使います。",
+    "english": "That wall hook is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その壁掛けフックは",
+        "meaning": "that wall hook",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-115",
+    "target_level": "N5",
+    "word_id": "household-object-05-カレンダー",
+    "japanese": "私はカレンダーが好きです。色がきれいです。",
+    "english": "I like this calendar. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "カレンダーが",
+        "meaning": "the calendar",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-116",
+    "target_level": "N5",
+    "word_id": "household-object-03-メモ帳",
+    "japanese": "このメモ帳は私の家にあります。とても便利です。",
+    "english": "This memo pad is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "このメモ帳は",
+        "meaning": "this memo pad",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-117",
+    "target_level": "N5",
+    "word_id": "household-object-02-筆箱",
+    "japanese": "新しい筆箱を買いました。家で毎日使います。",
+    "english": "I bought a new pencil case. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい筆箱を",
+        "meaning": "a new pencil case",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-118",
+    "target_level": "N5",
+    "word_id": "household-object-07-ホワイトボード",
+    "japanese": "母はホワイトボードを使います。私はそばで見ます。",
+    "english": "My mother uses the whiteboard. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "ホワイトボードを",
+        "meaning": "the whiteboard",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-119",
+    "target_level": "N5",
+    "word_id": "household-object-03-掲示板",
+    "japanese": "その掲示板は小さいです。でもよく使います。",
+    "english": "That bulletin board is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その掲示板は",
+        "meaning": "that bulletin board",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-120",
+    "target_level": "N5",
+    "word_id": "household-object-05-書類ケース",
+    "japanese": "私は書類ケースが好きです。色がきれいです。",
+    "english": "I like this document case. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "書類ケースが",
+        "meaning": "the document case",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-121",
+    "target_level": "N5",
+    "word_id": "household-object-05-印鑑ケース",
+    "japanese": "この印鑑ケースは私の家にあります。とても便利です。",
+    "english": "This personal-seal case is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この印鑑ケースは",
+        "meaning": "this personal-seal case",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-122",
+    "target_level": "N5",
+    "word_id": "household-object-05-貴重品入れ",
+    "japanese": "新しい貴重品入れを買いました。家で毎日使います。",
+    "english": "I bought a new valuables box. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい貴重品入れを",
+        "meaning": "a new valuables box",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-123",
+    "target_level": "N5",
+    "word_id": "household-object-04-小銭入れ",
+    "japanese": "母は小銭入れを使います。私はそばで見ます。",
+    "english": "My mother uses the coin purse. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "小銭入れを",
+        "meaning": "the coin purse",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-124",
+    "target_level": "N5",
+    "word_id": "household-object-06-カードケース",
+    "japanese": "そのカードケースは小さいです。でもよく使います。",
+    "english": "That card holder is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "そのカードケースは",
+        "meaning": "that card holder",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-125",
+    "target_level": "N5",
+    "word_id": "household-object-05-時計ケース",
+    "japanese": "私は時計ケースが好きです。色がきれいです。",
+    "english": "I like this watch case. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "時計ケースが",
+        "meaning": "the watch case",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-126",
+    "target_level": "N5",
+    "word_id": "household-object-03-裁縫箱",
+    "japanese": "この裁縫箱は私の家にあります。とても便利です。",
+    "english": "This sewing box is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この裁縫箱は",
+        "meaning": "this sewing box",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-127",
+    "target_level": "N5",
+    "word_id": "household-object-02-針山",
+    "japanese": "新しい針山を買いました。家で毎日使います。",
+    "english": "I bought a new pin cushion. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい針山を",
+        "meaning": "a new pin cushion",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-128",
+    "target_level": "N5",
+    "word_id": "household-object-03-糸巻き",
+    "japanese": "母は糸巻きを使います。私はそばで見ます。",
+    "english": "My mother uses the spool of thread. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "糸巻きを",
+        "meaning": "the spool of thread",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-129",
+    "target_level": "N5",
+    "word_id": "household-object-06-アイスバッグ",
+    "japanese": "そのアイスバッグは小さいです。でもよく使います。",
+    "english": "That ice bag is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "そのアイスバッグは",
+        "meaning": "that ice bag",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-130",
+    "target_level": "N5",
+    "word_id": "household-object-03-耳かき",
+    "japanese": "私は耳かきが好きです。色がきれいです。",
+    "english": "I like this ear pick. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "耳かきが",
+        "meaning": "the ear pick",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-131",
+    "target_level": "N5",
+    "word_id": "household-object-03-爪切り",
+    "japanese": "この爪切りは私の家にあります。とても便利です。",
+    "english": "This nail clippers is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この爪切りは",
+        "meaning": "this nail clippers",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-132",
+    "target_level": "N5",
+    "word_id": "household-object-06-体重計マット",
+    "japanese": "新しい体重計マットを買いました。家で毎日使います。",
+    "english": "I bought a new scale mat. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい体重計マットを",
+        "meaning": "a new scale mat",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-133",
+    "target_level": "N5",
+    "word_id": "household-object-05-洗面タオル",
+    "japanese": "母は洗面タオルを使います。私はそばで見ます。",
+    "english": "My mother uses the face towel. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "洗面タオルを",
+        "meaning": "the face towel",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-134",
+    "target_level": "N5",
+    "word_id": "household-object-05-バスローブ",
+    "japanese": "そのバスローブは小さいです。でもよく使います。",
+    "english": "That bathrobe is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "そのバスローブは",
+        "meaning": "that bathrobe",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-135",
+    "target_level": "N5",
+    "word_id": "household-object-06-洗濯表示タグ",
+    "japanese": "私は洗濯表示タグが好きです。色がきれいです。",
+    "english": "I like this laundry care label. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "洗濯表示タグが",
+        "meaning": "the laundry care label",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-136",
+    "target_level": "N5",
+    "word_id": "household-object-05-洗濯物干し",
+    "japanese": "この洗濯物干しは私の家にあります。とても便利です。",
+    "english": "This laundry drying rack is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この洗濯物干しは",
+        "meaning": "this laundry drying rack",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-137",
+    "target_level": "N5",
+    "word_id": "household-object-04-毛玉取り",
+    "japanese": "新しい毛玉取りを買いました。家で毎日使います。",
+    "english": "I bought a new lint remover. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい毛玉取りを",
+        "meaning": "a new lint remover",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-138",
+    "target_level": "N5",
+    "word_id": "household-object-05-衣類ブラシ",
+    "japanese": "母は衣類ブラシを使います。私はそばで見ます。",
+    "english": "My mother uses the clothes brush. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "衣類ブラシを",
+        "meaning": "the clothes brush",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-139",
+    "target_level": "N5",
+    "word_id": "household-object-07-電動ドライバー",
+    "japanese": "その電動ドライバーは小さいです。でもよく使います。",
+    "english": "That electric screwdriver is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その電動ドライバーは",
+        "meaning": "that electric screwdriver",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-140",
+    "target_level": "N5",
+    "word_id": "household-object-05-六角レンチ",
+    "japanese": "私は六角レンチが好きです。色がきれいです。",
+    "english": "I like this hex key. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "六角レンチが",
+        "meaning": "the hex key",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-141",
+    "target_level": "N5",
+    "word_id": "household-object-09-メンディングテープ",
+    "japanese": "このメンディングテープは私の家にあります。とても便利です。",
+    "english": "This repair tape is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "このメンディングテープは",
+        "meaning": "this repair tape",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-142",
+    "target_level": "N5",
+    "word_id": "household-object-05-結束バンド",
+    "japanese": "新しい結束バンドを買いました。家で毎日使います。",
+    "english": "I bought a new cable tie. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しい結束バンドを",
+        "meaning": "a new cable tie",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-143",
+    "target_level": "N5",
+    "word_id": "household-object-02-軍手",
+    "japanese": "母は軍手を使います。私はそばで見ます。",
+    "english": "My mother uses the work gloves. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "軍手を",
+        "meaning": "the work gloves",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-144",
+    "target_level": "N5",
+    "word_id": "household-object-02-脚立",
+    "japanese": "その脚立は小さいです。でもよく使います。",
+    "english": "That stepladder is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その脚立は",
+        "meaning": "that stepladder",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-145",
+    "target_level": "N5",
+    "word_id": "household-object-03-作業台",
+    "japanese": "私は作業台が好きです。色がきれいです。",
+    "english": "I like this workbench. Its color is pretty.",
+    "breakdown": [
+      {
+        "text": "私は",
+        "meaning": "I",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "作業台が",
+        "meaning": "the workbench",
+        "function": "が marks what is liked with 好きです"
+      },
+      {
+        "text": "好きです",
+        "meaning": "like",
+        "function": "polite な-adjective expression"
+      },
+      {
+        "text": "色がきれいです",
+        "meaning": "the color is pretty",
+        "function": "が marks the subject; きれい is a な-adjective"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-146",
+    "target_level": "N5",
+    "word_id": "household-object-05-工具置き場",
+    "japanese": "この工具置き場は私の家にあります。とても便利です。",
+    "english": "This tool storage area is in my home. It is very useful.",
+    "breakdown": [
+      {
+        "text": "この工具置き場は",
+        "meaning": "this tool storage area",
+        "function": "この modifies the noun; は marks the topic"
+      },
+      {
+        "text": "私の家に",
+        "meaning": "in my home",
+        "function": "の links 私 and 家; に marks the location"
+      },
+      {
+        "text": "あります",
+        "meaning": "there is / is located",
+        "function": "polite form of ある for an inanimate thing"
+      },
+      {
+        "text": "とても便利です",
+        "meaning": "is very useful",
+        "function": "とても intensifies the な-adjective 便利"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-147",
+    "target_level": "N5",
+    "word_id": "household-object-04-ねじ回し",
+    "japanese": "新しいねじ回しを買いました。家で毎日使います。",
+    "english": "I bought a new screwdriver. I use it at home every day.",
+    "breakdown": [
+      {
+        "text": "新しいねじ回しを",
+        "meaning": "a new screwdriver",
+        "function": "新しい modifies the noun; を marks the object"
+      },
+      {
+        "text": "買いました",
+        "meaning": "bought",
+        "function": "polite past form of 買います"
+      },
+      {
+        "text": "家で",
+        "meaning": "at home",
+        "function": "で marks the place of an action"
+      },
+      {
+        "text": "毎日使います",
+        "meaning": "use every day",
+        "function": "毎日 is a time expression; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-148",
+    "target_level": "N5",
+    "word_id": "household-object-06-木工用ボンド",
+    "japanese": "母は木工用ボンドを使います。私はそばで見ます。",
+    "english": "My mother uses the wood glue. I watch nearby.",
+    "breakdown": [
+      {
+        "text": "母は",
+        "meaning": "my mother",
+        "function": "は marks the topic"
+      },
+      {
+        "text": "木工用ボンドを",
+        "meaning": "the wood glue",
+        "function": "を marks the direct object of 使います"
+      },
+      {
+        "text": "使います",
+        "meaning": "uses",
+        "function": "polite verb"
+      },
+      {
+        "text": "私はそばで見ます",
+        "meaning": "I watch nearby",
+        "function": "は marks the topic; で marks where I watch"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  },
+  {
+    "id": "n5-household-149",
+    "target_level": "N5",
+    "word_id": "household-object-06-防水スプレー",
+    "japanese": "その防水スプレーは小さいです。でもよく使います。",
+    "english": "That waterproofing spray is small. But I use it often.",
+    "breakdown": [
+      {
+        "text": "その防水スプレーは",
+        "meaning": "that waterproofing spray",
+        "function": "その modifies the noun; は marks the topic"
+      },
+      {
+        "text": "小さいです",
+        "meaning": "is small",
+        "function": "polite form of the い-adjective 小さい"
+      },
+      {
+        "text": "でも",
+        "meaning": "but",
+        "function": "connects contrasting statements"
+      },
+      {
+        "text": "よく使います",
+        "meaning": "use often",
+        "function": "よく is an adverb; 使います is a polite verb"
+      },
+      {
+        "text": "Grammar note",
+        "meaning": "This sentence uses N5 polite forms, basic particles, and simple adjective patterns.",
+        "function": "learner grammar guidance"
+      }
+    ]
+  }
+]

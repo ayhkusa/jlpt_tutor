@@ -1,0 +1,1492 @@
+[
+  {
+    "id": "household-object-04-テーブル",
+    "written": "テーブル",
+    "reading": "てーぶる",
+    "english": "table",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-冷凍庫",
+    "written": "冷凍庫",
+    "reading": "れいとうこ",
+    "english": "freezer",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-トースター",
+    "written": "トースター",
+    "reading": "とーすたー",
+    "english": "toaster",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-食器洗い機",
+    "written": "食器洗い機",
+    "reading": "しょっきあらいき",
+    "english": "dishwasher",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-水筒",
+    "written": "水筒",
+    "reading": "すいとう",
+    "english": "water bottle",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-水切りかご",
+    "written": "水切りかご",
+    "reading": "みずきりかご",
+    "english": "dish drainer",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-ふきん",
+    "written": "ふきん",
+    "reading": "ふきん",
+    "english": "dishcloth",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-ラップ",
+    "written": "ラップ",
+    "reading": "らっぷ",
+    "english": "plastic wrap",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-アルミホイル",
+    "written": "アルミホイル",
+    "reading": "あるみほいる",
+    "english": "aluminum foil",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-まな板",
+    "written": "まな板",
+    "reading": "まないた",
+    "english": "cutting board",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-しゃもじ",
+    "written": "しゃもじ",
+    "reading": "しゃもじ",
+    "english": "rice paddle",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-急須",
+    "written": "急須",
+    "reading": "きゅうす",
+    "english": "teapot",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-おたま",
+    "written": "おたま",
+    "reading": "おたま",
+    "english": "ladle",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-ざる",
+    "written": "ざる",
+    "reading": "ざる",
+    "english": "colander",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-計量カップ",
+    "written": "計量カップ",
+    "reading": "けいりょうかっぷ",
+    "english": "measuring cup",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-洗濯ばさみ",
+    "written": "洗濯ばさみ",
+    "reading": "せんたくばさみ",
+    "english": "clothespin",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-物干しざお",
+    "written": "物干しざお",
+    "reading": "ものほしざお",
+    "english": "clothesline pole",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-洗濯ネット",
+    "written": "洗濯ネット",
+    "reading": "せんたくねっと",
+    "english": "laundry net",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-掃除用手袋",
+    "written": "掃除用手袋",
+    "reading": "そうじようてぶくろ",
+    "english": "cleaning gloves",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-消臭スプレー",
+    "written": "消臭スプレー",
+    "reading": "しょうしゅうすぷれー",
+    "english": "deodorizing spray",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-蚊取り線香",
+    "written": "蚊取り線香",
+    "reading": "かとりせんこう",
+    "english": "mosquito coil",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-ティッシュ箱",
+    "written": "ティッシュ箱",
+    "reading": "てぃっしゅばこ",
+    "english": "tissue box",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-ごみ袋",
+    "written": "ごみ袋",
+    "reading": "ごみぶくろ",
+    "english": "garbage bag",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-段ボール箱",
+    "written": "段ボール箱",
+    "reading": "だんぼーるばこ",
+    "english": "cardboard box",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-オーブン",
+    "written": "オーブン",
+    "reading": "おーぶん",
+    "english": "oven",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-ガスコンロ",
+    "written": "ガスコンロ",
+    "reading": "がすこんろ",
+    "english": "gas stove",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-換気扇",
+    "written": "換気扇",
+    "reading": "かんきせん",
+    "english": "ventilation fan",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-冷蔵庫",
+    "written": "冷蔵庫",
+    "reading": "れいぞうこ",
+    "english": "refrigerator",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-調味料入れ",
+    "written": "調味料入れ",
+    "reading": "ちょうみりょういれ",
+    "english": "seasoning container",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-塩入れ",
+    "written": "塩入れ",
+    "reading": "しおいれ",
+    "english": "salt shaker",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-砂糖入れ",
+    "written": "砂糖入れ",
+    "reading": "さとういれ",
+    "english": "sugar bowl",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-水差し",
+    "written": "水差し",
+    "reading": "みずさし",
+    "english": "water pitcher",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-保存容器",
+    "written": "保存容器",
+    "reading": "ほぞんようき",
+    "english": "food storage container",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-缶切り",
+    "written": "缶切り",
+    "reading": "かんきり",
+    "english": "can opener",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-栓抜き",
+    "written": "栓抜き",
+    "reading": "せんぬき",
+    "english": "bottle opener",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-包み紙",
+    "written": "包み紙",
+    "reading": "つつみがみ",
+    "english": "wrapping paper",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-弁当箱",
+    "written": "弁当箱",
+    "reading": "べんとうばこ",
+    "english": "lunch box",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-おろし金",
+    "written": "おろし金",
+    "reading": "おろしがね",
+    "english": "grater",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-泡立て器",
+    "written": "泡立て器",
+    "reading": "あわだてき",
+    "english": "whisk",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-菜箸",
+    "written": "菜箸",
+    "reading": "さいばし",
+    "english": "cooking chopsticks",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-鍋敷き",
+    "written": "鍋敷き",
+    "reading": "なべしき",
+    "english": "pot coaster",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-08-キッチンペーパー",
+    "written": "キッチンペーパー",
+    "reading": "きっちんぺーぱー",
+    "english": "paper towel",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-エプロン",
+    "written": "エプロン",
+    "reading": "えぷろん",
+    "english": "apron",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-台所用洗剤",
+    "written": "台所用洗剤",
+    "reading": "だいどころようせんざい",
+    "english": "dish soap",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-07-ふた付きごみ箱",
+    "written": "ふた付きごみ箱",
+    "reading": "ふたつきごみばこ",
+    "english": "lidded trash can",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-水道",
+    "written": "水道",
+    "reading": "すいどう",
+    "english": "water tap",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-蛇口",
+    "written": "蛇口",
+    "reading": "じゃぐち",
+    "english": "faucet",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-排水口",
+    "written": "排水口",
+    "reading": "はいすいこう",
+    "english": "drain",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-風呂おけ",
+    "written": "風呂おけ",
+    "reading": "ふろおけ",
+    "english": "bath bucket",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-風呂いす",
+    "written": "風呂いす",
+    "reading": "ふろいす",
+    "english": "bath stool",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-浴槽",
+    "written": "浴槽",
+    "reading": "よくそう",
+    "english": "bathtub",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-風呂ぶた",
+    "written": "風呂ぶた",
+    "reading": "ふろぶた",
+    "english": "bathtub lid",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-浴室乾燥機",
+    "written": "浴室乾燥機",
+    "reading": "よくしつかんそうき",
+    "english": "bathroom dryer",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-手おけ",
+    "written": "手おけ",
+    "reading": "ておけ",
+    "english": "small wash bucket",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-洗顔フォーム",
+    "written": "洗顔フォーム",
+    "reading": "せんがんふぉーむ",
+    "english": "facial cleanser",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-化粧水",
+    "written": "化粧水",
+    "reading": "けしょうすい",
+    "english": "skin lotion",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-洗面台",
+    "written": "洗面台",
+    "reading": "せんめんだい",
+    "english": "washbasin counter",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-歯間ブラシ",
+    "written": "歯間ブラシ",
+    "reading": "しかんぶらし",
+    "english": "interdental brush",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-洗濯機用洗剤",
+    "written": "洗濯機用洗剤",
+    "reading": "せんたくきようせんざい",
+    "english": "laundry detergent",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-柔軟剤",
+    "written": "柔軟剤",
+    "reading": "じゅうなんざい",
+    "english": "fabric softener",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-洗濯板",
+    "written": "洗濯板",
+    "reading": "せんたくいた",
+    "english": "washboard",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-衣類乾燥機",
+    "written": "衣類乾燥機",
+    "reading": "いるいかんそうき",
+    "english": "clothes dryer",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-07-衣類スチーマー",
+    "written": "衣類スチーマー",
+    "reading": "いるいすちーまー",
+    "english": "clothing steamer",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-洗濯物入れ",
+    "written": "洗濯物入れ",
+    "reading": "せんたくものいれ",
+    "english": "laundry hamper",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-布団乾燥機",
+    "written": "布団乾燥機",
+    "reading": "ふとんかんそうき",
+    "english": "futon dryer",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-蚊帳",
+    "written": "蚊帳",
+    "reading": "かや",
+    "english": "mosquito net",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-電気毛布",
+    "written": "電気毛布",
+    "reading": "でんきもうふ",
+    "english": "electric blanket",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-湯たんぽ",
+    "written": "湯たんぽ",
+    "reading": "ゆたんぽ",
+    "english": "hot-water bottle",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-枕元ライト",
+    "written": "枕元ライト",
+    "reading": "まくらもとらいと",
+    "english": "bedside light",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-本立て",
+    "written": "本立て",
+    "reading": "ほんたて",
+    "english": "book stand",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-衣替え箱",
+    "written": "衣替え箱",
+    "reading": "ころもがえばこ",
+    "english": "seasonal clothing box",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-衣類ケース",
+    "written": "衣類ケース",
+    "reading": "いるいけーす",
+    "english": "clothing storage case",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-衣類圧縮袋",
+    "written": "衣類圧縮袋",
+    "reading": "いるいあっしゅくぶくろ",
+    "english": "clothing compression bag",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-帽子掛け",
+    "written": "帽子掛け",
+    "reading": "ぼうしかけ",
+    "english": "hat rack",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-靴べら",
+    "written": "靴べら",
+    "reading": "くつべら",
+    "english": "shoehorn",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-スリッパ",
+    "written": "スリッパ",
+    "reading": "すりっぱ",
+    "english": "slippers",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-靴箱",
+    "written": "靴箱",
+    "reading": "くつばこ",
+    "english": "shoe cabinet",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-傘立て",
+    "written": "傘立て",
+    "reading": "かさたて",
+    "english": "umbrella stand",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-玄関マット",
+    "written": "玄関マット",
+    "reading": "げんかんまっと",
+    "english": "entryway mat",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-物入れ",
+    "written": "物入れ",
+    "reading": "ものいれ",
+    "english": "storage cabinet",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-小物入れ",
+    "written": "小物入れ",
+    "reading": "こものいれ",
+    "english": "small-item tray",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-救急箱",
+    "written": "救急箱",
+    "reading": "きゅうきゅうばこ",
+    "english": "first-aid kit",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-体温計",
+    "written": "体温計",
+    "reading": "たいおんけい",
+    "english": "thermometer",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-懐中電灯",
+    "written": "懐中電灯",
+    "reading": "かいちゅうでんとう",
+    "english": "flashlight",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-延長コード",
+    "written": "延長コード",
+    "reading": "えんちょうこーど",
+    "english": "extension cord",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-コンセント",
+    "written": "コンセント",
+    "reading": "こんせんと",
+    "english": "electrical outlet",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-電源タップ",
+    "written": "電源タップ",
+    "reading": "でんげんたっぷ",
+    "english": "power strip",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-リモコン入れ",
+    "written": "リモコン入れ",
+    "reading": "りもこんいれ",
+    "english": "remote-control holder",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-時計台",
+    "written": "時計台",
+    "reading": "とけいだい",
+    "english": "clock stand",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-花瓶敷き",
+    "written": "花瓶敷き",
+    "reading": "かびんしき",
+    "english": "vase coaster",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-灰皿",
+    "written": "灰皿",
+    "reading": "はいざら",
+    "english": "ashtray",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-空気清浄機",
+    "written": "空気清浄機",
+    "reading": "くうきせいじょうき",
+    "english": "air purifier",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-加湿器",
+    "written": "加湿器",
+    "reading": "かしつき",
+    "english": "humidifier",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-扇子",
+    "written": "扇子",
+    "reading": "せんす",
+    "english": "folding fan",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-うちわ",
+    "written": "うちわ",
+    "reading": "うちわ",
+    "english": "hand fan",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-07-虫よけスプレー",
+    "written": "虫よけスプレー",
+    "reading": "むしよけすぷれー",
+    "english": "insect repellent spray",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-ほこり取り",
+    "written": "ほこり取り",
+    "reading": "ほこりとり",
+    "english": "duster",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-粘着ローラー",
+    "written": "粘着ローラー",
+    "reading": "ねんちゃくろーらー",
+    "english": "lint roller",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-ゴムベラ",
+    "written": "ゴムベラ",
+    "reading": "ごむべら",
+    "english": "rubber spatula",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-洗車ブラシ",
+    "written": "洗車ブラシ",
+    "reading": "せんしゃぶらし",
+    "english": "car-washing brush",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-じょうろ",
+    "written": "じょうろ",
+    "reading": "じょうろ",
+    "english": "watering can",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-植木鉢",
+    "written": "植木鉢",
+    "reading": "うえきばち",
+    "english": "flowerpot",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-園芸ばさみ",
+    "written": "園芸ばさみ",
+    "reading": "えんげいばさみ",
+    "english": "gardening shears",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-ごみ分別箱",
+    "written": "ごみ分別箱",
+    "reading": "ごみぶんべつばこ",
+    "english": "waste-sorting bin",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-リサイクル箱",
+    "written": "リサイクル箱",
+    "reading": "りさいくるばこ",
+    "english": "recycling box",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-古新聞入れ",
+    "written": "古新聞入れ",
+    "reading": "ふるしんぶんいれ",
+    "english": "newspaper holder",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-郵便受け",
+    "written": "郵便受け",
+    "reading": "ゆうびんうけ",
+    "english": "mailbox",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-表札",
+    "written": "表札",
+    "reading": "ひょうさつ",
+    "english": "nameplate",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-ドアベル",
+    "written": "ドアベル",
+    "reading": "どあべる",
+    "english": "doorbell",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-防犯ブザー",
+    "written": "防犯ブザー",
+    "reading": "ぼうはんぶざー",
+    "english": "security alarm",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-表箱",
+    "written": "表箱",
+    "reading": "おもてばこ",
+    "english": "display box",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-写真アルバム",
+    "written": "写真アルバム",
+    "reading": "しゃしんあるばむ",
+    "english": "photo album",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-額縁",
+    "written": "額縁",
+    "reading": "がくぶち",
+    "english": "picture frame",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-壁掛けフック",
+    "written": "壁掛けフック",
+    "reading": "かべかけふっく",
+    "english": "wall hook",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-カレンダー",
+    "written": "カレンダー",
+    "reading": "かれんだー",
+    "english": "calendar",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-メモ帳",
+    "written": "メモ帳",
+    "reading": "めもちょう",
+    "english": "memo pad",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-筆箱",
+    "written": "筆箱",
+    "reading": "ふでばこ",
+    "english": "pencil case",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-07-ホワイトボード",
+    "written": "ホワイトボード",
+    "reading": "ほわいとぼーど",
+    "english": "whiteboard",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-掲示板",
+    "written": "掲示板",
+    "reading": "けいじばん",
+    "english": "bulletin board",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-書類ケース",
+    "written": "書類ケース",
+    "reading": "しょるいけーす",
+    "english": "document case",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-印鑑ケース",
+    "written": "印鑑ケース",
+    "reading": "いんかんけーす",
+    "english": "personal-seal case",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-貴重品入れ",
+    "written": "貴重品入れ",
+    "reading": "きちょうひんいれ",
+    "english": "valuables box",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-小銭入れ",
+    "written": "小銭入れ",
+    "reading": "こぜにいれ",
+    "english": "coin purse",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-カードケース",
+    "written": "カードケース",
+    "reading": "かーどけーす",
+    "english": "card holder",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-時計ケース",
+    "written": "時計ケース",
+    "reading": "とけいけーす",
+    "english": "watch case",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-裁縫箱",
+    "written": "裁縫箱",
+    "reading": "さいほうばこ",
+    "english": "sewing box",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-針山",
+    "written": "針山",
+    "reading": "はりやま",
+    "english": "pin cushion",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-糸巻き",
+    "written": "糸巻き",
+    "reading": "いとまき",
+    "english": "spool of thread",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-アイスバッグ",
+    "written": "アイスバッグ",
+    "reading": "あいすばっぐ",
+    "english": "ice bag",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-耳かき",
+    "written": "耳かき",
+    "reading": "みみかき",
+    "english": "ear pick",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-爪切り",
+    "written": "爪切り",
+    "reading": "つめきり",
+    "english": "nail clippers",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-体重計マット",
+    "written": "体重計マット",
+    "reading": "たいじゅうけいまっと",
+    "english": "scale mat",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-洗面タオル",
+    "written": "洗面タオル",
+    "reading": "せんめんたおる",
+    "english": "face towel",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-バスローブ",
+    "written": "バスローブ",
+    "reading": "ばすろーぶ",
+    "english": "bathrobe",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-洗濯表示タグ",
+    "written": "洗濯表示タグ",
+    "reading": "せんたくひょうじたぐ",
+    "english": "laundry care label",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-洗濯物干し",
+    "written": "洗濯物干し",
+    "reading": "せんたくものほし",
+    "english": "laundry drying rack",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-毛玉取り",
+    "written": "毛玉取り",
+    "reading": "けだまとり",
+    "english": "lint remover",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-衣類ブラシ",
+    "written": "衣類ブラシ",
+    "reading": "いるいぶらし",
+    "english": "clothes brush",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-07-電動ドライバー",
+    "written": "電動ドライバー",
+    "reading": "でんどうどらいばー",
+    "english": "electric screwdriver",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-六角レンチ",
+    "written": "六角レンチ",
+    "reading": "ろっかくれんち",
+    "english": "hex key",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-09-メンディングテープ",
+    "written": "メンディングテープ",
+    "reading": "めんでぃんぐてーぷ",
+    "english": "repair tape",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-結束バンド",
+    "written": "結束バンド",
+    "reading": "けっそくばんど",
+    "english": "cable tie",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-軍手",
+    "written": "軍手",
+    "reading": "ぐんて",
+    "english": "work gloves",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-02-脚立",
+    "written": "脚立",
+    "reading": "きゃたつ",
+    "english": "stepladder",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-03-作業台",
+    "written": "作業台",
+    "reading": "さぎょうだい",
+    "english": "workbench",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-05-工具置き場",
+    "written": "工具置き場",
+    "reading": "こうぐおきば",
+    "english": "tool storage area",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-04-ねじ回し",
+    "written": "ねじ回し",
+    "reading": "ねじまわし",
+    "english": "screwdriver",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-木工用ボンド",
+    "written": "木工用ボンド",
+    "reading": "もっこうようぼんど",
+    "english": "wood glue",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  },
+  {
+    "id": "household-object-06-防水スプレー",
+    "written": "防水スプレー",
+    "reading": "ぼうすいすぷれー",
+    "english": "waterproofing spray",
+    "introduced_at": "N4",
+    "topics": [
+      "household-objects"
+    ]
+  }
+]

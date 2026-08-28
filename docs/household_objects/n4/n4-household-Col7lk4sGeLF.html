@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>folding fan | Japanese Household Vocabulary</title>
+    <style>
+        :root {
+            --bg: #f7f8f3;
+            --panel: #ffffff;
+            --ink: #1f2937;
+            --muted: #6b7280;
+            --accent: #0f766e;
+            --accent-soft: #ccfbf1;
+            --line: #d1d5db;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: clamp(0.5rem, 2vw, 1rem);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+        }
+        .page-tabs, .app { width: 100%; max-width: 980px; margin: 0 auto; }
+        .page-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.25rem;
+            margin-bottom: 1rem;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+        }
+        .page-tab {
+            flex: 1;
+            padding: 0.55rem 0.8rem;
+            border: 1px solid #99f6e4;
+            border-radius: 9px;
+            color: #134e4a;
+            background: #f0fdfa;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+        .page-tab.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, #0f766e, #0ea5a4);
+            border-color: transparent;
+        }
+        .app {
+            overflow: hidden;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+        }
+        .header {
+            padding: 1.25rem;
+            color: #f0fdfa;
+            background: linear-gradient(135deg, #0f766e, #0ea5a4);
+        }
+        h1 { margin: 0; font-size: 2rem; }
+        .japanese { margin: 0.65rem 0 0; font-size: 1.5rem; font-weight: 700; }
+        .hiragana { margin: 0.15rem 0 0; color: var(--muted); font-size: 1rem; }
+        .english.word { margin: 0.35rem 0 0; font-size: 1.2rem; }
+        .content { display: grid; gap: 1rem; padding: 1rem; }
+        .panel { padding: 1rem; background: #fcfcfb; border: 1px solid var(--line); border-radius: 12px; }
+        .label {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: #64748b;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .sentence { font-size: 1.2rem; line-height: 1.7; }
+        .target-word { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 0.14em; text-underline-offset: 0.16em; }
+        .translation { color: #b45309; line-height: 1.6; }
+        .speak-button {
+            margin-top: 0.75rem;
+            padding: 0.55rem 0.8rem;
+            border: 0;
+            border-radius: 10px;
+            color: #ffffff;
+            background: var(--accent);
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .speak-button:hover { filter: brightness(1.06); }
+        .sentence-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.75rem; }
+        .sentence-actions .speak-button { margin-top: 0; }
+        .level-button { min-width: 2.8rem; padding: 0.55rem 0.7rem; border: 1px solid #0f766e; border-radius: 8px; color: #134e4a; background: #f0fdfa; font-weight: 700; cursor: pointer; }
+        .level-button:hover { background: var(--accent-soft); }
+        .level-button.active { color: #ffffff; background: var(--accent); border-color: var(--accent); }
+        .level-button.unavailable { border-color: #cbd5e1; color: #64748b; background: #f8fafc; }
+        .level-message { min-height: 1.25rem; margin: 0.5rem 0 0; color: #b45309; font-size: 0.9rem; }
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.65rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+        th:first-child, td:first-child { width: 1%; white-space: nowrap; }
+        th { color: #134e4a; background: var(--accent-soft); }
+        tr:last-child td { border-bottom: 0; }
+        @media (max-width: 600px) {
+            .page-tabs { flex-wrap: wrap; }
+            .page-tab { min-width: 45%; }
+            .app { border-radius: 8px; }
+            .header, .content, .panel { padding: 0.75rem; }
+            h1 { font-size: 1.5rem; overflow-wrap: anywhere; }
+            .sentence { font-size: 1.1rem; }
+            .table-wrap { width: 100%; }
+            table { min-width: 620px; }
+            th, td { padding: 0.5rem 0.35rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="page-tabs" aria-label="Page tabs">
+        <a class="page-tab" href="../../index.html">Home</a>
+        <a class="page-tab active" href="n4-household-HseFIdf82HBc.html">Next Word</a>
+    </nav>
+    <main class="app">
+        <header class="header">
+            <h1>扇子 : せんす</h1>
+            <p class="english word">folding fan</p>
+        </header>
+        <section class="content">
+            <article class="panel">
+                <span class="label">Japanese sentence</span>
+                <div class="sentence">暑い日に<span class="target-word">扇子</span>を使って、駅まで歩きます。</div>
+                <div class="sentence-actions">
+                    <button class="speak-button" id="speakSentenceButton" type="button">Speak sentence</button>
+                    <button class="level-button" type="button" data-url="../n5/n5-household-Col7lk4sGeLF.html">N5</button><button class="level-button active" type="button" data-url="../n4/n4-household-Col7lk4sGeLF.html">N4</button><button class="level-button unavailable" type="button" data-level="N3">N3</button><button class="level-button unavailable" type="button" data-level="N2">N2</button><button class="level-button unavailable" type="button" data-level="N1">N1</button>
+                </div>
+                <p class="level-message" id="levelMessage" aria-live="polite"></p>
+            </article>
+            <article class="panel">
+                <span class="label">English sentence</span>
+                <div class="translation">On hot days, I use a folding fan while walking to the station.</div>
+            </article>
+            <article class="panel">
+                <span class="label">Sentence breakdown</span>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Japanese</th><th>Pronounce</th><th>Meaning</th><th>Function</th></tr></thead>
+                        <tbody><tr><td>暑い日に</td><td><button class="speak-button row-speak-button" type="button" data-japanese="暑い日に">Pronounce</button></td><td>on hot days</td><td>に particle: marks the time</td></tr><tr><td>扇子を</td><td><button class="speak-button row-speak-button" type="button" data-japanese="扇子を">Pronounce</button></td><td>folding fan</td><td>を particle: marks the object used</td></tr><tr><td>使って</td><td><button class="speak-button row-speak-button" type="button" data-japanese="使って">Pronounce</button></td><td>use and</td><td>て-form: links using the fan with walking</td></tr><tr><td>駅まで</td><td><button class="speak-button row-speak-button" type="button" data-japanese="駅まで">Pronounce</button></td><td>to the station</td><td>まで marks the endpoint of the route</td></tr><tr><td>歩きます</td><td><button class="speak-button row-speak-button" type="button" data-japanese="歩きます">Pronounce</button></td><td>walk</td><td>polite verb; the subject &#x27;I&#x27; is omitted</td></tr><tr><td>Grammar note</td><td></td><td>に marks the time, while まで marks the endpoint of movement</td><td>learner grammar guidance</td></tr></tbody>
+                    </table>
+                </div>
+                <button class="speak-button" id="speakBreakdownButton" type="button">Pronounce all</button>
+            </article>
+        </section>
+    </main>
+    <script>
+        let speechRequestId = 0;
+
+        function speakJapanese(text) {
+            const requestId = ++speechRequestId;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = "ja-JP";
+            window.speechSynthesis.cancel();
+            window.setTimeout(() => {
+                if (requestId === speechRequestId) {
+                    window.speechSynthesis.speak(utterance);
+                }
+            }, 0);
+        }
+
+        document.getElementById("speakSentenceButton").addEventListener("click", () => {
+            const sentence = document.querySelector(".sentence").textContent;
+            speakJapanese(sentence);
+        });
+
+        document.querySelectorAll(".level-button").forEach((button) => {
+            button.addEventListener("click", () => {
+                if (button.dataset.url) {
+                    window.location.assign(button.dataset.url);
+                    return;
+                }
+                document.getElementById("levelMessage").textContent = `${button.dataset.level} level sentence not available yet`;
+            });
+        });
+
+        document.getElementById("speakBreakdownButton").addEventListener("click", () => {
+            const breakdown = Array.from(document.querySelectorAll("table tbody tr td:first-child"))
+                .filter((cell) => cell.textContent.trim() !== "Grammar note")
+                .map((cell) => cell.textContent.trim())
+                .join("、");
+            speakJapanese(breakdown);
+        });
+
+        document.querySelectorAll(".row-speak-button").forEach((button) => {
+            button.addEventListener("click", () => {
+                speakJapanese(button.dataset.japanese);
+            });
+        });
+    </script>
+</body>
+</html>

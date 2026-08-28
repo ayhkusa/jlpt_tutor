@@ -1,14 +1,15 @@
 """Create a printable 8 x 10 inch sheet of household-object sticky notes."""
 
 import csv
+import argparse
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
 try:
-    from .vocab_objects_data import HOUSEHOLD_OBJECTS
+    from .vocabulary_repository import load_household_objects
 except ImportError:
-    from vocab_objects_data import HOUSEHOLD_OBJECTS
+    from vocabulary_repository import load_household_objects
 
 
 PAGE_WIDTH_INCHES = 8
@@ -24,31 +25,47 @@ NOTE_GAP = 30
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 HASH_CSV = Path(__file__).resolve().parent / "vocab_objects_hash.csv"
 QR_DIRECTORY = Path(__file__).resolve().parent / "qrcodes"
-DEFAULT_OUTPUT = PROJECT_ROOT / "docs" / "household_objects" / "sticky_notes_12"
+DEFAULT_OUTPUT = PROJECT_ROOT / "docs" / "household_objects" / "sticky_notes"
 FONT_PATH = Path("C:/Windows/Fonts/YuGothM.ttc")
 
 
-def load_note_data(hash_csv: Path = HASH_CSV) -> list[dict[str, str]]:
-    """Load word/hash rows and attach their source sentences."""
-    entries_by_word = {str(entry["word"]): entry for entry in HOUSEHOLD_OBJECTS}
+def load_note_data(hash_csv: Path = HASH_CSV, level: str | None = None) -> list[dict[str, str]]:
+    """Load level-aware word/hash rows and attach their source sentences."""
     with hash_csv.open(encoding="utf-8", newline="") as file:
         rows = list(csv.DictReader(file))
 
     if not rows:
         raise ValueError(f"No word/hash rows found in {hash_csv}")
 
+    selected_level = level.lower() if level else None
+    rows = [row for row in rows if selected_level is None or row.get("level", "n4").lower() == selected_level]
+    if not rows:
+        requested_level = level.upper() if level else "all levels"
+        raise ValueError(f"No word/hash rows found for {requested_level} in {hash_csv}")
+
+    entries_by_level = {}
     notes = []
     for row in rows:
         word = row["word"]
         word_hash = row["hash"]
+        row_level = row.get("level", "n4")
+        filename = row.get("filename", f"{word_hash}.html")
+        if row_level not in entries_by_level:
+            entries_by_level[row_level] = {
+                str(entry["word"]): entry for entry in load_household_objects(row_level)
+            }
+        entries_by_word = entries_by_level[row_level]
         if word not in entries_by_word:
-            raise KeyError(f"No sentence found for word: {word}")
-        qr_path = QR_DIRECTORY / f"{word_hash}_qr.png"
+            raise KeyError(f"No {row_level.upper()} sentence found for word: {word}")
+        qr_path = QR_DIRECTORY / row_level.upper() / f"{Path(filename).stem}_qr.png"
         if not qr_path.exists():
             raise FileNotFoundError(f"QR code not found: {qr_path}")
         entry = entries_by_word[word]
         notes.append({
             "word": word,
+            "hiragana": str(entry["hiragana"]),
+            "english_word": str(entry["english_word"]),
+            "level": row_level,
             "hash": word_hash,
             "sentence": str(entry["sentence"]),
             "english_sentence": str(entry["english_sentence"]),
@@ -111,14 +128,12 @@ def fit_font(draw: ImageDraw.ImageDraw, text: str, size: int, max_width: int) ->
 
 def render_sticky_notes_sheet(
     notes: list[dict[str, str]],
-    output_base: str | Path = DEFAULT_OUTPUT,
-) -> tuple[Path, Path]:
-    """Render one 8 x 10 PNG and PDF containing up to 12 sticky notes."""
-    output_base = Path(output_base)
-    output_base.parent.mkdir(parents=True, exist_ok=True)
+) -> Image.Image:
+    """Render one 8 x 10 sticky-note sheet in memory."""
     page = Image.new("RGB", PAGE_SIZE, "white")
     draw = ImageDraw.Draw(page)
     word_font_size = 70
+    hiragana_font = load_font(40)
     english_font_size = 50
     sentence_font = load_font(36)
     english_sentence_font = load_font(34)
@@ -140,10 +155,10 @@ def render_sticky_notes_sheet(
         text_width = qr_x - x - 50
         word_font = fit_font(draw, note["word"], word_font_size, text_width)
         draw.text((x + 30, y + 25), note["word"], fill="#17202a", font=word_font)
-        english_word = next(entry["english_word"] for entry in HOUSEHOLD_OBJECTS if str(entry["word"]) == note["word"])
-        english_font = fit_font(draw, english_word, english_font_size, text_width)
-        english_lines = wrap_text(draw, english_word, english_font, text_width)
-        english_y = y + 115
+        draw.text((x + 30, y + 115), note["hiragana"], fill="#425466", font=hiragana_font)
+        english_font = fit_font(draw, note["english_word"], english_font_size, text_width)
+        english_lines = wrap_text(draw, note["english_word"], english_font, text_width)
+        english_y = y + 165
         for line in english_lines[:2]:
             draw.text((x + 30, english_y), line, fill="#425466", font=english_font)
             english_y += 58
@@ -166,29 +181,33 @@ def render_sticky_notes_sheet(
             draw.text((x + 30, english_sentence_y), line, fill="#425466", font=english_sentence_font)
             english_sentence_y += 48
 
-    png_path = output_base.with_suffix(".png")
-    pdf_path = output_base.with_suffix(".pdf")
-    page.save(png_path, dpi=(DPI, DPI))
-    page.save(pdf_path, "PDF", resolution=DPI)
-    return png_path, pdf_path
+    return page
 
 
-def create_sticky_notes_pages(
+def create_sticky_notes_pdf(
     output_base: str | Path = DEFAULT_OUTPUT,
     hash_csv: str | Path = HASH_CSV,
-) -> list[tuple[Path, Path]]:
-    """Create printable sheets for every word/hash pair in the CSV."""
+    level: str | None = None,
+) -> Path:
+    """Create one multi-page PDF for the selected JLPT level."""
     output_base = Path(output_base)
-    notes = load_note_data(Path(hash_csv))
-    output_paths = []
+    notes = load_note_data(Path(hash_csv), level)
+    selected_level = level.lower() if level else "all"
+    pages = []
     for page_number in range(0, len(notes), NOTE_COUNT):
         page_notes = notes[page_number:page_number + NOTE_COUNT]
-        page_base = output_base.parent / f"{output_base.name}_{page_number // NOTE_COUNT + 1:02d}"
-        output_paths.append(render_sticky_notes_sheet(page_notes, page_base))
-    return output_paths
+        pages.append(render_sticky_notes_sheet(page_notes))
+
+    pdf_path = output_base.parent / f"{output_base.name}_{selected_level}.pdf"
+    pages[0].save(pdf_path, "PDF", resolution=DPI, save_all=True, append_images=pages[1:])
+    for page in pages:
+        page.close()
+    return pdf_path
 
 
 if __name__ == "__main__":
-    for png_path, pdf_path in create_sticky_notes_pages():
-        print(f"Created {png_path}")
-        print(f"Created {pdf_path}")
+    parser = argparse.ArgumentParser(description="Create a combined JLPT sticky-notes PDF.")
+    parser.add_argument("--level", metavar="N", help="JLPT level to generate, for example N4")
+    arguments = parser.parse_args()
+    pdf_path = create_sticky_notes_pdf(level=arguments.level)
+    print(f"Created {pdf_path}")
