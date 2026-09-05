@@ -1,0 +1,1282 @@
+[
+  {
+    "japanese_reading": "牛乳",
+    "japanese_speaking": "ぎゅうにゅう",
+    "english": "milk"
+  },
+  {
+    "japanese_reading": "袋",
+    "japanese_speaking": "ふくろ",
+    "english": "bag"
+  },
+  {
+    "japanese_reading": "家",
+    "japanese_speaking": "いえ",
+    "english": "home/house"
+  },
+  {
+    "japanese_reading": "お母さん",
+    "japanese_speaking": "おかあさん",
+    "english": "mother"
+  },
+  {
+    "japanese_reading": "お父さん",
+    "japanese_speaking": "おとうさん",
+    "english": "father"
+  },
+  {
+    "japanese_reading": "お姉ちゃん",
+    "japanese_speaking": "おねえちゃん",
+    "english": "older sister"
+  },
+  {
+    "japanese_reading": "本",
+    "japanese_speaking": "ほん",
+    "english": "book"
+  },
+  {
+    "japanese_reading": "読む",
+    "japanese_speaking": "よむ",
+    "english": "read"
+  },
+  {
+    "japanese_reading": "図書館",
+    "japanese_speaking": "としょかん",
+    "english": "library"
+  },
+  {
+    "japanese_reading": "学校",
+    "japanese_speaking": "がっこう",
+    "english": "school"
+  },
+  {
+    "japanese_reading": "先生",
+    "japanese_speaking": "せんせい",
+    "english": "teacher"
+  },
+  {
+    "japanese_reading": "夏休み",
+    "japanese_speaking": "なつやすみ",
+    "english": "summer vacation"
+  },
+  {
+    "japanese_reading": "休み",
+    "japanese_speaking": "やすみ",
+    "english": "vacation/rest"
+  },
+  {
+    "japanese_reading": "決める",
+    "japanese_speaking": "きめる",
+    "english": "decide"
+  },
+  {
+    "japanese_reading": "20冊",
+    "japanese_speaking": "にじゅっさつ",
+    "english": "20 books"
+  },
+  {
+    "japanese_reading": "勉強",
+    "japanese_speaking": "べんきょう",
+    "english": "study"
+  },
+  {
+    "japanese_reading": "早く",
+    "japanese_speaking": "はやく",
+    "english": "quickly / hurry"
+  },
+  {
+    "japanese_reading": "ありがとう",
+    "japanese_speaking": "ありがとう",
+    "english": "thank you"
+  },
+  {
+    "japanese_reading": "ただいま",
+    "japanese_speaking": "ただいま",
+    "english": "I'm home (Person arriving home)"
+  },
+  {
+    "japanese_reading": "おかえり",
+    "japanese_speaking": "おかえり",
+    "english": "Welcome home (Person already at home)"
+  },
+  {
+    "japanese_reading": "いってきます",
+    "japanese_speaking": "いってきます",
+    "english": "I'm leaving / See you (Person leaving home)"
+  },
+  {
+    "japanese_reading": "いってらっしゃい",
+    "japanese_speaking": "いってらっしゃい",
+    "english": "See you / Take care (Person staying home)"
+  },
+  {
+    "japanese_reading": "牛乳",
+    "japanese_speaking": "ぎゅうにゅう",
+    "english": "milk"
+  },
+  {
+    "japanese_reading": "水",
+    "japanese_speaking": "みず",
+    "english": "water"
+  },
+  {
+    "japanese_reading": "お茶",
+    "japanese_speaking": "おちゃ",
+    "english": "tea"
+  },
+  {
+    "japanese_reading": "ご飯",
+    "japanese_speaking": "ごはん",
+    "english": "rice / meal"
+  },
+  {
+    "japanese_reading": "晩ご飯",
+    "japanese_speaking": "ばんごはん",
+    "english": "dinner"
+  },
+  {
+    "japanese_reading": "袋",
+    "japanese_speaking": "ふくろ",
+    "english": "bag"
+  },
+  {
+    "japanese_reading": "家",
+    "japanese_speaking": "いえ",
+    "english": "house/home"
+  },
+  {
+    "japanese_reading": "誰",
+    "japanese_speaking": "だれ",
+    "english": "who"
+  },
+  {
+    "japanese_reading": "本",
+    "japanese_speaking": "ほん",
+    "english": "book"
+  },
+  {
+    "japanese_reading": "図書館",
+    "japanese_speaking": "としょかん",
+    "english": "library"
+  },
+  {
+    "japanese_reading": "借りる",
+    "japanese_speaking": "かりる",
+    "english": "borrow"
+  },
+  {
+    "japanese_reading": "貸す",
+    "japanese_speaking": "かす",
+    "english": "lend"
+  },
+  {
+    "japanese_reading": "読む",
+    "japanese_speaking": "よむ",
+    "english": "read"
+  },
+  {
+    "japanese_reading": "人",
+    "japanese_speaking": "ひと",
+    "english": "person"
+  },
+  {
+    "japanese_reading": "同じ",
+    "japanese_speaking": "おなじ",
+    "english": "same"
+  },
+  {
+    "japanese_reading": "面白い",
+    "japanese_speaking": "おもしろい",
+    "english": "interesting"
+  },
+  {
+    "japanese_reading": "好き",
+    "japanese_speaking": "すき",
+    "english": "like"
+  },
+  {
+    "japanese_reading": "大好き",
+    "japanese_speaking": "だいすき",
+    "english": "really like"
+  },
+  {
+    "japanese_reading": "学校",
+    "japanese_speaking": "がっこう",
+    "english": "school"
+  },
+  {
+    "japanese_reading": "名前",
+    "japanese_speaking": "なまえ",
+    "english": "name"
+  },
+  {
+    "japanese_reading": "思う",
+    "japanese_speaking": "おもう",
+    "english": "think"
+  },
+  {
+    "japanese_reading": "夏休み",
+    "japanese_speaking": "なつやすみ",
+    "english": "summer vacation"
+  },
+  {
+    "japanese_reading": "決める",
+    "japanese_speaking": "きめる",
+    "english": "decide"
+  },
+  {
+    "japanese_reading": "〜かな",
+    "japanese_speaking": "かな",
+    "english": "I wonder"
+  },
+  {
+    "japanese_reading": "〜って",
+    "japanese_speaking": "って",
+    "english": "casual quotation"
+  },
+  {
+    "japanese_reading": "〜てる",
+    "japanese_speaking": "てる",
+    "english": "conversational 〜ている"
+  },
+  {
+    "japanese_reading": "だれですか",
+    "japanese_speaking": "だれですか",
+    "english": "Who is it"
+  },
+  {
+    "japanese_reading": "あの人は誰ですか",
+    "japanese_speaking": "あのひとは だれですか",
+    "english": "Who is that person"
+  },
+  {
+    "japanese_reading": "この",
+    "japanese_speaking": "この",
+    "english": "this"
+  },
+  {
+    "japanese_reading": "その",
+    "japanese_speaking": "その",
+    "english": "that"
+  },
+  {
+    "japanese_reading": "あの",
+    "japanese_speaking": "あの",
+    "english": "that over there"
+  },
+  {
+    "japanese_reading": "これ",
+    "japanese_speaking": "これ",
+    "english": "this thing"
+  },
+  {
+    "japanese_reading": "それ",
+    "japanese_speaking": "それ",
+    "english": "that thing"
+  },
+  {
+    "japanese_reading": "あれ",
+    "japanese_speaking": "あれ",
+    "english": "that thing over there"
+  },
+  {
+    "japanese_reading": "本当",
+    "japanese_speaking": "ほんとう",
+    "english": "true / really"
+  },
+  {
+    "japanese_reading": "誰",
+    "japanese_speaking": "だれ",
+    "english": "who"
+  },
+  {
+    "japanese_reading": "何",
+    "japanese_speaking": "なに",
+    "english": "what"
+  },
+  {
+    "japanese_reading": "なんで",
+    "japanese_speaking": "なんで",
+    "english": "why"
+  },
+  {
+    "japanese_reading": "別に",
+    "japanese_speaking": "べつに",
+    "english": "not particularly"
+  },
+  {
+    "japanese_reading": "どうした",
+    "japanese_speaking": "どうした",
+    "english": "what's wrong"
+  },
+  {
+    "japanese_reading": "待つ",
+    "japanese_speaking": "まつ",
+    "english": "wait"
+  },
+  {
+    "japanese_reading": "知る",
+    "japanese_speaking": "しる",
+    "english": "know"
+  },
+  {
+    "japanese_reading": "分かる",
+    "japanese_speaking": "わかる",
+    "english": "understand"
+  },
+  {
+    "japanese_reading": "すごい",
+    "japanese_speaking": "すごい",
+    "english": "amazing"
+  },
+  {
+    "japanese_reading": "変",
+    "japanese_speaking": "へん",
+    "english": "strange"
+  },
+  {
+    "japanese_reading": "気",
+    "japanese_speaking": "き",
+    "english": "feeling/mind"
+  },
+  {
+    "japanese_reading": "気になる",
+    "japanese_speaking": "きになる",
+    "english": "be curious about"
+  },
+  {
+    "japanese_reading": "同じ",
+    "japanese_speaking": "おなじ",
+    "english": "same"
+  },
+  {
+    "japanese_reading": "人",
+    "japanese_speaking": "ひと",
+    "english": "person"
+  },
+  {
+    "japanese_reading": "ちょっと",
+    "japanese_speaking": "ちょっと",
+    "english": "a little / moment"
+  },
+  {
+    "japanese_reading": "楽しい",
+    "japanese_speaking": "たのしい",
+    "english": "fun"
+  },
+  {
+    "japanese_reading": "難しい",
+    "japanese_speaking": "むずかしい",
+    "english": "difficult"
+  },
+  {
+    "japanese_reading": "名前",
+    "japanese_speaking": "なまえ",
+    "english": "name"
+  },
+  {
+    "japanese_reading": "学生",
+    "japanese_speaking": "がくせい",
+    "english": "student"
+  },
+  {
+    "japanese_reading": "そういう",
+    "japanese_speaking": "そういう",
+    "english": "that kind of"
+  },
+  {
+    "japanese_reading": "こういう",
+    "japanese_speaking": "こういう",
+    "english": "this kind of"
+  },
+  {
+    "japanese_reading": "どういう",
+    "japanese_speaking": "どういう",
+    "english": "what kind of"
+  },
+  {
+    "japanese_reading": "意味",
+    "japanese_speaking": "いみ",
+    "english": "meaning"
+  },
+  {
+    "japanese_reading": "うるさい",
+    "japanese_speaking": "うるさい",
+    "english": "noisy / annoying"
+  },
+  {
+    "japanese_reading": "暑い",
+    "japanese_speaking": "あつい",
+    "english": "hot"
+  },
+  {
+    "japanese_reading": "そんな",
+    "japanese_speaking": "そんな",
+    "english": "such / that kind of"
+  },
+  {
+    "japanese_reading": "そんなに",
+    "japanese_speaking": "そんなに",
+    "english": "that much"
+  },
+  {
+    "japanese_reading": "まだ",
+    "japanese_speaking": "まだ",
+    "english": "still / not yet"
+  },
+  {
+    "japanese_reading": "もう",
+    "japanese_speaking": "もう",
+    "english": "already / anymore"
+  },
+  {
+    "japanese_reading": "やっぱり",
+    "japanese_speaking": "やっぱり",
+    "english": "as I thought"
+  },
+  {
+    "japanese_reading": "本当に",
+    "japanese_speaking": "ほんとうに",
+    "english": "really"
+  },
+  {
+    "japanese_reading": "言葉",
+    "japanese_speaking": "ことば",
+    "english": "word/language"
+  },
+  {
+    "japanese_reading": "こと",
+    "japanese_speaking": "こと",
+    "english": "thing/matter"
+  },
+  {
+    "japanese_reading": "分かる",
+    "japanese_speaking": "わかる",
+    "english": "understand"
+  },
+  {
+    "japanese_reading": "困る",
+    "japanese_speaking": "こまる",
+    "english": "be troubled"
+  },
+  {
+    "japanese_reading": "できる",
+    "japanese_speaking": "できる",
+    "english": "can / be able to"
+  },
+  {
+    "japanese_reading": "いい",
+    "japanese_speaking": "いい",
+    "english": "good"
+  },
+  {
+    "japanese_reading": "すごい",
+    "japanese_speaking": "すごい",
+    "english": "amazing"
+  },
+  {
+    "japanese_reading": "思う",
+    "japanese_speaking": "おもう",
+    "english": "think"
+  },
+  {
+    "japanese_reading": "どう",
+    "japanese_speaking": "どう",
+    "english": "how / what"
+  },
+  {
+    "japanese_reading": "でも",
+    "japanese_speaking": "でも",
+    "english": "but"
+  },
+  {
+    "japanese_reading": "けど",
+    "japanese_speaking": "けど",
+    "english": "but / though"
+  },
+  {
+    "japanese_reading": "好き",
+    "japanese_speaking": "すき",
+    "english": "like"
+  },
+  {
+    "japanese_reading": "大好き",
+    "japanese_speaking": "だいすき",
+    "english": "really like"
+  },
+  {
+    "japanese_reading": "上手",
+    "japanese_speaking": "じょうず",
+    "english": "good at"
+  },
+  {
+    "japanese_reading": "下手",
+    "japanese_speaking": "へた",
+    "english": "bad at"
+  },
+  {
+    "japanese_reading": "比べる",
+    "japanese_speaking": "くらべる",
+    "english": "compare"
+  },
+  {
+    "japanese_reading": "より",
+    "japanese_speaking": "より",
+    "english": "than"
+  },
+  {
+    "japanese_reading": "方",
+    "japanese_speaking": "ほう",
+    "english": "direction / side"
+  },
+  {
+    "japanese_reading": "どちら",
+    "japanese_speaking": "どちら",
+    "english": "which of two"
+  },
+  {
+    "japanese_reading": "すぎる",
+    "japanese_speaking": "すぎる",
+    "english": "too much"
+  },
+  {
+    "japanese_reading": "たい",
+    "japanese_speaking": "たい",
+    "english": "want to"
+  },
+  {
+    "japanese_reading": "たぶん",
+    "japanese_speaking": "たぶん",
+    "english": "probably"
+  },
+  {
+    "japanese_reading": "本当に",
+    "japanese_speaking": "ほんとうに",
+    "english": "really"
+  },
+  {
+    "japanese_reading": "映画",
+    "japanese_speaking": "えいが",
+    "english": "movie"
+  },
+  {
+    "japanese_reading": "音楽",
+    "japanese_speaking": "おんがく",
+    "english": "music"
+  },
+  {
+    "japanese_reading": "話す",
+    "japanese_speaking": "はなす",
+    "english": "speak"
+  },
+  {
+    "japanese_reading": "聞く",
+    "japanese_speaking": "きく",
+    "english": "listen/hear"
+  },
+  {
+    "japanese_reading": "読む",
+    "japanese_speaking": "よむ",
+    "english": "read"
+  },
+  {
+    "japanese_reading": "どうして",
+    "japanese_speaking": "どうして",
+    "english": "why"
+  },
+  {
+    "japanese_reading": "どうしたら",
+    "japanese_speaking": "どうしたら",
+    "english": "what should I do"
+  },
+  {
+    "japanese_reading": "思っている",
+    "japanese_speaking": "おもっている",
+    "english": "be thinking"
+  },
+  {
+    "japanese_reading": "つもり",
+    "japanese_speaking": "つもり",
+    "english": "intention/plan"
+  },
+  {
+    "japanese_reading": "決める",
+    "japanese_speaking": "きめる",
+    "english": "decide"
+  },
+  {
+    "japanese_reading": "気がする",
+    "japanese_speaking": "きがする",
+    "english": "have a feeling"
+  },
+  {
+    "japanese_reading": "なんとなく",
+    "japanese_speaking": "なんとなく",
+    "english": "somehow"
+  },
+  {
+    "japanese_reading": "気持ち",
+    "japanese_speaking": "きもち",
+    "english": "feeling"
+  },
+  {
+    "japanese_reading": "恥ずかしい",
+    "japanese_speaking": "はずかしい",
+    "english": "embarrassed/shy"
+  },
+  {
+    "japanese_reading": "嬉しい",
+    "japanese_speaking": "うれしい",
+    "english": "happy/glad"
+  },
+  {
+    "japanese_reading": "悲しい",
+    "japanese_speaking": "かなしい",
+    "english": "sad"
+  },
+  {
+    "japanese_reading": "楽しみ",
+    "japanese_speaking": "たのしみ",
+    "english": "something to look forward to"
+  },
+  {
+    "japanese_reading": "将来",
+    "japanese_speaking": "しょうらい",
+    "english": "future"
+  },
+  {
+    "japanese_reading": "夢",
+    "japanese_speaking": "ゆめ",
+    "english": "dream"
+  },
+  {
+    "japanese_reading": "考える",
+    "japanese_speaking": "かんがえる",
+    "english": "think/consider"
+  },
+  {
+    "japanese_reading": "選ぶ",
+    "japanese_speaking": "えらぶ",
+    "english": "choose"
+  },
+  {
+    "japanese_reading": "始める",
+    "japanese_speaking": "はじめる",
+    "english": "begin"
+  },
+  {
+    "japanese_reading": "続ける",
+    "japanese_speaking": "つづける",
+    "english": "continue"
+  },
+  {
+    "japanese_reading": "やめる",
+    "japanese_speaking": "やめる",
+    "english": "stop/quit"
+  },
+  {
+    "japanese_reading": "将来",
+    "japanese_speaking": "しょうらい",
+    "english": "future"
+  },
+  {
+    "japanese_reading": "夢",
+    "japanese_speaking": "ゆめ",
+    "english": "dream"
+  },
+  {
+    "japanese_reading": "作家",
+    "japanese_speaking": "さっか",
+    "english": "writer"
+  },
+  {
+    "japanese_reading": "小説",
+    "japanese_speaking": "しょうせつ",
+    "english": "novel"
+  },
+  {
+    "japanese_reading": "小説家",
+    "japanese_speaking": "しょうせつか",
+    "english": "novelist"
+  },
+  {
+    "japanese_reading": "物語",
+    "japanese_speaking": "ものがたり",
+    "english": "story"
+  },
+  {
+    "japanese_reading": "文章",
+    "japanese_speaking": "ぶんしょう",
+    "english": "writing/text"
+  },
+  {
+    "japanese_reading": "なる",
+    "japanese_speaking": "なる",
+    "english": "become"
+  },
+  {
+    "japanese_reading": "できる",
+    "japanese_speaking": "できる",
+    "english": "can"
+  },
+  {
+    "japanese_reading": "やる",
+    "japanese_speaking": "やる",
+    "english": "do"
+  },
+  {
+    "japanese_reading": "試す",
+    "japanese_speaking": "ためす",
+    "english": "try/test"
+  },
+  {
+    "japanese_reading": "頑張る",
+    "japanese_speaking": "がんばる",
+    "english": "do one's best"
+  },
+  {
+    "japanese_reading": "上手",
+    "japanese_speaking": "じょうず",
+    "english": "skilled"
+  },
+  {
+    "japanese_reading": "もっと",
+    "japanese_speaking": "もっと",
+    "english": "more"
+  },
+  {
+    "japanese_reading": "まだ",
+    "japanese_speaking": "まだ",
+    "english": "still/not yet"
+  },
+  {
+    "japanese_reading": "いつか",
+    "japanese_speaking": "いつか",
+    "english": "someday"
+  },
+  {
+    "japanese_reading": "もし",
+    "japanese_speaking": "もし",
+    "english": "if"
+  },
+  {
+    "japanese_reading": "将来",
+    "japanese_speaking": "しょうらい",
+    "english": "future"
+  },
+  {
+    "japanese_reading": "考える",
+    "japanese_speaking": "かんがえる",
+    "english": "think/consider"
+  },
+  {
+    "japanese_reading": "決める",
+    "japanese_speaking": "きめる",
+    "english": "decide"
+  },
+  {
+    "japanese_reading": "どうやって",
+    "japanese_speaking": "どうやって",
+    "english": "how"
+  },
+  {
+    "japanese_reading": "だから",
+    "japanese_speaking": "だから",
+    "english": "so / therefore"
+  },
+  {
+    "japanese_reading": "から",
+    "japanese_speaking": "から",
+    "english": "because"
+  },
+  {
+    "japanese_reading": "ので",
+    "japanese_speaking": "ので",
+    "english": "because/since"
+  },
+  {
+    "japanese_reading": "それで",
+    "japanese_speaking": "それで",
+    "english": "and so"
+  },
+  {
+    "japanese_reading": "それでも",
+    "japanese_speaking": "それでも",
+    "english": "even so"
+  },
+  {
+    "japanese_reading": "〜し",
+    "japanese_speaking": "し",
+    "english": "and/besides"
+  },
+  {
+    "japanese_reading": "聞こえる",
+    "japanese_speaking": "きこえる",
+    "english": "can hear"
+  },
+  {
+    "japanese_reading": "見える",
+    "japanese_speaking": "みえる",
+    "english": "can see"
+  },
+  {
+    "japanese_reading": "聞く",
+    "japanese_speaking": "きく",
+    "english": "listen/hear"
+  },
+  {
+    "japanese_reading": "見る",
+    "japanese_speaking": "みる",
+    "english": "see/watch"
+  },
+  {
+    "japanese_reading": "初めて",
+    "japanese_speaking": "はじめて",
+    "english": "first time"
+  },
+  {
+    "japanese_reading": "経験",
+    "japanese_speaking": "けいけん",
+    "english": "experience"
+  },
+  {
+    "japanese_reading": "上手",
+    "japanese_speaking": "じょうず",
+    "english": "skilled"
+  },
+  {
+    "japanese_reading": "うまい",
+    "japanese_speaking": "うまい",
+    "english": "good/skilled/delicious"
+  },
+  {
+    "japanese_reading": "きれい",
+    "japanese_speaking": "きれい",
+    "english": "beautiful/clean"
+  },
+  {
+    "japanese_reading": "静か",
+    "japanese_speaking": "しずか",
+    "english": "quiet"
+  },
+  {
+    "japanese_reading": "音楽",
+    "japanese_speaking": "おんがく",
+    "english": "music"
+  },
+  {
+    "japanese_reading": "歌",
+    "japanese_speaking": "うた",
+    "english": "song"
+  },
+  {
+    "japanese_reading": "歌う",
+    "japanese_speaking": "うたう",
+    "english": "sing"
+  },
+  {
+    "japanese_reading": "書く",
+    "japanese_speaking": "かく",
+    "english": "write"
+  },
+  {
+    "japanese_reading": "どうして",
+    "japanese_speaking": "どうして",
+    "english": "why"
+  },
+  {
+    "japanese_reading": "みたい",
+    "japanese_speaking": "みたい",
+    "english": "seems like"
+  },
+  {
+    "japanese_reading": "たぶん",
+    "japanese_speaking": "たぶん",
+    "english": "probably"
+  },
+  {
+    "japanese_reading": "きっと",
+    "japanese_speaking": "きっと",
+    "english": "surely"
+  },
+  {
+    "japanese_reading": "絶対",
+    "japanese_speaking": "ぜったい",
+    "english": "definitely"
+  },
+  {
+    "japanese_reading": "もちろん",
+    "japanese_speaking": "もちろん",
+    "english": "of course"
+  },
+  {
+    "japanese_reading": "本当は",
+    "japanese_speaking": "ほんとうは",
+    "english": "actually"
+  },
+  {
+    "japanese_reading": "かな",
+    "japanese_speaking": "かな",
+    "english": "I wonder"
+  },
+  {
+    "japanese_reading": "かも",
+    "japanese_speaking": "かも",
+    "english": "might"
+  },
+  {
+    "japanese_reading": "忘れる",
+    "japanese_speaking": "わすれる",
+    "english": "forget"
+  },
+  {
+    "japanese_reading": "寝る",
+    "japanese_speaking": "ねる",
+    "english": "sleep"
+  },
+  {
+    "japanese_reading": "言う",
+    "japanese_speaking": "いう",
+    "english": "say"
+  },
+  {
+    "japanese_reading": "帰る",
+    "japanese_speaking": "かえる",
+    "english": "return/go home"
+  },
+  {
+    "japanese_reading": "必要",
+    "japanese_speaking": "ひつよう",
+    "english": "necessary"
+  },
+  {
+    "japanese_reading": "理由",
+    "japanese_speaking": "りゆう",
+    "english": "reason"
+  },
+  {
+    "japanese_reading": "気持ち",
+    "japanese_speaking": "きもち",
+    "english": "feeling"
+  },
+  {
+    "japanese_reading": "考え",
+    "japanese_speaking": "かんがえ",
+    "english": "thought/idea"
+  },
+  {
+    "japanese_reading": "夢",
+    "japanese_speaking": "ゆめ",
+    "english": "dream"
+  },
+  {
+    "japanese_reading": "将来",
+    "japanese_speaking": "しょうらい",
+    "english": "future"
+  },
+  {
+    "japanese_reading": "本当",
+    "japanese_speaking": "ほんとう",
+    "english": "truth/reality"
+  },
+  {
+    "japanese_reading": "仲",
+    "japanese_speaking": "なか",
+    "english": "relationship"
+  },
+  {
+    "japanese_reading": "仲がいい",
+    "japanese_speaking": "なかがいい",
+    "english": "get along"
+  },
+  {
+    "japanese_reading": "友達",
+    "japanese_speaking": "ともだち",
+    "english": "friend"
+  },
+  {
+    "japanese_reading": "付き合う",
+    "japanese_speaking": "つきあう",
+    "english": "associate/date"
+  },
+  {
+    "japanese_reading": "知る",
+    "japanese_speaking": "しる",
+    "english": "know/learn"
+  },
+  {
+    "japanese_reading": "知っている",
+    "japanese_speaking": "しっている",
+    "english": "know"
+  },
+  {
+    "japanese_reading": "知らない",
+    "japanese_speaking": "しらない",
+    "english": "don't know"
+  },
+  {
+    "japanese_reading": "話",
+    "japanese_speaking": "はなし",
+    "english": "story/talk"
+  },
+  {
+    "japanese_reading": "について",
+    "japanese_speaking": "について",
+    "english": "about"
+  },
+  {
+    "japanese_reading": "優しい",
+    "japanese_speaking": "やさしい",
+    "english": "kind"
+  },
+  {
+    "japanese_reading": "変",
+    "japanese_speaking": "へん",
+    "english": "strange"
+  },
+  {
+    "japanese_reading": "普通",
+    "japanese_speaking": "ふつう",
+    "english": "normal"
+  },
+  {
+    "japanese_reading": "変わる",
+    "japanese_speaking": "かわる",
+    "english": "change"
+  },
+  {
+    "japanese_reading": "変わっている",
+    "japanese_speaking": "かわっている",
+    "english": "unusual"
+  },
+  {
+    "japanese_reading": "らしい",
+    "japanese_speaking": "らしい",
+    "english": "apparently"
+  },
+  {
+    "japanese_reading": "そう",
+    "japanese_speaking": "そう",
+    "english": "looks/seems"
+  },
+  {
+    "japanese_reading": "別に",
+    "japanese_speaking": "べつに",
+    "english": "not particularly"
+  },
+  {
+    "japanese_reading": "どうせ",
+    "japanese_speaking": "どうせ",
+    "english": "anyway"
+  },
+  {
+    "japanese_reading": "関係",
+    "japanese_speaking": "かんけい",
+    "english": "relationship"
+  },
+  {
+    "japanese_reading": "性格",
+    "japanese_speaking": "せいかく",
+    "english": "personality"
+  },
+  {
+    "japanese_reading": "やっぱり",
+    "japanese_speaking": "やっぱり",
+    "english": "after all/as I thought"
+  },
+  {
+    "japanese_reading": "そう思う",
+    "japanese_speaking": "そうおもう",
+    "english": "think so"
+  },
+  {
+    "japanese_reading": "より",
+    "japanese_speaking": "より",
+    "english": "than"
+  },
+  {
+    "japanese_reading": "ほう",
+    "japanese_speaking": "ほう",
+    "english": "side/option"
+  },
+  {
+    "japanese_reading": "一番",
+    "japanese_speaking": "いちばん",
+    "english": "most"
+  },
+  {
+    "japanese_reading": "大切",
+    "japanese_speaking": "たいせつ",
+    "english": "important/precious"
+  },
+  {
+    "japanese_reading": "大事",
+    "japanese_speaking": "だいじ",
+    "english": "important"
+  },
+  {
+    "japanese_reading": "気づく",
+    "japanese_speaking": "きづく",
+    "english": "notice/realize"
+  },
+  {
+    "japanese_reading": "違う",
+    "japanese_speaking": "ちがう",
+    "english": "differ/be wrong"
+  },
+  {
+    "japanese_reading": "本当",
+    "japanese_speaking": "ほんとう",
+    "english": "true/really"
+  },
+  {
+    "japanese_reading": "嘘",
+    "japanese_speaking": "うそ",
+    "english": "lie"
+  },
+  {
+    "japanese_reading": "信じる",
+    "japanese_speaking": "しんじる",
+    "english": "believe"
+  },
+  {
+    "japanese_reading": "大丈夫",
+    "japanese_speaking": "だいじょうぶ",
+    "english": "okay"
+  },
+  {
+    "japanese_reading": "心配",
+    "japanese_speaking": "しんぱい",
+    "english": "worry"
+  },
+  {
+    "japanese_reading": "約束",
+    "japanese_speaking": "やくそく",
+    "english": "promise"
+  },
+  {
+    "japanese_reading": "守る",
+    "japanese_speaking": "まもる",
+    "english": "protect/keep"
+  },
+  {
+    "japanese_reading": "比べる",
+    "japanese_speaking": "くらべる",
+    "english": "compare"
+  },
+  {
+    "japanese_reading": "選ぶ",
+    "japanese_speaking": "えらぶ",
+    "english": "choose"
+  },
+  {
+    "japanese_reading": "大切にする",
+    "japanese_speaking": "たいせつにする",
+    "english": "cherish"
+  },
+  {
+    "japanese_reading": "気がつく",
+    "japanese_speaking": "きがつく",
+    "english": "notice/realize"
+  },
+  {
+    "japanese_reading": "どうしよう",
+    "japanese_speaking": "どうしよう",
+    "english": "what should I do"
+  },
+  {
+    "japanese_reading": "ほうがいい",
+    "japanese_speaking": "ほうがいい",
+    "english": "should"
+  },
+  {
+    "japanese_reading": "無理",
+    "japanese_speaking": "むり",
+    "english": "impossible / too much"
+  },
+  {
+    "japanese_reading": "無理する",
+    "japanese_speaking": "むりする",
+    "english": "overdo/push oneself"
+  },
+  {
+    "japanese_reading": "もし",
+    "japanese_speaking": "もし",
+    "english": "if"
+  },
+  {
+    "japanese_reading": "それなら",
+    "japanese_speaking": "それなら",
+    "english": "in that case"
+  },
+  {
+    "japanese_reading": "だったら",
+    "japanese_speaking": "だったら",
+    "english": "then/if so"
+  },
+  {
+    "japanese_reading": "一緒に",
+    "japanese_speaking": "いっしょに",
+    "english": "together"
+  },
+  {
+    "japanese_reading": "自分",
+    "japanese_speaking": "じぶん",
+    "english": "oneself"
+  },
+  {
+    "japanese_reading": "考え直す",
+    "japanese_speaking": "かんがえなおす",
+    "english": "reconsider"
+  },
+  {
+    "japanese_reading": "やり直す",
+    "japanese_speaking": "やりなおす",
+    "english": "redo"
+  },
+  {
+    "japanese_reading": "もう一度",
+    "japanese_speaking": "もういちど",
+    "english": "one more time"
+  },
+  {
+    "japanese_reading": "本気",
+    "japanese_speaking": "ほんき",
+    "english": "seriousness"
+  },
+  {
+    "japanese_reading": "ちゃんと",
+    "japanese_speaking": "ちゃんと",
+    "english": "properly"
+  },
+  {
+    "japanese_reading": "頑張る",
+    "japanese_speaking": "がんばる",
+    "english": "do one's best"
+  },
+  {
+    "japanese_reading": "決める",
+    "japanese_speaking": "きめる",
+    "english": "decide"
+  },
+  {
+    "japanese_reading": "選ぶ",
+    "japanese_speaking": "えらぶ",
+    "english": "choose"
+  },
+  {
+    "japanese_reading": "必要",
+    "japanese_speaking": "ひつよう",
+    "english": "necessary"
+  },
+  {
+    "japanese_reading": "方法",
+    "japanese_speaking": "ほうほう",
+    "english": "method"
+  },
+  {
+    "japanese_reading": "結果",
+    "japanese_speaking": "けっか",
+    "english": "result"
+  }
+]

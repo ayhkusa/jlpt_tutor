@@ -1,0 +1,62 @@
+[
+  {
+    "number": 1,
+    "english": "1 book",
+    "japanese": "一冊",
+    "reading": "いっさつ"
+  },
+  {
+    "number": 2,
+    "english": "2 books",
+    "japanese": "二冊",
+    "reading": "にさつ"
+  },
+  {
+    "number": 3,
+    "english": "3 books",
+    "japanese": "三冊",
+    "reading": "さんさつ"
+  },
+  {
+    "number": 4,
+    "english": "4 books",
+    "japanese": "四冊",
+    "reading": "よんさつ"
+  },
+  {
+    "number": 5,
+    "english": "5 books",
+    "japanese": "五冊",
+    "reading": "ごさつ"
+  },
+  {
+    "number": 6,
+    "english": "6 books",
+    "japanese": "六冊",
+    "reading": "ろくさつ"
+  },
+  {
+    "number": 7,
+    "english": "7 books",
+    "japanese": "七冊",
+    "reading": "ななさつ"
+  },
+  {
+    "number": 8,
+    "english": "8 books",
+    "japanese": "八冊",
+    "reading": "はっさつ"
+  },
+  {
+    "number": 9,
+    "english": "9 books",
+    "japanese": "九冊",
+    "reading": "きゅうさつ"
+  },
+  {
+    "number": 10,
+    "english": "10 books",
+    "japanese": "十冊",
+    "reading": "じゅっさつ"
+  }
+]

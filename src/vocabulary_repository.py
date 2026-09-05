@@ -7,6 +7,9 @@ from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 VOCABULARY_PATH = PROJECT_ROOT / "data" / "vocabulary" / "words.json"
+WHISPER_VOCAB_PATH = PROJECT_ROOT / "data" / "vocabulary" / "whisperoftheheart_vocab.json"
+GRAMMAR_PATH = PROJECT_ROOT / "data" / "grammar" / "grammar.json"
+COUNTING_PATH = PROJECT_ROOT / "data" / "counting.json"
 SENTENCES_DIRECTORY = PROJECT_ROOT / "data" / "sentences"
 
 
@@ -58,3 +61,21 @@ def load_household_objects(level: str = "N4") -> list[dict[str, Any]]:
         )
 
     return entries
+
+
+def load_whisper_of_the_heart_vocab() -> list[dict[str, str]]:
+    """Return the Whisper of the Heart vocabulary list as a list of dictionaries."""
+    return read_records(WHISPER_VOCAB_PATH)
+
+
+def load_grammar() -> dict[str, Any]:
+    """Return the grammar lesson data including grammar_points and speech_forms."""
+    with GRAMMAR_PATH.open(encoding="utf-8") as file:
+        return json.load(file)
+
+
+def load_counting() -> list[dict[str, Any]]:
+    """Return the book counter data (冊 - sats) as a list of dictionaries."""
+    return read_records(COUNTING_PATH)
+
+

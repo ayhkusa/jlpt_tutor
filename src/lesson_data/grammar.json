@@ -1,0 +1,64 @@
+{
+  "grammar_points": [
+    {
+      "grammar": "〜んだ / 〜んです",
+      "meaning": "explanation",
+      "example": "勉強するんです"
+    },
+    {
+      "grammar": "〜もの",
+      "meaning": "because / excuse",
+      "example": "だって、くれるんだもの"
+    },
+    {
+      "grammar": "〜って",
+      "meaning": "casual quotation",
+      "example": "読むって決めた"
+    },
+    {
+      "grammar": "〜たら",
+      "meaning": "when / after / if",
+      "example": "食べたら勉強する"
+    },
+    {
+      "grammar": "〜ちゃった",
+      "meaning": "ended up / unfortunately",
+      "example": "忘れちゃった"
+    },
+    {
+      "grammar": "〜なのに",
+      "meaning": "even though",
+      "example": "日曜日なのに"
+    }
+  ],
+  "speech_forms": [
+    {
+      "full_form": "〜のだ",
+      "casual_speech": "〜んだ"
+    },
+    {
+      "full_form": "〜のです",
+      "casual_speech": "〜んです"
+    },
+    {
+      "full_form": "〜てしまう",
+      "casual_speech": "〜ちゃう"
+    },
+    {
+      "full_form": "〜てしまった",
+      "casual_speech": "〜ちゃった"
+    },
+    {
+      "full_form": "〜なければならない",
+      "casual_speech": "〜なきゃ"
+    },
+    {
+      "full_form": "〜なくてはならない",
+      "casual_speech": "〜なくちゃ"
+    },
+    {
+      "full_form": "〜かもしれない",
+      "casual_speech": "〜かも"
+    }
+  ]
+}

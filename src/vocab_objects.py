@@ -79,6 +79,7 @@ def build_household_object_html(
         home_page = html.escape(home_page, quote=True)
         level_pages = level_pages or {}
         active_level = active_level.lower() if active_level else None
+        sticky_notes_pdf = html.escape(f"../sticky_notes_{active_level}.pdf", quote=True) if active_level else "#"
         level_buttons = "".join(
             (
                 f'<button class="level-button{" active" if level == active_level else ""}" type="button" data-url="{html.escape(level_pages[level], quote=True)}">{level.upper()}</button>'
@@ -158,7 +159,12 @@ def build_household_object_html(
             color: #f0fdfa;
             background: linear-gradient(135deg, #0f766e, #0ea5a4);
         }}
+        .header-row {{ display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }}
         h1 {{ margin: 0; font-size: 2rem; }}
+        .sticky-notes-download {{ display: grid; grid-template-columns: repeat(3, 0.27rem); gap: 0.08rem; flex: 0 0 auto; padding: 0.4rem; border: 1px solid #ccfbf1; border-radius: 6px; background: #f0fdfa; }}
+        .sticky-notes-download:hover {{ background: #ffffff; }}
+        .qr-cell {{ width: 0.27rem; height: 0.27rem; background: #0f766e; }}
+        .qr-cell.blank {{ background: transparent; }}
         .japanese {{ margin: 0.65rem 0 0; font-size: 1.5rem; font-weight: 700; }}
         .hiragana {{ margin: 0.15rem 0 0; color: var(--muted); font-size: 1rem; }}
         .english.word {{ margin: 0.35rem 0 0; font-size: 1.2rem; }}
@@ -206,6 +212,7 @@ def build_household_object_html(
             .app {{ border-radius: 8px; }}
             .header, .content, .panel {{ padding: 0.75rem; }}
             h1 {{ font-size: 1.5rem; overflow-wrap: anywhere; }}
+            .header-row {{ gap: 0.5rem; }}
             .sentence {{ font-size: 1.1rem; }}
             .table-wrap {{ width: 100%; }}
             table {{ min-width: 620px; }}
@@ -220,7 +227,14 @@ def build_household_object_html(
     </nav>
     <main class="app">
         <header class="header">
-            <h1>{word} : {hiragana}</h1>
+            <div class="header-row">
+                <h1>{word} : {hiragana}</h1>
+                <a class="sticky-notes-download" href="{sticky_notes_pdf}" download title="Download Sticky Notes" aria-label="Download Sticky Notes">
+                    <span class="qr-cell"></span><span class="qr-cell blank"></span><span class="qr-cell"></span>
+                    <span class="qr-cell blank"></span><span class="qr-cell"></span><span class="qr-cell blank"></span>
+                    <span class="qr-cell"></span><span class="qr-cell blank"></span><span class="qr-cell"></span>
+                </a>
+            </div>
             <p class="english word">{english_word}</p>
         </header>
         <section class="content">

@@ -83,3 +83,20 @@ def test_page_template_marks_the_displayed_level_button_active():
     assert 'class="level-button active" type="button" data-url="../n5/example.html">N5' in page
     assert 'class="level-button" type="button" data-url="../n4/example.html">N4' in page
     assert ".level-button.active { color: #ffffff;" in page
+
+
+def test_page_template_links_to_its_level_sticky_notes_pdf():
+    page = build_household_object_html(
+        {
+            "word": "テーブル",
+            "hiragana": "てーぶる",
+            "english_word": "table",
+            "sentence": "テーブルを使います。",
+            "english_sentence": "I use a table.",
+            "breakdown": [],
+        },
+        active_level="N5",
+    )
+
+    assert 'href="../sticky_notes_n5.pdf" download title="Download Sticky Notes"' in page
+    assert page.count('class="qr-cell') == 9
